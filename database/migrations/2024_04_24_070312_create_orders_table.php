@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('tax_type')->default('percentage'); //percentage,amount
             $table->decimal('total_tax', total: 8, places: 2);
             $table->boolean('prices_include_tax')->default(false);
-            $table->decimal('shipping_total_width_tax', total: 8, places: 2);
+            $table->decimal('shipping_total_with_tax', total: 8, places: 2);
             $table->text('billing')->nullable();
             $table->text('shipping')->nullable();
             $table->string('payment_method');

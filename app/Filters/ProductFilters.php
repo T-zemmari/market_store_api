@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-class ProductFilter extends MyApiFilter
+class ProductFilters extends MyApiFilter
 {
 
     protected $array_params = [

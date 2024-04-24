@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Filters\OrderFilter;
+use App\Filters\OrderFilters;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new OrderFilter();
+        $filter = new OrderFilters();
         $queryItems = $filter->useTransform($request);
 
         // Inicializamos la consulta
@@ -37,6 +37,16 @@ class OrderController extends Controller
 
         // Si hay más de 10 pedidos, paginamos; de lo contrario, obtenenemos todos los pedidos
         $orders = $totalOrders > 10 ? $ordersQuery->paginate() : $ordersQuery->get();
+
+        $orders->transform(function ($order) {
+            $order->line_items = json_decode($order->line_items);
+            return $order;
+        });
+
+        $orders->transform(function ($order) {
+            $order->coupon_lines = json_decode($order->coupon_lines);
+            return $order;
+        });
 
         // Devuelvemos la colección de pedidos
         return new OrderCollection($orders);

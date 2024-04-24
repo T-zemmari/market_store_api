@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('phone');
             $table->boolean('is_paying_customer')->default(true);
-            $table->boolean('avatar_url')->nullable();
+            $table->text('avatar_url')->nullable();
             $table->text('meta_data')->nullable();
             $table->timestamps();
         });

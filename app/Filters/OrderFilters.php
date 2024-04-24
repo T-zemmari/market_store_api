@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-class OrderFilter extends MyApiFilter
+class OrderFilters extends MyApiFilter
 {
     protected $array_params = [
         'customer_id' => ['eq'],

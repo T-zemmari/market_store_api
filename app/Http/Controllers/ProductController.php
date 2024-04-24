@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Filters\ProductFilter;
+use App\Filters\ProductFilters;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new ProductFilter();
+        $filter = new ProductFilters();
         $queryItems = $filter->useTransform($request);
 
         // Inicializamos la consulta
