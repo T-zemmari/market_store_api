@@ -9,13 +9,7 @@ class CategoryFilters extends MyApiFilter
         'name'=>['eq'],
         'parent'=>['eq','lt','lte','gt','gte'],
     ];
-    protected $array_columns_map = [
-        'firstName'=>'first_name',
-        'lastName'=>'last_name',
-        'isPayingCustomer'=>'is_paying_customer',
-        'postalCode'=>'postal_code',
-        'customerType'=>'customer_type',
-    ];
+    protected $array_columns_map = [];
     protected $array_operators_map = [
         'eq'=>'=',
         'gt'=>'>',
