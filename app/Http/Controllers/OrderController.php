@@ -2,19 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\OrderFilter;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\OrderCollection;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::paginate();
+        $filter = new OrderFilter();
+        $queryItems = $filter->useTransform($request);
+
+        // Inicializamos la consulta
+        $ordersQuery = Order::query();
+
+        // Aplicamos las condiciones de filtro a la consulta
+        foreach ($queryItems as $queryItem) {
+            $column = $queryItem[0]; // Nombre de la columna
+            $operator = $queryItem[1]; // Operador
+            $value = $queryItem[2]; // Valor
+
+            // Aplicamos la condición a la consulta
+            $ordersQuery->where($column, $operator, $value);
+        }
+
+        // Obténemos la cantidad total de los pedidos que coinciden con los filtros
+        $totalOrders = $ordersQuery->count();
+
+        // Si hay más de 10 pedidos, paginamos; de lo contrario, obtenenemos todos los pedidos
+        $orders = $totalOrders > 10 ? $ordersQuery->paginate() : $ordersQuery->get();
+
+        // Devuelvemos la colección de pedidos
         return new OrderCollection($orders);
     }
 
