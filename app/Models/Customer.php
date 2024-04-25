@@ -23,6 +23,7 @@ class Customer extends Model
         "country",
         "phone",
         "is_paying_customer",
+        "status",
     ];
 
     /**

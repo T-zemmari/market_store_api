@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name')->nullable();
+            $table->string('status')->default('active');//active or deleted
             $table->string('customer_type');
             $table->string('email');
             $table->string('password');

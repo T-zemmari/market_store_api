@@ -21,7 +21,7 @@ class CustomerController extends Controller
         $queryItems = $filter->useTransform($request);
 
         // Inicializamos la consulta con todos los clientes
-        $customersQuery = Customer::query();
+        $customersQuery = Customer::where('status', 'active');
 
         // Aplicamos las condiciones de filtro a la consulta
         foreach ($queryItems as $queryItem) {
@@ -55,7 +55,6 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-
         return new CustomerResource(Customer::create($request->all()));
     }
 
@@ -64,8 +63,16 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
+
+        if (trim($customer->status) === 'deleted') {
+            $response['code'] = 404;
+            $response['message'] = 'Customer not found';
+            return response()->json($response, 404);
+        }
+
         return new CustomerResource($customer);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,42 +88,63 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $response = [
-            'code' => '500',
+            'code' => 500,
             'message' => 'error',
         ];
-        $custome_data = $request->except('email');
-        if ($customer->update($custome_data)) {
-
-            $data = [
-                "firstName" => $customer->first_name,
-                "lastName" => $customer->last_name,
-                "customerType" => $customer->customer_type,
-                "email" => $customer->email,
-                "adress" => $customer->adress,
-                "postalCode" => $customer->postal_code,
-                "city" => $customer->city,
-                "state" => $customer->state,
-                "country" => $customer->country,
-                "phone" => $customer->phone,
-                "isPayingCustomer" => $customer->is_paying_customer,
-                "updated_at" => $customer->updated_at
-            ];
-
+        if (trim($customer->status) === 'deleted') {
             $response = [
-                'code' => '200',
-                'message' => 'Custumer updated correcty',
-                'data' => $data
+                'code' => 404,
+                'message' => 'Customer not found',
             ];
+        } else {
+
+            $custome_data = $request->except('email');
+            if ($customer->update($custome_data)) {
+
+                $data = [
+                    "firstName" => $customer->first_name,
+                    "lastName" => $customer->last_name,
+                    "customerType" => $customer->customer_type,
+                    "email" => $customer->email,
+                    "status" => $customer->status,
+                    "adress" => $customer->adress,
+                    "postalCode" => $customer->postal_code,
+                    "city" => $customer->city,
+                    "state" => $customer->state,
+                    "country" => $customer->country,
+                    "phone" => $customer->phone,
+                    "isPayingCustomer" => $customer->is_paying_customer,
+                    "updated_at" => $customer->updated_at
+                ];
+
+                $response = [
+                    'code' => 200,
+                    'message' => 'Custumer updated correcty',
+                    'data' => $data
+                ];
+            }
         }
 
         return $response;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft remove the specified resource from storage.
      */
+
     public function destroy(Customer $customer)
     {
-        //
+        if ($customer->status === 'deleted') {
+            return response()->json(['message' => 'Customer already deleted'], 404);
+        }
+        $customer->update(['status' => 'deleted']);
+        return response()->json(['message' => 'Customer status updated to deleted'], 200);
     }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+    // public function destroy(Customer $customer)
+    // {
+    // }
 }

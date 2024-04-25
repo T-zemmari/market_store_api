@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,14 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+
+        $sku = $this->generateUniqueSKU();
+
         return [
             'category_id' => Category::factory(), // Asociamos aleatoriamente el producto a una categoría existente
             'name' => $this->faker->word(),
             'slug' => null,
-            'sku' => $this->faker->unique()->numberBetween(10000,999999),
+            'sku' => $sku,
             'type' => 'simple',
             'status' => 'publish',
             'featured' => $this->faker->boolean(),
@@ -41,5 +45,14 @@ class ProductFactory extends Factory
             'meta_data' => null,
             'variation' => false,
         ];
+    }
+
+    protected function generateUniqueSKU(): string
+    {
+        do {
+            $sku = $this->faker->numberBetween(10000, 999999);
+        } while (Product::where('sku', $sku)->exists());
+
+        return $sku;
     }
 }
