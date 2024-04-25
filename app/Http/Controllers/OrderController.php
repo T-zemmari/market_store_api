@@ -78,9 +78,9 @@ class OrderController extends Controller
 
         // Verificar si los cálculos coinciden con los valores enviados en el cuerpo de la solicitud
         if (
-            !is_numeric($request->shippingTotal) ||  
-            !is_numeric($request->totalTax) ||  
-            !is_numeric($request->shippingTotalwithTax) ||  
+            !is_numeric($request->shippingTotal) ||
+            !is_numeric($request->totalTax) ||
+            !is_numeric($request->shippingTotalwithTax) ||
             $request->shippingTotal <= 0 ||
             $request->totalTax <= 0 ||
             $request->shippingTotalwithTax <= 0 ||
@@ -138,11 +138,27 @@ class OrderController extends Controller
         //
     }
 
+    private function cancelOrder($order_id)
+    {
+        $order = Order::find($order_id);
+    
+        if (!$order) {
+            return response()->json(['code' => 404, 'message' => 'Order not found'], 404);
+        } else {
+            $order->status = 'cancelled';
+            if ($order->save()) {
+                return response()->json(['code' => 200, 'message' => 'Order canceled correctly'], 200);
+            } else {
+                return response()->json(['code' => 500, 'message' => 'Order not canceled'], 500);
+            }
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy($order_id)
     {
-        //
+        return $this->cancelOrder($order_id);
     }
 }
