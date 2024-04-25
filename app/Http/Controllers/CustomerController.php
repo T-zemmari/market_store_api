@@ -132,7 +132,7 @@ class CustomerController extends Controller
      * Soft remove the specified resource from storage.
      */
 
-    public function destroy(Customer $customer)
+    public function softDestroy($customer)
     {
         if ($customer->status === 'deleted') {
             return response()->json(['message' => 'Customer already deleted'], 404);
@@ -141,10 +141,11 @@ class CustomerController extends Controller
         return response()->json(['message' => 'Customer status updated to deleted'], 200);
     }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(Customer $customer)
-    // {
-    // }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Customer $customer)
+    {
+       return $this->softDestroy($customer);
+    }
 }
