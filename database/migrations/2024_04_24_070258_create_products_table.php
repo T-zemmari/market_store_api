@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->integer('category_id');
+            $table->id();         
             $table->string('name');
-            $table->string('slug')->nullable();
+            $table->integer('category_id');
             $table->string('sku')->unique()->nullable(); //Unique identifier
+            $table->string('ean')->nullable();
+            $table->string('ean13')->nullable(); 
             $table->string('type')->default('simple'); //simple, grouped, external and variable
             $table->string('status')->default('publish'); // draft, pending, private and publish.
             $table->boolean('featured')->default(false);
@@ -31,12 +32,11 @@ return new class extends Migration
             $table->string('stock_status')->default('instock'); //instock, outofstock
             $table->string('weight')->nullable();
             $table->string('dimensions')->nullable();
-            $table->integer('parent_id')->nullable();
             $table->string('image')->nullable();
             $table->text('meta_data')->nullable();
             $table->boolean('variation')->default(false);
             $table->string('discontinued')->default(false); //true o false
-            $table->string('valid')->default(true); //true o false
+            $table->boolean('valid')->default(true); //true o false
             $table->timestamps();
         });
     }

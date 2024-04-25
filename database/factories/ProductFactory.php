@@ -24,7 +24,6 @@ class ProductFactory extends Factory
         return [
             'category_id' => Category::factory(), // Asociamos aleatoriamente el producto a una categoría existente
             'name' => $this->faker->word(),
-            'slug' => null,
             'sku' => $sku,
             'type' => 'simple',
             'status' => 'publish',
@@ -40,7 +39,6 @@ class ProductFactory extends Factory
             'stock_status' => $this->faker->randomElement(['instock', 'outofstock']),
             'weight' => $this->faker->numberBetween(1, 10) . 'kg',
             'dimensions' => $this->faker->randomNumber(2) . 'x' . $this->faker->randomNumber(2) . 'x' . $this->faker->randomNumber(2) . 'cm',
-            'parent_id' => null,
             'image' => $this->faker->imageUrl(),
             'meta_data' => null,
             'variation' => false,

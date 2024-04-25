@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -55,15 +57,28 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // Verificar si el SKU es único
+        if ($request->sku && !$this->skuUnique($request->sku, null)) {
+            return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
+        }
+    
+        // Crear el nuevo producto
+        $newProduct = Product::create($request->all());
+    
+        return new ProductResource($newProduct);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($productId)
     {
-        //
+        try {
+            $product = Product::findOrFail($productId);
+            return new ProductResource($product);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
     }
 
     /**
@@ -74,19 +89,51 @@ class ProductController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, $productId)
     {
-        //
+        try {
+            $product = Product::findOrFail($productId);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+    
+        // Verificar si el SKU es único, excluyendo el producto actual
+        // if ($request->sku && !$this->skuUnique($request->sku, $productId)) {
+        //     return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
+        // }
+    
+        // Excluir el campo SKU del array de datos para asegurar que no se modifique
+        $requestData = $request->except('sku');
+    
+        // Actualizar el producto
+        $product->update($requestData);
+    
+        return new ProductResource($product);
+    }
+
+    private function skuUnique($sku, $productId)
+    {
+        return !Product::where('sku', $sku)
+            ->where('id', '!=', $productId)
+            ->exists();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($productId)
     {
-        //
+        $product = Product::find($productId);
+
+        if ($product) {
+            $product->delete();
+            return response()->json(['message' => 'Product deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
     }
 }

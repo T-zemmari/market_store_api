@@ -19,9 +19,9 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->string('display')->default('default');
             $table->string('image')->nullable();
-            $table->string('status')->default('active');//active no active or deleted
-            $table->string('discontinued')->default(false);//true o false
-            $table->string('valid')->default(true);//true o false
+            $table->string('status')->default('active'); //active no active or deleted
+            $table->string('discontinued')->default(false); //true o false
+            $table->string('valid')->default(true); //true o false
             $table->timestamps();
         });
     }

@@ -25,7 +25,6 @@ class ProductFilters extends MyApiFilter
         'OnSale' => 'on_sale',
         'salePrice' => 'sale_price',
         'Stock' => 'stock_quantity',
-        'parentId' => 'parent_id',
     ];
     protected $array_operators_map = [
         'eq' => '=',
