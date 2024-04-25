@@ -27,8 +27,13 @@ class StoreCustomerRequest extends FormRequest
             "first_name" => ['required'],
             "last_name" => ['required'],
             "customer_type" => ['required', Rule::in(['individual', 'business'])],
-            "email" => ['required'],
-            "password" => ['required','min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
+            "email" => ['required', 'email', function ($attribute, $value, $fail) {
+                // Check if the email already exists in the database
+                $existingEmail = \App\Models\Customer::where('email', $value)->exists();
+                if ($existingEmail) {
+                    $fail('The email address is already in use.');
+                }
+            }],            "password" => ['required', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             "adress" => ['required'],
             "postal_code" => ['required'],
             "city" => ['required'],

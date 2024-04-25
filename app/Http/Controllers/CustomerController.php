@@ -55,7 +55,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        
+
         return new CustomerResource(Customer::create($request->all()));
     }
 
@@ -80,7 +80,36 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $response = [
+            'code' => '500',
+            'message' => 'error',
+        ];
+        $custome_data = $request->except('email');
+        if ($customer->update($custome_data)) {
+
+            $data = [
+                "firstName" => $customer->first_name,
+                "lastName" => $customer->last_name,
+                "customerType" => $customer->customer_type,
+                "email" => $customer->email,
+                "adress" => $customer->adress,
+                "postalCode" => $customer->postal_code,
+                "city" => $customer->city,
+                "state" => $customer->state,
+                "country" => $customer->country,
+                "phone" => $customer->phone,
+                "isPayingCustomer" => $customer->is_paying_customer,
+                "updated_at" => $customer->updated_at
+            ];
+
+            $response = [
+                'code' => '200',
+                'message' => 'Custumer updated correcty',
+                'data' => $data
+            ];
+        }
+
+        return $response;
     }
 
     /**
