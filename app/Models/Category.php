@@ -9,7 +9,14 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable=[
-
+        "name",
+        "parent",
+        "description",
+        "short_description", 
+        "image", 
+        "status",
+        "discontinued",
+        "valid",
     ];
 
     /**

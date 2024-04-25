@@ -35,6 +35,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('meta_data')->nullable();
             $table->boolean('variation')->default(false);
+            $table->string('discontinued')->default(false); //true o false
+            $table->string('valid')->default(true); //true o false
             $table->timestamps();
         });
     }
