@@ -11,7 +11,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,30 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+
+        $method = $this->method();
+
+        if ($method == 'PUT') {
+            return [
+                "name" => ['required'],
+                "parent" => ['required'],
+                "description" => ['required'],
+                "short_description" => ['required'],
+            ];
+        } else {
+            return [
+                "name" => ['sometimes', 'required'],
+                "parent" => ['sometimes', 'required'],
+                "description" => ['sometimes', 'required'],
+                "short_description" => ['sometimes', 'required'],
+            ];
+        }
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'short_description' => $this->shortDescription,
+        ]);
     }
 }

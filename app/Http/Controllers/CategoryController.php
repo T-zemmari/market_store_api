@@ -10,6 +10,8 @@ use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 
 class CategoryController extends Controller
@@ -76,11 +78,16 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($categoryId)
     {
-        return new CategoryResource($category);
+        try {
+            $category = Category::findOrFail($categoryId);
+            $categoryResource = new CategoryResource($category);
+            return $categoryResource;
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -92,11 +99,24 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, $categoryId)
     {
+        try {
+            $category = Category::findOrFail($categoryId);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
+
         $category_data = $request->all();
 
         if ($category->update($category_data)) {
+            $data_products = [];
+            $products = $category->products;
+            if ($products) {
+                foreach ($products as $product) {
+                    $data_products[] = $product->toArray(); // Devuelve todos los campos del producto
+                }
+            }
 
             $data = [
                 "name" => $category->name,
@@ -109,16 +129,22 @@ class CategoryController extends Controller
                 "status" => $category->status,
                 "discontinued" => $category->discontinued,
                 "valid" => $category->valid,
+                'products' => $data_products,
             ];
 
             $response = [
                 'code' => 200,
-                'message' => 'Category updated correcty',
+                'message' => 'Category updated correctly',
                 'data' => $data
+            ];
+        } else {
+            $response = [
+                'code' => 500,
+                'message' => 'Failed to update category'
             ];
         }
 
-        return $response;
+        return response()->json($response);
     }
 
     /**
