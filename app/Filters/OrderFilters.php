@@ -12,7 +12,6 @@ class OrderFilters extends MyApiFilter
         'shipping_total' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'tax_type' => ['eq'],
         'total_tax' => ['eq'],
-        'prices_include_tax' => ['eq'],
         'shipping_total_width_tax' => ['eq'],
         'date_paid' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'date_completed' => ['eq', 'lt', 'lte', 'gt', 'gte'],
@@ -23,7 +22,6 @@ class OrderFilters extends MyApiFilter
         'shippingTotal' => 'shipping_total',
         'taxType' => 'tax_type',
         'totalTax' => 'total_tax',
-        'pricesIncludeTax' => 'prices_include_tax',
         'datePaid' => 'date_paid',
         'dateCompleted' => 'date_completed',
     ];

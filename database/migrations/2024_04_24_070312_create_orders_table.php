@@ -21,7 +21,6 @@ return new class extends Migration
             $table->decimal('shipping_total', total: 8, places: 2);
             $table->string('tax_type')->default('percentage'); //percentage,amount
             $table->decimal('total_tax', total: 8, places: 2);
-            $table->boolean('prices_include_tax')->default(false);
             $table->decimal('shipping_total_with_tax', total: 8, places: 2);
             $table->text('billing')->nullable();
             $table->text('shipping')->nullable();
@@ -29,7 +28,7 @@ return new class extends Migration
             $table->string('payment_method_title');
             $table->dateTime('date_paid')->nullable();
             $table->dateTime('date_completed')->nullable();
-            $table->text('line_items')->nullable(); //De momento lo dejo nulo 
+            $table->json('line_items'); //De momento lo dejo nulo 
             $table->text('coupon_lines')->nullable(); //De momento lo dejo nulo 
             $table->text('set_paid')->default(false);
             $table->text('created_via')->default('rest_api');

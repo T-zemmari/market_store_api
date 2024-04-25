@@ -62,7 +62,6 @@ class OrderFactory extends Factory
             'shipping_total' => $total - $taxAmount,
             'tax_type' => 'sales_tax',
             'total_tax' => $taxAmount,
-            'prices_include_tax' => $this->faker->boolean(),
             'shipping_total_with_tax' => $total,
             'payment_method' => 'credit_card',
             'payment_method_title' => 'Credit Card',
