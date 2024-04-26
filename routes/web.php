@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonalAccessTokenController;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/csrf-token', function () {
+    return Response()->json(['token' => csrf_token()]);
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -32,10 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/tokens/create', function (Request $request) {
-    $token = $request->user()->createToken($request->token_name);
- 
-    return ['token' => $token->plainTextToken];
-});
+// Define las rutas para la creación de tokens
+// Route::post('/admin-token', [PersonalAccessTokenController::class, 'store'])
+//     ->middleware('auth:sanctum')
+//     ->name('admin.token.create');
+
+// Route::post('/read-token', [PersonalAccessTokenController::class, 'store'])
+//     ->middleware(['auth:sanctum', 'scope:read'])
+//     ->name('read.token.create');
+
+// Route::post('/update-token', [PersonalAccessTokenController::class, 'store'])
+//     ->middleware(['auth:sanctum', 'scope:update'])
+//     ->name('update.token.create');
+
 
 require __DIR__ . '/auth.php';
