@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::group(['prefix' => 'v1', Controller::class], function () {
-    Route::apiResource('customers', CustomerController::class);
-    Route::apiResource('categories', CategoryController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('orders', OrderController::class);
+    Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
+    Route::apiResource('categories', CategoryController::class)->middleware('auth:sanctum');
+    Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
+    Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
 });
