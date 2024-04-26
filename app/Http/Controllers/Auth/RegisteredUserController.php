@@ -32,13 +32,21 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'register_admin_code' => ['string'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+
+        $user_type = 'user';
+        if ($request->register_admin_code == 'Ta00') {
+            $user_type = 'admin';
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'user_type' => $user_type,
             'password' => Hash::make($request->password),
         ]);
 
