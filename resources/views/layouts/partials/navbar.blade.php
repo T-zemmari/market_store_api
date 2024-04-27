@@ -59,7 +59,7 @@
                                 <div class="px-4 py-3">
                                     <span class="block text-sm text-gray-900">{{$user->name??''}}</span>
                                     <span
-                                        class="block text-sm  text-gray-500 truncate">{{$user->email}}</span>
+                                        class="block text-sm  text-gray-500 truncate">{{$user->email??''}}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
                                     <li>
