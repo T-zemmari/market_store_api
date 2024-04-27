@@ -42,7 +42,8 @@ class AuthenticatedSessionController extends Controller
     // Crear el token con el nombre y alcances apropiados
     $token = $request->user()->createToken($tokenName, $tokenScopes)->plainTextToken;
     
-        return redirect()->intended(RouteServiceProvider::HOME)->with('token', $token);
+    //return redirect()->intended(RouteServiceProvider::HOME)->with('token', $token);
+    return redirect()->route('profile.edit')->with('token', $token);
     }
     
 

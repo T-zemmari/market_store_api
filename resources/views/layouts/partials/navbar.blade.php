@@ -46,20 +46,20 @@
                     @else
                         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                             <button type="button"
-                                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 sm:-mt-1"
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                 data-dropdown-placement="bottom">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg"
+                                <img class="w-8 h-8 rounded-full" src="{{asset('/assets/imgs/admin_1.png')}}"
                                     alt="user photo">
                             </button>
                             <!-- Dropdown menu -->
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
                                 id="user-dropdown">
                                 <div class="px-4 py-3">
-                                    <span class="block text-sm text-gray-900">Bonnie Green</span>
+                                    <span class="block text-sm text-gray-900">{{$user->name??''}}</span>
                                     <span
-                                        class="block text-sm  text-gray-500 truncate">name@marketstore.com</span>
+                                        class="block text-sm  text-gray-500 truncate">{{$user->email}}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
                                     <li>
@@ -80,7 +80,7 @@
                                             <x-dropdown-link :href="route('logout')"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                                {{ __('Log Out') }}
+                                                {{ __('Salir') }}
                                             </x-dropdown-link>
                                         </form>
                                     </li>
