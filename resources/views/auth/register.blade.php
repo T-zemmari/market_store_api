@@ -47,9 +47,9 @@
              <div class="mt-4">
                 <x-input-label for="register_admin_code" :value="__('¿Eres admin? (Ingresa el codigo admin)')" class="text-white"/>
                 <x-text-input id="register_admin_code" class="block mt-1 w-full" type="password"
-                    name="register_admin_code" required autocomplete="register-admin-code" />
+                    name="register_admin_code" autocomplete="register-admin-code" />
 
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                <!--<x-input-error :messages="$errors->get('register_admin_code')" class="mt-2" />-->
             </div>
 
             <div class="flex items-center justify-between mt-4">

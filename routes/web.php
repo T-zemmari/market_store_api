@@ -16,6 +16,11 @@ Route::get('/contacto', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/documentacion_api', function () {
+    return view('documentacion');
+})->name('documentacion');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

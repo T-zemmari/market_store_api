@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1', Controller::class], function () {
-    Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
+    Route::apiResource('customers', CustomerController::class);
     Route::apiResource('categories', CategoryController::class)->middleware('auth:sanctum');
     Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
     Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
