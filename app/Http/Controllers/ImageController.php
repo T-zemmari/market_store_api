@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BuilkStoreImageRequest;
 use App\Models\Image;
 use App\Http\Requests\StoreImageRequest;
 use App\Http\Requests\UpdateImageRequest;
 use App\Http\Resources\ImageCollection;
 use App\Http\Resources\ImageResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Arr;
 
 class ImageController extends Controller
 {
@@ -31,13 +33,33 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   
+
     public function store(StoreImageRequest $request)
     {
         // Crear una nueva imagen
         $newImage = Image::create($request->all());
         return new ImageResource($newImage);
     }
+
+
+
+    public function bulkStore(BuilkStoreImageRequest $request)
+    {
+        try {
+            $bulk = collect($request->all())->map(function ($arr, $key) {
+                return Arr::except($arr, ['created_at', 'updated_at']);
+            });
+
+            Image::insert($bulk->toArray());
+            // Retornar una respuesta con código 200 y el mensaje adecuado
+            return response()->json(['code'=>200,'message' => 'The images are stored correctly'], 200);
+        } catch (\Exception $e) {
+            // Si ocurre un error, devolver una respuesta con código 500 y un mensaje de error
+            return response()->json(['code'=>500,'message' => 'Internal Server Error: ' . $e->getMessage()], 500);
+        }
+    }
+
+
 
     /**
      * Display the specified resource.

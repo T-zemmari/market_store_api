@@ -31,4 +31,5 @@ Route::group(['prefix' => 'v1', Controller::class], function () {
     Route::apiResource('products', ProductController::class);
     Route::apiResource('images', ImageController::class);
     Route::apiResource('orders', OrderController::class);
+    Route::post('images/bulk', [ImageController::class, 'bulkStore']);
 });
