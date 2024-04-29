@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PersonalAccessTokenController;
 use App\Http\Controllers\ProductController;
@@ -26,7 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1', Controller::class], function () {
     Route::apiResource('customers', CustomerController::class);
-    Route::apiResource('categories', CategoryController::class)->middleware('auth:sanctum');
-    Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
-    Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
+    Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('products', ProductController::class);
+    Route::apiResource('images', ImageController::class);
+    Route::apiResource('orders', OrderController::class);
 });

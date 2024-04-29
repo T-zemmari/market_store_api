@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Http\Requests\StoreImageRequest;
 use App\Http\Requests\UpdateImageRequest;
+use App\Http\Resources\ImageCollection;
 
 class ImageController extends Controller
 {
@@ -13,7 +14,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::all();
+        return new ImageCollection($images);
     }
 
     /**
