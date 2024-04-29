@@ -31,9 +31,12 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+   
     public function store(StoreImageRequest $request)
     {
-        //
+        // Crear una nueva imagen
+        $newImage = Image::create($request->all());
+        return new ImageResource($newImage);
     }
 
     /**
@@ -60,9 +63,15 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateImageRequest $request, Image $image)
+    public function update(UpdateImageRequest $request, $image_id)
     {
-        //
+        try {
+            $image = Image::findOrFail($image_id);
+            $image->update($request->all());
+            return new ImageResource($image);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Image not found'], 404);
+        }
     }
 
     /**

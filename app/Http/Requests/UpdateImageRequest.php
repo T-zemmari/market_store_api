@@ -11,7 +11,7 @@ class UpdateImageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,20 @@ class UpdateImageRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+
+        $method = $this->method();
+        if ($method == 'PUT') {
+            return [
+                'product_id' => ['required'],
+                'url_image' => ['required', 'string'],
+                'active' => ['required', 'boolean'],
+            ];
+        } else {
+            return [
+                'product_id' => ['sometimes', 'required'],
+                'url_image' => ['sometimes', 'required', 'string'],
+                'active' => ['sometimes', 'required', 'boolean'],
+            ];
+        }
     }
 }
