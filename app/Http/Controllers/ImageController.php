@@ -52,14 +52,12 @@ class ImageController extends Controller
 
             Image::insert($bulk->toArray());
             // Retornar una respuesta con código 200 y el mensaje adecuado
-            return response()->json(['code'=>200,'message' => 'The images are stored correctly'], 200);
+            return response()->json(['code' => 200, 'message' => 'The images are stored correctly'], 200);
         } catch (\Exception $e) {
             // Si ocurre un error, devolver una respuesta con código 500 y un mensaje de error
-            return response()->json(['code'=>500,'message' => 'Internal Server Error: ' . $e->getMessage()], 500);
+            return response()->json(['code' => 500, 'message' => 'Internal Server Error: ' . $e->getMessage()], 500);
         }
     }
-
-
 
     /**
      * Display the specified resource.

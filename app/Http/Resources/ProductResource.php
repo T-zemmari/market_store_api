@@ -14,6 +14,17 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
+        $images = $this->images->map(function ($image) {
+            return [
+                'id' => $image->id,
+                'active' => $image->active,
+                'url_image' => $image->url_image,
+                'created_at' => $image->created_at,
+                'updated_at' => $image->updated_at,               
+            ];
+        });
+
         return [
             'id' => $this->id,
             'category_id' => $this->category_id,
@@ -34,6 +45,7 @@ class ProductResource extends JsonResource
             'dimensions' => $this->dimensions,
             'meta_data' => $this->meta_data,
             'variation' => $this->variation,
+            'images' => $images,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
