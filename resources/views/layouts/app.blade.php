@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ isset($title) ? $title :config('app.name', 'Market Store Api') }}</title>
+    <title>{{ isset($title) ? $title : config('app.name', 'Market Store Api') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,6 +23,8 @@
             {{ $slot }}
         </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="{{ asset('/assets/js/jquery_3_7_1.js') }}"></script>
+    <script src="{{ asset('/assets/js/doc_scripts.js') }}"></script>
 </body>
+
 </html>
