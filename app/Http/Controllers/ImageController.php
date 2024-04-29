@@ -6,6 +6,8 @@ use App\Models\Image;
 use App\Http\Requests\StoreImageRequest;
 use App\Http\Requests\UpdateImageRequest;
 use App\Http\Resources\ImageCollection;
+use App\Http\Resources\ImageResource;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ImageController extends Controller
 {
@@ -37,9 +39,14 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Image $image)
+    public function show($image_id)
     {
-        //
+        try {
+            $image = Image::findOrFail($image_id);
+            return new ImageResource($image);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['message' => 'Image not found'], 404);
+        }
     }
 
     /**
@@ -61,8 +68,14 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Image $image)
+    public function destroy($image_id)
     {
-        //
+        $image = Image::find($image_id);
+        if ($image) {
+            $image->delete();
+            return response()->json(['message' => 'Image deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Image not found'], 404);
+        }
     }
 }
