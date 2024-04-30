@@ -28,7 +28,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
         //return redirect()->intended(RouteServiceProvider::HOME)->with('token', $token);
-        return redirect()->route('profile.edit');
+        $user = Auth::user();
+        $user->tokens()->delete();
+        $tokens = [
+            'customers' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
+            'categories' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
+            'products' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
+            'images' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
+            'orders' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
+        ];
+        $token = $request->user()->createToken($request->user()->user_type === 'admin' ? 'admin_token' : 'user_token', $tokens)->plainTextToken;
+        return redirect()->route('profile.edit')->with(['token' => $token]);
     }
 
 
