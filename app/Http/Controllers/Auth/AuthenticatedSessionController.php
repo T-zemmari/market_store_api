@@ -27,25 +27,10 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-    
-        // Alcance por defecto para usuario regular
-    $tokenName = 'user_token';
-    $tokenScopes = ['read']; // Usuario regular solo puede leer
-
-    // Verificar si el usuario es un administrador
-    if ($request->user()->user_type === 'admin') {
-        $tokenName = 'admin_token';
-        // Administrador puede crear, leer, actualizar y eliminar
-        $tokenScopes = ['create', 'read', 'update', 'delete'];
+        //return redirect()->intended(RouteServiceProvider::HOME)->with('token', $token);
+        return redirect()->route('profile.edit');
     }
 
-    // Crear el token con el nombre y alcances apropiados
-    $token = $request->user()->createToken($tokenName, $tokenScopes)->plainTextToken;
-    
-    //return redirect()->intended(RouteServiceProvider::HOME)->with('token', $token);
-    return redirect()->route('profile.edit')->with('token', $token);
-    }
-    
 
     /**
      * Destroy an authenticated session.

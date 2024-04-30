@@ -43,6 +43,7 @@ class ImageController extends Controller
 
 
 
+
     public function bulkStore(BuilkStoreImageRequest $request)
     {
         try {

@@ -23,7 +23,7 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
 
-        $customerId = $this->route('customer') ? $this->route('customer')->id : null;
+        //$customerId = $this->route('customer') ? $this->route('customer')->id : null;
 
         $method = $this->method();
         if ($method == 'PUT') {
