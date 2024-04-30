@@ -23,7 +23,7 @@ class BuilkStoreImageRequest extends FormRequest
     {
         return [
             '*.product_id' => ['required'],
-            '*.url_image' => ['required', 'string'],
+            '*.url_image' => ['required'],
             '*.active' => ['required', 'boolean'],
         ];
     }
