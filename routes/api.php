@@ -32,11 +32,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers'], function () {
     Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
-    Route::apiResource('categories', CategoryController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('images', ImageController::class);
-    Route::apiResource('orders', OrderController::class);
-    Route::post('images/bulk', [ImageController::class, 'bulkStore']);
+    Route::apiResource('categories', CategoryController::class)->middleware('auth:sanctum');
+    Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
+    Route::apiResource('images', ImageController::class)->middleware('auth:sanctum');
+    Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
+    Route::post('images/bulk', [ImageController::class, 'bulkStore'])->middleware('auth:sanctum');
     Route::post('get_token', function (Request $request) {
         
         // Si el usuario no está autenticado, intentar autenticarlo
