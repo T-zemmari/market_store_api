@@ -48,8 +48,8 @@ class CustomerController extends Controller
                 // Obténemos la cantidad total de clientes que coinciden con los filtros
                 $totalCustomers = $customersQuery->count();
 
-                // Si hay más de 15 clientes, paginamos; de lo contrario, obtenenemos todos los clientes
-                $customers = $totalCustomers > 15 ? $customersQuery->paginate() : $customersQuery->get();
+                // Si hay más de 10 clientes, paginamos; de lo contrario, obtenenemos todos los clientes
+                $customers = $totalCustomers > 50 ? $customersQuery->paginate(50) : $customersQuery->get();
 
                 // Devuelvemos la colección de clientes
                 return new CustomerCollection($customers);
