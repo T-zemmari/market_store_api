@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -38,6 +39,8 @@ class AuthenticatedSessionController extends Controller
             'orders' => $user->user_type === 'admin' ? ['read', 'create', 'update', 'delete'] : ['read', 'create'],
         ];
         $token = $request->user()->createToken($request->user()->user_type === 'admin' ? 'admin_token' : 'user_token', $tokens)->plainTextToken;
+        Session::put('mis_tokens', $token);
+         
         return redirect()->route('profile.edit')->with(['token' => $token]);
     }
 
