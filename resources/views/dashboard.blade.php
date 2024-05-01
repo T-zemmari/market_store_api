@@ -22,7 +22,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="{{ route('dashboard') }}"
-                        class="flex items-center p-2 text-white  rounded-sm  hover:bg-black">
+                        class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 21">
@@ -31,32 +31,113 @@
                             <path
                                 d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                         </svg>
-                        <span class="ms-3">Inicio</span>
+                        <span class="ms-3 text-[14px] mt-1 uppercase">Inicio</span>
                     </a>
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
-                        aria-controls="dropdown-intro" data-collapse-toggle="dropdown-intro">
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gestionar clientes</span>
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-clientes" data-collapse-toggle="dropdown-clientes">
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-[14px] uppercase">Gestionar clientes</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-intro" class="py-2 space-y-2">
+                    <ul id="dropdown-clientes" class="py-2 space-y-2">
                         <li>
                             <span
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black cursor-pointer"
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
                                 onclick="fn_obtener_customers()">
                                 Clientes
                             </span>
                         </li>
                         <li>
                             <span
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black cursor-pointer ">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
                                 Nuevo cliente
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-categorias" data-collapse-toggle="dropdown-categorias">
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-[14px] uppercase">Gestionar categorias</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul id="dropdown-categorias" class="py-2 space-y-2">
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
+                                onclick="fn_obtener_categorias()">
+                                Categorias
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                Nueva categoria
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-productos" data-collapse-toggle="dropdown-productos">
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-[14px] uppercase">Gestionar productos</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul id="dropdown-productos" class="py-2 space-y-2">
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]cursor-pointer"
+                                onclick="fn_obtener_productos()">
+                                Productos
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                Nuevo producto
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-pedidos" data-collapse-toggle="dropdown-pedidos">
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-[14px] uppercase">Gestionar pedidos</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul id="dropdown-pedidos" class="py-2 space-y-2">
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
+                                onclick="fn_obtener_pedidos()">
+                                Pedidos
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                Crear un pedido
                             </span>
                         </li>
                     </ul>
@@ -84,60 +165,7 @@
         <div class="p-4 min-h-[89vh] flex flex-col justify-start items-start"
             id="contenedor_dashboards_principal">
 
-            <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-                <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
-                    CLIENTES
-                </span>
-            </h4>
-
-            <div class="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Cliente
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Email
-                                    <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                        </svg></a>
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Teléfono
-                                    <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                        </svg></a>
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Dirección
-                                    <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                        </svg></a>
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <span class="sr-only">Acciones</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody_clientes">
-
-                    </tbody>
-                </table>
-                <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container"></div>
-            </div>
+          
 
         </div>
     </div>

@@ -20,7 +20,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="{{ route('documentacion') }}"
-                        class="flex items-center p-2 text-white  rounded-sm  hover:bg-black">
+                        class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 21">
@@ -34,7 +34,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-intro" data-collapse-toggle="dropdown-intro">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Introducción</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -46,33 +46,33 @@
                     <ul id="dropdown-intro" class="py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">Requisitos</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Requisitos</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black ">Request/Response</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Request/Response</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">Errores</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Errores</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">Parametros</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Parametros</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">Paginación</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">Más</a>
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Más</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Authenticación</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -84,13 +84,13 @@
                     <ul id="dropdown-auth" class="py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener token
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Autenticación (HTTPS)
                             </a>
                         </li>
@@ -98,7 +98,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-costumers" data-collapse-toggle="dropdown-costumers">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Clientes</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -110,37 +110,37 @@
                     <ul id="dropdown-costumers" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear cliente
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener cliente
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista clientes
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar cliente
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar cliente
                             </a>
                         </li>
@@ -148,7 +148,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-categories" data-collapse-toggle="dropdown-categories">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Categorias</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -160,37 +160,37 @@
                     <ul id="dropdown-categories" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear categoria
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener categoria
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista categorias
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar categoria
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar categoria
                             </a>
                         </li>
@@ -198,7 +198,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-productos" data-collapse-toggle="dropdown-productos">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Productos</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -210,37 +210,37 @@
                     <ul id="dropdown-productos" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear producto
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener producto
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista productos
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar producto
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar producto
                             </a>
                         </li>
@@ -248,7 +248,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-imagenes" data-collapse-toggle="dropdown-imagenes">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Imagenes</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -260,37 +260,37 @@
                     <ul id="dropdown-imagenes" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear imagen
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener imagen
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista imagenes
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar imagen
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar imagen
                             </a>
                         </li>
@@ -298,7 +298,7 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-black"
+                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-pedidos" data-collapse-toggle="dropdown-pedidos">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Pedidos</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -310,37 +310,37 @@
                     <ul id="dropdown-pedidos" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear pedido
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener pedido
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista pedidos
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar estado pedido
                             </a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-black">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar pedido
                             </a>
                         </li>

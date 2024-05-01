@@ -1,19 +1,19 @@
 $(document).ready(function () {
-    console.log("CLIENTES");
-    fn_obtener_clientes();
+    console.log("CATEGORIAS");
+    fn_obtener_categorias();
 });
 
-function fn_obtener_clientes(page=null) {
+function fn_obtener_categorias(page=null) {
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
     $(`#contenedor_dashboards_principal`).html(``);
     $(`#contenedor_dashboards_principal`).hide();
-    $(`#tbody_clientes`).html(``);
+    $(`#tbody_categorias`).html(``);
     // Realizar la solicitud AJAX
-    let url="http://localhost:8000/api/v1/customers";
+    let url="http://localhost:8000/api/v1/categories";
     if(page!=null){
-        url="http://localhost:8000/api/v1/customers?page="+page;
+        url="http://localhost:8000/api/v1/categories?page="+page;
     }
     console.log('url',url);
     $.ajax({
@@ -26,13 +26,13 @@ function fn_obtener_clientes(page=null) {
             Accept: "application/json",
         },
         success: function (response) {
-            console.log("Clientes obtenidos con éxito:", response);
+            console.log("Categorias obtenidos con éxito:", response);
 
             let customers = response.data;
             let HTML_TABLE=`
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
             <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
-                CLIENTES
+                CATEGORIAS
             </span>
         </h4>
 
@@ -41,7 +41,7 @@ function fn_obtener_clientes(page=null) {
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Cliente
+                            Categoria
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
@@ -78,7 +78,7 @@ function fn_obtener_clientes(page=null) {
                         </th>
                     </tr>
                 </thead>
-                <tbody id="tbody_clientes">
+                <tbody id="tbody_categorias">
 
                 </tbody>
             </table>
@@ -111,7 +111,7 @@ function fn_obtener_clientes(page=null) {
                             </td>
                             
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente('${JSON.stringify(
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
                                     item
                                 )}')">Editar</button>
                             </td>
@@ -140,7 +140,7 @@ function fn_obtener_clientes(page=null) {
                 </tr>`;
             }
 
-            $(`#tbody_clientes`).html(CLIENTES_HTML);
+            $(`#tbody_categorias`).html(CLIENTES_HTML);
             $(`#contenedor_spinner`).hide();
             $(`#contenedor_dashboards_principal`).show();
         },
@@ -152,26 +152,9 @@ function fn_obtener_clientes(page=null) {
     });
 }
 
-function fn_mostrar_form_editar_cliente(data) {
+function fn_mostrar_form_editar_categoria(data) {
     let item = JSON.parse(data);
     console.log(item);
-
-    // Crear el HTML del formulario de edición
-    // let formHTML = `
-    //     <div class="w-full h-[500px] border-2 rounded-lg">
-    //         <!-- Aquí va tu formulario de edición -->
-    //         <p>ID: ${item.id}</p>
-    //         <p>Nombre: ${item.first_name} ${item.last_name}</p>
-    //         <p>Email: ${item.email}</p>
-    //         <!-- Agrega más campos según sea necesario -->
-    //     </div>
-    // `;
-
-    // // Insertar el formulario en el elemento correspondiente
-    // $(`#td_colspan_form_edit_client_${item.id}`).html(formHTML);
-
-    // // Mostrar u ocultar el formulario según su estado actual
-    // $(`#td_colspan_form_edit_client_${item.id}`).toggle();
 }
 
 function create_pagination_links(links) {
@@ -184,7 +167,7 @@ function create_pagination_links(links) {
     if (links.prev) {
         paginationHTML += `
         <li>
-            <button onclick="fn_obtener_clientes('${get_page_number(links.prev)}')" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button onclick="fn_obtener_categorias('${get_page_number(links.prev)}')" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="sr-only">Previous</span>
                 <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
@@ -199,7 +182,7 @@ function create_pagination_links(links) {
         if (link.url) {
             paginationHTML += `
             <li>
-                <button onclick="fn_obtener_clientes('${get_page_number(link.url)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${link.label}</button>
+                <button onclick="fn_obtener_categorias('${get_page_number(link.url)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${link.label}</button>
             </li>
             `;
         } else {
@@ -215,7 +198,7 @@ function create_pagination_links(links) {
     if (links.next) {
         paginationHTML += `
         <li>
-            <button onclick="fn_obtener_clientes('${get_page_number(links.next)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button onclick="fn_obtener_categorias('${get_page_number(links.next)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="sr-only">Next</span>
                 <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
