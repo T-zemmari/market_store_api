@@ -14,9 +14,9 @@
     </button>
 
     <aside id="sidebar-multi-level-sidebar"
-        class="mt-[64px] fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        class="mt-[64px] fixed top-0 left-0 z-40 w-64 h-[100%] transition-transform -translate-x-full sm:translate-x-0 md:h-[90vh]"
         aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-[#3d3d3d]">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-[#1f2937] rounded-lg ml-2 mt-2">
             <input type="hidden" id="tkn"
                 value="{{ session()->has('mis_tokens') ? session('mis_tokens') : '' }}">
             <ul class="space-y-2 font-medium">
@@ -65,10 +65,10 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 sm:mt-[64px]">
+    <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0">
         <div class="hidden w-full h-[89vh] flex justify-center items-center" id="contenedor_spinner">
             <div role="status"
-                class="p-4 border-2 border-gray-200 border-dashed rounded-lg flex justify-center items-center">
+                class="p-4 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -81,11 +81,11 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="p-4 border-2 min-h-[89vh] border-gray-200 border-dashed rounded-lg flex flex-col justify-start items-start"
+        <div class="p-4 min-h-[89vh] flex flex-col justify-start items-start"
             id="contenedor_dashboards_principal">
 
-            <h4 class="w-full text-4xl font-bold flex justify-center items-center mt-4 mb-4">
-                <span class="w-[450px] p-4 bg-[#4ee5bb8c] flex justify-center items-center rounded-lg text-white">
+            <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
+                <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
                     CLIENTES
                 </span>
             </h4>

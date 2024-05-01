@@ -14,9 +14,9 @@
     </button>
 
     <aside id="sidebar-multi-level-sidebar"
-        class="mt-[64px] fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        class="mt-[82px] ml-2 h-[88vh] fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-[#3d3d3d]">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-[#1f2937] rounded-lg ">
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="{{ route('documentacion') }}"
