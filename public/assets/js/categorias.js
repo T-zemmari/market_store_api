@@ -1,6 +1,5 @@
 $(document).ready(function () {
     console.log("CATEGORIAS");
-    fn_obtener_categorias();
 });
 
 function fn_obtener_categorias(page=null) {
@@ -26,9 +25,9 @@ function fn_obtener_categorias(page=null) {
             Accept: "application/json",
         },
         success: function (response) {
-            console.log("Categorias obtenidos con éxito:", response);
+            console.log("Categorias obtenidas con éxito:", response);
 
-            let customers = response.data;
+            let categorias = response.data;
             let HTML_TABLE=`
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
             <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
@@ -45,7 +44,7 @@ function fn_obtener_categorias(page=null) {
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Email
+                                Descripción corta
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -55,7 +54,7 @@ function fn_obtener_categorias(page=null) {
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Teléfono
+                            Descripción larga
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -65,7 +64,17 @@ function fn_obtener_categorias(page=null) {
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Dirección
+                                Nivel (Parent)
+                                <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                            Productos asociados
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -87,29 +96,28 @@ function fn_obtener_categorias(page=null) {
             
             `;
             $(`#contenedor_dashboards_principal`).html(HTML_TABLE);
-            let CLIENTES_HTML = ``;
-            if (customers.length > 0) {
-                customers.forEach((item) => {
-                    CLIENTES_HTML += `
-                    <tr class="bg-white dark:bg-gray-800" id="tr_cliente_${
+            let CATEGORIAS_HTML = ``;
+            if (categorias.length > 0) {
+                categorias.forEach((item) => {
+                    CATEGORIAS_HTML += `
+                    <tr class="bg-white dark:bg-gray-800" id="tr_categoria_${
                         item.id
                     }">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            ${item.first_name ?? ""} ${item.last_name ?? ""}
+                            ${item.name ?? ""}
                             </th>
                             <td class="px-6 py-4">
-                            ${item.email ?? ""}
+                            ${item.shortDescription ?? ""}
                             </td>
                             <td class="px-6 py-4">
-                            ${item.phone ?? ""}
+                            ${item.description ?? ""}
                             </td>
                             <td class="px-6 py-4">
-                            ${item.adress ?? ""} 
-                            ${item.postal_code ?? ""} 
-                            ${item.state ?? ""}
-                            ${item.country ?? ""}
+                            ${item.parent ?? ""} 
                             </td>
-                            
+                            <td class="px-6 py-4">
+                            ${item.products?.length ?? 0} 
+                            </td>           
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
                                     item
@@ -117,10 +125,9 @@ function fn_obtener_categorias(page=null) {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${
                                 item.id
-                            }">
-                                
+                            }">                           
                             </td>
                         </tr>
                     `;
@@ -130,7 +137,7 @@ function fn_obtener_categorias(page=null) {
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
-                CLIENTES_HTML = `
+                CATEGORIAS_HTML = `
                 <tr>
                     <td>
                         <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -140,12 +147,12 @@ function fn_obtener_categorias(page=null) {
                 </tr>`;
             }
 
-            $(`#tbody_categorias`).html(CLIENTES_HTML);
+            $(`#tbody_categorias`).html(CATEGORIAS_HTML);
             $(`#contenedor_spinner`).hide();
             $(`#contenedor_dashboards_principal`).show();
         },
         error: function (xhr, status, error) {
-            console.error("Error al obtener clientes:", error);
+            console.error("Error al obtener categorias:", error);
             $(`#contenedor_spinner`).hide();
             $(`#contenedor_dashboards_principal`).show();
         },
