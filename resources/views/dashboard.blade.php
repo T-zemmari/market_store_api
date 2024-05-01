@@ -20,7 +20,7 @@
             <input type="hidden" id="tkn"
                 value="{{ session()->has('mis_tokens') ? session('mis_tokens') : '' }}">
             <ul class="space-y-2 font-medium">
-                <li>
+                <li class="cursor-pointer">
                     <a href="{{ route('dashboard') }}"
                         class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900"
@@ -34,7 +34,7 @@
                         <span class="ms-3 text-[14px] mt-1 uppercase">Inicio</span>
                     </a>
                 </li>
-                <li>
+                <li class="cursor-pointer">
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-clientes" data-collapse-toggle="dropdown-clientes">
@@ -46,22 +46,22 @@
                         </svg>
                     </button>
                     <ul id="dropdown-clientes" class="py-2 space-y-2">
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_customers()">
                                 Clientes
                             </span>
                         </li>
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo cliente
                             </span>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="cursor-pointer">
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-categorias" data-collapse-toggle="dropdown-categorias">
@@ -73,22 +73,22 @@
                         </svg>
                     </button>
                     <ul id="dropdown-categorias" class="py-2 space-y-2">
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_categorias()">
                                 Categorias
                             </span>
                         </li>
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nueva categoria
                             </span>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="cursor-pointer">
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-productos" data-collapse-toggle="dropdown-productos">
@@ -100,22 +100,22 @@
                         </svg>
                     </button>
                     <ul id="dropdown-productos" class="py-2 space-y-2">
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]cursor-pointer"
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
                                 onclick="fn_obtener_productos()">
                                 Productos
                             </span>
                         </li>
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo producto
                             </span>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="cursor-pointer">
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         aria-controls="dropdown-pedidos" data-collapse-toggle="dropdown-pedidos">
@@ -127,16 +127,16 @@
                         </svg>
                     </button>
                     <ul id="dropdown-pedidos" class="py-2 space-y-2">
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer"
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_pedidos()">
                                 Pedidos
                             </span>
                         </li>
-                        <li>
+                        <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] cursor-pointer ">
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Crear un pedido
                             </span>
                         </li>

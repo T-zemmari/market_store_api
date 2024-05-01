@@ -27,6 +27,7 @@
     <script src="{{ asset('/assets/js/doc_scripts.js') }}"></script>
     <script src="{{ asset('/assets/js/clientes.js') }}"></script>
     <script src="{{ asset('/assets/js/categorias.js') }}"></script>
+    <script src="{{ asset('/assets/js/productos.js') }}"></script>
 </body>
 
 </html>
