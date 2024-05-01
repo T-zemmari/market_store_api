@@ -28,6 +28,7 @@
     <script src="{{ asset('/assets/js/clientes.js') }}"></script>
     <script src="{{ asset('/assets/js/categorias.js') }}"></script>
     <script src="{{ asset('/assets/js/productos.js') }}"></script>
+    <script src="{{ asset('/assets/js/pedidos.js') }}"></script>
 </body>
 
 </html>

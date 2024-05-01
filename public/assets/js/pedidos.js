@@ -1,18 +1,18 @@
 $(document).ready(function () {
-    console.log("CATEGORIAS");
+    console.log("PEDIDOS");
 });
 
-function fn_obtener_categorias(page=null) {
+function fn_obtener_pedidos(page=null) {
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
     $(`#contenedor_dashboards_principal`).html(``);
     $(`#contenedor_dashboards_principal`).hide();
-    $(`#tbody_categorias`).html(``);
+    $(`#tbody_pedidos`).html(``);
     // Realizar la solicitud AJAX
-    let url="http://localhost:8000/api/v1/categories";
+    let url="http://localhost:8000/api/v1/orders";
     if(page!=null){
-        url="http://localhost:8000/api/v1/categories?page="+page;
+        url="http://localhost:8000/api/v1/orders?page="+page;
     }
     console.log('url',url);
     $.ajax({
@@ -25,13 +25,13 @@ function fn_obtener_categorias(page=null) {
             Accept: "application/json",
         },
         success: function (response) {
-            console.log("Categorias obtenidas con éxito:", response);
+            console.log("Pedidos obtenidos con éxito:", response);
 
-            let categorias = response.data;
+            let pedidos = response.data;
             let HTML_TABLE=`
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
             <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
-                CATEGORIAS
+                PEDIDOS
             </span>
         </h4>
 
@@ -41,27 +41,52 @@ function fn_obtener_categorias(page=null) {
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Categoria
+                                Pedido ID
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Descripción corta
+                                Cliente ID
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Descripción larga
+                                Estado
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Nivel (Parent)
+                                Fecha pedido
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Productos asociados
+                                Fecha pagado
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Descuento
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Subtotal
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Iva
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Total
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Metodo pago
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -69,7 +94,7 @@ function fn_obtener_categorias(page=null) {
                         </th>
                     </tr>
                 </thead>
-                <tbody id="tbody_categorias">
+                <tbody id="tbody_pedidos">
 
                 </tbody>
             </table>
@@ -78,48 +103,56 @@ function fn_obtener_categorias(page=null) {
             
             `;
             $(`#contenedor_dashboards_principal`).html(HTML_TABLE);
-            let CATEGORIAS_HTML = ``;
-            if (categorias.length > 0) {
-                categorias.forEach((item) => {
-                    CATEGORIAS_HTML += `
-                    <tr class="bg-white dark:bg-gray-800" id="tr_categoria_${
-                        item.id
-                    }">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            ${item.name ?? ""}
+            let PEDIDOS_HTML = ``;
+            if (pedidos.length > 0) {
+                pedidos.forEach((item) => {
+                    PEDIDOS_HTML += `
+                    <tr class="bg-white dark:bg-gray-800" id="tr_pedido_${item.id}">
+                            <th scope="row" class="px-6 py-4">
+                            ${item.id ?? ""}
                             </th>
                             <td class="px-6 py-4">
-                            ${item.shortDescription ?? ""}
+                            ${item.customer_id ?? ""}
                             </td>
                             <td class="px-6 py-4">
-                            ${item.description ?? ""}
+                            ${item.status ?? ""}
                             </td>
                             <td class="px-6 py-4">
-                            ${item.parent ?? ""} 
+                            ${item.created_at ?? ""}
                             </td>
                             <td class="px-6 py-4">
-                            ${item.products?.length ?? 0} 
-                            </td>           
+                            ${item.date_paid ?? ""} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.discount_total ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.shipping_total ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.total_tax ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.shipping_total_with_tax ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.payment_method ?? ''} 
+                            </td>            
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
-                                    item
-                                )}')">Editar</button>
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${JSON.stringify(item)}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${
-                                item.id
-                            }">                           
-                            </td>
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_pedido_${item.id}"></td>
                         </tr>
                     `;
                 });
 
-                let pagination_links = create_pagination_categorias_links(response.meta.links);
+                let pagination_links = crear_paginacion_pedidos_links(response.meta.links);
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
-                CATEGORIAS_HTML = `
+                PEDIDOS_HTML = `
                 <tr>
                     <td>
                         <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -129,24 +162,24 @@ function fn_obtener_categorias(page=null) {
                 </tr>`;
             }
 
-            $(`#tbody_categorias`).html(CATEGORIAS_HTML);
+            $(`#tbody_pedidos`).html(PEDIDOS_HTML);
             $(`#contenedor_spinner`).hide();
             $(`#contenedor_dashboards_principal`).show();
         },
         error: function (xhr, status, error) {
-            console.error("Error al obtener categorias:", error);
+            console.error("Error al obtener pedidos:", error);
             $(`#contenedor_spinner`).hide();
             $(`#contenedor_dashboards_principal`).show();
         },
     });
 }
 
-function fn_mostrar_form_editar_categoria(data) {
+function fn_mostrar_form_editar_pedido(data) {
     let item = JSON.parse(data);
     console.log(item);
 }
 
-function create_pagination_categorias_links(links) {
+function crear_paginacion_pedidos_links(links) {
     let paginationHTML = `
     <nav aria-label="Page navigation">
         <ul class="flex items-center -space-x-px h-8 text-sm">
@@ -156,7 +189,7 @@ function create_pagination_categorias_links(links) {
     if (links.prev) {
         paginationHTML += `
         <li>
-            <button onclick="fn_obtener_categorias('${get_page_number(links.prev)}')" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button onclick="fn_obtener_pedidos('${get_page_number(links.prev)}')" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="sr-only">Anterior</span>
                 <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
@@ -171,7 +204,7 @@ function create_pagination_categorias_links(links) {
         if (link.url) {
             paginationHTML += `
             <li>
-                <button onclick="fn_obtener_categorias('${get_page_number(link.url)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${link.label}</button>
+                <button onclick="fn_obtener_pedidos('${get_page_number(link.url)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${link.label}</button>
             </li>
             `;
         } else {
@@ -187,7 +220,7 @@ function create_pagination_categorias_links(links) {
     if (links.next) {
         paginationHTML += `
         <li>
-            <button onclick="fn_obtener_categorias('${get_page_number(links.next)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button onclick="fn_obtener_pedidos('${get_page_number(links.next)}')" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="sr-only">Siguiente</span>
                 <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
