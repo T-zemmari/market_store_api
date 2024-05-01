@@ -48,14 +48,14 @@
                     <ul id="dropdown-clientes" class="py-2 space-y-2">
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_customers()">
                                 Clientes
                             </span>
                         </li>
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo cliente
                             </span>
                         </li>
@@ -75,14 +75,14 @@
                     <ul id="dropdown-categorias" class="py-2 space-y-2">
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_categorias()">
                                 Categorias
                             </span>
                         </li>
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nueva categoria
                             </span>
                         </li>
@@ -102,14 +102,14 @@
                     <ul id="dropdown-productos" class="py-2 space-y-2">
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
                                 onclick="fn_obtener_productos()">
                                 Productos
                             </span>
                         </li>
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo producto
                             </span>
                         </li>
@@ -129,14 +129,14 @@
                     <ul id="dropdown-pedidos" class="py-2 space-y-2">
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
                                 onclick="fn_obtener_pedidos()">
                                 Pedidos
                             </span>
                         </li>
                         <li class="cursor-pointer">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Crear un pedido
                             </span>
                         </li>

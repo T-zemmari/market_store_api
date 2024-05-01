@@ -34,9 +34,18 @@
                     <a href="{{ route('documentacion') }}"
                         aria-current="{{ request()->route()->named('about') ? 'page' : '' }} "
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent {{ request()->route()->named('documentacion') ? 'md:text-white' : 'md:text-[#374151]' }} md:hover:text-white md:p-0">
-                        Api-doc
+                        Api
                     </a>
                 </li>
+                @if (Auth::check())
+                    <li>
+                        <a href="{{ route('dashboard') }}"
+                            aria-current="{{ request()->route()->named('dashboard') ? 'page' : '' }} "
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent {{ request()->route()->named('dashboard') ? 'md:text-white' : 'md:text-[#374151]' }} md:hover:text-white md:p-0">
+                            Demo
+                        </a>
+                    </li>
+                @endif
                 <li>
                     @if (!Auth::check())
                         <a href="{{ route('login') }}"
@@ -44,22 +53,23 @@
                             Entrar
                         </a>
                     @else
-                        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                        <div class="relative flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                             <button type="button"
                                 class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 sm:-mt-1"
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                 data-dropdown-placement="bottom">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="{{asset('/assets/imgs/admin_1.png')}}"
+                                <img class="w-8 h-8 rounded-full" src="{{ asset('/assets/imgs/admin_1.png') }}"
                                     alt="user photo">
                             </button>
                             <!-- Dropdown menu -->
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
-                                id="user-dropdown">
+                                id="user-dropdown"
+                                style="z-index: 100000000 !important"
+                                >
                                 <div class="px-4 py-3">
-                                    <span class="block text-sm text-gray-900">{{$user->name??''}}</span>
-                                    <span
-                                        class="block text-sm  text-gray-500 truncate">{{$user->email??''}}</span>
+                                    <span class="block text-sm text-gray-900">{{ Auth::user()->name ?? '' }}</span>
+                                    <span class="block text-sm  text-gray-500 truncate">{{ Auth::user()->email ?? '' }}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
                                     <li>
