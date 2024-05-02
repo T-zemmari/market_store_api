@@ -362,6 +362,9 @@
                     interacción con los recursos de manera uniforme y eficiente.
                 </p>
             </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
             <div id="contenedor_requisitos">
                 <h2 id="h2_requisitos" class="text-2xl font-semibold mt-8 mb-4">Requisitos</h2>
                 <p class="p-2" id="p_requisitos">
@@ -378,6 +381,8 @@
                 </ul>
                 </p>
             </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_token">
                 <h2 id="h2_obtener_token" class="text-2xl font-semibold mt-8 mb-4">Obtener Token de Acceso</h2>
@@ -455,7 +460,7 @@
                 </p>
             </div>
 
-
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_cliente_propiedades">
                 <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del Cliente</h2>
@@ -650,11 +655,10 @@
                             </tbody>
                         </table>
                     </div>
-
-
-
                 </div>
             </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_cliente">
                 <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear Cliente</h2>
@@ -720,11 +724,12 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id=" contenedor_editar_cliente">
                 <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Actualizar datos de un cliente
                 </h2>
-                <p class="p-2" id="p_editar_cliente">
+                <p class="p-2" id="p_editar_cliente_put">
                     Modifica los datos de un cliente enviando una solicitud HTTP PUT al endpoint correspondiente con los
                     datos actualizados del cliente.</br>
                     Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
@@ -782,7 +787,7 @@
                         </pre>
                     </div>
 
-                    <p class="p-2" id="p_editar_cliente">
+                    <p class="p-2" id="p_editar_cliente_patch">
                         Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
                     </p>
                     <div
@@ -815,6 +820,8 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
             <div id="contenedor_obtener_cliente">
                 <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de un cliente</h2>
                 <p class="p-2" id="p_obtener_cliente">
@@ -834,6 +841,8 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
             <div id="contenedor_listado_clientes">
                 <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Listado de Clientes</h2>
                 <p class="p-2" id="p_listado_clientes">
@@ -850,6 +859,8 @@
                     </div>
                 </div>
             </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_cliente">
                 <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar Cliente</h2>
@@ -869,11 +880,14 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id="contenedor_cliente_propiedades">
-                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades de la categoria</h2>
-                <p class="p-2" id="p_cliente_propiedades">
-                    Aquí encontrarás información sobre las propiedades de una categoria, como su nombre...etc.
+
+            <div id="contenedor_categoria_propiedades">
+                <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades de la categoria
+                </h2>
+                <p class="p-2" id="p_categoria_propiedades">
+                    Información sobre las propiedades de la categoria, como su nombre...etc.
                 </p>
                 <div class="contenedor-tabla-category w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
@@ -1011,6 +1025,7 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_categoria">
                 <h2 id="h2_crear_categoria" class="text-2xl font-semibold mt-8 mb-4">Crear Categoria</h2>
@@ -1062,11 +1077,12 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id=" contenedor_editar_categoria">
-                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Editar una categoria
+                <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4">Editar una categoria
                 </h2>
-                <p class="p-2" id="p_editar_cliente">
+                <p class="p-2" id="p_editar_categoria_put">
                     Modifica los datos de una categoria enviando una solicitud HTTP PUT al endpoint </br>
                     Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
                 </p>
@@ -1113,7 +1129,7 @@
                         </pre>
                     </div>
 
-                    <p class="p-2" id="p_editar_cliente">
+                    <p class="p-2" id="p_editar_categoria_patch">
                         Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
                     </p>
                     <div
@@ -1146,10 +1162,12 @@
                 </div>
             </div>
 
-            <div id="contenedor_obtener_cliente">
-                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de una categoria
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_obtener_categoria">
+                <h2 id="h2_obtener_categoria" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de una categoria
                 </h2>
-                <p class="p-2" id="p_obtener_cliente">
+                <p class="p-2" id="p_obtener_categoria">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
                     <b>ID</b> de la categoria.
                 </p>
@@ -1165,9 +1183,14 @@
                 </div>
             </div>
 
-            <div id="contenedor_listado_clientes">
-                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Obtener todas las categorias</h2>
-                <p class="p-2" id="p_listado_clientes">
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+
+            <div id="contenedor_listado_categorias">
+                <h2 id="h2_listado_categorias" class="text-2xl font-semibold mt-8 mb-4">
+                    Obtener todas las categorias
+                </h2>
+                <p class="p-2" id="p_listado_categorias">
                     Accede a una lista de todas las categorias almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -1182,9 +1205,11 @@
                 </div>
             </div>
 
-            <div id="contenedor_eliminar_cliente">
-                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar categoria</h2>
-                <p class="p-2" id="p_eliminar_cliente">
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_eliminar_categoria">
+                <h2 id="h2_eliminar_categoria" class="text-2xl font-semibold mt-8 mb-4">Eliminar categoria</h2>
+                <p class="p-2" id="p_eliminar_categoria">
                     Elimina una categoria existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     de la categoria a eliminar.
@@ -1200,7 +1225,561 @@
                 </div>
             </div>
 
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
+            <div id="contenedor_productos_propiedades">
+                <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del producto
+                </h2>
+                <p class="p-2" id="p_producto_propiedades">
+                    Información sobre las propiedades del producto, como su nombre...etc.
+                </p>
+
+                <div class="contenedor-tabla-producto w-full m-6 mx-auto flex justify-center items-center">
+                    <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption
+                                class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                Propiedades del Producto
+                                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    Tipos de datos y otros detalles.
+                                </p>
+                            </caption>
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Propiedad
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tipo de Dato
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        name
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        category_id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        sku
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable | unique
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        ean
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        ean13
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        type
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('simple')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        status
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('publish')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        featured
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(false)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        catalog_visibility
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('visible')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        description
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        short_description
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        price
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        regular_price
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        sale_price
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        on_sale
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(true)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        stock_quantity
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer | default(0)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        stock_status
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('instock')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        weight
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        dimensions
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        image
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        meta_data
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        variation
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(false)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        discontinued
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default(false)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        valid
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(true)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        created_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        updated_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_crear_producto">
+                <h2 id="h2_crear_producto" class="text-2xl font-semibold mt-8 mb-4">Nuevo producto</h2>
+                <p class="p-2" id="p_crear_producto">
+                    Para crear un nuevo producto en la base de datos debes enviar una solicitud HTTP POST al endpoint
+                    correspondiente con los datos del producto.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            POST</div>
+                        <code class="text-sm">/api/v1/prooducts</code>
+                    </div>
+                    <div
+                        class="w-full h-[580px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                POST
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('new_product_body')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                            <span class="text-yellow-400">{</span>
+                            <span class="ml-4"><span class="text-green-400">"category_id"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"name"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"sku"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"ean"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"ean13"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"type"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"status"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"catalog_visibility"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"description"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"short_description"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"regular_price"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"sale_price"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"price"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"on_sale"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"valid"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"stock_quantity"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"stock_status"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"weight"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"dimensions"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"variation"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"featured"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"discontinued"</span> : ""</span>
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="new_product_body">
+                                {
+                                    "category_id": 3,
+                                    "name": "nihihhl",
+                                    "sku": "9473111",
+                                    "ean": null,
+                                    "ean13": null,
+                                    "type": "simple",
+                                    "status": "publish", 
+                                    "catalog_visibility": "visible",
+                                    "description": "Soluta facere nihil eni.",
+                                    "short_description": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
+                                    "regular_price": "217.12",
+                                    "sale_price": "373.40",
+                                    "price": "373.40",
+                                    "on_sale": false,
+                                    "valid": "1",
+                                    "stock_quantity": 77,
+                                    "stock_status": "outofstock",
+                                    "weight": "7kg",
+                                    "dimensions": "92x90x16cm",
+                                    "variation": 0,
+                                    "featured": false,
+                                    "discontinued":false
+                                }
+                            </code>
+                        </div>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id=" contenedor_editar_producto">
+                <h2 id="h2_editar_producto" class="text-2xl font-semibold mt-8 mb-4">
+                    Editar un producto
+                </h2>
+                <p class="p-2" id="p_editar_producto_put">
+                    Modifica los datos del producto enviando una solicitud HTTP PUT al endpoint correspondiente
+                    Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
+                </p>
+
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            PUT</div>
+                        <code class="text-sm">/api/v1/products/{id}</code>
+                    </div>
+                    <div
+                        class="w-full h-[580px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                PUT
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('edit_product_body_put')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                            <span class="text-yellow-400">{</span>
+                                <span class="ml-4"><span class="text-green-400">"category_id"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"name"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"sku"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"ean"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"ean13"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"type"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"status"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"catalog_visibility"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"description"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"short_description"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"regular_price"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"sale_price"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"price"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"on_sale"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"valid"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"stock_quantity"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"stock_status"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"weight"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"dimensions"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"variation"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"featured"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"discontinued"</span> : ""</span>
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="edit_product_body_put">
+                                {
+                                    "category_id": 3,
+                                    "name": "nihihhl",
+                                    "sku": "9473111",
+                                    "ean": null,
+                                    "ean13": null,
+                                    "type": "simple",
+                                    "status": "publish", 
+                                    "catalog_visibility": "visible",
+                                    "description": "Soluta facere nihil eni.",
+                                    "short_description": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
+                                    "regular_price": "217.12",
+                                    "sale_price": "373.40",
+                                    "price": "373.40",
+                                    "on_sale": false,
+                                    "valid": "1",
+                                    "stock_quantity": 77,
+                                    "stock_status": "outofstock",
+                                    "weight": "7kg",
+                                    "dimensions": "92x90x16cm",
+                                    "variation": 0,
+                                    "featured": false,
+                                    "discontinued":false
+                                }
+                            </code>
+                        </div>
+                        </pre>
+                    </div>
+
+                    <p class="p-2" id="p_editar_producto_patch">
+                        Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
+                    </p>
+                    <div
+                        class="w-full h-[150px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                PATCH
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('edit_product_body_patch')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                            <span class="text-yellow-400">{</span>
+                            <span class="ml-4"><span class="text-green-400">"name"</span> : ""</span>
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="edit_product_body_patch">
+                                {
+                                    "name": "",
+                                }
+                            </code>
+                        </div>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_obtener_producto">
+                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de un producto
+                </h2>
+                <p class="p-2" id="p_obtener_producto">
+                    Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
+                    <b>ID</b> del producto.
+                </p>
+
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/products/{id}</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+
+            <div id="contenedor_listado_productos">
+                <h2 id="h2_listado_productos" class="text-2xl font-semibold mt-8 mb-4">
+                    Obtener todos los productos
+                </h2>
+                <p class="p-2" id="p_listado_productos">
+                    Accede a una lista de todos los productos almacenados en la base de datos.</br>
+                    Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/products</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_eliminar_producto">
+                <h2 id="h2_eliminar_producto" class="text-2xl font-semibold mt-8 mb-4">Eliminar producto</h2>
+                <p class="p-2" id="p_eliminar_producto">
+                    Elimina un producto existente de la base de datos.<br>
+                    Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
+                    del producto a eliminar.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            DELETE</div>
+                        <code class="text-sm">/api/v1/products/{id}</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
         </div>
     </div>
