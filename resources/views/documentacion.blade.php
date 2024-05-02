@@ -390,7 +390,7 @@
                     Para acceder a los recursos protegidos por la API, necesitas autenticarte y obtener un token de
                     acceso.
                     Sigue los siguientes pasos para obtener un token:
-                </br></br>
+                    </br></br>
                 <ol class="list-decimal pl-8">
                     <li>
                         Envía una solicitud HTTP POST al endpoint
@@ -662,10 +662,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_cliente">
-                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear nuevo cliente</h2>
+                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear un Nuevo Cliente</h2>
                 <p class="p-2" id="p_crear_cliente">
-                    Para eso debes enviar una solicitud
-                    HTTP POST al endpoint correspondiente con los datos del cliente.
+                    Para ello, debe enviar una solicitud HTTP POST al endpoint correspondiente junto con los datos del
+                    cliente.
                 </p>
                 <div class="w-full">
                     <div
@@ -728,12 +728,14 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id=" contenedor_editar_cliente">
-                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Actualizar datos de un cliente
+                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">
+                    Actualizar Datos de un Cliente
                 </h2>
                 <p class="p-2" id="p_editar_cliente_put">
-                    Modifica los datos de un cliente enviando una solicitud HTTP PUT al endpoint correspondiente con los
-                    datos actualizados del cliente.</br>
-                    Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
+                    Para modificar los datos de un cliente, debe enviar una solicitud HTTP <b>PUT</b> al endpoint
+                    correspondiente con los datos actualizados del cliente, incluyendo el ID del cliente.</br>
+                    Utilice el método <b>PUT</b>.</br>
+                    <small style="color: red">DEBE PROPORCIONAR TODOS LOS CAMPOS REQUERIDOS.</small>
                 </p>
 
                 <div class="w-full">
