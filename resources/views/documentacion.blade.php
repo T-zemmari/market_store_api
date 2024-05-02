@@ -14,7 +14,7 @@
     </button>
 
     <aside id="sidebar-multi-level-sidebar"
-        class="mt-[82px] ml-2 h-[88vh] fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        class="mt-[82px] ml-2 h-[90vh] fixed top-0 left-0 z-40 w-64  transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#1f2937] rounded-lg ">
             <ul class="space-y-2 font-medium">
@@ -350,9 +350,36 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 sm:mt-[64px]">
-        <div class="p-4 border-2 min-h-[89vh] border-gray-200 border-dashed rounded-lg ">
+    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10">
+        <div class="p-4 w-[60%] min-h-[89vh]" id="documentacion_contenido_principal">
+            <div class="w-full" id="contenedor_introduccion">
+                <h2 id="h2_introduccion" class="text-2xl font-semibold mt-8 mb-4">Introducción</h2>
+                <p class="p-2" id="p_introduccion">
+                    Bienvenido a la documentación de la API de nuestro sistema de comercio electrónico.
+                    <br>Esta API está diseñada para proporcionar acceso a recursos relacionados con la gestión de
+                    clientes, categorías, productos, imágenes y pedidos. </br>
+                    Utiliza el esquema <b>RESTful</b> para facilitar la
+                    interacción con los recursos de manera uniforme y eficiente.
+                </p>
+            </div>
+            <div id="contenedor_requisitos">
+                <h2 id="h2_requisitos" class="text-2xl font-semibold mt-8 mb-4">Requisitos</h2>
+                <p class="p-2" id="p_requisitos">
+                    Para utilizar nuestra API, asegúrate de cumplir con los siguientes requisitos:
+                <ul class="list-disc pl-8">
+                    <li>Conocimientos básicos sobre el protocolo HTTP/HTTPS y el formato JSON.</li>
+                    <li>Una cuenta de usuario para autenticarte y obtener un token de acceso.</li>
+                    <li>Capacidad para manejar los métodos HTTP estándar (GET, POST, PUT, DELETE) para interactuar con
+                        los recursos.
+                    </li>
+                    <li>Posibilidad de manejar los códigos de estado HTTP para interpretar las respuestas de la API
+                        correctamente.
+                    </li>
+                </ul>
+                </p>
+            </div>
 
+            <!-- Resto del contenido de la documentación -->
         </div>
     </div>
 
