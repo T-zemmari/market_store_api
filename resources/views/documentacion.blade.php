@@ -88,12 +88,6 @@
                                 Obtener token
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
-                                Autenticación (HTTPS)
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li>
@@ -264,28 +258,10 @@
                                 Propiedades
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_imagen')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
-                                Crear imagen
-                            </a>
-                        </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_imagen')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
-                                Obtener imagen
-                            </a>
-                        </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_imagenes')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista imagenes
-                            </a>
-                        </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_imagen')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
-                                Editar imagen
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_imagen')">
@@ -887,7 +863,8 @@
 
 
             <div id="contenedor_categoria_propiedades">
-                <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades de la categoria
+                <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                    Propiedades de la categoria
                 </h2>
                 <p class="p-2" id="p_categoria_propiedades">
                     Información sobre las propiedades de la categoria, como su nombre...etc.
@@ -2275,6 +2252,139 @@
             </div>
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_imagen_propiedades">
+                <h2 id="h2_imagen_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                    Propiedades de una imagen
+                </h2>
+                <p class="p-2" id="p_imagen_propiedades">
+                    Información sobre las propiedades de una imagen, como su url...etc.
+                </p>
+
+                <div class="contenedor-tabla-image w-full m-6 mx-auto flex justify-center items-center">
+                    <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption
+                                class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                Propiedades
+                                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    Tipos de datos y otros detalles.
+                                </p>
+                            </caption>
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Propiedad
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tipo de Dato
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        product_id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        url_image
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        active
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        created_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        updated_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_listado_imagenes">
+                <h2 id="h2_listado_imagenes" class="text-2xl font-semibold mt-8 mb-4">
+                    Obtener todas las imagenes
+                </h2>
+                <p class="p-2" id="p_listado_categorias">
+                    Accede a una lista de todas las imagenes almacenados en la base de datos.</br>
+                    Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/images</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_eliminar_imagen">
+                <h2 id="h2_eliminar_imagen" class="text-2xl font-semibold mt-8 mb-4">Eliminar imagen</h2>
+                <p class="p-2" id="p_eliminar_imagen">
+                    Elimina una imagen existente de la base de datos.<br>
+                    Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
+                    de la imagen a eliminar.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            DELETE</div>
+                        <code class="text-sm">/api/v1/images/{id}</code>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
