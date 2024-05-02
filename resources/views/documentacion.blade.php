@@ -379,7 +379,31 @@
                 </p>
             </div>
 
-            <!-- Resto del contenido de la documentación -->
+            <div id="contenedor_obtener_token">
+                <h2 id="h2_obtener_token" class="text-2xl font-semibold mt-8 mb-4">Obtener Token de Acceso</h2>
+                <p class="p-2" id="p_obtener_token">
+                    Para acceder a los recursos protegidos por la API, necesitas autenticarte y obtener un token de
+                    acceso.
+                    Sigue los siguientes pasos para obtener un token:
+                <ol class="list-decimal pl-8">
+                    <li>Envía una solicitud HTTP POST al endpoint <code>/api/v1/get_token</code>.</li>
+                    <div
+                        class="w-full h-[40px] m-6 mx-auto  bg-black text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-2 w-10 h-6 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/get_token</code>
+                    </div>
+                    <li>Incluye las credenciales de autenticación (correo electrónico y contraseña) en el cuerpo de la
+                        solicitud.</li>
+                    <li>Si las credenciales son válidas, recibirás una respuesta JSON que contiene un token de acceso.
+                    </li>
+                    <li>Utiliza este token en las solicitudes posteriores al API para autenticarte.</li>
+                </ol>
+                </p>
+            </div>
+
+
         </div>
     </div>
 
