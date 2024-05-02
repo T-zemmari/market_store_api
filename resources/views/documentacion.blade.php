@@ -358,6 +358,8 @@
                 </p>
             </div>
 
+
+
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_token">
@@ -434,6 +436,23 @@
                         de las solicitudes posteriores al API para autenticarte.
                     </li>
                 </ol>
+                </p>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_paginacion">
+                <h2 id="h2_paginacion" class="text-2xl font-semibold mt-8 mb-4">Paginación</h2>
+                <p class="p-2" id="p_paginacion">
+                    Para optimizar el rendimiento del servidor y mejorar la experiencia del usuario, nuestra API utiliza
+                    la paginación para limitar la cantidad de registros devueltos en cada solicitud. Asegúrate de
+                    cumplir con los siguientes requisitos para trabajar con nuestra API de manera efectiva:
+                </p>
+                <p class="p-2">
+                    Ten en cuenta que nuestra API implementa una paginación que limita el número máximo de registros
+                    devueltos por página a 10. Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
+                    las consultas. Si necesitas más registros, puedes ajustar la paginación utilizando los parámetros
+                    adecuados en tu solicitud.
                 </p>
             </div>
 
