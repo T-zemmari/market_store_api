@@ -386,7 +386,8 @@
                     acceso.
                     Sigue los siguientes pasos para obtener un token:
                 <ol class="list-decimal pl-8">
-                    <li>Envía una solicitud HTTP POST al endpoint
+                    <li>
+                        Envía una solicitud HTTP POST al endpoint
                         <code>/api/v1/get_token</code>.
                         <div
                             class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
@@ -459,46 +460,285 @@
             <div id="contenedor_cliente_propiedades">
                 <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del Cliente</h2>
                 <p class="p-2" id="p_cliente_propiedades">
-                    Aquí encontrarás información sobre las propiedades de un cliente, como su nombre, dirección, correo electrónico, etc.
+                    Aquí encontrarás información sobre las propiedades de un cliente, como su nombre, dirección, correo
+                    electrónico, etc.
                 </p>
+                <div class="contenedor-tabla-cliente w-full m-6 mx-auto flex justify-center items-center">
+                    <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption
+                                class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                Propiedades de Clientes
+                                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    Tipos de datos y otros detalles.
+                                </p>
+                            </caption>
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Propiedad
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tipo de Dato
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        first_name
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        last_name
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        status
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('active')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        customer_type
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        email
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        password
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        adress
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        postal_code
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        city
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        state
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        country
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        phone
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        is_paying_customer
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(true)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        avatar_url
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        meta_data
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                </div>
             </div>
-            
+
             <div id="contenedor_crear_cliente">
                 <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear Cliente</h2>
                 <p class="p-2" id="p_crear_cliente">
-                    Aprende cómo crear un nuevo cliente en la base de datos. Esto puede incluir enviar una solicitud HTTP POST al endpoint correspondiente con los datos del cliente.
+                    Crear un nuevo cliente en la base de datos. Para es debes enviar una solicitud
+                    HTTP POST al endpoint correspondiente con los datos del cliente.
                 </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            POST</div>
+                        <code class="text-sm">/api/v1/customers</code>
+                    </div>
+                    <div
+                        class="w-full h-[350px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                POST
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('new_costumer_body')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                            <span class="text-yellow-400">{</span>
+                            <span class="ml-4"><span class="text-green-400">"firstName"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"lastName"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"customerType"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"email"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"password"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"adress"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"postalCode"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"city"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"state"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"country"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"phone"</span> : ""</span>
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="new_costumer_body">
+                                {
+                                    "firstName": "",
+                                    "lastName": "",
+                                    "customerType": "",
+                                    "email": "",
+                                    "password": "",
+                                    "adress": "",
+                                    "postalCode": "",
+                                    "city": "",
+                                    "state": "",
+                                    "country": "",
+                                    "phone": ""
+                                }
+                            </code>
+                        </div>
+                    </pre>
+                    </div>
+                </div>
+
+
             </div>
-            
+
             <div id="contenedor_obtener_cliente">
                 <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4">Obtener Cliente</h2>
                 <p class="p-2" id="p_obtener_cliente">
-                    Obtén detalles específicos de un cliente existente en la base de datos. Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el ID del cliente.
-                </p>
-            </div>
-            
-            <div id="contenedor_listado_clientes">
-                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Listado de Clientes</h2>
-                <p class="p-2" id="p_listado_clientes">
-                    Accede a una lista de todos los clientes almacenados en la base de datos. Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
-                </p>
-            </div>
-            
-            <div id="contenedor_editar_cliente">
-                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Editar Cliente</h2>
-                <p class="p-2" id="p_editar_cliente">
-                    Aprende cómo modificar la información de un cliente existente en la base de datos. Esto puede incluir enviar una solicitud HTTP PUT al endpoint correspondiente con los datos actualizados del cliente.
-                </p>
-            </div>
-            
-            <div id="contenedor_eliminar_cliente">
-                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar Cliente</h2>
-                <p class="p-2" id="p_eliminar_cliente">
-                    Elimina un cliente existente de la base de datos. Esto se hace generalmente enviando una solicitud HTTP DELETE al endpoint correspondiente con el ID del cliente a eliminar.
+                    Obtén detalles específicos de un cliente existente en la base de datos. Esto generalmente se hace
+                    enviando una solicitud HTTP GET al endpoint correspondiente con el ID del cliente.
                 </p>
             </div>
 
-            
+            <div id="contenedor_listado_clientes">
+                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Listado de Clientes</h2>
+                <p class="p-2" id="p_listado_clientes">
+                    Accede a una lista de todos los clientes almacenados en la base de datos. Esto implica enviar una
+                    solicitud HTTP GET al endpoint correspondiente.
+                </p>
+            </div>
+
+            <div id="contenedor_editar_cliente">
+                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Editar Cliente</h2>
+                <p class="p-2" id="p_editar_cliente">
+                    Modifica lod datos de un cliente enviando una solicitud HTTP PUT al endpoint correspondiente con los
+                    datos actualizados del
+                    cliente.
+                </p>
+            </div>
+
+            <div id="contenedor_eliminar_cliente">
+                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar Cliente</h2>
+                <p class="p-2" id="p_eliminar_cliente">
+                    Elimina un cliente existente de la base de datos.<br>
+                    Esto se hace generalmente enviando una solicitud HTTP DELETE al endpoint correspondiente con el ID
+                    del cliente a eliminar.
+                </p>
+            </div>
+
+
         </div>
     </div>
 
