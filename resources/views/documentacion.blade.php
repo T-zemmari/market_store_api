@@ -415,11 +415,11 @@
 
                             <pre class="text-sm" style="text-align: left">
                                 <code class="w-[50%] px-6 flex flex-col justify-start items-start">
-                                    <span>{</span>
-                                    <span class="ml-4">"email": "ejemplo@correo.com",</span>
-                                    <span class="ml-4">"password": "Xx01452154@",</span>
-                                    <span class="ml-4">"password_confirmation": "Xx01452154@"</span>
-                                    <span>}</span>
+                                    <span class="text-yellow-400">{</span>
+                                    <span class="ml-4"><span class="text-green-400">"email"</span> : "ejemplo@correo.com",</span>
+                                    <span class="ml-4"><span class="text-green-400">"password"</span> : "Xx01452154@",</span>
+                                    <span class="ml-4"><span class="text-green-400">"password_confirmation"</span> : "Xx01452154@"</span>
+                                    <span class="text-yellow-400">}</span>
                                 </code>
                                 <div class="hidden">
                                     <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="code_get_token_1">
