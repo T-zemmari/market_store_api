@@ -390,6 +390,7 @@
                     Para acceder a los recursos protegidos por la API, necesitas autenticarte y obtener un token de
                     acceso.
                     Sigue los siguientes pasos para obtener un token:
+                </br></br>
                 <ol class="list-decimal pl-8">
                     <li>
                         Envía una solicitud HTTP POST al endpoint
@@ -442,9 +443,9 @@
                     <li>
                         Si las credenciales son válidas, recibirás una respuesta JSON que contiene un token de acceso.
                         <div
-                            class="w-full px-6 py-2 bg-[#1f2937] m-6 mx-auto text-white rounded-[5px] flex justify-start items-center">
+                            class="w-full h-[110px] px-6 py-2 bg-[#1f2937] m-6 mx-auto text-white rounded-[5px] flex justify-start items-center">
                             <pre class="text-sm" style="text-align: left">
-                            <code class="w-[50%] flex flex-col justify-center items-start">
+                            <code class="w-[50%] flex flex-col justify-center items-start mt-5">
                                 <span class="text-yellow-400">{</span>
                                 <span class="ml-4"><span class="text-green-400">"token"</span> : "22|y3I3Y3dBcD2eTC8vFyiVITSLKPypKqo6zMmo89Cy22d457bb"</span>
                                 <span class="text-yellow-400">}</span>
@@ -473,7 +474,7 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                                Propiedades de Clientes
+                                Propiedades
                                 <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
                                     Tipos de datos y otros detalles.
                                 </p>
@@ -661,9 +662,9 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_cliente">
-                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear Cliente</h2>
+                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear nuevo cliente</h2>
                 <p class="p-2" id="p_crear_cliente">
-                    Crear un nuevo cliente en la base de datos. Para es debes enviar una solicitud
+                    Para eso debes enviar una solicitud
                     HTTP POST al endpoint correspondiente con los datos del cliente.
                 </p>
                 <div class="w-full">
@@ -894,7 +895,7 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                                Propiedades de Categoría
+                                Propiedades
                                 <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
                                     Tipos de datos y otros detalles.
                                 </p>
@@ -1239,7 +1240,7 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                                Propiedades del Producto
+                                Propiedades
                                 <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
                                     Tipos de datos y otros detalles.
                                 </p>
@@ -1775,6 +1776,498 @@
                             class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm">
                             DELETE</div>
                         <code class="text-sm">/api/v1/products/{id}</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+
+            <div id="contenedor_pedido_propiedades">
+                <h2 id="h2_pedido_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                    Propiedades del pedido
+                </h2>
+                <p class="p-2" id="p_pedido_propiedades">
+                    Información sobre las propiedades del pedido.
+                </p>
+
+                <div class="contenedor-tabla-order w-full m-6 mx-auto flex justify-center items-center">
+                    <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption
+                                class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                Propiedades
+                                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    Tipos de datos y otros detalles.
+                                </p>
+                            </caption>
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Propiedad
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tipo de Dato
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        customer_id
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        integer
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        customer_ip_address
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        status
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('pending')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        currency
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('EUR')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        discount_total
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2) | default(0)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        shipping_total
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        tax_type
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('percentage')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        total_tax
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        shipping_total_with_tax
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        decimal(8, 2)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        billing
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        shipping
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        payment_method
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        payment_method_title
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        date_paid
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        date_completed
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        line_items
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        json | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        coupon_lines
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        text | nullable
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        set_paid
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        boolean | default(false)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        created_via
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        string | default('rest_api')
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        created_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        updated_at
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        timestamp
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_crear_pedido">
+                <h2 id="h2_crear_pedido" class="text-2xl font-semibold mt-8 mb-4">Generar un pedido</h2>
+                <p class="p-2" id="p_crear_pedido">
+                    Para generar un pedido debes enviar una solicitud HTTP POST al endpoint
+                    correspondiente con los datos necesarios.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            POST
+                        </div>
+                        <code class="text-sm">/api/v1/orders</code>
+                    </div>
+                    <div
+                        class="w-full h-[480px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                POST
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('new_order_body')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+
+                            <span class="text-yellow-400">{</span>
+
+                            <span class="ml-4"><span class="text-green-400">"customerId"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"customerIpAddress"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"status"</span> : "pending"</span>
+                            <span class="ml-4"><span class="text-green-400">"currency"</span> : "EUR"</span>
+                            <span class="ml-4"><span class="text-green-400">"discountTotal"</span> : "0.00"</span>
+                            <span class="ml-4"><span class="text-green-400">"shippingTotal"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"taxType"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"totalTax"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"shippingTotalwithTax"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"billing"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"shipping"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"paymentMethod"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"paymentMethodTitle"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"datePaid"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"dateCompleted"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"lineItems"</span>:<span>[]</span></span>
+                            
+                            <span class="text-yellow-400">}</span>
+                        </code>
+
+                        
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="new_order_body">
+                                {
+                                    "customerId": 151,
+                                    "customerIpAddress": "192.1.1.1",
+                                    "status": "pending",
+                                    "currency": "EUR",
+                                    "discountTotal": "0.00",
+                                    "shippingTotal": "994.38",
+                                    "taxType": "percentage",
+                                    "totalTax": "45.62",
+                                    "shippingTotalwithTax": "1040.00",
+                                    "billing": null,
+                                    "shipping": null,
+                                    "paymentMethod": "credit_card",
+                                    "paymentMethodTitle": "Credit Card",
+                                    "datePaid": "2024-04-19 07:19:03",
+                                    "dateCompleted": "2024-04-06 15:19:42",
+                                    "lineItems": [
+                                        {
+                                            "id": 554,
+                                            "name": "et",
+                                            "price": "12.00",
+                                            "quantity": 2
+                                        },
+                                        {
+                                            "id": 517,
+                                            "name": "ducimus",
+                                            "price": "790.38",
+                                            "quantity": 5
+                                        },
+                                        {
+                                            "id": 362,
+                                            "name": "facilis",
+                                            "price": "161.02",
+                                            "quantity": 5
+                                        }
+                                    ],
+                                    "couponLines": []
+                                }
+                                
+                            </code>
+                        </div>
+                        </pre>
+                    </div>
+                    <p class="p-2" id="p_crear_pedido_info_productos">
+                        El cuerpo del pedido debe llevar informacion de los productos que es un array de objetos llamado
+                        lineItems.</b>
+                        Debe llevar al menos un producto con la informacion:
+                    <ol class="list-decimal pl-8">
+                        <li><b>id</b> : Id del producto .</li>
+                        <li><b>name</b> : Nombre del producto.</li>
+                        <li><b>price</b> : Precio del producto.</li>
+                        <li><b>quantity</b> : Cantidad de productos.</li>
+                    </ol>
+                    </p>
+                    <div
+                        class="w-full h-[160px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+
+                            <span class="text-yellow-400">{</span>
+
+                            <span class="ml-4"><span class="text-green-400">"id"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"name"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"price"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"quantity"</span> : ""</span>   
+
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id=" contenedor_editar_pedido">
+                <h2 id="h2_editar_pedido" class="text-2xl font-semibold mt-8 mb-4">
+                    Editar un pedido
+                </h2>
+                <p class="p-2" id="p_editar_pedido_put">
+                    Una vez generado, el pedido no puede ser modificado en su totalidad. Sin embargo, es posible
+                    realizar ajustes en determinados campos mediante el uso del método PATCH.
+                </p>
+
+
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            PATCH</div>
+                        <code class="text-sm">/api/v1/orders/{id}</code>
+                    </div>
+                    <div
+                        class="w-full h-[250px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                        <div class="w-full flex flex-row justify-between">
+                            <div
+                                class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                PATCH
+                            </div>
+                            <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                onclick="fn_copiar_codigo('edit_product_body_patch')">
+                                Copiar
+                            </div>
+                        </div>
+                        <pre class="text-sm" style="text-align: left">
+                        <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                            <span class="text-yellow-400">{</span>
+                                <span class="ml-4"><span class="text-green-400">"status"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"shipping"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"billing"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"datePaid"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"dateCompleted"</span> : ""</span>
+                            <span class="text-yellow-400">}</span>
+                        </code>
+                        <div class="hidden">
+                            <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="edit_product_body_patch">
+                                {
+                                    "status": "",
+                                    "billing": null,
+                                    "shipping": null,
+                                    "datePaid": "2024-04-19 07:19:03",
+                                    "dateCompleted": "2024-04-06 15:19:42",
+                                }
+                            </code>
+                        </div>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_obtener_producto">
+                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4">
+                    Obtener información de un pedido
+                </h2>
+                <p class="p-2" id="p_obtener_producto">
+                    Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
+                    <b>ID</b> del pedido.
+                </p>
+
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/orders/{id}</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+
+            <div id="contenedor_listado_pedidos">
+                <h2 id="h2_listado_pedidos" class="text-2xl font-semibold mt-8 mb-4">
+                    Obtener una lista de todos los pedidos
+                </h2>
+                <p class="p-2" id="p_listado_pedidos">
+                    Accede a una lista exhaustiva de todos los pedidos almacenados en la base de datos. Esto requiere
+                    enviar una solicitud HTTP GET al endpoint correspondiente.
+                </p>
+
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            GET</div>
+                        <code class="text-sm">/api/v1/orders</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_eliminar_pedido">
+                <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4">Eliminar pedido</h2>
+                <p class="p-2" id="p_eliminar_pedido">
+                    Elimina un pedido existente de la base de datos.<br>
+                    Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
+                    del pedido a eliminar.
+                </p>
+                <div class="w-full">
+                    <div
+                        class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                        <div
+                            class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            DELETE</div>
+                        <code class="text-sm">/api/v1/orders/{id}</code>
                     </div>
                 </div>
             </div>
