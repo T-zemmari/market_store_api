@@ -44,28 +44,28 @@
                         </svg>
                     </button>
                     <ul id="dropdown-intro" class="py-2 space-y-2">
-                        <li>
-                            <a href="#"
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Requisitos</a>
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_requisitos')">
+                            <a
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                Requisitos
+                            </a>
                         </li>
-                        <li>
-                            <a href="#"
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Request/Response</a>
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_errores')">
+                            <a
+                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                Errores
+                            </a>
                         </li>
-                        <li>
-                            <a href="#"
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Errores</a>
-                        </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_parametros')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Parametros</a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_paginacion')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_mas')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Más</a>
                         </li>
                     </ul>
@@ -82,14 +82,14 @@
                         </svg>
                     </button>
                     <ul id="dropdown-auth" class="py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener token
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Autenticación (HTTPS)
                             </a>
@@ -108,38 +108,38 @@
                         </svg>
                     </button>
                     <ul id="dropdown-costumers" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_cliente_propiedades')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_cliente')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear cliente
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_cliente')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener cliente
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_clientes')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista clientes
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_cliente')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar cliente
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_cliente')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar cliente
                             </a>
@@ -158,38 +158,38 @@
                         </svg>
                     </button>
                     <ul id="dropdown-categories" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_categoria')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_categoria')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear categoria
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_categoria')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener categoria
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_categorias')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista categorias
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_categoria')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar categoria
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_categoria')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar categoria
                             </a>
@@ -208,38 +208,38 @@
                         </svg>
                     </button>
                     <ul id="dropdown-productos" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_producto')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_producto')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear producto
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_producto')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener producto
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_productos')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista productos
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_producto')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar producto
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_producto')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar producto
                             </a>
@@ -258,38 +258,38 @@
                         </svg>
                     </button>
                     <ul id="dropdown-imagenes" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_imagen')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_imagen')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear imagen
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_imagen')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener imagen
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_imagenes')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista imagenes
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_imagen')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar imagen
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_imagen')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar imagen
                             </a>
@@ -308,38 +308,38 @@
                         </svg>
                     </button>
                     <ul id="dropdown-pedidos" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_pedido')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_pedido')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear pedido
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_pedido')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener pedido
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_pedidos')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista pedidos
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_pedido')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar estado pedido
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_cancelar_pedido')">
+                            <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar pedido
                             </a>
@@ -433,16 +433,72 @@
                             </pre>
                         </div>
                     </li>
-
-
-                    <li>Si las credenciales son válidas, recibirás una respuesta JSON que contiene un token de acceso.
+                    <li>
+                        Si las credenciales son válidas, recibirás una respuesta JSON que contiene un token de acceso.
+                        <div
+                            class="w-full px-6 py-2 bg-[#1f2937] m-6 mx-auto text-white rounded-[5px] flex justify-start items-center">
+                            <pre class="text-sm" style="text-align: left">
+                            <code class="w-[50%] flex flex-col justify-center items-start">
+                                <span class="text-yellow-400">{</span>
+                                <span class="ml-4"><span class="text-green-400">"token"</span> : "22|y3I3Y3dBcD2eTC8vFyiVITSLKPypKqo6zMmo89Cy22d457bb"</span>
+                                <span class="text-yellow-400">}</span>
+                            </code>
+                        </pre>
+                        </div>
                     </li>
-                    <li>Utiliza este token en las solicitudes posteriores al API para autenticarte.</li>
+                    <li>Utiliza el token obtenido como autorización Bearer en el encabezado
+                        <code>Authorization</code>
+                        de las solicitudes posteriores al API para autenticarte.
+                    </li>
                 </ol>
                 </p>
             </div>
 
 
+
+            <div id="contenedor_cliente_propiedades">
+                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del Cliente</h2>
+                <p class="p-2" id="p_cliente_propiedades">
+                    Aquí encontrarás información sobre las propiedades de un cliente, como su nombre, dirección, correo electrónico, etc.
+                </p>
+            </div>
+            
+            <div id="contenedor_crear_cliente">
+                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear Cliente</h2>
+                <p class="p-2" id="p_crear_cliente">
+                    Aprende cómo crear un nuevo cliente en la base de datos. Esto puede incluir enviar una solicitud HTTP POST al endpoint correspondiente con los datos del cliente.
+                </p>
+            </div>
+            
+            <div id="contenedor_obtener_cliente">
+                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4">Obtener Cliente</h2>
+                <p class="p-2" id="p_obtener_cliente">
+                    Obtén detalles específicos de un cliente existente en la base de datos. Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el ID del cliente.
+                </p>
+            </div>
+            
+            <div id="contenedor_listado_clientes">
+                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Listado de Clientes</h2>
+                <p class="p-2" id="p_listado_clientes">
+                    Accede a una lista de todos los clientes almacenados en la base de datos. Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
+                </p>
+            </div>
+            
+            <div id="contenedor_editar_cliente">
+                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">Editar Cliente</h2>
+                <p class="p-2" id="p_editar_cliente">
+                    Aprende cómo modificar la información de un cliente existente en la base de datos. Esto puede incluir enviar una solicitud HTTP PUT al endpoint correspondiente con los datos actualizados del cliente.
+                </p>
+            </div>
+            
+            <div id="contenedor_eliminar_cliente">
+                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar Cliente</h2>
+                <p class="p-2" id="p_eliminar_cliente">
+                    Elimina un cliente existente de la base de datos. Esto se hace generalmente enviando una solicitud HTTP DELETE al endpoint correspondiente con el ID del cliente a eliminar.
+                </p>
+            </div>
+
+            
         </div>
     </div>
 
