@@ -24,11 +24,13 @@
         </div>
     </div>
     <script src="{{ asset('/assets/js/jquery_3_7_1.js') }}"></script>
+    <script src="{{ asset('/assets/js/swt.js') }}"></script>
     <script src="{{ asset('/assets/js/doc_scripts.js') }}"></script>
     <script src="{{ asset('/assets/js/clientes.js') }}"></script>
     <script src="{{ asset('/assets/js/categorias.js') }}"></script>
     <script src="{{ asset('/assets/js/productos.js') }}"></script>
     <script src="{{ asset('/assets/js/pedidos.js') }}"></script>
+    <script src="{{ asset('/assets/js/funciones_varias.js') }}"></script>
 </body>
 
 </html>

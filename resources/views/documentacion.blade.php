@@ -386,16 +386,55 @@
                     acceso.
                     Sigue los siguientes pasos para obtener un token:
                 <ol class="list-decimal pl-8">
-                    <li>Envía una solicitud HTTP POST al endpoint <code>/api/v1/get_token</code>.</li>
-                    <div
-                        class="w-full h-[40px] m-6 mx-auto  bg-black text-white flex flex-row justify-start items-center gap-2">
+                    <li>Envía una solicitud HTTP POST al endpoint
+                        <code>/api/v1/get_token</code>.
                         <div
-                            class="ml-2 w-10 h-6 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
-                            GET</div>
-                        <code class="text-sm">/api/v1/get_token</code>
-                    </div>
-                    <li>Incluye las credenciales de autenticación (correo electrónico y contraseña) en el cuerpo de la
-                        solicitud.</li>
+                            class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                            <div
+                                class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                GET</div>
+                            <code class="text-sm">/api/v1/get_token</code>
+                        </div>
+                    </li>
+
+                    <li>
+                        Incluye las credenciales de autenticación (correo electrónico y contraseña) en el cuerpo de la
+                        solicitud.
+                        <div
+                            class="w-full h-[200px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                            <div class="w-full flex flex-row justify-between">
+                                <div
+                                    class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                                    POST
+                                </div>
+                                <div class="mr-4 mt-4 w-16 h-8 bg-gray-700 flex justify-center items-center font-semibold rounded-sm text-sm cursor-pointer"
+                                    onclick="fn_copiar_codigo('code_get_token_1')">
+                                    Copiar
+                                </div>
+                            </div>
+
+                            <pre class="text-sm" style="text-align: left">
+                                <code class="w-[50%] px-6 flex flex-col justify-start items-start">
+                                    <span>{</span>
+                                    <span class="ml-4">"email": "ejemplo@correo.com",</span>
+                                    <span class="ml-4">"password": "Xx01452154@",</span>
+                                    <span class="ml-4">"password_confirmation": "Xx01452154@"</span>
+                                    <span>}</span>
+                                </code>
+                                <div class="hidden">
+                                    <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="code_get_token_1">
+                                        {
+                                        "email": "ejemplo@correo.com",
+                                        "password": "Xx01452154@",
+                                        "password_confirmation": "Xx01452154@"
+                                        }
+                                    </code>
+                                </div>
+                            </pre>
+                        </div>
+                    </li>
+
+
                     <li>Si las credenciales son válidas, recibirás una respuesta JSON que contiene un token de acceso.
                     </li>
                     <li>Utiliza este token en las solicitudes posteriores al API para autenticarte.</li>
