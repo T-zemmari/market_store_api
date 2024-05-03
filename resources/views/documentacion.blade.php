@@ -358,8 +358,6 @@
                 </p>
             </div>
 
-
-
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_token">
@@ -444,7 +442,7 @@
             <div id="contenedor_errores">
                 <h2 id="h2_errores" class="text-2xl font-semibold mt-8 mb-4">Errores</h2>
                 <p class="p-2" id="p_errores">
-                    Ocasionalmente puedes encontrarte con errores al acceder a la API . Hay cuatro tipos posibles:
+                    Ocasionalmente puedes encontrarte con errores al acceder a la API . Hay varios tipos posibles:
                 </p>
                 <table class="w-full mt-4 border-collapse border border-gray-300">
                     <thead class="bg-gray-200">
@@ -486,12 +484,12 @@
                 <h2 id="h2_paginacion" class="text-2xl font-semibold mt-8 mb-4">Paginación</h2>
                 <p class="p-2" id="p_paginacion">
                     Para optimizar el rendimiento del servidor y mejorar la experiencia del usuario, nuestra API utiliza
-                    la paginación para limitar la cantidad de registros devueltos en cada solicitud. Asegúrate de
+                    la paginación para limitar la cantidad de registros devueltos en cada solicitud. </br>Asegúrate de
                     cumplir con los siguientes requisitos para trabajar con nuestra API de manera efectiva:
                 </p>
                 <p class="p-2">
                     Ten en cuenta que nuestra API implementa una paginación que limita el número máximo de registros
-                    devueltos por página a 50. Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
+                    devueltos por página a 50.</br> Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
                     las consultas. Si necesitas más registros, puedes ajustar la paginación utilizando los parámetros
                     adecuados en tu solicitud.
                 </p>
@@ -506,7 +504,7 @@
                 <p class="px-2 mb-8" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo,
                     firstName.</p>
 
-                <div class="mb-8" id="contenedor_tabla_filtrado_cliente">
+                <div class="mb-8 p-4" id="contenedor_tabla_filtrado_cliente">
                     <h3 class="text-lg font-semibold mb-4">Clientes</h3>
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-200">
@@ -600,7 +598,9 @@
                     </table>
                 </div>
 
-                <div class="mb-8" id="contenedor_tabla_filtrado_categorias">
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <div class="mb-8 p-4" id="contenedor_tabla_filtrado_categorias">
                     <h3 class="text-lg font-semibold mb-4">Categorías</h3>
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-200">
@@ -631,7 +631,9 @@
                     </table>
                 </div>
 
-                <div class="mb-8" id="contenedor_tabla_filtrado_productos">
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <div class="mb-8 p-4" id="contenedor_tabla_filtrado_productos">
                     <h3 class="text-lg font-semibold mb-4">Productos</h3>
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-200">
@@ -718,7 +720,9 @@
                     </table>
                 </div>
 
-                <div class="mb-8" id="contenedor_tabla_filtrado_pedidos">
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <div class="mb-8 p-4" id="contenedor_tabla_filtrado_pedidos">
                     <h3 class="text-lg font-semibold mb-4">Pedidos</h3>
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-200">
@@ -804,8 +808,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
 
 
