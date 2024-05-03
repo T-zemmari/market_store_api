@@ -631,6 +631,96 @@
                     </table>
                 </div>
 
+
+
+                <div class="mb-8" id="contenedor_tabla_filtrado_productos">
+                    <h3 class="text-lg font-semibold mb-4">Productos</h3>
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-4 py-2">Parámetro</th>
+                                <th class="px-4 py-2">Operador</th>
+                                <th class="px-4 py-2">Valor</th>
+                                <th class="px-4 py-2">Valores permitidos</th>
+                                <th class="px-4 py-2">Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">name</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?name[eq]=Laptop</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">categoryId</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?categoryId[eq]=2</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">sku</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?sku[eq]=ABC123</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">type</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>default('simple');
+                                <td class="px-4 py-2 text-[13px]">simple,grouped,external ó variable</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?type[eq]=simple</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">status</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">publish,draft,pending ó private</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?status[eq]=publish</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">price</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?price[lte]=1000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">salePrice</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?salePrice[eq]=800</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">OnSale</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">true ó false</td>
+                                <td class="px-4 py-2 text-[13px]">Booleano</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?OnSale[eq]=true</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">stockQuantity</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?stockQuantity[gte]=10</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">stockStatus</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">instock ó outofstock</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/products?stockStatus[eq]=instock</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
 
 

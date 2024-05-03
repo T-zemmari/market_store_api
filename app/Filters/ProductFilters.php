@@ -8,7 +8,6 @@ class ProductFilters extends MyApiFilter
     protected $array_params = [
         'name' => ['eq','like'],
         'categoryId' => ['eq'],
-        'parent' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'sku' => ['eq'],
         'type' => ['eq'],
         'status' => ['eq'],
