@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
+use App\Models\Image;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,22 +95,31 @@ class ProductController extends Controller
 
 
                 $newProduct = Product::create($request->all());
+                //$newProduct = Product::find(1);
 
                 // Procesar y almacenar imágenes si se enviaron
-               
-                if ($request->hasFile('images')) {
-                    $path = '/upload/imgs/';
-                    //dd($request->file('images'));
-                    foreach ($request->file('images') as $image) {
-                        //dd($image);
-                        $extension = $image->getClientOriginalExtension();
-                        $filename = 'img_pr_' . time() . '_' . rand(1000, 9999) . '.' . $extension;
-                        //echo '<pre>'; print_r($filename); echo '</pre>';
-                        $image->move($path, $filename);
+                //dd($request->file('images'));
 
-                        // Guardar la URL de la imagen en la base de datos
-                        $imageUrl = $path . $filename;
-                        $newProduct->images()->create(['url_image' => $imageUrl]);
+                if ($request->hasFile('images')) {
+                    //dump($request->file('images'));
+                    $path = 'upload/imgs/';
+
+                    foreach ($request->file('images') as $image) {
+                        // Procesar cada imagen individualmente
+
+                        $extention = $image->getClientOriginalExtension(); // Obtener el nombre original del archivo
+                        $filename = 'img_n_' . time() . '.' . $extention;
+
+                        $image->move($path, $filename); // Mover el archivo al directorio de destino
+
+                        $url_image = $path . $filename; // Obtener la URL de la imagen
+                        $imageData = [
+                            'product_id' => $newProduct->id,
+                            'url_image' => $url_image,
+                            'active' => 1,
+                        ];
+                        // Crear una nueva imagen con los datos proporcionados
+                        Image::create($imageData);
                     }
                 }
 
