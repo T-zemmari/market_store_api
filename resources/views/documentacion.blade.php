@@ -250,13 +250,13 @@
                         </svg>
                     </button>
                     <ul id="dropdown-imagenes" class="hidden py-2 space-y-2">
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_imagen')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_imagen_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_imagenes')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_imagenes')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista imagenes
