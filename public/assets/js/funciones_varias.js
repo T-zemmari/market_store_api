@@ -1,5 +1,16 @@
 $(document).ready(function () {
     console.log('FUNCIONES VARIAS');
+
+    $('.dropdown_accion').click(function () {
+        const dropdownName = $(this).attr('data-dropdownname');
+        if(dropdownName!='dropdown-intro'){
+             $('[id^="dropdown-"]').not('#dropdown-' + dropdownName).not('#dropdown-intro').addClass('hidden');
+        $('#dropdown-' + dropdownName).toggleClass('hidden'); 
+        }
+      
+    });
+
+
 })
 
 function fn_copiar_codigo(elemento_id) {
@@ -28,9 +39,12 @@ function fn_scroll_to(elemento_id) {
     if (elemento) {
         console.log('elemento para el scroll', elemento);
         window.scrollTo({
-            top: elemento.offsetTop-100,
+            top: elemento.offsetTop - 100,
             behavior: 'smooth'
         })
 
     }
 }
+
+
+

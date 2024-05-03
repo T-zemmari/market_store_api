@@ -34,8 +34,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-intro" data-collapse-toggle="dropdown-intro">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-intro" data-collapse-toggle="dropdown-intro"
+                        data-dropdownname="dropdown-intro"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Introducción</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -69,8 +71,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth"
+                        data-dropdownname="dropdown-auth"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Authenticación</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -78,7 +82,7 @@
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-auth" class="py-2 space-y-2">
+                    <ul id="dropdown-auth" class="hidden py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -89,8 +93,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-costumers" data-collapse-toggle="dropdown-costumers">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-costumers" data-collapse-toggle="dropdown-costumers"
+                        data-dropdownname="dropdown-costumers"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Clientes</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -140,8 +146,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-categories" data-collapse-toggle="dropdown-categories">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-categories" data-collapse-toggle="dropdown-categories"
+                        data-dropdownname="dropdown-categories"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Categorias</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -190,8 +198,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-productos" data-collapse-toggle="dropdown-productos">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-products" data-collapse-toggle="dropdown-products"
+                        data-dropdownname="dropdown-products"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Productos</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -199,7 +209,7 @@
                                 stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-productos" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-products" class="hidden py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_producto')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -240,8 +250,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-imagenes" data-collapse-toggle="dropdown-imagenes">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-images" data-collapse-toggle="dropdown-images"
+                        data-dropdownname="dropdown-images"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Imagenes</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -249,7 +261,7 @@
                                 stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-imagenes" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-images" class="hidden py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_imagen_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -272,8 +284,10 @@
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-pedidos" data-collapse-toggle="dropdown-pedidos">
+                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        aria-controls="dropdown-orders" data-collapse-toggle="dropdown-orders"
+                        data-dropdownname="dropdown-orders"
+                        >
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Pedidos</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -281,7 +295,7 @@
                                 stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-pedidos" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-orders" class="hidden py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_pedido_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
