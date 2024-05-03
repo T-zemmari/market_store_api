@@ -56,10 +56,7 @@
                                 Errores
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_parametros')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Parametros</a>
-                        </li>
+
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_paginacion')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
@@ -108,6 +105,7 @@
                                 Propiedades
                             </a>
                         </li>
+
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_cliente')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -170,7 +168,7 @@
                                 Obtener categoria
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_categorias')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_categorias')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista categorias
@@ -220,7 +218,7 @@
                                 Obtener producto
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_productos')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_productos')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista productos
@@ -284,7 +282,7 @@
                         </svg>
                     </button>
                     <ul id="dropdown-pedidos" class="hidden py-2 space-y-2">
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_pedido')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_pedido_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
@@ -302,7 +300,7 @@
                                 Obtener pedido
                             </a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listar_pedidos')">
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_pedidos')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista pedidos
@@ -489,7 +487,8 @@
                 </p>
                 <p class="p-2">
                     Ten en cuenta que nuestra API implementa una paginación que limita el número máximo de registros
-                    devueltos por página a 50.</br> Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
+                    devueltos por página a 50.</br> Esto ayuda a reducir la carga en el servidor y a mejorar la
+                    eficiencia de
                     las consultas. Si necesitas más registros, puedes ajustar la paginación utilizando los parámetros
                     adecuados en tu solicitud.
                 </p>
@@ -746,7 +745,8 @@
                                 <td class="px-4 py-2 text-[13px]">status</td>
                                 <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
                                 <td class="px-4 py-2 text-[13px]">[valor]</td>
-                                <td class="px-4 py-2 text-[13px]">pending, processing, on-hold, completed, cancelled, refunded, failed ó trash</td>
+                                <td class="px-4 py-2 text-[13px]">pending, processing, on-hold, completed, cancelled,
+                                    refunded, failed ó trash</td>
                                 <td class="px-4 py-2 text-[13px]">/api/v1/orders?status[eq]=processing</td>
                             </tr>
                             <tr>
@@ -1078,7 +1078,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id=" contenedor_editar_cliente">
+            <div id="contenedor_editar_cliente">
                 <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">
                     Actualizar Datos de un Cliente
                 </h2>
@@ -1237,7 +1237,7 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
 
-            <div id="contenedor_categoria_propiedades">
+            <div id="contenedor_propiedades_categoria">
                 <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4">
                     Propiedades de la categoria
                 </h2>
@@ -1434,7 +1434,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id=" contenedor_editar_categoria">
+            <div id="contenedor_editar_categoria">
                 <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4">Editar una categoria
                 </h2>
                 <p class="p-2" id="p_editar_categoria_put">
@@ -1582,7 +1582,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id="contenedor_productos_propiedades">
+            <div id="contenedor_propiedades_producto">
                 <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del producto
                 </h2>
                 <p class="p-2" id="p_producto_propiedades">
@@ -1951,7 +1951,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id=" contenedor_editar_producto">
+            <div id="contenedor_editar_producto">
                 <h2 id="h2_editar_producto" class="text-2xl font-semibold mt-8 mb-4">
                     Editar un producto
                 </h2>
@@ -2505,7 +2505,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id=" contenedor_editar_pedido">
+            <div id="contenedor_editar_pedido">
                 <h2 id="h2_editar_pedido" class="text-2xl font-semibold mt-8 mb-4">
                     Editar un pedido
                 </h2>
@@ -2563,7 +2563,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id="contenedor_obtener_producto">
+            <div id="contenedor_obtener_pedido">
                 <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4">
                     Obtener información de un pedido
                 </h2>
@@ -2581,7 +2581,7 @@
                         <code class="text-sm">/api/v1/orders/{id}</code>
                     </div>
                 </div>
-            </div>
+            </div>   
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
@@ -2608,7 +2608,7 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-            <div id="contenedor_eliminar_pedido">
+            <div id="contenedor_cancelar_pedido">
                 <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4">Eliminar pedido</h2>
                 <p class="p-2" id="p_eliminar_pedido">
                     Elimina un pedido existente de la base de datos.<br>

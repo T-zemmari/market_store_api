@@ -26,11 +26,11 @@ function fn_scroll_to(elemento_id) {
     const elemento = document.getElementById(`${elemento_id}`);
     console.log('Click en ', elemento_id);
     if (elemento) {
-        elemento.addEventListener('click', function () {
-            window.scrollTo({
-                top: elemento.offsetTop,
-                behavior: 'smooth'
-            })
+        console.log('elemento para el scroll', elemento);
+        window.scrollTo({
+            top: elemento.offsetTop-100,
+            behavior: 'smooth'
         })
+
     }
 }
