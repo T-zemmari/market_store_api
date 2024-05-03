@@ -91,8 +91,27 @@ class ProductController extends Controller
                     return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
                 }
 
-                // Crear el nuevo producto
+
+
                 $newProduct = Product::create($request->all());
+
+                // Procesar y almacenar imágenes si se enviaron
+               
+                if ($request->hasFile('images')) {
+                    $path = '/upload/imgs/';
+                    //dd($request->file('images'));
+                    foreach ($request->file('images') as $image) {
+                        //dd($image);
+                        $extension = $image->getClientOriginalExtension();
+                        $filename = 'img_pr_' . time() . '_' . rand(1000, 9999) . '.' . $extension;
+                        //echo '<pre>'; print_r($filename); echo '</pre>';
+                        $image->move($path, $filename);
+
+                        // Guardar la URL de la imagen en la base de datos
+                        $imageUrl = $path . $filename;
+                        $newProduct->images()->create(['url_image' => $imageUrl]);
+                    }
+                }
 
                 return new ProductResource($newProduct);
             }

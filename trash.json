@@ -1,0 +1,26 @@
+
+
+{
+    "category_id": 3,
+    "name": "nihihhl",
+    "sku": "9473111",
+    "ean": null,
+    "ean13": null,
+    "type": "simple",
+    "status": "publish", 
+    "catalog_visibility": "visible",
+    "description": "Soluta facere nihil eni.",
+    "short_description": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
+    "regular_price": "217.12",
+    "sale_price": "373.40",
+    "price": "373.40",
+    "on_sale": false,
+    "valid": "1",
+    "stock_quantity": 77,
+    "stock_status": "outofstock",
+    "weight": "7kg",
+    "dimensions": "92x90x16cm",
+    "variation": 0,
+    "featured": false,
+    "discontinued":false
+}

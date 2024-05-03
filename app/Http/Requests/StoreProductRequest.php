@@ -45,6 +45,7 @@ class StoreProductRequest extends FormRequest
             "image" => ['nullable', 'string'],
             "discontinued" => ['required', Rule::in([true, false, 0, 1])],
             "valid" => ['required', Rule::in([true, false, 0, 1])],
+            "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
         ];
     }
 
