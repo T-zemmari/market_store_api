@@ -501,11 +501,13 @@
 
             <div id="contenedor_filtrado">
                 <h2 id="h2_filtrado" class="text-2xl font-semibold mt-8 mb-4">Filtrado</h2>
-                <p class="p-2">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza los siguientes parámetros:</p>
-                <p class="px-2 mb-8" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo, firstName.</p>
-            
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold mb-2">Clientes</h3>
+                <p class="p-2">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza
+                    los siguientes parámetros:</p>
+                <p class="px-2 mb-8" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo,
+                    firstName.</p>
+
+                <div class="mb-8" id="contenedor_tabla_filtrado_cliente">
+                    <h3 class="text-lg font-semibold mb-4">Clientes</h3>
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-200">
                             <tr>
@@ -597,8 +599,40 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="mb-8" id="contenedor_tabla_filtrado_categorias">
+                    <h3 class="text-lg font-semibold mb-4">Categorías</h3>
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-4 py-2">Parámetro</th>
+                                <th class="px-4 py-2">Operador</th>
+                                <th class="px-4 py-2">Valor</th>
+                                <th class="px-4 py-2">Valores permitidos</th>
+                                <th class="px-4 py-2">Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">name</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/categories?name[eq]=Electronics</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">parent</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Numero</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/categories?parent[eq]=1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
-            
+
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
