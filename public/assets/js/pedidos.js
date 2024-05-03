@@ -30,7 +30,7 @@ function fn_obtener_pedidos(page=null) {
             let pedidos = response.data;
             let HTML_TABLE=`
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
+            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151;color:white">
                 PEDIDOS
             </span>
         </h4>
@@ -39,57 +39,57 @@ function fn_obtener_pedidos(page=null) {
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Pedido ID
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Cliente ID
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Estado
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Fecha pedido
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Fecha pagado
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Descuento
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Subtotal
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Iva
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Total
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Metodo pago
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <span class="sr-only">Acciones</span>
                         </th>
                     </tr>
@@ -98,7 +98,7 @@ function fn_obtener_pedidos(page=null) {
 
                 </tbody>
             </table>
-            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container"></div>
+            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container" style="margin-top:10px;margin-bottom:30px"></div>
         </div>
             
             `;
@@ -148,7 +148,11 @@ function fn_obtener_pedidos(page=null) {
                     `;
                 });
 
-                let pagination_links = crear_paginacion_pedidos_links(response.meta.links);
+                let links=null;
+                if(response.meta && response.meta.links){
+                    links=response.meta.links;
+                }
+                let pagination_links = crear_paginacion_pedidos_links(links);
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
@@ -179,7 +183,11 @@ function fn_mostrar_form_editar_pedido(data) {
     console.log(item);
 }
 
-function crear_paginacion_pedidos_links(links) {
+function crear_paginacion_pedidos_links(links=null) {
+
+    if(links==null){
+        return false;
+    }
     let paginationHTML = `
     <nav aria-label="Page navigation">
         <ul class="flex items-center -space-x-px h-8 text-sm">

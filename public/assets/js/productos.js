@@ -2,7 +2,7 @@ $(document).ready(function () {
     console.log("PRODUCTOS");
 });
 
-function fn_obtener_productos(page=null) {
+function fn_obtener_productos(page = null) {
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
@@ -10,13 +10,13 @@ function fn_obtener_productos(page=null) {
     $(`#contenedor_dashboards_principal`).hide();
     $(`#tbody_productos`).html(``);
     // Realizar la solicitud AJAX
-    let url="http://localhost:8000/api/v1/products";
-    if(page!=null){
-        url="http://localhost:8000/api/v1/products?page="+page;
+    let url = "http://localhost:8000/api/v1/products";
+    if (page != null) {
+        url = "http://localhost:8000/api/v1/products?page=" + page;
     }
-    console.log('url',url);
+    console.log('url', url);
     $.ajax({
-        url:url,
+        url: url,
         method: "GET",
         dataType: "json",
         headers: {
@@ -28,9 +28,9 @@ function fn_obtener_productos(page=null) {
             console.log("Productos obtenidos con éxito:", response);
 
             let productos = response.data;
-            let HTML_TABLE=`
+            let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
+            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151;color:white">
                 PRODUCTOS
             </span>
         </h4>
@@ -39,40 +39,40 @@ function fn_obtener_productos(page=null) {
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             Producto
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Sku
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 ID Categoria
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Descripción corta
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Descripción larga
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Precio de venta
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Stock actual
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <span class="sr-only">Acciones</span>
                         </th>
                     </tr>
@@ -81,7 +81,7 @@ function fn_obtener_productos(page=null) {
 
                 </tbody>
             </table>
-            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container"></div>
+            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container" style="margin-top:10px;margin-bottom:30px"></div>
         </div>
             
             `;
@@ -114,8 +114,8 @@ function fn_obtener_productos(page=null) {
                             </td>            
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${JSON.stringify(
-                                    item
-                                )}')">Editar</button>
+                        item
+                    )}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +124,12 @@ function fn_obtener_productos(page=null) {
                     `;
                 });
 
-                let pagination_links = crear_paginacion_productos_links(response.meta.links);
+
+                let links = null;
+                if (response.meta && response.meta.links) {
+                    links = response.meta.links;
+                }
+                let pagination_links = crear_paginacion_productos_links(links);
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
@@ -155,7 +160,8 @@ function fn_mostrar_form_editar_producto(data) {
     console.log(item);
 }
 
-function crear_paginacion_productos_links(links) {
+function crear_paginacion_productos_links(links = null) {
+    if (links == null) return false;
     let paginationHTML = `
     <nav aria-label="Page navigation">
         <ul class="flex items-center -space-x-px h-8 text-sm">

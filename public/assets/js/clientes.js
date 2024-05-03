@@ -3,7 +3,7 @@ $(document).ready(function () {
     fn_obtener_clientes();
 });
 
-function fn_obtener_clientes(page=null) {
+function fn_obtener_clientes(page = null) {
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
@@ -11,13 +11,13 @@ function fn_obtener_clientes(page=null) {
     $(`#contenedor_dashboards_principal`).hide();
     $(`#tbody_clientes`).html(``);
     // Realizar la solicitud AJAX
-    let url="http://localhost:8000/api/v1/customers";
-    if(page!=null){
-        url="http://localhost:8000/api/v1/customers?page="+page;
+    let url = "http://localhost:8000/api/v1/customers";
+    if (page != null) {
+        url = "http://localhost:8000/api/v1/customers?page=" + page;
     }
-    console.log('url',url);
+    console.log('url', url);
     $.ajax({
-        url:url,
+        url: url,
         method: "GET",
         dataType: "json",
         headers: {
@@ -29,9 +29,9 @@ function fn_obtener_clientes(page=null) {
             console.log("Clientes obtenidos con éxito:", response);
 
             let customers = response.data;
-            let HTML_TABLE=`
-            <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white">
+            let HTML_TABLE = `
+            <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4 bg-[#374151]">
+            <span class="w-full p-4 flex justify-center items-center rounded-lg text-white" style="background-color:#374151">
                 CLIENTES
             </span>
         </h4>
@@ -40,10 +40,10 @@ function fn_obtener_clientes(page=null) {
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 bg-[#374151]" style="background-color:#374151;color:white">
                             Cliente
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Email
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
@@ -53,7 +53,7 @@ function fn_obtener_clientes(page=null) {
                                     </svg></a>
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Teléfono
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
@@ -63,7 +63,7 @@ function fn_obtener_clientes(page=null) {
                                     </svg></a>
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <div class="flex items-center">
                                 Dirección
                                 <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
@@ -73,7 +73,7 @@ function fn_obtener_clientes(page=null) {
                                     </svg></a>
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" style="background-color:#374151;color:white">
                             <span class="sr-only">Acciones</span>
                         </th>
                     </tr>
@@ -82,7 +82,7 @@ function fn_obtener_clientes(page=null) {
 
                 </tbody>
             </table>
-            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container"></div>
+            <div class="pagination_container mt-10 mb-10 flex justify-center items-center" id="pagination_container" style="margin-top:10px;margin-bottom:30px"></div>
         </div>
             
             `;
@@ -91,9 +91,8 @@ function fn_obtener_clientes(page=null) {
             if (customers.length > 0) {
                 customers.forEach((item) => {
                     CLIENTES_HTML += `
-                    <tr class="bg-white dark:bg-gray-800" id="tr_cliente_${
-                        item.id
-                    }">
+                    <tr class="bg-white dark:bg-gray-800" id="tr_cliente_${item.id
+                        }">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             ${item.first_name ?? ""} ${item.last_name ?? ""}
                             </th>
@@ -112,21 +111,25 @@ function fn_obtener_clientes(page=null) {
                             
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente('${JSON.stringify(
-                                    item
-                                )}')">Editar</button>
+                            item
+                        )}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${
-                                item.id
-                            }">
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id
+                        }">
                                 
                             </td>
                         </tr>
                     `;
                 });
 
-                let pagination_links = crear_paginacion_clientes_links(response.meta.links);
+                let links = null;
+                if (response.meta && response.meta.links) {
+                    links = response.meta.links;
+                }
+                let pagination_links = crear_paginacion_clientes_links(links);
+
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
@@ -174,7 +177,10 @@ function fn_mostrar_form_editar_cliente(data) {
     // $(`#td_colspan_form_edit_client_${item.id}`).toggle();
 }
 
-function crear_paginacion_clientes_links(links) {
+function crear_paginacion_clientes_links(links = null) {
+
+    if (links == null) return false;
+
     let paginationHTML = `
     <nav aria-label="Page navigation">
         <ul class="flex items-center -space-x-px h-8 text-sm">
