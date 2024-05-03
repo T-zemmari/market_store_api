@@ -631,8 +631,6 @@
                     </table>
                 </div>
 
-
-
                 <div class="mb-8" id="contenedor_tabla_filtrado_productos">
                     <h3 class="text-lg font-semibold mb-4">Productos</h3>
                     <table class="w-full border-collapse border border-gray-300">
@@ -670,7 +668,7 @@
                             <tr>
                                 <td class="px-4 py-2 text-[13px]">type</td>
                                 <td class="px-4 py-2 text-[13px]">[eq]</td>
-                                <td class="px-4 py-2 text-[13px]">[valor]</td>default('simple');
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
                                 <td class="px-4 py-2 text-[13px]">simple,grouped,external ó variable</td>
                                 <td class="px-4 py-2 text-[13px]">/api/v1/products?type[eq]=simple</td>
                             </tr>
@@ -715,6 +713,93 @@
                                 <td class="px-4 py-2 text-[13px]">[valor]</td>
                                 <td class="px-4 py-2 text-[13px]">instock ó outofstock</td>
                                 <td class="px-4 py-2 text-[13px]">/api/v1/products?stockStatus[eq]=instock</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mb-8" id="contenedor_tabla_filtrado_pedidos">
+                    <h3 class="text-lg font-semibold mb-4">Pedidos</h3>
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-4 py-2">Parámetro</th>
+                                <th class="px-4 py-2">Operador</th>
+                                <th class="px-4 py-2">Valor</th>
+                                <th class="px-4 py-2">Valores permitidos</th>
+                                <th class="px-4 py-2">Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">customerId</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?customerId[eq]=123</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">status</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">pending, processing, on-hold, completed, cancelled, refunded, failed ó trash</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?status[eq]=processing</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">currency</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">EUR,USD</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?currency[eq]=EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">discountTotal</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?discountTotal[gte]=50</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">shippingTotal</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?shippingTotal[lte]=100</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">taxType</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">percentage,amount</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?taxType[eq]=amount</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">totalTax</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?totalTax[eq]=20</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">shippingTotalWidthTax</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?shippingTotalWidthTax[eq]=150</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">date_paid</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Fecha</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?date_paid[gte]=2022-01-01</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">date_completed</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [lt], [lte], [gt], [gte]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Fecha con formato Y-m-d</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/orders?date_completed[lte]=2022-05-01</td>
                             </tr>
                         </tbody>
                     </table>

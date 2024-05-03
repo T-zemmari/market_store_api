@@ -12,7 +12,7 @@ class CategoryFilters extends MyApiFilter
     protected $array_columns_map = [];
     protected $array_operators_map = [
         'eq'=>'=',
-        'like'=>'LIKE',
+        'like'=>'',
         'gt'=>'>',
         'gte'=>'>=',
         'lt'=>'<',
