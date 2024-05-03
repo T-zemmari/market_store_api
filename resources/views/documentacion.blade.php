@@ -456,17 +456,20 @@
                     <tbody>
                         <tr>
                             <td class="px-4 py-2 text-[14px]">400 Bad Request</td>
-                            <td class="px-4 py-2 text-[14px]">Solicitud inválida, por ejemplo, usando un método HTTP no soportado
+                            <td class="px-4 py-2 text-[14px]">Solicitud inválida, por ejemplo, usando un método HTTP no
+                                soportado
                             </td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 text-[14px]">401 , 419 , 403 Unauthorized</td>
-                            <td class="px-4 py-2 text-[14px]">Error de autenticación o permiso, por ejemplo, claves de API
+                            <td class="px-4 py-2 text-[14px]">Error de autenticación o permiso, por ejemplo, claves de
+                                API
                                 incorrectas</td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 text-[14px]">404 Not Found</td>
-                            <td class="px-4 py-2 text-[14px]">Solicitudes a recursos que no existen o están ausentes</td>
+                            <td class="px-4 py-2 text-[14px]">Solicitudes a recursos que no existen o están ausentes
+                            </td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 text-[14px]">500 Internal Server Error</td>
@@ -495,6 +498,110 @@
             </div>
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+            <div id="contenedor_filtrado">
+                <h2 id="h2_filtrado" class="text-2xl font-semibold mt-8 mb-4">Filtrado</h2>
+                <p class="p-2">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza los siguientes parámetros:</p>
+                <p class="px-2 mb-8" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo, firstName.</p>
+            
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-2">Clientes</h3>
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-4 py-2">Parámetro</th>
+                                <th class="px-4 py-2">Operador</th>
+                                <th class="px-4 py-2">Valor</th>
+                                <th class="px-4 py-2">Valores permitidos</th>
+                                <th class="px-4 py-2">Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">firstName</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?firstName[eq]=John</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">lastName</td>
+                                <td class="px-4 py-2 text-[13px]">[eq], [like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?lastName[like]=Doe</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">customerType</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">business or individual</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?customerType[eq]=business</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">status</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">active or deleted</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?customerType[eq]=active</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">email</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?email[eq]=example@example.com</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">postalCode</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto o número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?postalCode[eq]=12345</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">city</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?city[eq]=New York</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">state</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?state[eq]=California</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">country</td>
+                                <td class="px-4 py-2 text-[13px]">[eq],[like]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Texto</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?country[eq]=USA</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">phone</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Número</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?phone[eq]=1234567890</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-[13px]">isPayingCustomer</td>
+                                <td class="px-4 py-2 text-[13px]">[eq]</td>
+                                <td class="px-4 py-2 text-[13px]">[valor]</td>
+                                <td class="px-4 py-2 text-[13px]">Booleano (true o false)</td>
+                                <td class="px-4 py-2 text-[13px]">/api/v1/customers?isPayingCustomer[eq]=true</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
 
             <div id="contenedor_cliente_propiedades">
                 <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del Cliente</h2>
