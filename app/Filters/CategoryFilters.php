@@ -6,12 +6,13 @@ class CategoryFilters extends MyApiFilter
 {
 
     protected $array_params = [
-        'name'=>['eq'],
+        'name'=>['eq','like'],
         'parent'=>['eq','lt','lte','gt','gte'],
     ];
     protected $array_columns_map = [];
     protected $array_operators_map = [
         'eq'=>'=',
+        'like'=>'LIKE',
         'gt'=>'>',
         'gte'=>'>=',
         'lt'=>'<',

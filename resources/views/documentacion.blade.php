@@ -441,6 +441,44 @@
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
+            <div id="contenedor_errores">
+                <h2 id="h2_errores" class="text-2xl font-semibold mt-8 mb-4">Errores</h2>
+                <p class="p-2" id="p_errores">
+                    Ocasionalmente puedes encontrarte con errores al acceder a la API . Hay cuatro tipos posibles:
+                </p>
+                <table class="w-full mt-4 border-collapse border border-gray-300">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="px-4 py-2">Código de Error</th>
+                            <th class="px-4 py-2">Tipo de Error</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2 text-[14px]">400 Bad Request</td>
+                            <td class="px-4 py-2 text-[14px]">Solicitud inválida, por ejemplo, usando un método HTTP no soportado
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-[14px]">401 , 419 , 403 Unauthorized</td>
+                            <td class="px-4 py-2 text-[14px]">Error de autenticación o permiso, por ejemplo, claves de API
+                                incorrectas</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-[14px]">404 Not Found</td>
+                            <td class="px-4 py-2 text-[14px]">Solicitudes a recursos que no existen o están ausentes</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-[14px]">500 Internal Server Error</td>
+                            <td class="px-4 py-2 text-[14px]">Error del servidor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
             <div id="contenedor_paginacion">
                 <h2 id="h2_paginacion" class="text-2xl font-semibold mt-8 mb-4">Paginación</h2>
                 <p class="p-2" id="p_paginacion">
@@ -450,7 +488,7 @@
                 </p>
                 <p class="p-2">
                     Ten en cuenta que nuestra API implementa una paginación que limita el número máximo de registros
-                    devueltos por página a 10. Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
+                    devueltos por página a 50. Esto ayuda a reducir la carga en el servidor y a mejorar la eficiencia de
                     las consultas. Si necesitas más registros, puedes ajustar la paginación utilizando los parámetros
                     adecuados en tu solicitud.
                 </p>

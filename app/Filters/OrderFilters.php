@@ -5,14 +5,14 @@ namespace App\Filters;
 class OrderFilters extends MyApiFilter
 {
     protected $array_params = [
-        'customer_id' => ['eq'],
-        'status' => ['eq'],
+        'customerId' => ['eq'],
+        'status' => ['eq','like'],
         'currency' => ['eq'],
-        'discount_total' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'shipping_total' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'tax_type' => ['eq'],
-        'total_tax' => ['eq'],
-        'shipping_total_width_tax' => ['eq'],
+        'discountTotal' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'shippingTotal' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'taxType' => ['eq'],
+        'totalTax' => ['eq'],
+        'shippingTotalWidthTax' => ['eq'],
         'date_paid' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'date_completed' => ['eq', 'lt', 'lte', 'gt', 'gte'],
     ];
@@ -24,9 +24,11 @@ class OrderFilters extends MyApiFilter
         'totalTax' => 'total_tax',
         'datePaid' => 'date_paid',
         'dateCompleted' => 'date_completed',
+        'shippingTotalWidthTax' => 'shipping_total_width_tax',
     ];
     protected $array_operators_map = [
         'eq' => '=',
+        'like' => 'LIKE',
         'gt' => '>',
         'gte' => '>=',
         'lt' => '<',

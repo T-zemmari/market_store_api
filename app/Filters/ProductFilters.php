@@ -6,28 +6,28 @@ class ProductFilters extends MyApiFilter
 {
 
     protected $array_params = [
-        'name' => ['eq'],
+        'name' => ['eq','like'],
+        'categoryId' => ['eq'],
         'parent' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'sku' => ['eq'],
         'type' => ['eq'],
         'status' => ['eq'],
-        'catalog_visibility' => ['eq'],
-        'price' => ['eq'],
-        'regular_price' => ['eq'],
-        'sale_price' => ['eq'],
-        'on_sale' => ['eq'],
-        'stock_quantity' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'stock_status' => ['eq'],
+        'price' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'salePrice' => ['eq'],
+        'OnSale' => ['eq'],
+        'stockQuantity' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'stockStatus' => ['eq','like'],
     ];
     protected $array_columns_map = [
         'categoryId' => 'category_id',
-        'catalogVisibility' => 'catalog_visibility',
         'OnSale' => 'on_sale',
         'salePrice' => 'sale_price',
-        'Stock' => 'stock_quantity',
+        'stockQuantity' => 'stock_quantity',
+        'stockStatus' => 'stock_status',
     ];
     protected $array_operators_map = [
         'eq' => '=',
+        'like' => 'LIKE',
         'gt' => '>',
         'gte' => '>=',
         'lt' => '<',

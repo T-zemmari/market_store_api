@@ -41,15 +41,20 @@ class OrderController extends Controller
                     $operator = $queryItem[1]; // Operador
                     $value = $queryItem[2]; // Valor
 
-                    // Aplicamos la condición a la consulta
-                    $ordersQuery->where($column, $operator, $value);
+                    // Añadimos las condiciones de filtro a la consulta
+                    if ($operator == 'LIKE') {
+                        // Para operadores LIKE, usamos '%' para la comparación
+                        $ordersQuery->whereRaw("$column $operator ?", ["$value%"]);
+                    } else {
+                        $ordersQuery->where($column, $operator, $value);
+                    }
                 }
 
                 // Obténemos la cantidad total de los pedidos que coinciden con los filtros
                 $totalOrders = $ordersQuery->count();
 
-                // Si hay más de 10 pedidos, paginamos; de lo contrario, obtenenemos todos los pedidos
-                $orders = $totalOrders > 10 ? $ordersQuery->paginate() : $ordersQuery->get();
+                // Si hay más de 50 pedidos, paginamos; de lo contrario, obtenenemos todos los pedidos
+                $orders = $totalOrders > 50 ? $ordersQuery->paginate(50) : $ordersQuery->get();
 
                 // Devuelvemos la colección de pedidos
                 return new OrderCollection($orders);

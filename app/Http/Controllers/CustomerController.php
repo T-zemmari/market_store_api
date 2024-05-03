@@ -34,24 +34,38 @@ class CustomerController extends Controller
 
                 // Inicializamos la consulta con todos los clientes
                 $customersQuery = Customer::where('status', 'active');
+                
 
-                // Aplicamos las condiciones de filtro a la consulta
                 foreach ($queryItems as $queryItem) {
                     $column = $queryItem[0]; // Nombre de la columna
                     $operator = $queryItem[1]; // Operador
                     $value = $queryItem[2]; // Valor
-
-                    // Aplicamos la condición a la consulta
-                    $customersQuery->where($column, $operator, $value);
+                
+                    // Añadimos las condiciones de filtro a la consulta
+                    if ($operator == 'LIKE') {
+                        // Para operadores LIKE, usamos '%' para la comparación
+                        $customersQuery->whereRaw("$column $operator ?", ["$value%"]);
+                    } else {
+                        $customersQuery->where($column, $operator, $value);
+                    }
+                    
                 }
+                
+                // Mostrar la consulta SQL final después de aplicar todos los filtros
+                // $sql = $customersQuery->toSql();
+                // $bindings = $customersQuery->getBindings();
+
+                // dump($sql);
+                // dump($bindings);
+                // dd($sql);
 
                 // Obténemos la cantidad total de clientes que coinciden con los filtros
                 $totalCustomers = $customersQuery->count();
 
-                // Si hay más de 10 clientes, paginamos; de lo contrario, obtenenemos todos los clientes
+                // Si hay más de 50 clientes, paginamos; de lo contrario, obtenemos todos los clientes
                 $customers = $totalCustomers > 50 ? $customersQuery->paginate(50) : $customersQuery->get();
 
-                // Devuelvemos la colección de clientes
+                // Devolvemos la colección de clientes
                 return new CustomerCollection($customers);
             } else {
                 return response()->json(['error' => 'You are not authorized to view this information'], 403);

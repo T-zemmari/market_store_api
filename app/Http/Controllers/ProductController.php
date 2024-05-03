@@ -40,15 +40,20 @@ class ProductController extends Controller
                     $operator = $queryItem[1]; // Operador
                     $value = $queryItem[2]; // Valor
 
-                    // Aplicamos la condición a la consulta
-                    $productsQuery->where($column, $operator, $value);
+                    // Añadimos las condiciones de filtro a la consulta
+                    if ($operator == 'LIKE') {
+                        // Para operadores LIKE, usamos '%' para la comparación
+                        $productsQuery->whereRaw("$column $operator ?", ["$value%"]);
+                    } else {
+                        $productsQuery->where($column, $operator, $value);
+                    }
                 }
 
                 // Obténemos la cantidad total de los productos que coinciden con los filtros
                 $totalProducts = $productsQuery->count();
 
-                // Si hay más de 10 productos, paginamos; de lo contrario, obtenenemos todos los productos
-                $products = $totalProducts > 10 ? $productsQuery->paginate() : $productsQuery->get();
+                // Si hay más de 50 productos, paginamos; de lo contrario, obtenenemos todos los productos
+                $products = $totalProducts > 50 ? $productsQuery->paginate(50) : $productsQuery->get();
 
                 // Devuelvemos la colección de productos
                 return new ProductCollection($products);

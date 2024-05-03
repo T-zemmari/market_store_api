@@ -6,9 +6,9 @@ class CustomerFilters extends MyApiFilter
 {
 
     protected $array_params = [
-        'first_name'=>['eq'],
-        'last_name'=>['eq'],
-        'customer_type'=>['eq'],
+        'firstName'=>['eq','like'],
+        'lastName'=>['eq','like'],
+        'customerType'=>['eq'],
         'email'=>['eq'],
         'adress'=>['eq'],
         'postalCode'=>['eq'],
@@ -27,6 +27,7 @@ class CustomerFilters extends MyApiFilter
     ];
     protected $array_operators_map = [
         'eq'=>'=',
+        'like'=>'LIKE',
         'gt'=>'>',
         'gte'=>'>=',
         'lt'=>'<',

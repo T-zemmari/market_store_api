@@ -38,19 +38,25 @@ class CategoryController extends Controller
 
                 // Aplicamos las condiciones de filtro a la consulta
                 foreach ($queryItems as $queryItem) {
+
                     $column = $queryItem[0]; // Nombre de la columna
                     $operator = $queryItem[1]; // Operador
                     $value = $queryItem[2]; // Valor
 
-                    // Aplicamos la condición a la consulta
-                    $catgoriesQuery->where($column, $operator, $value);
+                    // Añadimos las condiciones de filtro a la consulta
+                    if ($operator == 'LIKE') {
+                        // Para operadores LIKE, usamos '%' para la comparación
+                        $catgoriesQuery->whereRaw("$column $operator ?", ["$value%"]);
+                    } else {
+                        $catgoriesQuery->where($column, $operator, $value);
+                    }
                 }
 
                 // Obténemos la cantidad total de categorias que coinciden con los filtros
                 $totalCategories = $catgoriesQuery->count();
 
-                // Si hay más de 10 categorias, paginamos; de lo contrario, obtenenemos todas las categorias
-                $categories = $totalCategories > 10 ? $catgoriesQuery->paginate() : $catgoriesQuery->get();
+                // Si hay más de 50 categorias, paginamos; de lo contrario, obtenenemos todas las categorias
+                $categories = $totalCategories > 50 ? $catgoriesQuery->paginate(50) : $catgoriesQuery->get();
 
                 // Devuelvemos la colección de categorias
                 return new CategoryCollection($categories);
