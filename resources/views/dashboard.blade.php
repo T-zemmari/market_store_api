@@ -49,7 +49,7 @@
                         <li class="cursor-pointer">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                onclick="fn_obtener_customers()">
+                                onclick="fn_obtener_clientes()">
                                 Clientes
                             </span>
                         </li>
