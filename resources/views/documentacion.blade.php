@@ -1,6 +1,31 @@
 <x-guest-layout>
     @include('layouts.partials.navbar')
 
+    <style>
+        /* Estilos personalizados para la barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 8px;
+            /* Ancho de la barra de desplazamiento */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Color de fondo de la pista de desplazamiento */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Color del "pulgar" de la barra de desplazamiento */
+            border-radius: 4px;
+            /* Borde redondeado del "pulgar" */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Color del "pulgar" al pasar el mouse sobre él */
+        }
+    </style>
+
 
     <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"
         aria-controls="sidebar-multi-level-sidebar" type="button"
@@ -18,8 +43,8 @@
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#1f2937] rounded-lg ">
             <ul class="space-y-2 font-medium">
-                <li>
-                    <a href="{{ route('documentacion') }}"
+                <li class="cursor-pointer sticky" onclick="fn_cerrar_menu()">
+                    <a
                         class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -29,23 +54,16 @@
                             <path
                                 d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                         </svg>
-                        <span class="ms-3">Inicio</span>
+                        <span class="ms-3">Cerrar menu</span>
                     </a>
                 </li>
-                <li>
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
-                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-intro" data-collapse-toggle="dropdown-intro"
-                        data-dropdownname="dropdown-intro"
-                        >
+                        class="dropdown_accion intro_button flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
+                        data-dropdownname="dropdown-intro">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Introducción</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-intro" class="py-2 space-y-2">
+                    <ul id="dropdown-intro" class="mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_requisitos')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -63,26 +81,7 @@
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_mas')">
-                            <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Más</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <button type="button"
-                        class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth"
-                        data-dropdownname="dropdown-auth"
-                        >
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Authenticación</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <ul id="dropdown-auth" class="hidden py-2 space-y-2">
+
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -91,20 +90,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-costumers" data-collapse-toggle="dropdown-costumers"
-                        data-dropdownname="dropdown-costumers"
-                        >
+                        data-dropdownname="dropdown-costumers">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Clientes</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-costumers" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-costumers" class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_cliente_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -144,20 +137,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-categories" data-collapse-toggle="dropdown-categories"
-                        data-dropdownname="dropdown-categories"
-                        >
+                        data-dropdownname="dropdown-categories">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Categorias</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-categories" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-categories" class="hidden hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_categoria')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -196,20 +182,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-products" data-collapse-toggle="dropdown-products"
-                        data-dropdownname="dropdown-products"
-                        >
+                        data-dropdownname="dropdown-products">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Productos</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-products" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-products" class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_producto')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -248,20 +227,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-images" data-collapse-toggle="dropdown-images"
-                        data-dropdownname="dropdown-images"
-                        >
+                        data-dropdownname="dropdown-images">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Imagenes</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-images" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-images"
+                        class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px] transition-all duration-300">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_imagen_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -282,20 +255,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="border-b-[1px] border-indigo-800 p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
-                        aria-controls="dropdown-orders" data-collapse-toggle="dropdown-orders"
-                        data-dropdownname="dropdown-orders"
-                        >
+                        data-dropdownname="dropdown-orders">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Pedidos</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
                     </button>
-                    <ul id="dropdown-orders" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-orders"
+                        class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px] transition-all duration-300">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_pedido_propiedades')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -2595,7 +2562,7 @@
                         <code class="text-sm">/api/v1/orders/{id}</code>
                     </div>
                 </div>
-            </div>   
+            </div>
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 

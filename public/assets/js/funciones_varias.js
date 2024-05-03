@@ -3,15 +3,19 @@ $(document).ready(function () {
 
     $('.dropdown_accion').click(function () {
         const dropdownName = $(this).attr('data-dropdownname');
-        if(dropdownName!='dropdown-intro'){
-             $('[id^="dropdown-"]').not('#dropdown-' + dropdownName).not('#dropdown-intro').addClass('hidden');
-        $('#dropdown-' + dropdownName).toggleClass('hidden'); 
-        }
-      
+        $(`#${dropdownName}`).slideToggle(300);
     });
-
-
+    
 })
+
+function fn_cerrar_menu(){
+
+    $(`.dropdown_accion`).each(function(){
+        const dropdownName = $(this).attr('data-dropdownname');
+        $(`#${dropdownName}`).hide(300);
+    })
+
+}
 
 function fn_copiar_codigo(elemento_id) {
     const elemento = document.getElementById(elemento_id);
