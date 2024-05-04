@@ -157,7 +157,7 @@
     <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0">
         <div class="hidden w-full h-[89vh] flex justify-center items-center" id="contenedor_spinner">
             <div role="status" class="p-4 flex justify-center items-center">
-                <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin fill-blue-600"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
@@ -169,23 +169,198 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class=" contenedor_crear_nuevo_producto w-full  p-4 mb-10" data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto">
-            <h4 class="ml-5 mt-10 text-3xl font-bold">Formulario nuevo producto</h4>
+        <div class=" contenedor_crear_nuevo_producto w-full  p-4 mb-10" data-info="contenedor_crear_nuevo_producto"
+            id="contenedor_crear_nuevo_producto">
+            <div class="w-full mt-5 flex flex-row gap-2 ">
+                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data">
+                    <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
+                        <div class="conenedor_img_prreview w-[60%] h-[60%] border-2 border-gray-200 mt-5"></div>
+                        <div
+                            class="conenedor_img_prreview w-[100%] h-[40%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2">
+                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                        </div>
+                        <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
+                            <div class="w-full">
+                                <label class="block mb-2 text-sm font-medium text-gray-900"
+                                    for="principal_image">Añadir imagen principal</label>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                                    id="principal_image" type="file">
+                            </div>
+                            <div class="w-full">
+                                <label class="block mb-2 text-sm font-medium text-gray-900" for="images">Añadir
+                                    resto de imagenes</label>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                                    id="images" name="images[]" type="file" multiple>
+                            </div>
+                        </div>
 
-            <div class="w-full h-[600px] mt-5 flex flex-row gap-2 ">
-                <div class="w-[40%] h-[500px] border-2 border-gray-200 flex flex-col  items-center">
-                    <div class="conenedor_img_prreview w-[60%] h-[60%] border-2 border-gray-200 mt-5"></div>
-                    <div class="conenedor_img_prreview w-[100%] h-[40%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2">
-                        <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                        <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                        <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                        <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                        <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
                     </div>
-                </div>
-                <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
+                    <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
+                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                            <h2 class="text-2xl font-semibold">Rellena el formulario del producto</h2>
+                        </div>
+                        <div class="w-full p-6">
 
-                </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                <div>
+                                    <label for="select_categories"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
+                                        Seleccionar Categoria
+                                    </label>
+                                    <select id="select_categories"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="select_type" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Seleccionar tipo
+                                    </label>
+                                    <select id="select_type"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+                                        <option value="simple">Simple</option>
+                                        <option value="grouped">Grouped</option>
+                                        <option value="external">External</option>
+                                        <option value="variable">Variable</option>
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="select_status" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Seleccionar tipo
+                                    </label>
+                                    <select id="select_status"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+                                        <option value="publish">Publish</option>
+                                        <option value="draft">Draft</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="website" class="block mb-2 text-sm font-medium text-gray-900">
+                                        SKU
+                                    </label>
+                                    <input type="text" id="website"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Sku" required />
+                                </div>
+                                <div>
+                                    <label for="product_ean" class="block mb-2 text-sm font-medium text-gray-900">
+                                        EAN
+                                    </label>
+                                    <input type="text" id="product_ean"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Ean" />
+                                </div>
+                                <div>
+                                    <label for="product_ean_13" class="block mb-2 text-sm font-medium text-gray-900">
+                                        EAN-13
+                                    </label>
+                                    <input type="text" id="product_ean_13"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Ean13" />
+                                </div>
+
+
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                <div>
+                                    <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900">
+                                        EAN-13
+                                    </label>
+                                    <input type="text" id="product_name"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el nombre del producto" />
+                                </div>
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div>
+                                    <label for="short_description"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
+                                        Descripción corta
+                                    </label>
+                                    <textarea id="short_description" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Escribe una descripción corta"></textarea>
+
+                                </div>
+                                <div>
+                                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Descripción
+                                    </label>
+                                    <textarea id="description" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Escribe la descripcion del producto"></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                <div>
+                                    <label for="regular_price" class="block mb-2 text-sm font-medium text-gray-900">
+                                        PVR
+                                    </label>
+                                    <input type="number" id="regular_price"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="PVR" />
+                                </div>
+                                <div>
+                                    <label for="sale_price" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Precio de venta
+                                    </label>
+                                    <input type="number" id="sale_price"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Precio sin confirmar" />
+                                </div>
+                                <div>
+                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Precio que se va a mostrar
+                                    </label>
+                                    <input type="number" id="price"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Precio Confirmado" />
+                                </div>
+                                <div>
+                                    <label for="select_stock_status"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
+                                        Seleccionar tipo
+                                    </label>
+                                    <select id="select_stock_status"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+                                        <option value="instock">Instock</option>
+                                        <option value="outofstock">Outofstock</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="stock_quantity" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Stock actual
+                                    </label>
+                                    <input type="number" id="stock_quantity"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Stock" />
+                                </div>
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                <button type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                    onclick="fn_guardar_nuevo_producto()">Guardar</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>
