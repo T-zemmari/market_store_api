@@ -92,9 +92,24 @@ class ProductController extends Controller
                     return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
                 }
 
+                $path = 'upload/imgs/';
+                $url_image_p = null;
+                if ($request->hasFile('principal_image')) {
+                    $file_image = $request->file('principal_image');
+                    $extention_img = $file_image->getClientOriginalExtension();
+                    $filename_img = 'img_p_' . time() . '.' . $extention_img;
+                    $file_image->move($path, $filename_img);
+                    $url_image_p = $path . $filename_img;
+                }
 
 
-                $newProduct = Product::create($request->all());
+                $newProductData = $request->all();
+                if (is_string($url_image_p)) {
+                    $newProductData['image'] = $url_image_p;
+                }
+
+                $newProduct = Product::create($newProductData);
+
                 //$newProduct = Product::find(1);
 
                 // Procesar y almacenar imágenes si se enviaron
@@ -102,7 +117,6 @@ class ProductController extends Controller
 
                 if ($request->hasFile('images')) {
                     //dump($request->file('images'));
-                    $path = 'upload/imgs/';
 
                     foreach ($request->file('images') as $image) {
                         // Procesar cada imagen individualmente

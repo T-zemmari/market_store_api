@@ -49,4 +49,5 @@ function fn_scroll_to(elemento_id) {
 
 function fn_mostrar_formulario(elemento_id) {
     $(`#${elemento_id}`).toggle();
+    fn_obtener_pedidos();
 }
