@@ -48,14 +48,14 @@
                         </svg>
                     </button>
                     <ul id="dropdown-clientes" class="py-2 space-y-2">
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_obtener_clientes()">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                onclick="fn_obtener_clientes()">
+                                >
                                 Clientes
                             </span>
                         </li>
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_cliente('contenedor_crear_nuevo_cliente')">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo cliente
@@ -77,16 +77,17 @@
                         </svg>
                     </button>
                     <ul id="dropdown-categorias" class="py-2 space-y-2">
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_obtener_categorias()">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                onclick="fn_obtener_categorias()">
+                                >
                                 Categorias
                             </span>
                         </li>
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_categoria('contenedor_crear_nueva_categoria')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
+                                >
                                 Nueva categoria
                             </span>
                         </li>
@@ -106,16 +107,17 @@
                         </svg>
                     </button>
                     <ul id="dropdown-productos" class="py-2 space-y-2">
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_obtener_productos()">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
-                                onclick="fn_obtener_productos()">
+                                >
                                 Productos
                             </span>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_mostrar_formulario('contenedor_crear_nuevo_producto')">
+                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_producto('contenedor_crear_nuevo_producto')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
+                                >
                                 Nuevo producto
                             </span>
                         </li>
@@ -135,14 +137,14 @@
                         </svg>
                     </button>
                     <ul id="dropdown-pedidos" class="py-2 space-y-2">
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_obtener_pedidos()">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                onclick="fn_obtener_pedidos()">
+                                >
                                 Pedidos
                             </span>
                         </li>
-                        <li class="cursor-pointer">
+                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_generar_un_pedido('contenedor_generar_un_pedido')">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Crear un pedido
@@ -155,7 +157,7 @@
     </aside>
 
     <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0">
-        <div class="hidden w-full h-[89vh] flex justify-center items-center" id="contenedor_spinner">
+        <div class="hidden w-full h-[89vh]  justify-center items-center" id="contenedor_spinner">
             <div role="status" class="p-4 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin fill-blue-600"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,14 +171,15 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class=" contenedor_crear_nuevo_producto w-full  p-4 mb-10" data-info="contenedor_crear_nuevo_producto"
-            id="contenedor_crear_nuevo_producto">
+        <div class="contenedor_formularios contenedor_crear_nuevo_producto w-full  p-4 mb-10"
+            data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto" style="display: none">
             <div class="w-full mt-5 flex flex-row gap-2 ">
                 <form class="w-full flex flex-row gap-2" enctype="multipart/form-data">
                     <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
-                        <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center" id="conenedor_producto_img_prev"></div>
-                        <div
-                            class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2" id="conenedor_producto_resto_img_prev">
+                        <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center"
+                            id="conenedor_producto_img_prev"></div>
+                        <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2"
+                            id="conenedor_producto_resto_img_prev">
                         </div>
                         <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
                             <div class="w-full">
@@ -351,14 +354,22 @@
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                                     onclick="fn_guardar_nuevo_producto()">Guardar</button>
                             </div>
-
-
                         </div>
                     </div>
                 </form>
             </div>
 
         </div>
+        <div class="contenedor_formularios contenedor_crear_nueva_categoria w-full  p-4 mb-10"
+            data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none">
+        </div>
+        <div class="contenedor_formularios contenedor_crear_nuevo_cliente  w-full  p-4 mb-10"
+            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display: none">
+        </div>
+        <div class="contenedor_formularios contenedor_generar_un_pedido w-full  p-4 mb-10"
+            data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none">
+        </div>
+
         <div class="p-4 min-h-[89vh] flex flex-col justify-start items-start" id="contenedor_dashboards_principal">
 
 

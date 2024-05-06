@@ -16,7 +16,7 @@ $(document).ready(function () {
                 let imageData = reader.result;
                 let imgElement = document.createElement('img');
                 imgElement.src = imageData;
-                imgElement.style.width = '100%';
+                imgElement.style.maxHeight = '100%';
                 $(`#conenedor_producto_img_prev`).append(imgElement);
 
             }
@@ -94,9 +94,12 @@ function fn_scroll_to(elemento_id) {
     }
 }
 
-function fn_mostrar_formulario(elemento_id) {
-    $(`#${elemento_id}`).toggle();
-    //fn_obtener_productos();
+function fn_mostrar_formulario_crear_producto(elemento_id) {
+    $('.contenedor_formularios').each(function () {
+        $(this).hide();
+    })
+    $(`#${elemento_id}`).show();
+    fn_obtener_productos();
     fn_obtener_categorias_para_el_formulario_producto();
 }
 
