@@ -33,12 +33,12 @@ class CategoryFactory extends Factory
         ];
     }
 
-    public function configure()
-    {
-        return $this->afterCreating(function (Category $category) {
-            $numberOfProducts = rand(1, 10);
-            $products = Product::factory($numberOfProducts)->create(['category_id' => $category->id]);
-            $category->products()->saveMany($products);
-        });
-    }
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Category $category) {
+    //         $numberOfProducts = rand(1, 10);
+    //         $products = Product::factory($numberOfProducts)->create(['category_id' => $category->id]);
+    //         $category->products()->saveMany($products);
+    //     });
+    // }
 }

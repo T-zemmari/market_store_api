@@ -35,8 +35,8 @@ $(document).ready(function () {
                 });
                 $(this).val('');
                 return false;
-
             }
+
             Array.from($(this)[0].files).forEach(file => {
                 let reader = new FileReader();
                 reader.onload = () => {
@@ -168,74 +168,87 @@ function fn_guardar_nuevo_producto() {
         return;
     }
 
-    if (!validar_inputs) {
+    if (images.length > 5) {
         Swal.fire({
-            html: `<h4><b>Por favor, complete todos los campos.</b></h4>`,
+            html: `<h4><b>Solo se permiten 5 imagenes por producto</b></h4>`,
             icon: `error`,
         });
-
-        return false;
+        return;
     }
+
+    // if (!validar_inputs) {
+    //     Swal.fire({
+    //         html: `<h4><b>Por favor, complete todos los campos.</b></h4>`,
+    //         icon: `error`,
+    //     });
+
+    //     return false;
+    // }
 
     // Crear un nuevo FormData
-    let formData = new FormData();
 
-    // Agregar los valores de los campos al FormData
-    formData.append("category_id", category_id);
-    formData.append("name", name);
-    formData.append("sku", sku);
-    formData.append("ean", ean);
-    formData.append("ean_13", ean_13);
-    formData.append("type", type);
-    formData.append("status", status);
-    formData.append("catalog_visibility", "visible");
+    if (validar_inputs()) {
 
-    formData.append("short_description", short_description);
-    formData.append("description", description);
 
-    formData.append("regular_price", regular_price);
-    formData.append("sale_price", sale_price);
-    formData.append("price", price);
+        let formData = new FormData();
 
-    formData.append("valid", 1);
-    formData.append("on_sale", 0);
+        // Agregar los valores de los campos al FormData
+        formData.append("category_id", category_id);
+        formData.append("name", name);
+        formData.append("sku", sku);
+        formData.append("ean", ean);
+        formData.append("ean_13", ean_13);
+        formData.append("type", type);
+        formData.append("status", status);
+        formData.append("catalog_visibility", "visible");
 
-    formData.append("stock_status", stock_status);
-    formData.append("stock_quantity", stock_quantity);
+        formData.append("short_description", short_description);
+        formData.append("description", description);
 
-    formData.append("weight", "");
-    formData.append("dimensions", "");
-    formData.append("variation", 0);
-    formData.append("featured", 0);
-    formData.append("discontinued", 0);
+        formData.append("regular_price", regular_price);
+        formData.append("sale_price", sale_price);
+        formData.append("price", price);
 
-    formData.append("image", principal_img);
+        formData.append("valid", 1);
+        formData.append("on_sale", 0);
 
-    // Agregar las imágenes al FormData
-    for (let i = 0; i < images.length; i++) {
-        formData.append("images[]", images[i]);
+        formData.append("stock_status", stock_status);
+        formData.append("stock_quantity", stock_quantity);
+
+        formData.append("weight", "");
+        formData.append("dimensions", "");
+        formData.append("variation", 0);
+        formData.append("featured", 0);
+        formData.append("discontinued", 0);
+
+        formData.append("principal_image", principal_img[0]);
+
+        // Agregar las imágenes al FormData
+        for (let i = 0; i < images.length; i++) {
+            formData.append("images[]", images[i]);
+        }
+
+        // Realizar la solicitud AJAX
+        $.ajax({
+            url: "http://localhost:8000/api/v1/products",
+            method: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                Authorization: "Bearer " + $("#tkn").val(),
+                Accept: "application/json",
+            },
+            success: function (response) {
+                console.log("Producto creado con éxito:", response);
+                // Aquí puedes manejar la respuesta según tu lógica de frontend
+            },
+            error: function (xhr, status, error) {
+                console.error("Error al crear el producto:", error);
+                // Aquí puedes manejar el error según tu lógica de frontend
+            },
+        });
     }
-
-    // Realizar la solicitud AJAX
-    $.ajax({
-        url: "http://localhost:8000/api/v1/products",
-        method: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        headers: {
-            Authorization: "Bearer " + $("#tkn").val(),
-            Accept: "application/json",
-        },
-        success: function (response) {
-            console.log("Producto creado con éxito:", response);
-            // Aquí puedes manejar la respuesta según tu lógica de frontend
-        },
-        error: function (xhr, status, error) {
-            console.error("Error al crear el producto:", error);
-            // Aquí puedes manejar el error según tu lógica de frontend
-        },
-    });
 }
 
 function validar_inputs() {
@@ -255,29 +268,76 @@ function validar_inputs() {
     let stock_status = $("#select_stock_status").val();
     let stock_quantity = $("#stock_quantity").val();
 
-    // Verificar si se adjuntaron imágenes
-    let images = document.getElementById("input_images").files;
-    if (images.length === 0) {
-        alert("Por favor, adjunta al menos una imagen.");
+
+    if (category_id == '' || category_id == 0) {
+        Swal.fire({
+            html: `<h4><b>Selecciona una catogoria</b></h4>`,
+            icon: `error`,
+        });
         return false;
     }
 
-    // Verificar si algún campo está vacío o no es válido
-    if (
-        !category_id ||
-        !type ||
-        !status ||
-        !sku ||
-        !name ||
-        !short_description ||
-        !description ||
-        !regular_price ||
-        !sale_price ||
-        !price ||
-        !stock_status ||
-        !stock_quantity
-    ) {
-        //alert("Por favor, complete todos los campos.");
+    if (type == '' || type == 0 || type == 'Seleccionar') {
+        Swal.fire({
+            html: `<h4><b>Selecciona el tipo</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (status == '' || status == 0 || type == 'Seleccionar') {
+        Swal.fire({
+            html: `<h4><b>Selecciona el estado</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (sku == '') {
+        Swal.fire({
+            html: `<h4><b>El campo sku es requerido</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (name == '') {
+        Swal.fire({
+            html: `<h4><b>El campo nombre es requerido</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (regular_price == '') {
+        Swal.fire({
+            html: `<h4><b>El campo PVR es requerido</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (sale_price == '') {
+        Swal.fire({
+            html: `<h4><b>El campo precio de venta es requerido</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (price == '') {
+        Swal.fire({
+            html: `<h4><b>El campo Precio que se va a mostrar es requerido</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (stock_status == '') {
+        Swal.fire({
+            html: `<h4><b>Selecciona si esta fuera de stock</b></h4>`,
+            icon: `error`,
+        });
+        return false;
+    }
+    if (stock_quantity == '') {
+        Swal.fire({
+            html: `<h4><b>Rellena el stock inicial</b></h4>`,
+            icon: `error`,
+        });
         return false;
     }
 
