@@ -174,14 +174,9 @@
             <div class="w-full mt-5 flex flex-row gap-2 ">
                 <form class="w-full flex flex-row gap-2" enctype="multipart/form-data">
                     <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
-                        <div class="conenedor_img_prreview w-[60%] h-[60%] border-2 border-gray-200 mt-5"></div>
+                        <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center" id="conenedor_producto_img_prev"></div>
                         <div
-                            class="conenedor_img_prreview w-[100%] h-[40%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2">
-                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
-                            <div class="w-[80px] h-[80px] border-2 border-gray-200"></div>
+                            class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2" id="conenedor_producto_resto_img_prev">
                         </div>
                         <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
                             <div class="w-full">

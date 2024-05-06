@@ -5,6 +5,53 @@ $(document).ready(function () {
         const dropdownName = $(this).attr("data-dropdownname");
         $(`#${dropdownName}`).slideToggle(300);
     });
+
+    $(`#principal_image`).change(function () {
+        console.log($(this)[0].files[0])
+        if ($(this)[0].files && $(this)[0].files[0]) {
+            let file = $(this)[0].files[0];
+
+            let reader = new FileReader();
+            reader.onload = () => {
+                let imageData = reader.result;
+                let imgElement = document.createElement('img');
+                imgElement.src = imageData;
+                imgElement.style.width = '100%';
+                $(`#conenedor_producto_img_prev`).append(imgElement);
+
+            }
+            reader.readAsDataURL(file);
+        }
+    })
+
+    $(`#images`).change(function () {
+        $(`#conenedor_producto_resto_img_prev`).css({ 'height': '1%' });
+        $(`#conenedor_producto_resto_img_prev`).html(``);
+        if ($(this)[0].files && $(this)[0].files.length > 0) {
+            if ($(this)[0].files.length > 5) {
+                Swal.fire({
+                    html: `<h4><b>Maximo 5 imagenes por producto</b></h4>`,
+                    icon: `error`,
+                });
+                $(this).val('');
+                return false;
+
+            }
+            Array.from($(this)[0].files).forEach(file => {
+                let reader = new FileReader();
+                reader.onload = () => {
+                    let imgData = document.createElement('img');
+                    imgData.src = reader.result;
+                    imgData.style.Width = '80px';
+                    imgData.style.height = '80px';
+                    $(`#conenedor_producto_resto_img_prev`).append(imgData);
+                    $(`#conenedor_producto_resto_img_prev`).css({ 'height': '40%' });
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    });
+
 });
 
 function fn_cerrar_menu() {
