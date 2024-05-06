@@ -241,7 +241,7 @@ function fn_guardar_nuevo_producto() {
             },
             success: function (response) {
                 console.log("Producto creado con éxito:", response);
-                // Aquí puedes manejar la respuesta según tu lógica de frontend
+                window.location.reload();
             },
             error: function (xhr, status, error) {
                 console.error("Error al crear el producto:", error);

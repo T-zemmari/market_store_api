@@ -233,7 +233,7 @@
                                 </div>
                                 <div>
                                     <label for="select_status" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Seleccionar tipo
+                                        Seleccionar estado
                                     </label>
                                     <select id="select_status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -331,7 +331,7 @@
                                 <div>
                                     <label for="select_stock_status"
                                         class="block mb-2 text-sm font-medium text-gray-900">
-                                        Seleccionar tipo
+                                        Seleccionar estado del stock
                                     </label>
                                     <select id="select_stock_status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
