@@ -50,14 +50,14 @@
                     <ul id="dropdown-clientes" class="py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_obtener_clientes()">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] ">
                                 Clientes
                             </span>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_cliente('contenedor_crear_nuevo_cliente')">
+                        <li class="cursor-pointer"
+                            onclick="fn_mostrar_formulario_crear_cliente('contenedor_crear_nuevo_cliente')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Nuevo cliente
                             </span>
                         </li>
@@ -79,15 +79,14 @@
                     <ul id="dropdown-categorias" class="py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_obtener_categorias()">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] ">
                                 Categorias
                             </span>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_categoria('contenedor_crear_nueva_categoria')">
+                        <li class="cursor-pointer"
+                            onclick="fn_mostrar_formulario_crear_categoria('contenedor_crear_nueva_categoria')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Nueva categoria
                             </span>
                         </li>
@@ -109,15 +108,14 @@
                     <ul id="dropdown-productos" class="py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_obtener_productos()">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Productos
                             </span>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_crear_producto('contenedor_crear_nuevo_producto')">
+                        <li class="cursor-pointer"
+                            onclick="fn_mostrar_formulario_crear_producto('contenedor_crear_nuevo_producto')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]"
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Nuevo producto
                             </span>
                         </li>
@@ -139,14 +137,14 @@
                     <ul id="dropdown-pedidos" class="py-2 space-y-2">
                         <li class="cursor-pointer" onclick="fn_obtener_pedidos()">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] "
-                                >
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151] ">
                                 Pedidos
                             </span>
                         </li>
-                        <li class="cursor-pointer" onclick="fn_mostrar_formulario_generar_un_pedido('contenedor_generar_un_pedido')">
+                        <li class="cursor-pointer"
+                            onclick="fn_mostrar_formulario_generar_un_pedido('contenedor_generar_un_pedido')">
                             <span
-                                class="text-[14px] flex items-center w-full p-1 text-[#ffcccc] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
                                 Crear un pedido
                             </span>
                         </li>
@@ -187,14 +185,16 @@
                                     for="principal_image">Añadir imagen principal</label>
                                 <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-                                    id="principal_image" name="principal_image" type="file" accept=".png, .jpg, .jpeg, .webp">
+                                    id="principal_image" name="principal_image" type="file"
+                                    accept=".png, .jpg, .jpeg, .webp">
                             </div>
                             <div class="w-full">
                                 <label class="block mb-2 text-sm font-medium text-gray-900" for="images">Añadir
                                     resto de imagenes</label>
                                 <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-                                    id="images" name="images[]" type="file" multiple accept=".png, .jpg, .jpeg, .webp">
+                                    id="images" name="images[]" type="file" multiple
+                                    accept=".png, .jpg, .jpeg, .webp">
                             </div>
                         </div>
 
@@ -228,7 +228,6 @@
                                         <option value="grouped">Grouped</option>
                                         <option value="external">External</option>
                                         <option value="variable">Variable</option>
-
                                     </select>
                                 </div>
                                 <div>
@@ -364,7 +363,132 @@
             data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none">
         </div>
         <div class="contenedor_formularios contenedor_crear_nuevo_cliente  w-full  p-4 mb-10"
-            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display: none">
+            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display:none ">
+
+            <div class="w-full mt-5 flex flex-row gap-2 ">
+                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_cliente">
+
+                    <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                            <h2 class="text-2xl font-semibold">Rellena el formulario del nuevo cliente</h2>
+                        </div>
+                        <div class="w-full p-6">
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                <div>
+                                    <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Nombre
+                                    </label>
+                                    <input type="text" id="firstName"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el nombre" />
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Apellidos
+                                    </label>
+                                    <input type="text" id="lastName"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe los apellidos" />
+                                </div>
+                                <div>
+                                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Teléfono
+                                    </label>
+                                    <input type="text" id="phone"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el teléfono" />
+                                </div>
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                <div>
+                                    <label for="customerType" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Seleccionar tipo
+                                    </label>
+                                    <select id="customerType"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+                                        <option value="individual">Individual</option>
+                                        <option value="business">Empresa</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Email
+                                    </label>
+                                    <input type="email" id="email"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el email" />
+                                </div>
+                                <div>
+                                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Contraseña
+                                    </label>
+                                    <input type="password" id="password"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe la contraseña" />
+                                </div>
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div>
+                                    <label for="adress" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Dirección
+                                    </label>
+                                    <input type="text" id="adress"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe la direccion" />
+                                </div>
+
+                                <div>
+                                    <label for="postalCode" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Código postal
+                                    </label>
+                                    <input type="text" id="postalCode"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el codigo postal" />
+                                </div>
+
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                <div>
+                                    <label for="city" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Ciudad
+                                    </label>
+                                    <input type="text" id="city"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe la cuidad" />
+                                </div>
+
+                                <div>
+                                    <label for="state" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Municipio
+                                    </label>
+                                    <input type="text" id="state"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el municipio" />
+                                </div>
+
+                                <div>
+                                    <label for="country" class="block mb-2 text-sm font-medium text-gray-900">
+                                        País
+                                    </label>
+                                    <input type="text" id="country"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el país" />
+                                </div>
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                <button type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                    onclick="fn_guardar_nuevo_cliente()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="contenedor_formularios contenedor_generar_un_pedido w-full  p-4 mb-10"
             data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none">
