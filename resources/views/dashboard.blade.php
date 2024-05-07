@@ -174,7 +174,7 @@
         <div class="contenedor_formularios contenedor_crear_nuevo_producto w-full  p-4 mb-10"
             data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto" style="display: none">
             <div class="w-full mt-5 flex flex-row gap-2 ">
-                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data">
+                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_producto">
                     <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
                         <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center"
                             id="conenedor_producto_img_prev"></div>

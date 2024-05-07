@@ -99,7 +99,7 @@ function fn_mostrar_formulario_crear_producto(elemento_id) {
         $(this).hide();
     })
     $(`#${elemento_id}`).show();
-    fn_obtener_productos();
+    fn_obtener_productos(null,true);
     fn_obtener_categorias_para_el_formulario_producto();
 }
 
@@ -241,7 +241,61 @@ function fn_guardar_nuevo_producto() {
             },
             success: function (response) {
                 console.log("Producto creado con éxito:", response);
-                window.location.reload();
+                let item = response.data;
+                if (item.id && item.id > 0) {
+
+                    PRODUCTOS_HTML = `
+                        <tr class="bg-white dark:bg-gray-800" id="tr_producto_${item.id}">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                ${item.name ?? ""}
+                                </th>
+                                <td class="px-6 py-4">
+                                ${item.sku ?? ""}
+                                </td>
+                                <td class="px-6 py-4">
+                                ${item.category_id ?? ""}
+                                </td>
+                                <td class="px-6 py-4">
+                                ${item.short_description ?? ""}
+                                </td>
+                                <td class="px-6 py-4">
+                                ${item.description ?? ""} 
+                                </td>
+                                <td class="px-6 py-4">
+                                ${item.sale_price} 
+                                </td>
+                                <td class="px-6 py-4">
+                                ${item.stock_quantity} 
+                                </td>            
+                                <td class="px-6 py-4 text-right">                         
+                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${JSON.stringify(
+                        item
+                    )}')">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="12" style="display:none" id="td_colspan_form_edit_producto_${item.id}"></td>
+                            </tr>
+                        `;
+
+                    $(`#tbody_productos`).prepend(PRODUCTOS_HTML);
+                    $(`#contenedor_crear_nuevo_producto`).hide();
+                    Swal.fire({
+                        html: `<h4><b>El producto ha sido creado correctamente</b></h4>`,
+                        icon: `success`,
+                    });
+                    $('#formulario_producto')[0].reset();
+                    $(`#conenedor_producto_img_prev`).html(``);
+                    $(`#conenedor_producto_resto_img_prev`).html(``);
+
+                } else {
+                    Swal.fire({
+                        html: `<h4><b>Error al crear el producto</b></h4>`,
+                        icon: `error`,
+                    });
+                }
+
+
             },
             error: function (xhr, status, error) {
                 console.error("Error al crear el producto:", error);
@@ -269,7 +323,7 @@ function validar_inputs() {
     let stock_quantity = $("#stock_quantity").val();
 
 
-    if (category_id == '' || category_id == 0) {
+    if (category_id == '' || category_id == null || category_id == 0) {
         Swal.fire({
             html: `<h4><b>Selecciona una catogoria</b></h4>`,
             icon: `error`,
@@ -277,14 +331,14 @@ function validar_inputs() {
         return false;
     }
 
-    if (type == '' || type == 0 || type == 'Seleccionar') {
+    if (type == '' || type == null || type == 0 || type == 'Seleccionar') {
         Swal.fire({
             html: `<h4><b>Selecciona el tipo</b></h4>`,
             icon: `error`,
         });
         return false;
     }
-    if (status == '' || status == 0 || type == 'Seleccionar') {
+    if (status == '' || status == null || status == 0 || type == 'Seleccionar') {
         Swal.fire({
             html: `<h4><b>Selecciona el estado</b></h4>`,
             icon: `error`,
@@ -326,7 +380,7 @@ function validar_inputs() {
         });
         return false;
     }
-    if (stock_status == '') {
+    if (stock_status == '' || stock_status == null || stock_status == 0) {
         Swal.fire({
             html: `<h4><b>Selecciona si esta fuera de stock</b></h4>`,
             icon: `error`,

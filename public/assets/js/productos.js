@@ -2,7 +2,12 @@ $(document).ready(function () {
     console.log("PRODUCTOS");
 });
 
-function fn_obtener_productos(page = null) {
+function fn_obtener_productos(page = null, crear = false) {
+
+    if (crear == false) {
+        $(`#contenedor_crear_nuevo_producto`).hide();
+    }
+
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
@@ -135,9 +140,9 @@ function fn_obtener_productos(page = null) {
             } else {
                 PRODUCTOS_HTML = `
                 <tr>
-                    <td>
-                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                            <span class="font-medium">Lista vacia</span> 
+                    <td colspan="12">
+                        <div class="w-full p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="flex justify-center items-center font-medium">Lista vacia</span> 
                         </div>
                     </td>
                 </tr>`;
