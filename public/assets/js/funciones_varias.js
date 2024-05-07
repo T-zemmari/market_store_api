@@ -111,6 +111,14 @@ function fn_mostrar_formulario_crear_cliente(elemento_id) {
     fn_obtener_clientes(null, true);
 }
 
+function fn_mostrar_formulario_crear_categoria(elemento_id) {
+    $('.contenedor_categorias').each(function () {
+        $(this).hide();
+    })
+    $(`#${elemento_id}`).show();
+    fn_obtener_categorias(null, true);
+}
+
 function fn_obtener_categorias_para_el_formulario_producto() {
     let token = $("#tkn").val();
     // Realizar la solicitud AJAX
@@ -283,17 +291,6 @@ function fn_guardar_nuevo_producto() {
         });
         return;
     }
-
-    // if (!validar_inputs) {
-    //     Swal.fire({
-    //         html: `<h4><b>Por favor, complete todos los campos.</b></h4>`,
-    //         icon: `error`,
-    //     });
-
-    //     return false;
-    // }
-
-    // Crear un nuevo FormData
 
     if (validar_inputs_producto()) {
 
@@ -533,7 +530,7 @@ function fn_guardar_nuevo_cliente() {
 
                 let CLIENTES_HTML = `
                     <tr class="bg-white dark:bg-gray-800" id="tr_cliente_${item.id
-                        }">
+                    }">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             ${item.first_name ?? ""} ${item.last_name ?? ""}
                             </th>
@@ -552,13 +549,13 @@ function fn_guardar_nuevo_cliente() {
                             
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente('${JSON.stringify(
-                            item
-                        )}')">Editar</button>
+                        item
+                    )}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id
-                        }">
+                    }">
                                 
                             </td>
                         </tr>
@@ -582,6 +579,104 @@ function fn_guardar_nuevo_cliente() {
         error: function (xhr, status, error) {
             console.error("Error al crear el cliente:", error);
             // Aquí puedes manejar el error según tu lógica de frontend
+        },
+    });
+}
+
+
+function fn_guardar_nueva_categoria() {
+
+    let name = $("#name").val();
+    let parent = $("#parent").val();
+    let shortDescription = $("#category_short_description").val();
+    let description = $("#category_description").val();
+
+    // Realizar validaciones
+    if (name.trim() === '') {
+        mostrarError("El nombre de la categoría es requerido");
+        return;
+    }
+
+    if (isNaN(parent)) {
+        mostrarError("El nivel de la categoría debe ser un número");
+        return;
+    }
+
+    // Crear un nuevo objeto con los datos de la categoría
+    let categoria = {
+        name: name,
+        parent: parent,
+        shortDescription: shortDescription,
+        description: description
+    };
+
+    // Realizar la solicitud AJAX para guardar la nueva categoría
+    $.ajax({
+        url: "http://localhost:8000/api/v1/categories",
+        method: "POST",
+        dataType: "json",
+        data: categoria,
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Categoría creada con éxito:", response);
+            let item = response.data;
+            if (item.id && item.id > 0) {
+
+                let CATEGORIAS_HTML = `
+             <tr class="bg-white dark:bg-gray-800" id="tr_categoria_${item.id
+                    }">
+                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                     ${item.name ?? ""}
+                     </th>
+                     <td class="px-6 py-4">
+                     ${item.shortDescription ?? ""}
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.description ?? ""}
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.parent ?? ""} 
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.products?.length ?? 0} 
+                     </td>           
+                     <td class="px-6 py-4 text-right">                         
+                         <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
+                        item
+                    )}')">Editar</button>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id
+                    }">                           
+                     </td>
+                 </tr>
+             `;
+
+                $(`#tbody_categorias`).prepend(CATEGORIAS_HTML);
+                $(`#contenedor_crear_nueva_categoria`).hide();
+                Swal.fire({
+                    html: `<h4><b>La categoria ha sido creado correctamente</b></h4>`,
+                    icon: `success`,
+                });
+                $('#formulario_categoria')[0].reset();
+
+            } else {
+                Swal.fire({
+                    html: `<h4><b>Error al crear la categoria</b></h4>`,
+                    icon: `error`,
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al crear la categoría:", error);
+            Swal.fire({
+                html: `<h4><b>Error al crear la categoría</b></h4>`,
+                icon: `error`,
+            });
         },
     });
 }
