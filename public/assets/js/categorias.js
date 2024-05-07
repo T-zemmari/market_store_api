@@ -100,9 +100,7 @@ function fn_obtener_categorias(page = null) {
                             ${item.products?.length ?? 0} 
                             </td>           
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
-                            item
-                        )}')">Editar</button>
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${item.id}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
@@ -213,4 +211,25 @@ function create_pagination_categorias_links(links = null) {
 function get_page_number(url) {
     const page = url.split('page=')[1];
     return page;
+}
+
+function fn_mostrar_form_editar_categoria(id) {
+
+    $.ajax({
+        url: `http://localhost:8000/api/v1/categories/${id}`,
+        method: "GET",
+        dataType: "json",
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Informacion de la categoria :", response);
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al obtener la categoria:", error);
+        },
+    });
+
 }

@@ -118,9 +118,7 @@ function fn_obtener_productos(page = null, crear = false) {
                             ${item.stock_quantity} 
                             </td>            
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${JSON.stringify(
-                        item
-                    )}')">Editar</button>
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${item.id}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
@@ -228,4 +226,25 @@ function crear_paginacion_productos_links(links = null) {
 function get_page_number(url) {
     const page = url.split('page=')[1];
     return page;
+}
+
+function fn_mostrar_form_editar_producto(id) {
+
+    $.ajax({
+        url: `http://localhost:8000/api/v1/products/${id}`,
+        method: "GET",
+        dataType: "json",
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Informacion del producto :", response);
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al obtener productos:", error);
+        },
+    });
+
 }

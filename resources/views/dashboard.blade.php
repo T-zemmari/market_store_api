@@ -357,7 +357,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
         <div class="contenedor_formularios contenedor_crear_nueva_categoria w-full  p-4 mb-10"
             data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none">
