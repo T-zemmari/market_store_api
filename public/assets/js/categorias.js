@@ -2,7 +2,7 @@ $(document).ready(function () {
     console.log("CATEGORIAS");
 });
 
-function fn_obtener_categorias(page = null,crear=false) {
+function fn_obtener_categorias(page = null, crear = false) {
 
     if (crear == false) {
         $(`#contenedor_crear_nueva_categoria`).hide();
@@ -104,14 +104,17 @@ function fn_obtener_categorias(page = null,crear=false) {
                             ${item.products?.length ?? 0} 
                             </td>           
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria('${item.id}')">Editar</button>
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id
-                        }">                           
-                            </td>
-                        </tr>
+                        <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id}">
+                            <div class="contenedor_editar_categoria w-full  p-4 mb-10"
+                                data-info="contenedor_editar_categoria_${item.id}" id="contenedor_editar_categoria_${item.id}">
+                            
+                            </div>                                   
+                        </td>
+                    </tr>
                     `;
                 });
 
