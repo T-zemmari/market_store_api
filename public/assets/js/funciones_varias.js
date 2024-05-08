@@ -147,7 +147,7 @@ function fn_obtener_categorias_para_el_formulario_producto(id = null, categoria_
 
 
             categorias.forEach(function (categoria) {
-                console.log('categoria_id', categoria_id);
+                //console.log('categoria_id', categoria_id);
                 selectHTML += `<option value="${categoria.id}" ${categoria_id == categoria.id ? 'selected' : ''}>${categoria.name}</option>`;
             });
             if (id == null) {
