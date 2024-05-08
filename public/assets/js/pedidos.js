@@ -2,7 +2,12 @@ $(document).ready(function () {
     console.log("PEDIDOS");
 });
 
-function fn_obtener_pedidos(page=null) {
+function fn_obtener_pedidos(page = null, crear = false) {
+
+    if (crear == false) {
+        $(`#contenedor_generar_un_pedido`).hide();
+    }
+
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
@@ -10,13 +15,13 @@ function fn_obtener_pedidos(page=null) {
     $(`#contenedor_dashboards_principal`).hide();
     $(`#tbody_pedidos`).html(``);
     // Realizar la solicitud AJAX
-    let url="http://localhost:8000/api/v1/orders";
-    if(page!=null){
-        url="http://localhost:8000/api/v1/orders?page="+page;
+    let url = "http://localhost:8000/api/v1/orders";
+    if (page != null) {
+        url = "http://localhost:8000/api/v1/orders?page=" + page;
     }
-    console.log('url',url);
+    console.log('url', url);
     $.ajax({
-        url:url,
+        url: url,
         method: "GET",
         dataType: "json",
         headers: {
@@ -28,7 +33,7 @@ function fn_obtener_pedidos(page=null) {
             console.log("Pedidos obtenidos con éxito:", response);
 
             let pedidos = response.data;
-            let HTML_TABLE=`
+            let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
             <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151;color:white">
                 PEDIDOS
@@ -148,9 +153,9 @@ function fn_obtener_pedidos(page=null) {
                     `;
                 });
 
-                let links=null;
-                if(response.meta && response.meta.links){
-                    links=response.meta.links;
+                let links = null;
+                if (response.meta && response.meta.links) {
+                    links = response.meta.links;
                 }
                 let pagination_links = crear_paginacion_pedidos_links(links);
                 $("#pagination_container").html(pagination_links);
@@ -180,9 +185,9 @@ function fn_obtener_pedidos(page=null) {
 
 
 
-function crear_paginacion_pedidos_links(links=null) {
+function crear_paginacion_pedidos_links(links = null) {
 
-    if(links==null){
+    if (links == null) {
         return false;
     }
     let paginationHTML = `

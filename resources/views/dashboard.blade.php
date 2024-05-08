@@ -142,10 +142,10 @@
                             </span>
                         </li>
                         <li class="cursor-pointer"
-                            onclick="fn_mostrar_formulario_generar_un_pedido('contenedor_generar_un_pedido')">
+                            onclick="fn_mostrar_formulario_generar_pedido('contenedor_generar_un_pedido')">
                             <span
                                 class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]  ">
-                                Crear un pedido
+                                Generar pedido
                             </span>
                         </li>
                     </ul>

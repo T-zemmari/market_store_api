@@ -2,7 +2,11 @@ $(document).ready(function () {
     console.log("CATEGORIAS");
 });
 
-function fn_obtener_categorias(page = null) {
+function fn_obtener_categorias(page = null,crear=false) {
+
+    if (crear == false) {
+        $(`#contenedor_crear_nueva_categoria`).hide();
+    }
     let token = $(`#tkn`).val();
     console.log("mi_token", token);
     $(`#contenedor_spinner`).show();
@@ -111,12 +115,12 @@ function fn_obtener_categorias(page = null) {
                     `;
                 });
 
-                let links=null;
-                if(response.meta && response.meta.links){
-                    links=response.meta.links;
+                let links = null;
+                if (response.meta && response.meta.links) {
+                    links = response.meta.links;
                 }
                 let pagination_links = create_pagination_categorias_links(links);
-                
+
                 $("#pagination_container").html(pagination_links);
                 $("#pagination_container").show();
             } else {
