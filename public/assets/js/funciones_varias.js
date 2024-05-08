@@ -689,22 +689,24 @@ function fn_guardar_nueva_categoria() {
 }
 
 
-function fn_mostrar_form_editar_cliente(id) {
+function fn_mostrar_form_editar_producto(id) {
 
-    $.ajax({
-        url: `http://localhost:8000/api/v1/customers/${id}`,
-        method: "GET",
-        dataType: "json",
-        headers: {
-            Authorization: "Bearer " + $("#tkn").val(),
-            Accept: "application/json",
-        },
-        success: function (response) {
-            console.log("Informacion del cliente :", response);
+    $(`#td_colspan_form_edit_producto_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/products/${id}`,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Informacion del producto :", response);
 
-            let data = response.data;
-            if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
-                let HTML_FORM_EDIT = `
+                    let data = response.data;
+                    if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
+                        let HTML_FORM_EDIT = `
                 <div class="w-full mt-5 flex flex-row gap-2 ">
                             <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
                                 <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
@@ -735,7 +737,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                 </div>
                                 <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
                                     <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
-                                        <h2 class="text-2xl font-semibold">Rellena el formulario del producto</h2>
+                                        <h2 class="text-2xl font-semibold">Rellena el formulario del producto (SKU:${data.sku})</h2>
                                     </div>
                                     <div class="w-full p-6">
             
@@ -893,13 +895,19 @@ function fn_mostrar_form_editar_cliente(id) {
                         </div>
                 `;
 
-            }
+                        $(`#contenedor_editar_producto_${data.id}`).html(HTML_FORM_EDIT);
 
 
-        },
-        error: function (xhr, status, error) {
-            console.error("Error al obtener el cliente:", error);
-        },
+                    } else {
+                        mostrarError("Error al generar el formulario editar producto");
+                        return;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener el producto:", error);
+                },
+            });
+        }
     });
 
 }

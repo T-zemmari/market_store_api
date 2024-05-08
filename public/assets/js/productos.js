@@ -122,7 +122,12 @@ function fn_obtener_productos(page = null, crear = false) {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_producto_${item.id}"></td>
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_producto_${item.id}">
+                                <div class="contenedor_editar_producto w-full  p-4 mb-10"
+                                    data-info="contenedor_editar_producto_${item.id}" id="contenedor_editar_producto_${item.id}">
+                                
+                                </div>                                   
+                            </td>
                         </tr>
                     `;
                 });

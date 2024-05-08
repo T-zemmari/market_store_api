@@ -169,6 +169,133 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
+        <div class="contenedor_formularios contenedor_crear_nuevo_cliente  w-full  p-4 mb-10"
+        data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display:none ">
+        <div class="w-full mt-5 flex flex-row gap-2 ">
+            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_cliente">
+
+                <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                    <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                        <h2 class="text-2xl font-semibold">Rellena el formulario del nuevo cliente</h2>
+                    </div>
+                    <div class="w-full p-6">
+
+                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                            <div>
+                                <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Nombre
+                                </label>
+                                <input type="text" id="firstName"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el nombre" />
+                            </div>
+                            <div>
+                                <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Apellidos
+                                </label>
+                                <input type="text" id="lastName"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe los apellidos" />
+                            </div>
+                            <div>
+                                <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Teléfono
+                                </label>
+                                <input type="text" id="phone"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el teléfono" />
+                            </div>
+                        </div>
+
+                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                            <div>
+                                <label for="customerType" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Seleccionar tipo
+                                </label>
+                                <select id="customerType"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    <option selected>Seleccionar</option>
+                                    <option value="individual">Individual</option>
+                                    <option value="business">Empresa</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Email
+                                </label>
+                                <input type="email" id="email"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el email" />
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Contraseña
+                                </label>
+                                <input type="password" id="password"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe la contraseña" />
+                            </div>
+                        </div>
+
+                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                            <div>
+                                <label for="adress" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Dirección
+                                </label>
+                                <input type="text" id="adress"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe la direccion" />
+                            </div>
+
+                            <div>
+                                <label for="postalCode" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Código postal
+                                </label>
+                                <input type="text" id="postalCode"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el codigo postal" />
+                            </div>
+
+                        </div>
+                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                            <div>
+                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Ciudad
+                                </label>
+                                <input type="text" id="city"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe la cuidad" />
+                            </div>
+
+                            <div>
+                                <label for="state" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Municipio
+                                </label>
+                                <input type="text" id="state"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el municipio" />
+                            </div>
+
+                            <div>
+                                <label for="country" class="block mb-2 text-sm font-medium text-gray-900">
+                                    País
+                                </label>
+                                <input type="text" id="country"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Escribe el país" />
+                            </div>
+                        </div>
+
+                        <div class="grid gap-6 mb-6 md:grid-cols-1">
+                            <button type="button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                onclick="fn_guardar_nuevo_cliente()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
         <div class="contenedor_formularios contenedor_crear_nuevo_producto w-full  p-4 mb-10"
             data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto" style="display: none">
             <div class="w-full mt-5 flex flex-row gap-2 ">
@@ -358,6 +485,7 @@
                 </form>
             </div>
         </div>
+       
         <div class="contenedor_formularios contenedor_crear_nueva_categoria w-full  p-4 mb-10"
             data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none">
             <div class="w-full mt-5 flex flex-row gap-2 ">
@@ -401,7 +529,8 @@
 
                                 </div>
                                 <div>
-                                    <label for="category_description" class="block mb-2 text-sm font-medium text-gray-900">
+                                    <label for="category_description"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
                                         Descripción
                                     </label>
                                     <textarea id="category_description" rows="4"
@@ -421,134 +550,7 @@
                 </form>
             </div>
         </div>
-        <div class="contenedor_formularios contenedor_crear_nuevo_cliente  w-full  p-4 mb-10"
-            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display:none ">
-
-            <div class="w-full mt-5 flex flex-row gap-2 ">
-                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_cliente">
-
-                    <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
-                            <h2 class="text-2xl font-semibold">Rellena el formulario del nuevo cliente</h2>
-                        </div>
-                        <div class="w-full p-6">
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-3">
-                                <div>
-                                    <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Nombre
-                                    </label>
-                                    <input type="text" id="firstName"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el nombre" />
-                                </div>
-                                <div>
-                                    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Apellidos
-                                    </label>
-                                    <input type="text" id="lastName"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe los apellidos" />
-                                </div>
-                                <div>
-                                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Teléfono
-                                    </label>
-                                    <input type="text" id="phone"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el teléfono" />
-                                </div>
-                            </div>
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-3">
-                                <div>
-                                    <label for="customerType" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Seleccionar tipo
-                                    </label>
-                                    <select id="customerType"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                        <option selected>Seleccionar</option>
-                                        <option value="individual">Individual</option>
-                                        <option value="business">Empresa</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Email
-                                    </label>
-                                    <input type="email" id="email"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el email" />
-                                </div>
-                                <div>
-                                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Contraseña
-                                    </label>
-                                    <input type="password" id="password"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe la contraseña" />
-                                </div>
-                            </div>
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                <div>
-                                    <label for="adress" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Dirección
-                                    </label>
-                                    <input type="text" id="adress"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe la direccion" />
-                                </div>
-
-                                <div>
-                                    <label for="postalCode" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Código postal
-                                    </label>
-                                    <input type="text" id="postalCode"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el codigo postal" />
-                                </div>
-
-                            </div>
-                            <div class="grid gap-6 mb-6 md:grid-cols-3">
-                                <div>
-                                    <label for="city" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Ciudad
-                                    </label>
-                                    <input type="text" id="city"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe la cuidad" />
-                                </div>
-
-                                <div>
-                                    <label for="state" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Municipio
-                                    </label>
-                                    <input type="text" id="state"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el municipio" />
-                                </div>
-
-                                <div>
-                                    <label for="country" class="block mb-2 text-sm font-medium text-gray-900">
-                                        País
-                                    </label>
-                                    <input type="text" id="country"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el país" />
-                                </div>
-                            </div>
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-1">
-                                <button type="button"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                                    onclick="fn_guardar_nuevo_cliente()">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+       
         <div class="contenedor_formularios contenedor_generar_un_pedido w-full  p-4 mb-10"
             data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none">
         </div>
