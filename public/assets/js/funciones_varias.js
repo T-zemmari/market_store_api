@@ -127,10 +127,6 @@ function fn_mostrar_formulario_generar_pedido(elemento_id) {
 }
 
 
-function fn_mostrar_form_editar_cliente(elemento_id) {
-
-}
-
 function fn_obtener_categorias_para_el_formulario_producto(id = null, categoria_id = null) {
     let token = $("#tkn").val();
     // Realizar la solicitud AJAX
@@ -148,11 +144,11 @@ function fn_obtener_categorias_para_el_formulario_producto(id = null, categoria_
             console.log("Categorias obtenidas con éxito:", response);
             let categorias = response.data;
             let selectHTML = `<option value="0">Seleccionar</option>`;
-            
+
 
             categorias.forEach(function (categoria) {
-                console.log('categoria_id',categoria_id);          
-                selectHTML += `<option value="${categoria.id}" ${categoria_id == categoria.id ?'selected':''}>${categoria.name}</option>`;
+                console.log('categoria_id', categoria_id);
+                selectHTML += `<option value="${categoria.id}" ${categoria_id == categoria.id ? 'selected' : ''}>${categoria.name}</option>`;
             });
             if (id == null) {
                 $("#select_categories").html(selectHTML);
@@ -699,6 +695,162 @@ function fn_guardar_nueva_categoria() {
     });
 }
 
+
+function fn_mostrar_form_editar_cliente(id) {
+
+    $(`#td_colspan_form_edit_client_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            let token = $("#tkn").val();
+            // Realizar la solicitud AJAX
+            let url = `http://localhost:8000/api/v1/customers/${id}`;
+            console.log("url", url);
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + token,
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    //console.log("Informacion del cliente:", response);
+                    let cliente = response.data;
+                    console.log('cliente:', cliente);
+                    if (cliente.id != undefined && cliente.id === id) {
+
+                        let HTML_FORM_EDIT = `
+                            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
+            
+                                <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                                    <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                                        <h2 class="text-2xl font-semibold">Formulario editar cliente : ${cliente.first_name}</h2>
+                                    </div>
+                                    <div class="w-full p-6">
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="firstName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Nombre
+                                                </label>
+                                                <input type="text" id="firstName_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el nombre" value="${cliente.first_name ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="lastName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Apellidos
+                                                </label>
+                                                <input type="text" id="lastName_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe los apellidos" value="${cliente.last_name ?? ''}" />
+                                            </div>
+                                            <div>
+                                                <label for="phone_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Teléfono
+                                                </label>
+                                                <input type="text" id="phone_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el teléfono" value="${cliente.phone ?? ''}" />
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="customerType_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Seleccionar tipo
+                                                </label>
+                                                <select id="customerType_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option selected>Seleccionar</option>
+                                                    <option value="individual" ${cliente.customer_type == 'individual' ? 'selected' : ''}>Individual</option>
+                                                    <option value="business" ${cliente.customer_type == 'business' ? 'selected' : ''}>Empresa</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="email_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Email
+                                                </label>
+                                                <input type="email" id="email"_${cliente.id}
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el email" value="${cliente.email ?? ''}" disabled/>
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                            <div>
+                                                <label for="adress_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Dirección
+                                                </label>
+                                                <input type="text" id="adress_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe la direccion" value="${cliente.adress ?? ''}" />
+                                            </div>
+            
+                                            <div>
+                                                <label for="postalCode_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Código postal
+                                                </label>
+                                                <input type="text" id="postalCode_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el codigo postal"  value="${cliente.postal_code ?? ''}"/>
+                                            </div>
+            
+                                        </div>
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="city_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Ciudad
+                                                </label>
+                                                <input type="text" id="city_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe la cuidad"  value="${cliente.city ?? ''}"/>
+                                            </div>
+            
+                                            <div>
+                                                <label for="state_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Municipio
+                                                </label>
+                                                <input type="text" id="state_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el municipio" value="${cliente.state ?? ''}" />
+                                            </div>
+            
+                                            <div>
+                                                <label for="country_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    País
+                                                </label>
+                                                <input type="text" id="country_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el país" value="${cliente.country ?? ''}" />
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                            <button type="button"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                                onclick="fn_editar_cliente('${cliente.id}')">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            `;
+
+                        $(`#contenedor_editar_cliente_${cliente.id}`).html(HTML_FORM_EDIT);
+                    } else {
+                        mostrarError("Error al generar el formulario editar cliente");
+                        return;
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener cliente:", error);
+                },
+            });
+        }
+    })
+}
 
 function fn_mostrar_form_editar_producto(id) {
 
