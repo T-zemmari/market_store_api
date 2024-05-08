@@ -148,13 +148,11 @@ function fn_obtener_categorias_para_el_formulario_producto(id = null, categoria_
             console.log("Categorias obtenidas con éxito:", response);
             let categorias = response.data;
             let selectHTML = `<option value="0">Seleccionar</option>`;
-            let selected = "";
+            
 
             categorias.forEach(function (categoria) {
-                if (categoria_id != null) {
-                    selected = categoria_id === categoria.id ? 'selected' : '';
-                }
-                selectHTML += `<option value="${categoria.id}" ${selected}>${categoria.name}</option>`;
+                console.log('categoria_id',categoria_id);          
+                selectHTML += `<option value="${categoria.id}" ${categoria_id == categoria.id ?'selected':''}>${categoria.name}</option>`;
             });
             if (id == null) {
                 $("#select_categories").html(selectHTML);
@@ -810,10 +808,10 @@ function fn_mostrar_form_editar_producto(id) {
                                                 <select id="select_status_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                                     <option>Seleccionar</option>
-                                                    <option value="publish" ${data.type == 'publish' ? 'selected' : ''}>Publish</option>
-                                                    <option value="draft" ${data.type == 'draft' ? 'selected' : ''}>Draft</option>
-                                                    <option value="pending" ${data.type == 'pending' ? 'selected' : ''}>Pending</option>
-                                                    <option value="private" ${data.type == 'private' ? 'selected' : ''}>Private</option>
+                                                    <option value="publish" ${data.status == 'publish' ? 'selected' : ''}>Publish</option>
+                                                    <option value="draft" ${data.status == 'draft' ? 'selected' : ''}>Draft</option>
+                                                    <option value="pending" ${data.status == 'pending' ? 'selected' : ''}>Pending</option>
+                                                    <option value="private" ${data.status == 'private' ? 'selected' : ''}>Private</option>
                                                 </select>
                                             </div>
                                             <div>
