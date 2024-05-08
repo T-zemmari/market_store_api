@@ -126,7 +126,12 @@ function fn_mostrar_formulario_generar_pedido(elemento_id) {
     $(`#${elemento_id}`).show();
 }
 
-function fn_obtener_categorias_para_el_formulario_producto() {
+
+function fn_mostrar_form_editar_cliente(elemento_id) {
+
+}
+
+function fn_obtener_categorias_para_el_formulario_producto(id = null, categoria_id = null) {
     let token = $("#tkn").val();
     // Realizar la solicitud AJAX
     let url = "http://localhost:8000/api/v1/categories";
@@ -143,10 +148,20 @@ function fn_obtener_categorias_para_el_formulario_producto() {
             console.log("Categorias obtenidas con éxito:", response);
             let categorias = response.data;
             let selectHTML = `<option value="0">Seleccionar</option>`;
+            let selected = "";
+
             categorias.forEach(function (categoria) {
-                selectHTML += `<option value="${categoria.id}">${categoria.name}</option>`;
+                if (categoria_id != null) {
+                    selected = categoria_id === categoria.id ? 'selected' : '';
+                }
+                selectHTML += `<option value="${categoria.id}" ${selected}>${categoria.name}</option>`;
             });
-            $("#select_categories").html(selectHTML);
+            if (id == null) {
+                $("#select_categories").html(selectHTML);
+            } else {
+                $(`#select_categories_${id}`).html(selectHTML);
+            }
+
         },
         error: function (xhr, status, error) {
             console.error("Error al obtener categorias:", error);
@@ -555,9 +570,7 @@ function fn_guardar_nuevo_cliente() {
                             </td>
                             
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente('${JSON.stringify(
-                        item
-                    )}')">Editar</button>
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
                             </td>
                         </tr>
                         <tr>
@@ -704,16 +717,40 @@ function fn_mostrar_form_editar_producto(id) {
                 success: function (response) {
                     console.log("Informacion del producto :", response);
 
+
+
                     let data = response.data;
                     if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
+
+                        fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+
+                        let HTML_IMG_PRINCIPAL = ``;
+
+                        if (data.image != '') {
+                            HTML_IMG_PRINCIPAL = `
+                            <img style="max-height:100%" src="${data.image}"/>
+                            `;
+                        }
+                        let HTML_RESTO_IMG = ``;
+                        if (data.images.length > 0) {
+                            data.images.forEach(image => {
+                                HTML_RESTO_IMG += `
+                                <img style="width:80px;height:80px" src="${image.url_image}"/>
+                                `;
+                            })
+                        }
+
                         let HTML_FORM_EDIT = `
                 <div class="w-full mt-5 flex flex-row gap-2 ">
                             <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
                                 <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
                                     <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center"
-                                        id="conenedor_producto_img_prev_${data.id}"></div>
+                                        id="conenedor_producto_img_prev_${data.id}">
+                                            ${HTML_IMG_PRINCIPAL}
+                                        </div>
                                     <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2"
                                         id="conenedor_producto_resto_img_prev_${data.id}">
+                                        ${HTML_RESTO_IMG}
                                     </div>
                                     <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
                                         <div class="w-full">
@@ -759,11 +796,11 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <select id="select_type_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option selected>Seleccionar</option>
-                                                    <option value="simple">Simple</option>
-                                                    <option value="grouped">Grouped</option>
-                                                    <option value="external">External</option>
-                                                    <option value="variable">Variable</option>
+                                                    <option>Seleccionar</option>
+                                                    <option value="simple" ${data.type == 'simple' ? 'selected' : ''}>Simple</option>
+                                                    <option value="grouped" ${data.type == 'grouped' ? 'selected' : ''}>Grouped</option>
+                                                    <option value="external" ${data.type == 'external' ? 'selected' : ''}>External</option>
+                                                    <option value="variable" ${data.type == 'variable' ? 'selected' : ''}>Variable</option>
                                                 </select>
                                             </div>
                                             <div>
@@ -772,11 +809,11 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <select id="select_status_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option selected>Seleccionar</option>
-                                                    <option value="publish">Publish</option>
-                                                    <option value="draft">Draft</option>
-                                                    <option value="pending">Pending</option>
-                                                    <option value="private">Private</option>
+                                                    <option>Seleccionar</option>
+                                                    <option value="publish" ${data.type == 'publish' ? 'selected' : ''}>Publish</option>
+                                                    <option value="draft" ${data.type == 'draft' ? 'selected' : ''}>Draft</option>
+                                                    <option value="pending" ${data.type == 'pending' ? 'selected' : ''}>Pending</option>
+                                                    <option value="private" ${data.type == 'private' ? 'selected' : ''}>Private</option>
                                                 </select>
                                             </div>
                                             <div>
@@ -785,7 +822,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="text" id="sku_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Sku" required />
+                                                    placeholder="Sku" required value="${data.sku}"/>
                                             </div>
                                             <div>
                                                 <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
@@ -793,7 +830,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="text" id="product_ean_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Ean" />
+                                                    placeholder="Ean" value="${data.ean ?? ''}"/>
                                             </div>
                                             <div>
                                                 <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
@@ -801,7 +838,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="text" id="product_ean_13_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Ean13" />
+                                                    placeholder="Ean13" value="${data.ean13 ?? ''}"/>
                                             </div>
             
             
@@ -813,7 +850,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="text" id="product_name_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Escribe el nombre del producto" />
+                                                    placeholder="Escribe el nombre del producto" value="${data.name ?? ''}"/>
                                             </div>
                                         </div>
                                         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -824,7 +861,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <textarea id="short_description_${data.id}" rows="4"
                                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder="Escribe una descripción corta"></textarea>
+                                                    placeholder="Escribe una descripción corta">${data.short_description ?? ''}</textarea>
             
                                             </div>
                                             <div>
@@ -833,7 +870,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <textarea id="description_${data.id}" rows="4"
                                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder="Escribe la descripcion del producto"></textarea>
+                                                    placeholder="Escribe la descripcion del producto">${data.description ?? ''}</textarea>
             
                                             </div>
                                         </div>
@@ -845,7 +882,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="number" id="regular_price_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="PVR" />
+                                                    placeholder="PVR" value="${data.regular_price ?? ''}"/>
                                             </div>
                                             <div>
                                                 <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
@@ -853,7 +890,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="number" id="sale_price_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Precio sin confirmar" />
+                                                    placeholder="Precio sin confirmar" value="${data.sale_price ?? ''}"/>
                                             </div>
                                             <div>
                                                 <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
@@ -861,7 +898,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="number" id="price_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Precio Confirmado" />
+                                                    placeholder="Precio Confirmado" value="${data.price ?? ''}"/>
                                             </div>
                                             <div>
                                                 <label for="select_stock_status_${data.id}"
@@ -871,8 +908,8 @@ function fn_mostrar_form_editar_producto(id) {
                                                 <select id="select_stock_status_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                                     <option selected>Seleccionar</option>
-                                                    <option value="instock">Instock</option>
-                                                    <option value="outofstock">Outofstock</option>
+                                                    <option value="instock" ${data.stock_status == 'instock' ? 'selected' : ''}>Instock</option>
+                                                    <option value="outofstock" ${data.stock_status == 'outofstock' ? 'selected' : ''}>Outofstock</option>
                                                 </select>
                                             </div>
                                             <div>
@@ -881,7 +918,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </label>
                                                 <input type="number" id="stock_quantity_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Stock" />
+                                                    placeholder="Stock" value="${data.stock_quantity ?? ''}"/>
                                             </div>
                                         </div>
                                         <div class="grid gap-6 mb-6 md:grid-cols-1">
@@ -896,6 +933,10 @@ function fn_mostrar_form_editar_producto(id) {
                 `;
 
                         $(`#contenedor_editar_producto_${data.id}`).html(HTML_FORM_EDIT);
+
+                        setTimeout(() => {
+                            fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+                        }, 500);
 
 
                     } else {

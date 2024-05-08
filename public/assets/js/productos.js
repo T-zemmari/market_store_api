@@ -163,11 +163,6 @@ function fn_obtener_productos(page = null, crear = false) {
     });
 }
 
-function fn_mostrar_form_editar_producto(data) {
-    let item = JSON.parse(data);
-    console.log(item);
-}
-
 function crear_paginacion_productos_links(links = null) {
     if (links == null) return false;
     let paginationHTML = `
@@ -233,23 +228,3 @@ function get_page_number(url) {
     return page;
 }
 
-function fn_mostrar_form_editar_producto(id) {
-
-    $.ajax({
-        url: `http://localhost:8000/api/v1/products/${id}`,
-        method: "GET",
-        dataType: "json",
-        headers: {
-            Authorization: "Bearer " + $("#tkn").val(),
-            Accept: "application/json",
-        },
-        success: function (response) {
-            console.log("Informacion del producto :", response);
-
-        },
-        error: function (xhr, status, error) {
-            console.error("Error al obtener productos:", error);
-        },
-    });
-
-}
