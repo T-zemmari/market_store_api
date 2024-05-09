@@ -788,7 +788,6 @@ function fn_guardar_nueva_categoria() {
     });
 }
 
-
 function fn_mostrar_form_editar_cliente(id) {
 
     $(`#td_colspan_form_edit_client_${id}`).toggle(function () {
@@ -1296,6 +1295,79 @@ function fn_mostrar_form_editar_producto(id) {
 
 }
 
+function fn_mostrar_form_editar_pedido(id) {
+    $(`#td_colspan_form_edit_pedido_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/orders/${id}`,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Informacion del pedido :", response);
+
+                    let data = response.data;
+                    if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
+
+                        let HTML_FORM_EDIT = `
+                        <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_pedido_${data.id}">
+
+                        <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                            <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                                <h2 class="text-2xl font-semibold">Pedido ${data.id} </h2>
+                            </div>
+                            <div class="w-full p-6">
+    
+                                <div class="grid gap-6 mb-6 md:grid-cols-2">
+
+                                 <div>
+                                    <label for="status_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Modificar el estado del pedido
+                                    </label>
+                                    <select id="status_${data.id}"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option selected>Seleccionar</option>
+                                        <option value="pending" ${data.status == 'pending' ? 'selected' : ''}>pending</option>
+                                        <option value="processing" ${data.status == 'processing' ? 'selected' : ''}>processing</option>
+                                        <option value="on-hold" ${data.status == 'on-hold' ? 'selected' : ''}>on-hold</option>
+                                        <option value="completed" ${data.status == 'completed' ? 'selected' : ''}>completed</option>
+                                        <option value="cancelled" ${data.status == 'cancelled' ? 'selected' : ''}>cancelled</option>
+                                        <option value="refunded" ${data.status == 'refunded' ? 'selected' : ''}>refunded</option>
+                                        <option value="failed" ${data.status == 'failed' ? 'selected' : ''}>failed</option>
+                                        <option value="trash" ${data.status == 'trash' ? 'selected' : ''}>trash</option>
+                                    </select>
+                                </div>
+
+                                </div>
+    
+                                <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                    <button type="button"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                        onclick="fn_modificar_pedido(${data.id})">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        `;
+
+                        $(`#contenedor_editar_pedido_${data.id}`).html(HTML_FORM_EDIT);
+
+                    } else {
+                        mostrar_error("Error al generar el formulario editar pedido");
+                        return;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener el pedido:", error);
+                },
+            });
+        }
+    });
+}
+
 
 
 
@@ -1604,3 +1676,5 @@ function fn_generar_pedido() {
     }
 
 }
+
+
