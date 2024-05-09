@@ -57,245 +57,245 @@
                         <span class="ms-3">Cerrar menu</span>
                     </a>
                 </li>
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion intro_button flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-intro">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Introducción</span>
                     </button>
-                    <ul id="dropdown-intro" class="mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
+                    <ul id="dropdown-intro" class="mt-2 mb-2 py-4 space-y-2  rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_requisitos')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Requisitos
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_errores')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Errores
                             </a>
                         </li>
 
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_paginacion')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
                         </li>
 
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_token')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener token
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-costumers">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Clientes</span>
                     </button>
-                    <ul id="dropdown-costumers" class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
+                    <ul id="dropdown-costumers" class="hidden mt-2 mb-2 py-4 space-y-2  rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_cliente_propiedades')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
 
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_cliente')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear cliente
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_cliente')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener cliente
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_clientes')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista clientes
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_cliente')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar cliente
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_cliente')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar cliente
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-categories">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Categorias</span>
                     </button>
-                    <ul id="dropdown-categories" class="hidden hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
+                    <ul id="dropdown-categories" class="hidden hidden mt-2 mb-2 py-4 space-y-2  rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_categoria')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_categoria')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear categoria
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_categoria')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener categoria
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_categorias')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista categorias
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_categoria')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar categoria
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_categoria')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar categoria
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-products">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Productos</span>
                     </button>
-                    <ul id="dropdown-products" class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px]">
+                    <ul id="dropdown-products" class="hidden mt-2 mb-2 py-4 space-y-2 rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_producto')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_producto')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear producto
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_producto')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener producto
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_productos')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista productos
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_producto')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar producto
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_producto')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar producto
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-images">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Imagenes</span>
                     </button>
                     <ul id="dropdown-images"
-                        class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px] transition-all duration-300">
+                        class="hidden mt-2 mb-2 py-4 space-y-2 rounded-[5px] transition-all duration-300">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_imagen_propiedades')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_imagenes')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista imagenes
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_eliminar_imagen')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar imagen
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="border-b-[1px] border-indigo-800 p-2">
+                <li class="border-b-[1px] border-[#4b496f] p-2">
                     <button type="button"
                         class="dropdown_accion flex items-center w-full p-2 text-base text-white transition duration-75 rounded-sm group hover:bg-[#374151]"
                         data-dropdownname="dropdown-orders">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Pedidos</span>
                     </button>
                     <ul id="dropdown-orders"
-                        class="hidden mt-2 mb-2 py-4 space-y-2 bg-[#239ae68a] rounded-[5px] transition-all duration-300">
+                        class="hidden mt-2 mb-2 py-4 space-y-2  rounded-[5px] transition-all duration-300">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_pedido_propiedades')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Propiedades
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_crear_pedido')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Crear pedido
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_obtener_pedido')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener pedido
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_listado_pedidos')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Obtener lista pedidos
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_editar_pedido')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Editar estado pedido
                             </a>
                         </li>
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_cancelar_pedido')">
                             <a
-                                class="text-[14px] flex items-center w-full p-1 text-white transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
                                 Eliminar pedido
                             </a>
                         </li>
