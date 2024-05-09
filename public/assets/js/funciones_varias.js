@@ -119,11 +119,94 @@ function fn_mostrar_formulario_crear_categoria(elemento_id) {
     fn_obtener_categorias(null, true);
 }
 
-function fn_mostrar_formulario_generar_pedido(elemento_id) {
-    $('.contenedor_categorias').each(function () {
-        $(this).hide();
-    })
-    $(`#${elemento_id}`).show();
+async function fn_comprobar_si_el_usuario_logeado_es_cliente(email) {
+    let token = $("#tkn").val();
+    let url = `http://localhost:8000/api/v1/customers?email[eq]=${email}`;
+
+    try {
+        let response = await $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "json",
+            headers: {
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
+            },
+        });
+
+        let cliente = response.data[0] ?? {};
+
+        if (cliente.id != undefined && cliente.id != null && cliente.id != '' && cliente.id > 0) {
+            console.log('cliente.id', cliente.id)
+            return cliente;
+        } else {
+            let cliente_datos = {
+                "firstName": "Usuario prueba",
+                "lastName": "Sin espesificar",
+                "customerType": "individual",
+                "email": email,
+                "password": "Ta00123456",
+                "adress": "Calle de la paz 21",
+                "postalCode": "41005",
+                "city": "Valencia",
+                "state": "Valencia",
+                "country": "España",
+                "phone": "6000000000"
+            }
+
+            try {
+                let response = await $.ajax({
+                    url: "http://localhost:8000/api/v1/customers",
+                    method: "POST",
+                    data: cliente_datos,
+                    headers: {
+                        Authorization: "Bearer " + $("#tkn").val(),
+                        Accept: "application/json",
+                    },
+                });
+
+                let item = response.data;
+                console.log("Cliente creado con éxito:", item);
+                if (item.id && item.id > 0) {
+                    console.log('item.id', item.id);
+                    return item;
+                } else {
+                    throw new Error("Error al crear el cliente");
+                }
+            } catch (error) {
+                console.error("Error al crear el cliente:", error);
+                throw error;
+            }
+        }
+    } catch (error) {
+        console.error("Error al obtener cliente:", error);
+        throw error;
+    }
+}
+
+async function fn_mostrar_formulario_generar_pedido(elemento_id) {
+    let user_email = $(`#input_hidden_user_email`).val();
+    if (!user_email || user_email == '') {
+        mostrar_error('Logeate antes de seguir');
+        return false;
+    }
+
+    try {
+        let customer = await fn_comprobar_si_el_usuario_logeado_es_cliente(user_email);
+        console.log('customer', customer);
+        let cliente_id = customer.id;
+        let cliente_email = customer.email;
+        $(`#carrito_email_cliente`).text(cliente_email);
+        $(`#input_hidden_customer_id`).val(cliente_id);
+
+        $('.contenedor_categorias').each(function () {
+            $(this).hide();
+        });
+        $(`#${elemento_id}`).show();
+    } catch (error) {
+        console.error("Error al obtener el cliente:", error);
+        // Manejar el error aquí
+    }
 }
 
 
@@ -1203,6 +1286,112 @@ function fn_mostrar_form_editar_producto(id) {
     });
 
 }
+
+
+// Inicializar el array de productos en JavaScript
+
+
+// Inicializar el carrito
+let carrito = [];
+let productos = [];
+
+$(document).ready(function () {
+    // Escuchar el clic en el botón "Añadir al carrito"
+    $('.agregar-al-carrito').click(function () {
+        let id = $(this).data('id');
+        agregar_al_carrito(id);
+    });
+});
+
+// Array para almacenar los productos en el carrito
+let cartItems = [];
+
+// Función para agregar un producto al carrito
+function agregar_al_carrito(id) {
+
+    let producto = JSON.parse($(`#btn_agregar_al_carrito_${id}`).attr('producto'));
+    console.log('Producto', producto);
+    // const item = {
+    //     id: id,
+    //     name: name,
+    //     price: price,
+    //     quantity: 1
+    // };
+
+    // // Verificar si el producto ya está en el carrito
+    // const existingItem = cartItems.find(item => item.id === id);
+    // if (existingItem) {
+    //     existingItem.quantity++;
+    // } else {
+    //     cartItems.push(item);
+    // }
+
+    // // Actualizar la visualización del carrito
+    // updateCartView();
+}
+
+// Función para actualizar la visualización del carrito
+function updateCartView() {
+    const cartContainer = document.getElementById('cart-container');
+    const cartItemCount = document.getElementById('cart-item-count');
+
+    // Limpiar contenido anterior
+    cartContainer.innerHTML = '';
+
+    // Recorrer los elementos del carrito y agregarlos al HTML
+    cartItems.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('flex', 'items-center', 'hover:bg-gray-100', '-mx-8', 'px-6', 'py-5');
+        div.innerHTML = `
+            <div class="flex w-2/5">
+                <div class="w-20">
+                    <img class="h-24" src="https://via.placeholder.com/150" alt="${item.name}">
+                </div>
+                <div class="flex flex-col justify-between ml-4 flex-grow">
+                    <span class="font-bold text-sm">${item.name}</span>
+                    <span class="text-red-500 text-xs">Category</span>
+                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                </div>
+            </div>
+            <div class="flex justify-center w-1/5">
+                <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                    <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                </svg>
+                <input class="mx-2 border text-center w-8" type="text" value="${item.quantity}">
+                <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                </svg>
+            </div>
+            <span class="text-center w-1/5 font-semibold text-sm">$${item.price}</span>
+            <span class="text-center w-1/5 font-semibold text-sm">$${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+        cartContainer.appendChild(div);
+    });
+
+    // Actualizar el número de ítems en el carrito
+    cartItemCount.textContent = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+    // Actualizar el resumen del pedido
+    updateSummary();
+}
+
+// Función para actualizar el resumen del pedido
+function updateSummary() {
+    const summaryItemCount = document.getElementById('summary-item-count');
+    const summaryTotal = document.getElementById('summary-total');
+    const summaryTotalCost = document.getElementById('summary-total-cost');
+
+    // Calcular el total de ítems y el costo total
+    const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const totalCost = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+    // Actualizar los elementos del resumen del pedido
+    summaryItemCount.textContent = itemCount;
+    summaryTotal.textContent = totalCost.toFixed(2);
+    summaryTotalCost.textContent = totalCost.toFixed(2);
+}
+
+
 
 
 

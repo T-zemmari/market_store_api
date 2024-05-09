@@ -551,7 +551,8 @@
             </div>
         </div>
 
-        <div class="contenedor_formularios contenedor_generar_un_pedido w-full p-4 mb-10" data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none;">
+        <div class="contenedor_formularios contenedor_generar_un_pedido w-full p-4 mb-10"
+            data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none;">
             <?php $productos = [
                 [
                     'id' => 0,
@@ -589,23 +590,88 @@
                     'image' => 'assets/imgs/pr_img_2.png',
                 ],
             ]; ?>
-        
+
             <div class="w-full flex justify-start items-start">
                 <?php foreach($productos as $producto): ?>
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow m-2 flex flex-col items-center" style="width: 18rem;">
-                        <img src="<?= $producto['image']; ?>" class="rounded-t-lg h-[150px] mt-2" alt="<?= $producto['name']; ?>">
-                        <div class="p-3">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $producto['name']; ?></h5>
-                            <p class="mb-3 font-normal text-gray-700">Antes: <?= $producto['regular_price']?>€</p>
-                            <p class="mb-3 font-normal text-gray-700">Ahora: <?= $producto['price'] ?>€</p>           
-                            <button class="w-full inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onclick="agregarAlCarrito(<?= $producto['id']; ?>)">Añadir al carrito</button>
-                        </div>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow m-2 flex flex-col items-center"
+                    style="width: 18rem;">
+                    <img src="<?= $producto['image'] ?>" class="rounded-t-lg h-[150px] mt-2"
+                        alt="<?= $producto['name'] ?>">
+                    <div class="p-3">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $producto['name'] ?></h5>
+                        <p class="mb-3 font-normal text-gray-700">Antes: <?= $producto['regular_price'] ?>€</p>
+                        <p class="mb-3 font-normal text-gray-700">Ahora: <?= $producto['price'] ?>€</p>
+                        <button
+                            class="w-full inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                            producto="<?= json_encode($producto) ?>"
+                            id="btn_agregar_al_carrito_<?= $producto['id'] ?>"
+                            onclick="agregar_al_carrito(<?= $producto['id'] ?>)">Añadir al carrito</button>
                     </div>
+                </div>
                 <?php endforeach ?>
             </div>
-        </div>
-        
 
+            <div class="w-full">
+
+                <div class="container mx-auto mt-10">
+                    <div class="flex shadow-md my-10">
+                        <div class="w-3/4 bg-white px-10 py-10" id="cart-container">
+                            <div class="flex justify-between border-b pb-8">
+                                <h1 class="font-semibold text-2xl">Carrito (<span id="carrito_email_cliente"></span>)
+                                </h1>
+                                <h2 class="font-semibold text-2xl"><span id="cart-item-count">0</span> Productos</h2>
+                            </div>
+                            <div class="flex mt-10 mb-5">
+                                <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalle</h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
+                                    Cantidad
+                                </h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
+                                    Precio
+                                </h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
+                                    Total
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div id="summary" class="w-1/4 px-8 py-10">
+                            <!-- Aquí se mostrará el resumen del pedido -->
+                            <h1 class="font-semibold text-2xl border-b pb-8">Pedido:</h1>
+                            <div class="flex justify-between mt-10 mb-5">
+                                <span class="font-semibold text-sm uppercase">Subtotal</span>
+                                <span class="font-semibold text-sm"><span id="summary_subtotal">0</span>€</span>
+                            </div>
+                            <div class="flex justify-between mt-5 mb-5">
+                                <span class="font-semibold text-sm uppercase">Iva 21%</span>
+                                <span class="font-semibold text-sm"><span id="summary_iva">0</span>€</span>
+                            </div>
+                            <div class="py-5">
+                                <label for="summary_discount"
+                                    class="font-semibold inline-block mb-3 text-sm uppercase">Descuento</label>
+                                <input type="number" id="summary_discount" placeholder="Descuento"
+                                    class="p-2 text-sm w-full">
+                            </div>
+                            <input type="hidden" id="input_hidden_user_email"
+                                value="<?= Auth::user()->email ?? '' ?>">
+                                <input type="hidden" id="input_hidden_customer_id"
+                                value="">
+                            <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar
+                                descuento</button>
+                            <div class="border-t mt-8">
+                                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                                    <span>Total Carrito</span>
+                                    <span><span id="summary_total">0</span>€</span>
+                                </div>
+                                <button
+                                    class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"
+                                    onclick="fn_generar_pedido()">Genera pedido</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="p-4 min-h-[89vh] flex flex-col justify-start items-start" id="contenedor_dashboards_principal">
 
