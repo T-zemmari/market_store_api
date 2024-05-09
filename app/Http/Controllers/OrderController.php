@@ -106,6 +106,10 @@ class OrderController extends Controller
 
                 $shippingTotal = round($shippingTotalwithTax - $totalTax, 2);
 
+                // dump($shippingTotal);
+                // dump($totalTax);
+                // dump($shippingTotalwithTax);die;
+
                 // Verificar si los cálculos coinciden con los valores enviados en el cuerpo de la solicitud
                 if (
                     !is_numeric($request->shippingTotal) ||

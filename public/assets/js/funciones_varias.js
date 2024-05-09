@@ -197,6 +197,7 @@ async function fn_mostrar_formulario_generar_pedido(elemento_id) {
     $(`#${elemento_id}`).show();
     fn_obtener_pedidos(null, true);
 
+
     let user_email = $(`#input_hidden_user_email`).val();
     if (!user_email || user_email == '') {
         mostrar_error('Logeate antes de seguir');
@@ -211,10 +212,6 @@ async function fn_mostrar_formulario_generar_pedido(elemento_id) {
         $(`#carrito_email_cliente`).text(cliente_email);
         $(`#input_hidden_customer_id`).val(cliente_id);
 
-        $('.contenedor_categorias').each(function () {
-            $(this).hide();
-        });
-        $(`#${elemento_id}`).show();
     } catch (error) {
         console.error("Error al obtener el cliente:", error);
         // Manejar el error aquí
@@ -1398,6 +1395,8 @@ function update_cart_view() {
     const cart_container = document.getElementById('info_productos_carrito');
     const cantidad_de_productos = document.getElementById('cantidad_de_productos');
 
+    cart_container.style.display = '';
+
     // Limpiar contenido anterior
     cart_container.innerHTML = '';
 
@@ -1477,7 +1476,7 @@ function fn_generar_pedido() {
         let total = parseFloat($(`#summary_total`).text()).toFixed(2);
 
         let lineItems = [];
-        let producto = {};
+
 
         if (!cart_items || cart_items.length == 0) {
             mostrar_error('El carrito esta vacio');
@@ -1486,6 +1485,7 @@ function fn_generar_pedido() {
 
         //console.log(cart_items);
         cart_items.forEach(item => {
+            let producto = {};
             producto.id = item.id;
             producto.name = item.name;
             producto.price = item.price;
@@ -1578,8 +1578,9 @@ function fn_generar_pedido() {
                     $(`#contenedor_generar_nuevo_pedido`).hide();
                     cart_items = [];
                     update_summary();
-                    $(`#info_productos_carrito`).hide();
+
                     $(`#contenedor_generar_un_pedido`).hide();
+                    $(`#info_productos_carrito`).html(``);
 
                     Swal.fire({
                         html: `<h4><b>El pedido ha sido creado correctamente</b></h4>`,
