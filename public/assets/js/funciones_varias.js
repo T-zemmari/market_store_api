@@ -190,6 +190,13 @@ async function fn_comprobar_si_el_usuario_logeado_es_cliente(email) {
 }
 
 async function fn_mostrar_formulario_generar_pedido(elemento_id) {
+
+    $('.contenedor_formularios').each(function () {
+        $(this).hide();
+    })
+    $(`#${elemento_id}`).show();
+    fn_obtener_pedidos(null, true);
+
     let user_email = $(`#input_hidden_user_email`).val();
     if (!user_email || user_email == '') {
         mostrar_error('Logeate antes de seguir');
@@ -1446,14 +1453,15 @@ function update_summary() {
 
     // Calcular el total de ítems y el costo total
     const cantidad = cart_items.reduce((total, item) => total + item.quantity, 0);
-    const subtotal = cart_items.reduce((total, item) => total + (item.price * item.quantity), 0);
-    const iva = (parseFloat(subtotal) * 21) / 100;
+    const total = cart_items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const iva = ((parseFloat(total)) - parseFloat(total / 1.21));
+    const subtotal = parseFloat(total) - parseFloat(iva);
 
     // Actualizar los elementos del resumen del pedido
     summary_cantidad_de_productos.textContent = cantidad;
-    summary_subtotal.textContent = subtotal.toFixed(2);
-    summary_iva.textContent = iva.toFixed(2);
-    summary_total.textContent = ((parseFloat(iva) + parseFloat(subtotal))).toFixed(2);
+    summary_subtotal.textContent = parseFloat(subtotal).toFixed(2);
+    summary_iva.textContent = parseFloat(iva).toFixed(2);
+    summary_total.textContent = parseFloat(total).toFixed(2);
 }
 
 
@@ -1511,6 +1519,85 @@ function fn_generar_pedido() {
         }
 
         console.log('order_data', order_data);
+
+
+        $.ajax({
+            url: "http://localhost:8000/api/v1/orders",
+            method: "POST",
+            data: order_data,
+            headers: {
+                Authorization: "Bearer " + $("#tkn").val(),
+                Accept: "application/json",
+            },
+            success: function (response) {
+                console.log("Pedido creado con éxito:", response);
+                let item = response.order;
+                console.log(item);
+                if (item.id && item.id > 0) {
+
+                    let HTML_PEDIDO = `<tr class="bg-white dark:bg-gray-800" id="tr_pedido_${item.id}">
+                            <th scope="row" class="px-6 py-4">
+                            ${item.id ?? ""}
+                            </th>
+                            <td class="px-6 py-4">
+                            ${item.customer_id ?? ""}
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.status ?? ""}
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.created_at ?? ""}
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.date_paid ?? ""} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.discount_total ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.shipping_total ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.total_tax ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.shipping_total_with_tax ?? ''} 
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.payment_method ?? ''} 
+                            </td>            
+                            <td class="px-6 py-4 text-right">                         
+                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${item.id}')">Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_pedido_${item.id}"></td>
+                        </tr>`;
+
+                    $(`#tbody_pedidos`).prepend(HTML_PEDIDO);
+                    $(`#contenedor_generar_nuevo_pedido`).hide();
+                    cart_items = [];
+                    update_summary();
+                    $(`#info_productos_carrito`).hide();
+                    $(`#contenedor_generar_un_pedido`).hide();
+
+                    Swal.fire({
+                        html: `<h4><b>El pedido ha sido creado correctamente</b></h4>`,
+                        icon: `success`,
+                    });
+
+                } else {
+                    Swal.fire({
+                        html: `< h4><b>Error al crear el pedido</b></h4> `,
+                        icon: `error`,
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error al crear el pedido:", error);
+                mostrar_error('Error al crear el pedido intentalo mas tarde')
+            },
+        });
 
 
     }
