@@ -649,7 +649,8 @@
                                 <label for="summary_discount"
                                     class="font-semibold inline-block mb-3 text-sm uppercase">Descuento</label>
                                 <input type="number" id="summary_discount" placeholder="Descuento"
-                                    class="p-2 text-sm w-full">
+                                    class="p-2 text-sm w-full" readonly>
+                                    <small class="color:red">El descuento no es necesario en esta demo</small>
                             </div>
                             <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar
                                 descuento</button>

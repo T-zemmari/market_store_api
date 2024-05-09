@@ -1293,19 +1293,13 @@ function fn_mostrar_form_editar_producto(id) {
 }
 
 
-function fn_generar_pedido(){
-
-}
-
-
-// Inicializar el array de productos en JavaScript
 
 
 // Inicializar el carrito
 let carrito = [];
 
 // Array para almacenar los productos en el carrito
-let cartItems = [];
+let cart_items = [];
 
 // Función para agregar un producto al carrito
 function agregar_al_carrito(id) {
@@ -1351,76 +1345,108 @@ function agregar_al_carrito(id) {
     let producto = productos.find(prod => prod.id === id);
 
     // Verificar si el producto ya está en el carrito
-    let itemIndex = cartItems.findIndex(item => item.id === id);
+    let itemIndex = cart_items.findIndex(item => item.id === id);
 
     if (itemIndex !== -1) {
         // Si el producto ya está en el carrito, incrementar la cantidad
-        cartItems[itemIndex].quantity++;
+        cart_items[itemIndex].quantity++;
     } else {
         // Si el producto no está en el carrito, agregarlo con cantidad 1
-        cartItems.push({ ...producto, quantity: 1 });
+        cart_items.push({ ...producto, quantity: 1 });
     }
 
     // Actualizar la visualización del carrito
-    updateCartView();
+    update_cart_view();
 
+}
+
+function menos_cantidad(id) {
+    // Buscar el índice del producto en el carrito
+    const itemIndex = cart_items.findIndex(item => item.id === id);
+
+    if (itemIndex !== -1) {
+        // Decrementar la cantidad del producto
+        cart_items[itemIndex].quantity--;
+
+        // Actualizar la visualización del carrito
+        update_cart_view();
+    }
+}
+
+function mas_cantidad(id) {
+    // Buscar el índice del producto en el carrito
+    const itemIndex = cart_items.findIndex(item => item.id === id);
+
+    if (itemIndex !== -1) {
+        // Incrementar la cantidad del producto
+        cart_items[itemIndex].quantity++;
+
+        // Actualizar la visualización del carrito
+        update_cart_view();
+    }
 }
 
 // Función para actualizar la visualización del carrito
-function updateCartView() {
-    const cartContainer = document.getElementById('info_productos_carrito');
+function update_cart_view() {
+    const cart_container = document.getElementById('info_productos_carrito');
     const cantidad_de_productos = document.getElementById('cantidad_de_productos');
 
     // Limpiar contenido anterior
-    cartContainer.innerHTML = '';
+    cart_container.innerHTML = '';
 
     // Recorrer los elementos del carrito y agregarlos al HTML
-    cartItems.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('flex', 'items-center', 'hover:bg-gray-100', '-mx-8', 'px-6', 'py-5');
-        div.innerHTML = `
-            <div class="flex w-2/5">
-                <div class="w-20">
-                    <img class="h-24" src="${item.image}" alt="${item.name}">
+    cart_items.forEach(item => {
+        if (item.quantity > 0) {
+            const div = document.createElement('div');
+            div.classList.add('flex', 'items-center', 'hover:bg-gray-100', '-mx-8', 'px-6', 'py-5');
+            div.innerHTML = `
+                <div class="flex w-2/5">
+                    <div class="w-20">
+                        <img class="h-24" src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="flex flex-col justify-between ml-4 flex-grow">
+                        <span class="font-bold text-sm">${item.name}</span>
+                        <span class="text-red-500 text-xs">Category</span>
+                        <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                    </div>
                 </div>
-                <div class="flex flex-col justify-between ml-4 flex-grow">
-                    <span class="font-bold text-sm">${item.name}</span>
-                    <span class="text-red-500 text-xs">Category</span>
-                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                <div class="flex justify-center w-1/5 gap-4">
+                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512" onclick="menos_cantidad(${item.id})">
+                        <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                    </svg>
+                    <input class="mx-2 border text-center w-16" type="text" value="${item.quantity}" readonly>
+                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512" onclick="mas_cantidad(${item.id})">
+                        <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                    </svg>
                 </div>
-            </div>
-            <div class="flex justify-center w-1/5 gap-4">
-                <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                    <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-                </svg>
-                <input class="mx-2 border text-center w-16" type="text" value="${item.quantity}" readonly>
-                <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-                </svg>
-            </div>
-            <span class="text-center w-1/5 font-semibold text-sm">$${item.price}</span>
-            <span class="text-center w-1/5 font-semibold text-sm">$${(item.price * item.quantity).toFixed(2)}</span>
-        `;
-        cartContainer.appendChild(div);
+                <span class="text-center w-1/5 font-semibold text-sm">${item.price}€</span>
+                <span class="text-center w-1/5 font-semibold text-sm">${(item.price * item.quantity).toFixed(2)}€</span>
+            `;
+            cart_container.appendChild(div);
+        }
     });
 
+    // Eliminar productos con cantidad cero del carrito
+    cart_items = cart_items.filter(item => item.quantity > 0);
+
     // Actualizar el número de ítems en el carrito
-    cantidad_de_productos.textContent = cartItems.reduce((total, item) => total + item.quantity, 0);
+    cantidad_de_productos.textContent = cart_items.reduce((total, item) => total + item.quantity, 0);
 
     // Actualizar el resumen del pedido
-    updateSummary();
+    update_summary();
 }
 
+
 // Función para actualizar el resumen del pedido
-function updateSummary() {
+function update_summary() {
     const summary_subtotal = document.getElementById('summary_subtotal');
     const summary_iva = document.getElementById('summary_iva');
     const summary_total = document.getElementById('summary_total');
     const summary_cantidad_de_productos = document.getElementById('cantidad_de_productos');
 
     // Calcular el total de ítems y el costo total
-    const cantidad = cartItems.reduce((total, item) => total + item.quantity, 0);
-    const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const cantidad = cart_items.reduce((total, item) => total + item.quantity, 0);
+    const subtotal = cart_items.reduce((total, item) => total + (item.price * item.quantity), 0);
     const iva = (parseFloat(subtotal) * 21) / 100;
 
     // Actualizar los elementos del resumen del pedido
@@ -1428,4 +1454,65 @@ function updateSummary() {
     summary_subtotal.textContent = subtotal.toFixed(2);
     summary_iva.textContent = iva.toFixed(2);
     summary_total.textContent = ((parseFloat(iva) + parseFloat(subtotal))).toFixed(2);
+}
+
+
+function fn_generar_pedido() {
+
+    let customer_id = $(`#input_hidden_customer_id`).val();
+    if (customer_id == undefined || customer_id == null || customer_id == '' || isNaN(customer_id)) {
+        mostrar_error('Error al generar el pedido, debes logearte antes');
+    } else {
+
+        let subtotal = parseFloat($(`#summary_subtotal`).text()).toFixed(2);
+        let iva = parseFloat($(`#summary_iva`).text()).toFixed(2);
+        let total = parseFloat($(`#summary_total`).text()).toFixed(2);
+
+        let lineItems = [];
+        let producto = {};
+
+        if (!cart_items || cart_items.length == 0) {
+            mostrar_error('El carrito esta vacio');
+            return false;
+        }
+
+        //console.log(cart_items);
+        cart_items.forEach(item => {
+            producto.id = item.id;
+            producto.name = item.name;
+            producto.price = item.price;
+            producto.quantity = item.quantity;
+            lineItems.push(producto);
+        });
+
+        if (!lineItems || lineItems.length == 0) {
+            mostrar_error('Revisa tu carrito');
+            return false;
+        }
+
+        let order_data = {
+            "customerId": customer_id,
+            "customerIpAddress": "192.1.1.1",
+            "status": "pending",
+            "currency": "EUR",
+            "discountTotal": "0.00",
+            "shippingTotal": subtotal,
+            "taxType": "amount",
+            "totalTax": iva,
+            "shippingTotalwithTax": total,
+            "billing": null,
+            "shipping": null,
+            "paymentMethod": "credit_card",
+            "paymentMethodTitle": "Credit Card",
+            "datePaid": "",
+            "dateCompleted": "",
+            "lineItems": lineItems,
+            "couponLines": []
+        }
+
+        console.log('order_data', order_data);
+
+
+    }
+
 }
