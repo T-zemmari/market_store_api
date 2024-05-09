@@ -407,6 +407,7 @@ function fn_guardar_nuevo_producto() {
                     $('#formulario_producto')[0].reset();
                     $(`#conenedor_producto_img_prev`).html(``);
                     $(`#conenedor_producto_resto_img_prev`).html(``);
+                    $(`#tr_info_productos_lista_vacia`).hide();
 
                 } else {
                     Swal.fire({
@@ -497,8 +498,6 @@ function validar_inputs_cliente() {
     return true;
 }
 
-
-
 function fn_guardar_nuevo_cliente() {
     // Obtener los valores de los campos del formulario
     let firstName = $("#firstName").val();
@@ -582,6 +581,7 @@ function fn_guardar_nuevo_cliente() {
                     icon: `success`,
                 });
                 $('#formulario_cliente')[0].reset();
+                $(`#tr_info_clientes_lista_vacia`).hide();
 
             } else {
                 Swal.fire({
@@ -677,6 +677,7 @@ function fn_guardar_nueva_categoria() {
                     icon: `success`,
                 });
                 $('#formulario_categoria')[0].reset();
+                $(`#tr_info_categorias_lista_vacia`).hide();
 
             } else {
                 Swal.fire({

@@ -128,7 +128,7 @@ function fn_obtener_categorias(page = null, crear = false) {
                 $("#pagination_container").show();
             } else {
                 CATEGORIAS_HTML = `
-                <tr>
+                <tr id="tr_info_categorias_lista_vacia">
                     <td colspan="12">
                         <div class="w-full p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                             <span class="flex justify-center items-center font-medium">Lista vacia</span> 

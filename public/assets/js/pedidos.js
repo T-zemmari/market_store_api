@@ -162,7 +162,7 @@ function fn_obtener_pedidos(page = null, crear = false) {
                 $("#pagination_container").show();
             } else {
                 PEDIDOS_HTML = `
-                <tr>
+                <trid="tr_info_pedidos_lista_vacia">
                     <td colspan="12">
                         <div class="w-fullr p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                             <span class="flex justify-center items-center font-medium">Lista vacia</span> 
