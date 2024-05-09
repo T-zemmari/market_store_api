@@ -52,6 +52,11 @@ $(document).ready(function () {
         }
     });
 
+    $('.agregar-al-carrito').click(function () {
+        let id = $(this).data('id');
+        agregar_al_carrito(id);
+    });
+
 });
 
 function fn_cerrar_menu() {
@@ -1288,20 +1293,16 @@ function fn_mostrar_form_editar_producto(id) {
 }
 
 
+function fn_generar_pedido(){
+
+}
+
+
 // Inicializar el array de productos en JavaScript
 
 
 // Inicializar el carrito
 let carrito = [];
-let productos = [];
-
-$(document).ready(function () {
-    // Escuchar el clic en el botón "Añadir al carrito"
-    $('.agregar-al-carrito').click(function () {
-        let id = $(this).data('id');
-        agregar_al_carrito(id);
-    });
-});
 
 // Array para almacenar los productos en el carrito
 let cartItems = [];
@@ -1309,31 +1310,66 @@ let cartItems = [];
 // Función para agregar un producto al carrito
 function agregar_al_carrito(id) {
 
-    let producto = JSON.parse($(`#btn_agregar_al_carrito_${id}`).attr('producto'));
-    console.log('Producto', producto);
-    // const item = {
-    //     id: id,
-    //     name: name,
-    //     price: price,
-    //     quantity: 1
-    // };
+    let productos = [
+        {
+            'id': 0,
+            'price': '25.99',
+            'regular_price': '45.99',
+            'name': 'Producto 1',
+            'image': 'assets/imgs/pr_img_1.png',
+        },
+        {
+            'id': 1,
+            'price': '205.99',
+            'regular_price': '410.99',
+            'name': 'Producto 2',
+            'image': 'assets/imgs/pr_img_4.png',
+        },
+        {
+            'id': 2,
+            'price': '29.90',
+            'regular_price': '49.90',
+            'name': 'Producto 3',
+            'image': 'assets/imgs/pr_img_3.png',
+        },
+        {
+            'id': 3,
+            'price': '109.90',
+            'regular_price': '201.90',
+            'name': 'Producto 4',
+            'image': 'assets/imgs/pr_img_5.png',
+        },
+        {
+            'id': 4,
+            'price': '99.99',
+            'regular_price': '199.99',
+            'name': 'Producto 5',
+            'image': 'assets/imgs/pr_img_2.png',
+        },
+    ]
+    // Buscar el producto en la lista de productos disponibles
+    let producto = productos.find(prod => prod.id === id);
 
-    // // Verificar si el producto ya está en el carrito
-    // const existingItem = cartItems.find(item => item.id === id);
-    // if (existingItem) {
-    //     existingItem.quantity++;
-    // } else {
-    //     cartItems.push(item);
-    // }
+    // Verificar si el producto ya está en el carrito
+    let itemIndex = cartItems.findIndex(item => item.id === id);
 
-    // // Actualizar la visualización del carrito
-    // updateCartView();
+    if (itemIndex !== -1) {
+        // Si el producto ya está en el carrito, incrementar la cantidad
+        cartItems[itemIndex].quantity++;
+    } else {
+        // Si el producto no está en el carrito, agregarlo con cantidad 1
+        cartItems.push({ ...producto, quantity: 1 });
+    }
+
+    // Actualizar la visualización del carrito
+    updateCartView();
+
 }
 
 // Función para actualizar la visualización del carrito
 function updateCartView() {
-    const cartContainer = document.getElementById('cart-container');
-    const cartItemCount = document.getElementById('cart-item-count');
+    const cartContainer = document.getElementById('info_productos_carrito');
+    const cantidad_de_productos = document.getElementById('cantidad_de_productos');
 
     // Limpiar contenido anterior
     cartContainer.innerHTML = '';
@@ -1345,7 +1381,7 @@ function updateCartView() {
         div.innerHTML = `
             <div class="flex w-2/5">
                 <div class="w-20">
-                    <img class="h-24" src="https://via.placeholder.com/150" alt="${item.name}">
+                    <img class="h-24" src="${item.image}" alt="${item.name}">
                 </div>
                 <div class="flex flex-col justify-between ml-4 flex-grow">
                     <span class="font-bold text-sm">${item.name}</span>
@@ -1353,11 +1389,11 @@ function updateCartView() {
                     <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
                 </div>
             </div>
-            <div class="flex justify-center w-1/5">
+            <div class="flex justify-center w-1/5 gap-4">
                 <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                     <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                 </svg>
-                <input class="mx-2 border text-center w-8" type="text" value="${item.quantity}">
+                <input class="mx-2 border text-center w-16" type="text" value="${item.quantity}" readonly>
                 <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                     <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                 </svg>
@@ -1369,7 +1405,7 @@ function updateCartView() {
     });
 
     // Actualizar el número de ítems en el carrito
-    cartItemCount.textContent = cartItems.reduce((total, item) => total + item.quantity, 0);
+    cantidad_de_productos.textContent = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     // Actualizar el resumen del pedido
     updateSummary();
@@ -1377,21 +1413,19 @@ function updateCartView() {
 
 // Función para actualizar el resumen del pedido
 function updateSummary() {
-    const summaryItemCount = document.getElementById('summary-item-count');
-    const summaryTotal = document.getElementById('summary-total');
-    const summaryTotalCost = document.getElementById('summary-total-cost');
+    const summary_subtotal = document.getElementById('summary_subtotal');
+    const summary_iva = document.getElementById('summary_iva');
+    const summary_total = document.getElementById('summary_total');
+    const summary_cantidad_de_productos = document.getElementById('cantidad_de_productos');
 
     // Calcular el total de ítems y el costo total
-    const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-    const totalCost = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const cantidad = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const iva = (parseFloat(subtotal) * 21) / 100;
 
     // Actualizar los elementos del resumen del pedido
-    summaryItemCount.textContent = itemCount;
-    summaryTotal.textContent = totalCost.toFixed(2);
-    summaryTotalCost.textContent = totalCost.toFixed(2);
+    summary_cantidad_de_productos.textContent = cantidad;
+    summary_subtotal.textContent = subtotal.toFixed(2);
+    summary_iva.textContent = iva.toFixed(2);
+    summary_total.textContent = ((parseFloat(iva) + parseFloat(subtotal))).toFixed(2);
 }
-
-
-
-
-

@@ -613,26 +613,25 @@
 
             <div class="w-full">
 
+                <input type="hidden" id="input_hidden_user_email" value="<?= Auth::user()->email ?? '' ?>">
+                <input type="hidden" id="input_hidden_customer_id" value="">
+
                 <div class="container mx-auto mt-10">
                     <div class="flex shadow-md my-10">
                         <div class="w-3/4 bg-white px-10 py-10" id="cart-container">
                             <div class="flex justify-between border-b pb-8">
                                 <h1 class="font-semibold text-2xl">Carrito (<span id="carrito_email_cliente"></span>)
                                 </h1>
-                                <h2 class="font-semibold text-2xl"><span id="cart-item-count">0</span> Productos</h2>
+                                <h2 class="font-semibold text-2xl"><span id="cantidad_de_productos">0</span> Productos</h2>
                             </div>
                             <div class="flex mt-10 mb-5">
                                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalle</h3>
-                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
-                                    Cantidad
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Cantidad
                                 </h3>
-                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
-                                    Precio
-                                </h3>
-                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">
-                                    Total
-                                </h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Precio</h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Total</h3>
                             </div>
+                            <div class="info_productos w-full" id="info_productos_carrito"></div>
                         </div>
 
                         <div id="summary" class="w-1/4 px-8 py-10">
@@ -652,10 +651,6 @@
                                 <input type="number" id="summary_discount" placeholder="Descuento"
                                     class="p-2 text-sm w-full">
                             </div>
-                            <input type="hidden" id="input_hidden_user_email"
-                                value="<?= Auth::user()->email ?? '' ?>">
-                                <input type="hidden" id="input_hidden_customer_id"
-                                value="">
                             <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar
                                 descuento</button>
                             <div class="border-t mt-8">
@@ -665,11 +660,12 @@
                                 </div>
                                 <button
                                     class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"
-                                    onclick="fn_generar_pedido()">Genera pedido</button>
+                                    onclick="fn_generar_pedido()">Generar pedido</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
