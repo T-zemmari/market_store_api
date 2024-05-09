@@ -153,7 +153,111 @@ function fn_mostrar_form_editar_categoria(data) {
     let item = JSON.parse(data);
     console.log(item);
 }
+function fn_guardar_nueva_categoria() {
 
+    let name = $("#name").val();
+    let parent = $("#parent").val();
+    let shortDescription = $("#category_short_description").val();
+    let description = $("#category_description").val();
+
+    // Realizar validaciones
+    if (name.trim() === '') {
+        mostrar_error("El nombre de la categoría es requerido");
+        return;
+    }
+
+    if (isNaN(parent)) {
+        mostrar_error("El nivel de la categoría debe ser un número");
+        return;
+    }
+
+    // Crear un nuevo objeto con los datos de la categoría
+    let categoria = {
+        name: name,
+        parent: parent,
+        shortDescription: shortDescription,
+        description: description
+    };
+
+    // Realizar la solicitud AJAX para guardar la nueva categoría
+    $.ajax({
+        url: "http://localhost:8000/api/v1/categories",
+        method: "POST",
+        dataType: "json",
+        data: categoria,
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Categoría creada con éxito:", response);
+            let item = response.data;
+            if (item.id && item.id > 0) {
+
+                let CATEGORIAS_HTML = `
+             <tr class="bg-white " id="tr_categoria_${item.id
+                    }">
+                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                     ${item.name ?? ""}
+                     </th>
+                     <td class="px-6 py-4">
+                     ${item.shortDescription ?? ""}
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.description ?? ""}
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.parent ?? ""} 
+                     </td>
+                     <td class="px-6 py-4">
+                     ${item.products?.length ?? 0} 
+                     </td>           
+                     <td class="px-6 py-4 text-right">                         
+                         <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
+                        item
+                    )}')">Editar</button>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id
+                    }">                           
+                     </td>
+                 </tr>
+             `;
+
+                $(`#tbody_categorias`).prepend(CATEGORIAS_HTML);
+                $(`#contenedor_crear_nueva_categoria`).hide();
+                Swal.fire({
+                    html: `<h4><b>La categoria ha sido creado correctamente</b></h4>`,
+                    icon: `success`,
+                });
+                $('#formulario_categoria')[0].reset();
+                $(`#tr_info_categorias_lista_vacia`).hide();
+
+            } else {
+                Swal.fire({
+                    html: `<h4><b>Error al crear la categoria</b></h4>`,
+                    icon: `error`,
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al crear la categoría:", error);
+            Swal.fire({
+                html: `<h4><b>Error al crear la categoría</b></h4>`,
+                icon: `error`,
+            });
+        },
+    });
+}
+
+function fn_mostrar_formulario_crear_categoria(elemento_id) {
+    $('.contenedor_categorias').each(function () {
+        $(this).hide();
+    })
+    $(`#${elemento_id}`).show();
+    fn_obtener_categorias(null, true);
+}
 function create_pagination_categorias_links(links = null) {
 
     if (links == null) return false;
@@ -239,4 +343,105 @@ function fn_mostrar_form_editar_categoria(id) {
         },
     });
 
+}
+
+function fn_mostrar_form_editar_categoria(id) {
+
+    $(`#td_colspan_form_edit_categoria_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            let token = $("#tkn").val();
+            // Realizar la solicitud AJAX
+            let url = `http://localhost:8000/api/v1/categories/${id}`;
+            console.log("url", url);
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + token,
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    //console.log("Informacion de la categoria:", response);
+                    let categoria = response.data;
+                    console.log('categoria:', categoria);
+                    if (categoria.id != undefined && categoria.id === id) {
+
+                        let HTML_FORM_EDIT = `
+                        <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_categoria_${categoria.id}">
+
+                        <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                            <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                                <h2 class="text-2xl font-semibold">Editar categoria ${categoria.name}</h2>
+                            </div>
+                            <div class="w-full p-6">
+    
+                                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                    <div>
+                                        <label for="name_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                            Nombre de la categoria
+                                        </label>
+                                        <input type="text" id="name_${categoria.id}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Escribe el nombre" value="${categoria.name ?? ''}" />
+                                    </div>
+                                    <div>
+                                        <label for="parent_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                            Nivel (PARENT)
+                                        </label>
+                                        <input type="number" id="parent_${categoria.id}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Escibe el nivel de la categoria" value="${categoria.parent ?? ''}"/>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                    <div>
+                                        <label for="category_short_description_${categoria.id}"
+                                            class="block mb-2 text-sm font-medium text-gray-900">
+                                            Descripción corta
+                                        </label>
+                                        <textarea id="category_short_description_${categoria.id}" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="Escribe una descripción corta">${categoria.shortDescription ?? ''}</textarea>
+    
+                                    </div>
+                                    <div>
+                                        <label for="category_description_${categoria.id}"
+                                            class="block mb-2 text-sm font-medium text-gray-900">
+                                            Descripción
+                                        </label>
+                                        <textarea id="category_description_${categoria.id}" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="Escribe la descripcion de la categoria">${categoria.description ?? ''}</textarea>
+    
+                                    </div>
+                                </div>
+    
+                                <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                    <button type="button"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                        onclick="fn_editar_categoria(${categoria.id})">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                      
+                      `;
+
+                        $(`#contenedor_editar_categoria_${categoria.id}`).html(HTML_FORM_EDIT);
+                    } else {
+                        mostrar_error("Error al generar el formulario editar categoria");
+                        return;
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener categoria:", error);
+                },
+            });
+        }
+    })
 }

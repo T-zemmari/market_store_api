@@ -160,8 +160,6 @@ function fn_obtener_clientes(page = null, crear = false) {
     });
 }
 
-
-
 function crear_paginacion_clientes_links(links = null) {
 
     if (links == null) return false;
@@ -228,4 +226,342 @@ function get_page_number(url) {
     const page = url.split('page=')[1];
     return page;
 }
+
+function validar_inputs_cliente() {
+    // Obtener los valores de los campos del formulario
+    let firstName = $("#firstName").val();
+    let lastName = $("#lastName").val();
+    let phone = $("#phone").val();
+    let customerType = $("#customerType").val();
+    let email = $("#email").val();
+    let password = $("#password").val();
+    let address = $("#address").val();
+    let postalCode = $("#postalCode").val();
+    let city = $("#city").val();
+    let state = $("#state").val();
+    let country = $("#country").val();
+
+    // Realiza las validaciones
+    if (firstName == '') {
+        mostrar_error("El campo Nombre es requerido");
+        return false;
+    }
+
+    if (lastName == '') {
+        mostrar_error("El campo Apellidos es requerido");
+        return false;
+    }
+
+    if (phone == '') {
+        mostrar_error("El campo Teléfono es requerido");
+        return false;
+    }
+
+    if (customerType == '' || customerType == null || customerType == 0 || customerType == 'Seleccionar') {
+        mostrar_error("Selecciona el tipo de cliente");
+        return false;
+    }
+
+    if (email == '') {
+        mostrar_error("El campo Email es requerido");
+        return false;
+    }
+
+    if (password == '') {
+        mostrar_error("El campo Contraseña es requerido");
+        return false;
+    }
+
+    if (address == '') {
+        mostrar_error("El campo Dirección es requerido");
+        return false;
+    }
+
+    if (postalCode == '') {
+        mostrar_error("El campo Código Postal es requerido");
+        return false;
+    }
+
+    if (city == '') {
+        mostrar_error("El campo Ciudad es requerido");
+        return false;
+    }
+
+    if (state == '') {
+        mostrar_error("El campo Municipio es requerido");
+        return false;
+    }
+
+    if (country == '') {
+        mostrar_error("El campo País es requerido");
+        return false;
+    }
+
+    return true;
+}
+
+function fn_guardar_nuevo_cliente() {
+    // Obtener los valores de los campos del formulario
+    let firstName = $("#firstName").val();
+    let lastName = $("#lastName").val();
+    let phone = $("#phone").val();
+    let customerType = $("#customerType").val();
+    let email = $("#email").val();
+    let password = $("#password").val();
+    let address = $("#adress").val();
+    let postalCode = $("#postalCode").val();
+    let city = $("#city").val();
+    let state = $("#state").val();
+    let country = $("#country").val();
+
+
+
+    // Crear objeto con los datos del nuevo cliente
+    let nuevoCliente = {
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        customerType: customerType,
+        email: email,
+        password: password,
+        adress: address,
+        postalCode: postalCode,
+        city: city,
+        state: state,
+        country: country
+    };
+
+    // Realizar la solicitud AJAX para guardar el nuevo cliente
+    $.ajax({
+        url: "http://localhost:8000/api/v1/customers",
+        method: "POST",
+        data: nuevoCliente,
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Cliente creado con éxito:", response);
+            let item = response.data;
+            if (item.id && item.id > 0) {
+
+                let CLIENTES_HTML = `
+                    <tr class="bg-white " id="tr_cliente_${item.id
+                    }">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            ${item.first_name ?? ""} ${item.last_name ?? ""}
+                            </th>
+                            <td class="px-6 py-4">
+                            ${item.email ?? ""}
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.phone ?? ""}
+                            </td>
+                            <td class="px-6 py-4">
+                            ${item.adress ?? ""} 
+                            ${item.postal_code ?? ""} 
+                            ${item.state ?? ""}
+                            ${item.country ?? ""}
+                            </td>
+                            
+                            <td class="px-6 py-4 text-right">                         
+                                <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id
+                    }">
+                                
+                            </td>
+                        </tr>
+                    `;
+
+                $(`#tbody_clientes`).prepend(CLIENTES_HTML);
+                $(`#contenedor_crear_nuevo_cliente`).hide();
+                Swal.fire({
+                    html: `<h4><b>El cliente ha sido creado correctamente</b></h4>`,
+                    icon: `success`,
+                });
+                $('#formulario_cliente')[0].reset();
+                $(`#tr_info_clientes_lista_vacia`).hide();
+
+            } else {
+                Swal.fire({
+                    html: `<h4><b>Error al crear el cliente</b></h4>`,
+                    icon: `error`,
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al crear el cliente:", error);
+            // Aquí puedes manejar el error según tu lógica de frontend
+        },
+    });
+}
+
+function fn_mostrar_form_editar_cliente(id) {
+
+    $(`#td_colspan_form_edit_client_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            let token = $("#tkn").val();
+            // Realizar la solicitud AJAX
+            let url = `http://localhost:8000/api/v1/customers/${id}`;
+            console.log("url", url);
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + token,
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    //console.log("Informacion del cliente:", response);
+                    let cliente = response.data;
+                    console.log('cliente:', cliente);
+                    if (cliente.id != undefined && cliente.id === id) {
+
+                        let HTML_FORM_EDIT = `
+                            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
+            
+                                <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                                    <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                                        <h2 class="text-2xl font-semibold">Formulario editar cliente : ${cliente.first_name}</h2>
+                                    </div>
+                                    <div class="w-full p-6">
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="firstName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Nombre
+                                                </label>
+                                                <input type="text" id="firstName_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el nombre" value="${cliente.first_name ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="lastName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Apellidos
+                                                </label>
+                                                <input type="text" id="lastName_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe los apellidos" value="${cliente.last_name ?? ''}" />
+                                            </div>
+                                            <div>
+                                                <label for="phone_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Teléfono
+                                                </label>
+                                                <input type="text" id="phone_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el teléfono" value="${cliente.phone ?? ''}" />
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="customerType_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Seleccionar tipo
+                                                </label>
+                                                <select id="customerType_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option selected>Seleccionar</option>
+                                                    <option value="individual" ${cliente.customer_type == 'individual' ? 'selected' : ''}>Individual</option>
+                                                    <option value="business" ${cliente.customer_type == 'business' ? 'selected' : ''}>Empresa</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="email_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Email
+                                                </label>
+                                                <input type="email" id="email"_${cliente.id}
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el email" value="${cliente.email ?? ''}" disabled/>
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                            <div>
+                                                <label for="adress_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Dirección
+                                                </label>
+                                                <input type="text" id="adress_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe la direccion" value="${cliente.adress ?? ''}" />
+                                            </div>
+            
+                                            <div>
+                                                <label for="postalCode_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Código postal
+                                                </label>
+                                                <input type="text" id="postalCode_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el codigo postal"  value="${cliente.postal_code ?? ''}"/>
+                                            </div>
+            
+                                        </div>
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="city_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Ciudad
+                                                </label>
+                                                <input type="text" id="city_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe la cuidad"  value="${cliente.city ?? ''}"/>
+                                            </div>
+            
+                                            <div>
+                                                <label for="state_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Municipio
+                                                </label>
+                                                <input type="text" id="state_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el municipio" value="${cliente.state ?? ''}" />
+                                            </div>
+            
+                                            <div>
+                                                <label for="country_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                    País
+                                                </label>
+                                                <input type="text" id="country_${cliente.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el país" value="${cliente.country ?? ''}" />
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                            <button type="button"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                                onclick="fn_editar_cliente('${cliente.id}')">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            `;
+
+                        $(`#contenedor_editar_cliente_${cliente.id}`).html(HTML_FORM_EDIT);
+                    } else {
+                        mostrar_error("Error al generar el formulario editar cliente");
+                        return;
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener cliente:", error);
+                },
+            });
+        }
+    })
+}
+
+function fn_mostrar_formulario_crear_cliente(elemento_id) {
+    $('.contenedor_formularios').each(function () {
+        $(this).hide();
+    })
+    $(`#${elemento_id}`).show();
+    fn_obtener_clientes(null, true);
+}
+
+
 
