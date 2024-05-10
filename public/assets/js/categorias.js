@@ -108,13 +108,12 @@ function fn_obtener_categorias(page = null, crear = false) {
                             </td>
                         </tr>
                         <tr>
-                        <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id}">
-                            <div class="contenedor_editar_categoria w-full  p-4 mb-10"
-                                data-info="contenedor_editar_categoria_${item.id}" id="contenedor_editar_categoria_${item.id}">
-                            
-                            </div>                                   
-                        </td>
-                    </tr>
+                            <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id}">
+                                <div class="contenedor_editar_categoria w-full  p-4 mb-10"
+                                    data-info="contenedor_editar_categoria_${item.id}" id="contenedor_editar_categoria_${item.id}">      
+                                </div>                                   
+                            </td>
+                        </tr>
                     `;
                 });
 
@@ -213,15 +212,15 @@ function fn_guardar_nueva_categoria() {
                      ${item.products?.length ?? 0} 
                      </td>           
                      <td class="px-6 py-4 text-right">                         
-                         <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_categoria('${JSON.stringify(
-                        item
-                    )}')">Editar</button>
+                     <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
                      </td>
                  </tr>
                  <tr>
-                     <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id
-                    }">                           
-                     </td>
+                    <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id}">
+                        <div class="contenedor_editar_categoria w-full  p-4 mb-10"
+                            data-info="contenedor_editar_categoria_${item.id}" id="contenedor_editar_categoria_${item.id}">         
+                        </div>                                   
+                    </td>
                  </tr>
              `;
 
@@ -445,3 +444,54 @@ function fn_mostrar_form_editar_categoria(id) {
         }
     })
 }
+
+function fn_editar_categoria(id) {
+
+    // Obtener los valores de los campos del formulario
+    let name = $(`#name_${id}`).val();
+    let parent = $(`#parent_${id}`).val();
+    let category_short_description = $(`#category_short_description_${id}`).val();
+    let category_description = $(`#category_description_${id}`).val();
+
+    // Crear objeto con los datos del nuevo cliente
+    let infoCategoria = {
+        name: name,
+        parent: parent,
+        shortDescription: category_short_description,
+        description: category_description,
+    };
+
+    console.log('infoCategoria',infoCategoria);
+   // return;
+
+    // Realizar la solicitud AJAX para guardar el nuevo cliente
+    $.ajax({
+        url: `http://localhost:8000/api/v1/categories/${id}`,
+        method: "PATCH",
+        data: infoCategoria,
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Categoria editada con éxito:", response);
+            let item = response.data;
+            if (item.id && item.id > 0) {
+                Swal.fire({
+                    html: `<h4><b>Categoria actualizada correctamente</b></h4>`,
+                    icon: `success`,
+                });
+            } else {
+                Swal.fire({
+                    html: `<h4><b>Error al actualizar datos de la categoria</b></h4>`,
+                    icon: `error`,
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al editar la categoria:", error);
+            // Aquí puedes manejar el error según tu lógica de frontend
+        },
+    });
+}
+

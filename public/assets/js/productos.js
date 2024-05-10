@@ -693,11 +693,11 @@ function fn_mostrar_form_editar_producto(id) {
                                             </div>
                                             <div>
                                                 <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
-                                                    SKU
+                                                    SKU (No se modifica)
                                                 </label>
                                                 <input type="text" id="sku_${data.id}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Sku" required value="${data.sku}"/>
+                                                    placeholder="Sku" readonly value="${data.sku}"/>
                                             </div>
                                             <div>
                                                 <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
@@ -827,5 +827,133 @@ function fn_mostrar_form_editar_producto(id) {
     });
 
 }
+
+function fn_editar_producto(id) {
+
+    // Obtener los valores de los campos del formulario
+
+    let select_categories = $(`#select_categories_${id}`).val();
+    let select_type = $(`#select_type_${id}`).val();
+    let select_status = $(`#select_status_${id}`).val();
+    let sku = $(`#sku_${id}`).val();
+    let product_ean = $(`#product_ean_${id}`).val();
+    let product_ean_13 = $(`#product_ean_13_${id}`).val();
+    let product_name = $(`#product_name_${id}`).val();
+    let short_description = $(`#short_description_${id}`).val();
+    let description = $(`#description_${id}`).val();
+    let regular_price = $(`#regular_price_${id}`).val();
+    let sale_price = $(`#sale_price_${id}`).val();
+    let price = $(`#price_${id}`).val();
+    let select_stock_status = $(`#select_stock_status_${id}`).val();
+    let stock_quantity = $(`#stock_quantity_${id}`).val();
+
+
+    let productoData = {
+        select_categories: select_categories,
+        select_type: select_type,
+        select_status: select_status,
+        sku: sku,
+        product_ean: product_ean,
+        product_ean_13: product_ean_13,
+        product_name: product_name,
+        short_description: short_description,
+        description: description,
+        regular_price: regular_price,
+        price: price,
+        sale_price: sale_price,
+        select_stock_status: select_stock_status,
+        stock_quantity: stock_quantity,
+    };
+
+    console.log('productoData', productoData);
+
+    let formData = new FormData();
+
+    formData.append("category_id", select_categories);
+    formData.append("name", product_name);
+    formData.append("ean", product_ean);
+    formData.append("ean_13", product_ean_13);
+    formData.append("type", select_type);
+    formData.append("status", select_status);
+    formData.append("catalog_visibility", "visible");
+
+    formData.append("short_description", short_description);
+    formData.append("description", description);
+
+    formData.append("regular_price", regular_price);
+    formData.append("sale_price", sale_price);
+    formData.append("price", price);
+
+    formData.append("valid", 1);
+    formData.append("on_sale", 0);
+
+    formData.append("stock_status", select_stock_status);
+    formData.append("stock_quantity", stock_quantity);
+
+    formData.append("weight", "");
+    formData.append("dimensions", "");
+    formData.append("variation", 0);
+    formData.append("featured", 0);
+    formData.append("discontinued", 0);
+
+    let principal_img = document.getElementById("principal_image").files;
+
+    let images = document.getElementById("images").files;
+
+    if (images.length > 5) {
+        Swal.fire({
+            html: `<h4><b>Solo se permiten 5 imagenes por producto</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+
+    if (images.length > 0 && images.length <= 5) {
+        for (let i = 0; i < images.length; i++) {
+            formData.append("images[]", images[i]);
+        }
+    }
+
+    if (principal_img.length > 0) {
+        formData.append('principal_image', principal_img[0]);
+    }
+
+    try {
+        $.ajax({
+            url: `http://localhost:8000/api/v1/products/${id}`,
+            method: "PUT",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                Authorization: "Bearer " + $("#tkn").val(),
+                Accept: "application/json",
+            },
+            success: function (response) {
+                console.log("Producto editado con éxito:", response);
+                let item = response.data;
+                if (item.id && item.id > 0) {
+                    Swal.fire({
+                        html: `<h4><b>Producto actualizado correctamente</b></h4>`,
+                        icon: `success`,
+                    });
+                } else {
+                    Swal.fire({
+                        html: `<h4><b>Error al actualizar el producto</b></h4>`,
+                        icon: `error`,
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error al editar el producto:", error);
+                // Aquí puedes manejar el error según tu lógica de frontend
+            },
+        });
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
 
 

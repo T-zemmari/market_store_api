@@ -563,5 +563,65 @@ function fn_mostrar_formulario_crear_cliente(elemento_id) {
     fn_obtener_clientes(null, true);
 }
 
+function fn_editar_cliente(id) {
 
+    // Obtener los valores de los campos del formulario
+    let firstName = $(`#firstName_${id}`).val();
+    let lastName = $(`#lastName_${id}`).val();
+    let phone = $(`#phone_${id}`).val();
+    let customerType = $(`#customerType_${id}`).val();
+    let address = $(`#adress_${id}`).val();
+    let postalCode = $(`#postalCode_${id}`).val();
+    let city = $(`#city_${id}`).val();
+    let state = $(`#state_${id}`).val();
+    let country = $(`#country_${id}`).val();
+
+
+
+    // Crear objeto con los datos del nuevo cliente
+    let infoCliente = {
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        customerType: customerType,
+        adress: address,
+        postalCode: postalCode,
+        city: city,
+        state: state,
+        country: country
+    };
+
+    console.log('infoCliente',infoCliente);
+    //return;
+
+    // Realizar la solicitud AJAX para guardar el nuevo cliente
+    $.ajax({
+        url: `http://localhost:8000/api/v1/customers/${id}`,
+        method: "PATCH",
+        data: infoCliente,
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Cliente editado con éxito:", response);
+            let item = response.data;
+            if (item.id && item.id > 0) {
+                Swal.fire({
+                    html: `<h4><b>Cliente actualizado correctamente</b></h4>`,
+                    icon: `success`,
+                });
+            } else {
+                Swal.fire({
+                    html: `<h4><b>Error al actualizar datos del cliente</b></h4>`,
+                    icon: `error`,
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al editar el cliente:", error);
+            // Aquí puedes manejar el error según tu lógica de frontend
+        },
+    });
+}
 

@@ -177,6 +177,7 @@ class CategoryController extends Controller
                     }
 
                     $data = [
+                        "id" => $category->id,
                         "name" => $category->name,
                         "parent" => $category->parent,
                         "description" => $category->description,

@@ -50,6 +50,8 @@ class UpdateProductRequest extends FormRequest
                 "image" => ['nullable', 'string'],
                 "discontinued" => ['required', Rule::in([true, false, 0, 1])],
                 "valid" => ['required', Rule::in([true, false, 0, 1])],
+                "principal_image" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
+                "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
         } else {
             return [
@@ -75,6 +77,8 @@ class UpdateProductRequest extends FormRequest
                 "image" => ['sometimes', 'nullable', 'string'],
                 "discontinued" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
                 "valid" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
+                "principal_image" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
+                "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
         }
     }

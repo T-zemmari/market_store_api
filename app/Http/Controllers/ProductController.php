@@ -210,6 +210,45 @@ class ProductController extends Controller
                 // Excluir el campo SKU del array de datos para asegurar que no se modifique
                 $requestData = $request->except('sku');
 
+
+                $path = 'upload/imgs/';
+                $url_image_p = null;
+                if ($request->hasFile('principal_image')) {
+                    $file_image = $request->file('principal_image');
+                    $extention_img = $file_image->getClientOriginalExtension();
+                    $filename_img = 'img_p_' . time() . '.' . $extention_img;
+                    $file_image->move($path, $filename_img);
+                    $url_image_p = $path . $filename_img;
+                }
+
+                if (is_string($url_image_p)) {
+                    $requestData['image'] = $url_image_p;
+                }
+
+                if ($request->hasFile('images')) {
+                    //dump($request->file('images'));
+
+                    $product->images()->detash();
+
+                    foreach ($request->file('images') as $image) {
+                        // Procesar cada imagen individualmente
+
+                        $extention = $image->getClientOriginalExtension(); // Obtener el nombre original del archivo
+                        $filename = 'img_n_' . time() . '.' . $extention;
+
+                        $image->move($path, $filename); // Mover el archivo al directorio de destino
+
+                        $url_image = $path . $filename; // Obtener la URL de la imagen
+                        $imageData = [
+                            'product_id' => $product->id,
+                            'url_image' => $url_image,
+                            'active' => 1,
+                        ];
+                        // Crear una nueva imagen con los datos proporcionados
+                        Image::create($imageData);
+                    }
+                }
+
                 // Actualizar el producto
                 $product->update($requestData);
 
