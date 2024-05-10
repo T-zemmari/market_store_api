@@ -5,7 +5,7 @@ $(document).ready(function () {
 function fn_obtener_categorias(page = null, crear = false) {
 
     if (crear == false) {
-        $(`#contenedor_crear_nueva_categoria`).hide();
+        $(`.contenedor_formularios`).hide();
     }
     let token = $(`#tkn`).val();
     console.log("mi_token", token);

@@ -10,7 +10,7 @@ $(document).ready(function () {
 function fn_obtener_pedidos(page = null, crear = false) {
 
     if (crear == false) {
-        $(`#contenedor_generar_un_pedido`).hide();
+        $(`.contenedor_formularios`).hide();
     }
 
     let token = $(`#tkn`).val();

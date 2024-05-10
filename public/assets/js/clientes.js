@@ -6,7 +6,7 @@ $(document).ready(function () {
 function fn_obtener_clientes(page = null, crear = false) {
 
     if (crear == false) {
-        $(`#contenedor_crear_nuevo_cliente`).hide();
+        $(`.contenedor_formularios`).hide();
     }
     let token = $(`#tkn`).val();
     console.log("mi_token", token);

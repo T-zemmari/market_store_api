@@ -51,7 +51,7 @@ $(document).ready(function () {
 function fn_obtener_productos(page = null, crear = false) {
 
     if (crear == false) {
-        $(`#contenedor_crear_nuevo_producto`).hide();
+        $(`.contenedor_formularios`).hide();
     }
 
     let token = $(`#tkn`).val();
