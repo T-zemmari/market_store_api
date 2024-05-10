@@ -77,6 +77,13 @@
                             </a>
                         </li>
 
+                        <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_filtrado')">
+                            <a
+                                class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
+                                Filtrado
+                            </a>
+                        </li>
+
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_paginacion')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">Paginación</a>
