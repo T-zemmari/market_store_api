@@ -19,9 +19,9 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="w-full min-h-screen flex flex-col justify-start items-start  bg-gray-100">
         <div class="w-full">
-            {{ $slot }}
-            </main>
+            {{ $slot }}         
         </div>
+        @include('layouts.partials.footer')
     </div>
     <script src="{{ asset('/assets/js/jquery_3_7_1.js') }}"></script>
     <script src="{{ asset('/assets/js/swt.js') }}"></script>
@@ -31,6 +31,7 @@
     <script src="{{ asset('/assets/js/categorias.js') }}"></script>
     <script src="{{ asset('/assets/js/productos.js') }}"></script>
     <script src="{{ asset('/assets/js/pedidos.js') }}"></script>
+    
 </body>
 
 </html>

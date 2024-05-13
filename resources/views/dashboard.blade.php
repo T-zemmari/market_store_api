@@ -155,7 +155,7 @@
     </aside>
 
     <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0">
-        <div class="hidden w-full h-[89vh]  justify-center items-center" id="contenedor_spinner">
+        <div class="hidden w-full h-[85vh]  justify-center items-center" id="contenedor_spinner">
             <div role="status" class="p-4 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin fill-blue-600"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -670,11 +670,7 @@
             </div>
         </div>
 
-        <div class="p-4 min-h-[89vh] flex flex-col justify-start items-start" id="contenedor_dashboards_principal">
-
-
-
-
+        <div class="p-4 min-h-[85vh] flex flex-col justify-start items-start" id="contenedor_dashboards_principal">
 
 
 
