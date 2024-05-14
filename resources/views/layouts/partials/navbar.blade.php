@@ -24,9 +24,9 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('contact') }}"
-                        aria-current="{{ request()->route()->named('contact') ? 'page' : '' }} "
-                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent {{ request()->route()->named('contact') ? 'md:text-white' : 'md:text-[#374151]' }} md:hover:text-white  md:p-0">
+                    <a href="{{ route('contacto') }}"
+                        aria-current="{{ request()->route()->named('contacto') ? 'page' : '' }} "
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent {{ request()->route()->named('contacto') ? 'md:text-white' : 'md:text-[#374151]' }} md:hover:text-white  md:p-0">
                         Contacto
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                     @if (!Auth::check())
                         <a href="{{ route('login') }}"
                             class="font-semibold text-gray-600 hover:text-gray-900  focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                            Entrar
+                            Entrar (DEMO)
                         </a>
                     @else
                         <div class="relative flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

@@ -622,7 +622,8 @@
                             <div class="flex justify-between border-b pb-8">
                                 <h1 class="font-semibold text-2xl">Carrito (<span id="carrito_email_cliente"></span>)
                                 </h1>
-                                <h2 class="font-semibold text-2xl"><span id="cantidad_de_productos">0</span> Productos</h2>
+                                <h2 class="font-semibold text-2xl"><span id="cantidad_de_productos">0</span> Productos
+                                </h2>
                             </div>
                             <div class="flex mt-10 mb-5">
                                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalle</h3>
@@ -650,7 +651,7 @@
                                     class="font-semibold inline-block mb-3 text-sm uppercase">Descuento</label>
                                 <input type="number" id="summary_discount" placeholder="Descuento"
                                     class="p-2 text-sm w-full" readonly>
-                                    <small class="color:red">El descuento no es necesario en esta demo</small>
+                                <small class="color:red">El descuento no es necesario en esta demo</small>
                             </div>
                             <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar
                                 descuento</button>
