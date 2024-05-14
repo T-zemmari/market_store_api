@@ -2,8 +2,8 @@
     @section('title', 'Market Store - Contacto')
     @include('layouts.partials.navbar')
 
-    <div class="w-full flex justify-center items-center h-[92vh]">
-        <div class="max-w-screen-md mx-auto p-5 mt-[150px]">
+    <div class="w-full flex justify-center items-center md:h-[92vh]">
+        <div class="w-[95%] mt-[100px] md:w-[700px] mx-auto p-1 md:mt-[150px]">
             <div class="text-center mb-2">
                 <p class="mt-4 text-sm leading-7 text-gray-500 font-regular uppercase">
                     Contáctanos
