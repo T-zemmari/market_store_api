@@ -3,7 +3,7 @@
     @include('layouts.partials.navbar')
 
     <div class="w-full flex justify-center items-center md:h-[92vh]">
-        <div class="w-[95%] mt-[100px] md:w-[700px] mx-auto p-1 md:mt-[150px]">
+        <div class="w-[95%] mt-[100px] md:w-[700px] mx-auto p-1 md:mt-[100px]">
             <div class="text-center mb-2">
                 <p class="mt-4 text-sm leading-7 text-gray-500 font-regular uppercase">
                     Contáctanos
@@ -14,7 +14,7 @@
             </div>
 
             @if(session('success'))
-                <div class="bg-green-500 text-white p-4 rounded">
+                <div class="bg-green-500 text-white p-4 rounded mt-4 mb-4">
                     {{ session('success') }}
                 </div>
             @endif
