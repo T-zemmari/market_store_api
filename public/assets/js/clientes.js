@@ -115,7 +115,8 @@ function fn_obtener_clientes(page = null, crear = false) {
                             </td>
                             
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_cliente(${item.id})">Editar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_cliente(${item.id})">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
                             </td>
                         </tr>
                         <tr>
@@ -366,6 +367,8 @@ function fn_guardar_nuevo_cliente() {
                             
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
+
                             </td>
                         </tr>
                         <tr>
@@ -591,7 +594,7 @@ function fn_editar_cliente(id) {
         country: country
     };
 
-    console.log('infoCliente',infoCliente);
+    console.log('infoCliente', infoCliente);
     //return;
 
     // Realizar la solicitud AJAX para guardar el nuevo cliente
@@ -623,5 +626,47 @@ function fn_editar_cliente(id) {
             // Aquí puedes manejar el error según tu lógica de frontend
         },
     });
+}
+
+function fn_eliminar_cliente(id) {
+
+    Swal.fire({
+        html: "<h4><strong>¿ Quieres eliminar ?<strong></h4>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Eliminar",
+        denyButtonText: `Cancelar`,
+        icon:'question'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/customers/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Cliente eliminado con éxito:", response);
+                    if (response) {
+                        Swal.fire({
+                            html: `<h4><b>Cliente eliminado correctamente</b></h4>`,
+                            icon: `success`,
+                        });
+                        $(`#tr_cliente_${id}`).hide();
+                    } else {
+                        Swal.fire({
+                            html: `<h4><b>Error al eliminar el cliente</b></h4>`,
+                            icon: `error`,
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al eliminar el cliente:", error);
+                },
+            });
+        }
+    });
+
 }
 

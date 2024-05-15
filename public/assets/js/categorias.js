@@ -105,6 +105,7 @@ function fn_obtener_categorias(page = null, crear = false) {
                             </td>           
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_categoria(${item.id})">Eliminar</button>
                             </td>
                         </tr>
                         <tr>
@@ -213,6 +214,7 @@ function fn_guardar_nueva_categoria() {
                      </td>           
                      <td class="px-6 py-4 text-right">                         
                      <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
+                     <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_categoria(${item.id})">Eliminar</button>
                      </td>
                  </tr>
                  <tr>
@@ -495,3 +497,45 @@ function fn_editar_categoria(id) {
     });
 }
 
+
+function fn_eliminar_categoria(id) {
+
+    Swal.fire({
+        html: "<h4><strong>¿ Quieres eliminar ?<strong></h4>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Eliminar",
+        denyButtonText: `Cancelar`,
+        icon:'question'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/categories/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Categoria eliminado con éxito:", response);
+                    if (response) {
+                        Swal.fire({
+                            html: `<h4><b>Categoria eliminado correctamente</b></h4>`,
+                            icon: `success`,
+                        });
+                        $(`#tr_categoria_${id}`).hide();
+                    } else {
+                        Swal.fire({
+                            html: `<h4><b>Error al eliminar la Categoria</b></h4>`,
+                            icon: `error`,
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al eliminar la Categoria:", error);
+                },
+            });
+        }
+    });
+
+}

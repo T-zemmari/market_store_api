@@ -150,6 +150,7 @@ function fn_obtener_pedidos(page = null, crear = false) {
                             </td>            
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${item.id}')">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_cancelar_pedido(${item.id})">Cancelar</button>
                             </td>
                         </tr>
                         <tr>
@@ -721,6 +722,7 @@ function fn_generar_pedido() {
                             </td>            
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${item.id}')">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_cancelar_pedido(${item.id})">Cancelar</button>
                             </td>
                         </tr>
                         <tr>
@@ -757,3 +759,46 @@ function fn_generar_pedido() {
     }
 
 }
+
+function fn_cancelar_pedido(id) {
+
+    Swal.fire({
+        html: "<h4><strong>¿ Quieres cancelar ?<strong></h4>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Eliminar",
+        denyButtonText: `Cancelar`,
+        icon: 'question'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/orders/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Pedido cancelado con éxito:", response);
+                    if (response) {
+                        Swal.fire({
+                            html: `<h4><b>Pedido cancelado correctamente</b></h4>`,
+                            icon: `success`,
+                        });
+                        $(`#tr_pedido_${id}`).hide();
+                    } else {
+                        Swal.fire({
+                            html: `<h4><b>Error al cancelar el pedido</b></h4>`,
+                            icon: `error`,
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al cancelar el pedido:", error);
+                },
+            });
+        }
+    });
+
+}
+

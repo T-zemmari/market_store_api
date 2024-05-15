@@ -165,6 +165,7 @@ function fn_obtener_productos(page = null, crear = false) {
                             </td>            
                             <td class="px-6 py-4 text-right">                         
                                 <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${item.id}')">Editar</button>
+                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_producto(${item.id})">Eliminar</button>
                             </td>
                         </tr>
                         <tr>
@@ -530,6 +531,7 @@ function fn_guardar_nuevo_producto() {
                                     <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${item.id}')">
                                         Editar
                                     </button>
+                                    <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_producto(${item.id})">Eliminar</button>
                                 </td>
                             </tr>
                             <tr>
@@ -952,6 +954,48 @@ function fn_editar_producto(id) {
     } catch (error) {
         console.error(error);
     }
+
+}
+
+function fn_eliminar_producto(id) {
+
+    Swal.fire({
+        html: "<h4><strong>¿ Quieres eliminar ?<strong></h4>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Eliminar",
+        denyButtonText: `Cancelar`,
+        icon: 'question'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/products/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Producto eliminado con éxito:", response);
+                    if (response) {
+                        Swal.fire({
+                            html: `<h4><b>Producto eliminado correctamente</b></h4>`,
+                            icon: `success`,
+                        });
+                        $(`#tr_producto_${id}`).hide();
+                    } else {
+                        Swal.fire({
+                            html: `<h4><b>Error al eliminar el producto</b></h4>`,
+                            icon: `error`,
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al eliminar el producto:", error);
+                },
+            });
+        }
+    });
 
 }
 
