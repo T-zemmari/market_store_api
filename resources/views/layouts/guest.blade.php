@@ -28,6 +28,26 @@
     <script src="{{ asset('/assets/js/doc_scripts.js') }}"></script>
     <script src="{{ asset('/assets/js/funciones_varias.js') }}"></script>
 
+    <!-- Scripts -->
+    <script>
+        function togglePassword(inputId, action) {
+            const input = document.getElementById(inputId);
+            const showButton = document.querySelector(`#${inputId}`).nextElementSibling;
+            const hideButton = showButton.nextElementSibling;
+            if (input) {
+                if (action === 'show') {
+                    input.type = 'text';
+                    showButton.classList.add('hidden');
+                    hideButton.classList.remove('hidden');
+                } else {
+                    input.type = 'password';
+                    showButton.classList.remove('hidden');
+                    hideButton.classList.add('hidden');
+                }
+            }
+        }
+    </script>
+
 </body>
 
 </html>

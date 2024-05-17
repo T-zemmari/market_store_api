@@ -19,7 +19,7 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="w-full min-h-screen flex flex-col justify-start items-start  bg-gray-100">
         <div class="w-full">
-            {{ $slot }}         
+            {{ $slot }}
         </div>
         @include('layouts.partials.footer')
     </div>
@@ -31,7 +31,27 @@
     <script src="{{ asset('/assets/js/categorias.js') }}"></script>
     <script src="{{ asset('/assets/js/productos.js') }}"></script>
     <script src="{{ asset('/assets/js/pedidos.js') }}"></script>
-    
+
+    <!-- Scripts -->
+    <script>
+        function togglePassword(inputId, action) {
+            const input = document.getElementById(inputId);
+            const showButton = document.querySelector(`#${inputId}`).nextElementSibling;
+            const hideButton = showButton.nextElementSibling;
+            if (input) {
+                if (action === 'show') {
+                    input.type = 'text';
+                    showButton.classList.add('hidden');
+                    hideButton.classList.remove('hidden');
+                } else {
+                    input.type = 'password';
+                    showButton.classList.remove('hidden');
+                    hideButton.classList.add('hidden');
+                }
+            }
+        }
+    </script>
+
 </body>
 
 </html>

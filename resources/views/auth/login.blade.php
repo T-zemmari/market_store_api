@@ -17,10 +17,20 @@
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div class="mt-4 relative">
                 <x-input-label class="text-white" for="password" :value="__('Password')" />
                 <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="current-password" />
+                <button type="button" onclick="togglePassword('password', 'show')"
+                    id="show_pass_login_button"
+                    class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
+                </button>
+                <button type="button" onclick="togglePassword('password', 'hide')"
+                    id="hide_pass_login_button"
+                    class="hidden absolute inset-y-0 right-[5px] pr-3  text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
+                </button>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
@@ -32,17 +42,17 @@
                         name="remember">
                     <span class="ms-2 text-sm text-white dark:text-gray-400 ">{{ __('Recuerdame') }}</span>
                     @if (Route::has('password.request'))
-                    <a class="text-sm text-[#a0d5a6] dark:text-gray-400 ml-6 -mt-0 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                        href="{{ route('password.request') }}">
-                        {{ __('¿Has olvidado tu contraseña?') }}
-                    </a>
-                @endif
+                        <a class="text-sm text-[#a0d5a6] dark:text-gray-400 ml-6 -mt-0 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                            href="{{ route('password.request') }}">
+                            {{ __('¿Has olvidado tu contraseña?') }}
+                        </a>
+                    @endif
                 </label>
-              
+
             </div>
 
             <div class="flex items-center justify-end mt-4">
-            
+
                 <x-primary-button class="ms-3">
                     {{ __('Entrar') }}
                 </x-primary-button>
