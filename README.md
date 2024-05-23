@@ -47,9 +47,6 @@ Una vez instalada y configurada la API, puedes empezar a usarla a través de las
 
 Para obtener una lista completa de todas las rutas y endpoints disponibles, consulta la documentación de la API.
 
-## Documentación de la API
-
-La documentación detallada de la API está disponible en la siguiente ubicación: (En construccion todavia).
 
 ## Contribuciones
 

@@ -9,7 +9,7 @@
 
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" class="text-white"/>
+                <x-input-label for="name" :value="__('Name')" class="text-white" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                     required autofocus autocomplete="name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -17,7 +17,7 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" class="text-white"/>
+                <x-input-label for="email" :value="__('Email')" class="text-white" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                     required autocomplete="username" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -25,37 +25,53 @@
 
             <!-- Password -->
             <div class="mt-4 relative">
-                <x-input-label for="password" :value="__('Contraseña')" class="text-white"/>
+                <x-input-label for="password" :value="__('Contraseña')" class="text-white" />
                 <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" required
                     autocomplete="new-password" />
-                <button type="button" onclick="togglePassword('password', 'show')" id="show-password-button" class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
+                <button type="button" onclick="togglePassword('password', 'show')" id="show-password-button"
+                    class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
                 </button>
-                <button type="button" onclick="togglePassword('password', 'hide')" id="hide-password-button" class="hidden absolute inset-y-0 right-[5px] pr-3  text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
+                <button type="button" onclick="togglePassword('password', 'hide')" id="hide-password-button"
+                    class="hidden absolute inset-y-0 right-[5px] pr-3  text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
                 </button>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4 relative">
-                <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña')" class="text-white"/>
+                <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña')" class="text-white" />
                 <x-text-input id="password_confirmation" class="block mt-1 w-full pr-10" type="password"
                     name="password_confirmation" required autocomplete="new-password" />
-                <button type="button" onclick="togglePassword('password_confirmation', 'show')" id="show-password-confirmation-button" class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
+                <button type="button" onclick="togglePassword('password_confirmation', 'show')"
+                    id="show-password-confirmation-button"
+                    class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
                 </button>
-                <button type="button" onclick="togglePassword('password_confirmation', 'hide')" id="hide-password-confirmation-button" class="hidden absolute inset-y-0 right-[5px] pr-3  
-                 text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
+                <button type="button" onclick="togglePassword('password_confirmation', 'hide')"
+                    id="hide-password-confirmation-button"
+                    class="hidden absolute inset-y-0 right-[5px] pr-3  
+                 text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
                 </button>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
             <!-- Admin Code -->
             <div class="mt-4 relative">
-                <x-input-label for="register_admin_code" :value="__('¿Eres admin? (Ingresa el código admin)')" class="text-white"/>
+                <x-input-label for="register_admin_code" :value="__('¿Eres admin? (Ingresa el código admin)')" class="text-white" />
                 <x-text-input id="register_admin_code" class="block mt-1 w-full pr-10" type="password"
-                    name="register_admin_code" autocomplete="register-admin-code" value="Ta00"/>
-                <button type="button" onclick="togglePassword('register_admin_code', 'show')" id="show-admin-code-button" class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
+                    name="register_admin_code" autocomplete="register-admin-code" value="Ta00" />
+                <button type="button" onclick="togglePassword('register_admin_code', 'show')"
+                    id="show-admin-code-button"
+                    class="absolute inset-y-0 right-[5px] pr-3 flex items-center text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_show_1.png') }}');background-position:center;background-size:cover;">
                 </button>
-                <button type="button" onclick="togglePassword('register_admin_code', 'hide')" id="hide-admin-code-button" class="hidden absolute inset-y-0 right-[5px] pr-3  text-sm leading-5  w-[30px] h-[20px] top-[50%] " style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
+                <button type="button" onclick="togglePassword('register_admin_code', 'hide')"
+                    id="hide-admin-code-button"
+                    class="hidden absolute inset-y-0 right-[5px] pr-3  text-sm leading-5  w-[30px] h-[20px] top-[50%] "
+                    style="background-image: url('{{ asset('assets/icons/eye_hide_1.png') }}');background-position:center;background-size:cover;">
                 </button>
                 <!--<x-input-error :messages="$errors->get('register_admin_code')" class="mt-2" />-->
             </div>
@@ -72,5 +88,5 @@
         </form>
     </div>
 
-  
+
 </x-guest-layout>

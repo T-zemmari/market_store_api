@@ -2,8 +2,8 @@
     @section('title', 'Market Store - Contacto')
     @include('layouts.partials.navbar')
 
-    <div class="w-full flex justify-center items-center md:h-[92vh]">
-        <div class="w-[95%] mt-[100px] md:w-[700px] mx-auto p-1 md:mt-[100px]">
+    <div class="w-full flex justify-center items-center md:h-[92vh] ">
+        <div class="w-[95%] mt-[90px] md:w-[700px] mx-auto p-1 md:mt-[70px]">
             <div class="text-center mb-2">
                 <p class="mt-4 text-sm leading-7 text-gray-500 font-regular uppercase">
                     Contáctanos
@@ -19,7 +19,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('contact.send') }}" method="POST" class="w-full">
+            <form action="{{ route('contact.send') }}" method="POST" class="w-full md:border-2 border-[#d3d3d3] p-4 md:p-12">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

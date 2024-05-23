@@ -301,7 +301,9 @@ function validar_inputs_cliente() {
     return true;
 }
 
+
 function fn_guardar_nuevo_cliente() {
+
     // Obtener los valores de los campos del formulario
     let firstName = $("#firstName").val();
     let lastName = $("#lastName").val();
@@ -315,7 +317,83 @@ function fn_guardar_nuevo_cliente() {
     let state = $("#state").val();
     let country = $("#country").val();
 
+    // Expresiones regulares para validación
+    let regexName = /^[a-zA-Z\s]+$/;
+    let regexPhone = /^[0-9]{9}$/; // Ejemplo para 10 dígitos
+    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let regexPostalCode = /^[0-9]{5}$/; // Ejemplo para código postal de 5 dígitos
 
+    // Validar campos
+    if (!regexName.test(firstName)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un nombre válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexName.test(lastName)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un apellido válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexPhone.test(phone)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un número de teléfono válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexEmail.test(email)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un correo electrónico válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (password.length < 6) {
+        Swal.fire({
+            html: `<h4><b>La contraseña debe tener al menos 6 caracteres.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!address) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese una dirección.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexPostalCode.test(postalCode)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un código postal válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!city) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese una ciudad.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!state) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese la provincia o munucipio.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!country) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un país.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
 
     // Crear objeto con los datos del nuevo cliente
     let nuevoCliente = {
@@ -347,37 +425,32 @@ function fn_guardar_nuevo_cliente() {
             if (item.id && item.id > 0) {
 
                 let CLIENTES_HTML = `
-                    <tr class="bg-white " id="tr_cliente_${item.id
-                    }">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                    <tr class="bg-white " id="tr_cliente_${item.id}">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             ${item.first_name ?? ""} ${item.last_name ?? ""}
-                            </th>
-                            <td class="px-6 py-4">
+                        </th>
+                        <td class="px-6 py-4">
                             ${item.email ?? ""}
-                            </td>
-                            <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4">
                             ${item.phone ?? ""}
-                            </td>
-                            <td class="px-6 py-4">
-                            ${item.adress ?? ""} 
+                        </td>
+                        <td class="px-6 py-4">
+                            ${item.address ?? ""} 
                             ${item.postal_code ?? ""} 
                             ${item.state ?? ""}
                             ${item.country ?? ""}
-                            </td>
-                            
-                            <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id
-                    }">
-                                
-                            </td>
-                        </tr>
-                    `;
+                        </td>
+                        <td class="px-6 py-4 text-right">                         
+                            <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
+                            <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id}">
+                        </td>
+                    </tr>
+                `;
 
                 $(`#tbody_clientes`).prepend(CLIENTES_HTML);
                 $(`#contenedor_crear_nuevo_cliente`).hide();
@@ -387,7 +460,6 @@ function fn_guardar_nuevo_cliente() {
                 });
                 $('#formulario_cliente')[0].reset();
                 $(`#tr_info_clientes_lista_vacia`).hide();
-
             } else {
                 Swal.fire({
                     html: `<h4><b>Error al crear el cliente</b></h4>`,
@@ -397,10 +469,19 @@ function fn_guardar_nuevo_cliente() {
         },
         error: function (xhr, status, error) {
             console.error("Error al crear el cliente:", error);
-            // Aquí puedes manejar el error según tu lógica de frontend
+            let errors = xhr.responseJSON.errors;
+            let errorMessages = '';
+            for (let field in errors) {
+                errorMessages += `${errors[field].join('<br>')}<br>`;
+            }
+            Swal.fire({
+                html: `<h4><b>Error al crear el cliente</b></h4><p>${errorMessages}</p>`,
+                icon: `error`,
+            });
         },
     });
 }
+
 
 function fn_mostrar_form_editar_cliente(id) {
 
@@ -580,6 +661,73 @@ function fn_editar_cliente(id) {
     let country = $(`#country_${id}`).val();
 
 
+    // Expresiones regulares para validación
+    let regexName = /^[a-zA-Z\s]+$/;
+    let regexPhone = /^[0-9]{9}$/; // Ejemplo para 10 dígitos
+    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let regexPostalCode = /^[0-9]{5}$/; // Ejemplo para código postal de 5 dígitos
+
+    // Validar campos
+    if (!regexName.test(firstName)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un nombre válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexName.test(lastName)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un apellido válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexPhone.test(phone)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un número de teléfono válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+
+  
+    if (!address) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese una dirección.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!regexPostalCode.test(postalCode)) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un código postal válido.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!city) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese una ciudad.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!state) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese la provincia o munucipio.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+    if (!country) {
+        Swal.fire({
+            html: `<h4><b>Por favor, ingrese un país.</b></h4>`,
+            icon: `error`,
+        });
+        return;
+    }
+
+
 
     // Crear objeto con los datos del nuevo cliente
     let infoCliente = {
@@ -623,7 +771,15 @@ function fn_editar_cliente(id) {
         },
         error: function (xhr, status, error) {
             console.error("Error al editar el cliente:", error);
-            // Aquí puedes manejar el error según tu lógica de frontend
+            let errors = xhr.responseJSON.errors;
+            let errorMessages = '';
+            for (let field in errors) {
+                errorMessages += `${errors[field].join('<br>')}<br>`;
+            }
+            Swal.fire({
+                html: `<h4><b>Error al actualizar el cliente</b></h4><p>${errorMessages}</p>`,
+                icon: `error`,
+            });
         },
     });
 }
@@ -636,7 +792,7 @@ function fn_eliminar_cliente(id) {
         showCancelButton: false,
         confirmButtonText: "Eliminar",
         denyButtonText: `Cancelar`,
-        icon:'question'
+        icon: 'question'
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
