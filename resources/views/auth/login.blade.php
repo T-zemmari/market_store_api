@@ -42,7 +42,7 @@
                         name="remember">
                     <span class="ms-2 text-sm text-white dark:text-gray-400 ">{{ __('Recuerdame') }}</span>
                     @if (Route::has('password.request'))
-                        <a class="text-sm text-[#a0d5a6] dark:text-gray-400 ml-6 -mt-0 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                        <a class="text-sm text-[#cfcfcf] dark:text-gray-400 ml-6 -mt-0 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                             href="{{ route('password.request') }}">
                             {{ __('¿Has olvidado tu contraseña?') }}
                         </a>
@@ -57,7 +57,7 @@
                     {{ __('Entrar') }}
                 </x-primary-button>
             </div>
-            <a class="text-sm text-[#a0d5a6] dark:text-gray-400 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+            <a class="text-sm text-[#cfcfcf] dark:text-gray-400 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                 href="{{ route('register') }}">
                 {{ __('Haz click aqui si no tienes cuenta aun') }}
             </a>

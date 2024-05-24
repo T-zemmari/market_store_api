@@ -104,8 +104,11 @@ function fn_obtener_categorias(page = null, crear = false) {
                             ${item.products?.length ?? 0} 
                             </td>           
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_categoria(${item.id})">Eliminar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})" 
+                                style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                <button class="font-medium text-red-600 hover:underline" 
+                                style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                onclick="fn_eliminar_categoria(${item.id})"></button>
                             </td>
                         </tr>
                         <tr>
@@ -213,9 +216,12 @@ function fn_guardar_nueva_categoria() {
                      ${item.products?.length ?? 0} 
                      </td>           
                      <td class="px-6 py-4 text-right">                         
-                     <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})">Editar</button>
-                     <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_categoria(${item.id})">Eliminar</button>
-                     </td>
+                        <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_categoria(${item.id})" 
+                        style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                        <button class="font-medium text-red-600 hover:underline" 
+                        style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                        onclick="fn_eliminar_categoria(${item.id})"></button>
+                    </td>
                  </tr>
                  <tr>
                     <td colspan="12" style="display:none" id="td_colspan_form_edit_categoria_${item.id}">
@@ -537,6 +543,7 @@ function fn_eliminar_categoria(id) {
                             icon: `success`,
                         });
                         $(`#tr_categoria_${id}`).hide();
+                        $(`#td_colspan_form_edit_categoria_${id}`).html(``);
                     } else {
                         Swal.fire({
                             html: `<h4><b>Error al eliminar la Categoria</b></h4>`,

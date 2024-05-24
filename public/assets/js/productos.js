@@ -164,8 +164,11 @@ function fn_obtener_productos(page = null, crear = false) {
                             ${item.stock_quantity} 
                             </td>            
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${item.id}')">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_producto(${item.id})">Eliminar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_producto(${item.id})" 
+                                style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                <button class="font-medium text-red-600 hover:underline" 
+                                style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                onclick="fn_eliminar_producto(${item.id})"></button>
                             </td>
                         </tr>
                         <tr>
@@ -528,10 +531,11 @@ function fn_guardar_nuevo_producto() {
                                 ${item.stock_quantity} 
                                 </td>            
                                 <td class="px-6 py-4 text-right">                         
-                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_producto('${item.id}')">
-                                        Editar
-                                    </button>
-                                    <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_producto(${item.id})">Eliminar</button>
+                                    <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_producto(${item.id})" 
+                                    style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                    <button class="font-medium text-red-600 hover:underline" 
+                                    style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                    onclick="fn_eliminar_producto(${item.id})"></button>
                                 </td>
                             </tr>
                             <tr>
@@ -1008,6 +1012,8 @@ function fn_eliminar_producto(id) {
                             icon: `success`,
                         });
                         $(`#tr_producto_${id}`).hide();
+                        $(`#td_colspan_form_edit_producto_${id}`).html(``);
+
                     } else {
                         Swal.fire({
                             html: `<h4><b>Error al eliminar el producto</b></h4>`,

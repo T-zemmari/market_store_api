@@ -115,8 +115,11 @@ function fn_obtener_clientes(page = null, crear = false) {
                             </td>
                             
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_cliente(${item.id})">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_cliente(${item.id})" 
+                                style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                <button class="font-medium text-red-600 hover:underline" 
+                                style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                onclick="fn_eliminar_cliente(${item.id})"></button>
                             </td>
                         </tr>
                         <tr>
@@ -442,8 +445,11 @@ function fn_guardar_nuevo_cliente() {
                             ${item.country ?? ""}
                         </td>
                         <td class="px-6 py-4 text-right">                         
-                            <button class="font-medium text-blue-600  hover:underline" onclick="fn_mostrar_form_editar_cliente('${item.id}')">Editar</button>
-                            <button class="font-medium text-red-600 hover:underline" onclick="fn_eliminar_cliente(${item.id})">Eliminar</button>
+                            <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_cliente(${item.id})" 
+                            style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                            <button class="font-medium text-red-600 hover:underline" 
+                            style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                            onclick="fn_eliminar_cliente(${item.id})"></button>
                         </td>
                     </tr>
                     <tr>
@@ -810,6 +816,7 @@ function fn_eliminar_cliente(id) {
                             icon: `success`,
                         });
                         $(`#tr_cliente_${id}`).hide();
+                        $(`#td_colspan_form_edit_client_${id}`).html(``);
                     } else {
                         Swal.fire({
                             html: `<h4><b>Error al eliminar el cliente</b></h4>`,

@@ -149,8 +149,11 @@ function fn_obtener_pedidos(page = null, crear = false) {
                             ${item.payment_method ?? ''} 
                             </td>            
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${item.id}')">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_cancelar_pedido(${item.id})">Cancelar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_pedido(${item.id})" 
+                                style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                <button class="font-medium text-red-600 hover:underline" 
+                                style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                onclick="fn_cancelar_pedido(${item.id})"></button>
                             </td>
                         </tr>
                         <tr>
@@ -721,8 +724,11 @@ function fn_generar_pedido() {
                             ${item.payment_method ?? ''} 
                             </td>            
                             <td class="px-6 py-4 text-right">                         
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="fn_mostrar_form_editar_pedido('${item.id}')">Editar</button>
-                                <button class="font-medium text-red-600 hover:underline" onclick="fn_cancelar_pedido(${item.id})">Cancelar</button>
+                                <button class="font-medium text-blue-600 hover:underline" onclick="fn_mostrar_form_editar_pedido(${item.id})" 
+                                style="width:25px;height:25px;background-image:url('/assets/icons/edit_1.png');background-position:center;background-size:cover"></button>
+                                <button class="font-medium text-red-600 hover:underline" 
+                                style="width:25px;height:30px;background-image:url('/assets/icons/delete_1.png');background-position:center;background-size:cover"
+                                onclick="fn_cancelar_pedido(${item.id})"></button>
                             </td>
                         </tr>
                         <tr>
