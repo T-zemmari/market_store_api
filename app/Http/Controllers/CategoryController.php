@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -98,10 +99,17 @@ class CategoryController extends Controller
                     return response()->json(['message' => 'Category with the same name and parent already exists'], Response::HTTP_CONFLICT);
                 }
 
-                // Si no existe, crear la categoría
-                $newCategory = Category::create($request->all());
+                try {
+                    // Si no existe, crear la categoría
+                    $newCategory = Category::create($request->all());
 
-                return new CategoryResource($newCategory);
+                    return new CategoryResource($newCategory);
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
+                }
             }
         } else {
             return response()->json(['code' => 403, 'unauthenticated']);
@@ -165,45 +173,54 @@ class CategoryController extends Controller
                     return response()->json(['message' => 'Category not found'], 404);
                 }
 
+
                 $category_data = $request->all();
 
-                if ($category->update($category_data)) {
-                    $data_products = [];
-                    $products = $category->products;
-                    if ($products) {
-                        foreach ($products as $product) {
-                            $data_products[] = $product->toArray(); // Devuelve todos los campos del producto
+                try {
+
+                    if ($category->update($category_data)) {
+                        $data_products = [];
+                        $products = $category->products;
+                        if ($products) {
+                            foreach ($products as $product) {
+                                $data_products[] = $product->toArray(); // Devuelve todos los campos del producto
+                            }
                         }
+
+                        $data = [
+                            "id" => $category->id,
+                            "name" => $category->name,
+                            "parent" => $category->parent,
+                            "description" => $category->description,
+                            "short_description" => $category->short_description,
+                            "image" => $category->image,
+                            "adress" => $category->adress,
+                            "postalCode" => $category->postal_code,
+                            "status" => $category->status,
+                            "discontinued" => $category->discontinued,
+                            "valid" => $category->valid,
+                            'products' => $data_products,
+                        ];
+
+                        $response = [
+                            'code' => 200,
+                            'message' => 'Category updated correctly',
+                            'data' => $data
+                        ];
+                    } else {
+                        $response = [
+                            'code' => 500,
+                            'message' => 'Failed to update category'
+                        ];
                     }
 
-                    $data = [
-                        "id" => $category->id,
-                        "name" => $category->name,
-                        "parent" => $category->parent,
-                        "description" => $category->description,
-                        "short_description" => $category->short_description,
-                        "image" => $category->image,
-                        "adress" => $category->adress,
-                        "postalCode" => $category->postal_code,
-                        "status" => $category->status,
-                        "discontinued" => $category->discontinued,
-                        "valid" => $category->valid,
-                        'products' => $data_products,
-                    ];
-
-                    $response = [
-                        'code' => 200,
-                        'message' => 'Category updated correctly',
-                        'data' => $data
-                    ];
-                } else {
-                    $response = [
-                        'code' => 500,
-                        'message' => 'Failed to update category'
-                    ];
+                    return response()->json($response);
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
                 }
-
-                return response()->json($response);
             }
         } else {
             return response()->json(['code' => 403, 'unauthenticated']);

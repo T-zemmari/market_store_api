@@ -12,6 +12,7 @@ use App\Models\Image;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
 {
@@ -108,36 +109,43 @@ class ProductController extends Controller
                     $newProductData['image'] = $url_image_p;
                 }
 
-                $newProduct = Product::create($newProductData);
+                try {
 
-                //$newProduct = Product::find(1);
+                    $newProduct = Product::create($newProductData);
 
-                // Procesar y almacenar imágenes si se enviaron
-                //dd($request->file('images'));
+                    //$newProduct = Product::find(1);
 
-                if ($request->hasFile('images')) {
-                    //dump($request->file('images'));
+                    // Procesar y almacenar imágenes si se enviaron
+                    //dd($request->file('images'));
 
-                    foreach ($request->file('images') as $image) {
-                        // Procesar cada imagen individualmente
+                    if ($request->hasFile('images')) {
+                        //dump($request->file('images'));
 
-                        $extention = $image->getClientOriginalExtension(); // Obtener el nombre original del archivo
-                        $filename = 'img_n_' . time() . '.' . $extention;
+                        foreach ($request->file('images') as $image) {
+                            // Procesar cada imagen individualmente
 
-                        $image->move($path, $filename); // Mover el archivo al directorio de destino
+                            $extention = $image->getClientOriginalExtension(); // Obtener el nombre original del archivo
+                            $filename = 'img_n_' . time() . '.' . $extention;
 
-                        $url_image = $path . $filename; // Obtener la URL de la imagen
-                        $imageData = [
-                            'product_id' => $newProduct->id,
-                            'url_image' => $url_image,
-                            'active' => 1,
-                        ];
-                        // Crear una nueva imagen con los datos proporcionados
-                        Image::create($imageData);
+                            $image->move($path, $filename); // Mover el archivo al directorio de destino
+
+                            $url_image = $path . $filename; // Obtener la URL de la imagen
+                            $imageData = [
+                                'product_id' => $newProduct->id,
+                                'url_image' => $url_image,
+                                'active' => 1,
+                            ];
+                            // Crear una nueva imagen con los datos proporcionados
+                            Image::create($imageData);
+                        }
                     }
+                    return new ProductResource($newProduct);
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
                 }
-
-                return new ProductResource($newProduct);
             }
         } else {
             return response()->json(['code' => 403, 'unauthenticated']);
@@ -249,10 +257,16 @@ class ProductController extends Controller
                     }
                 }
 
-                // Actualizar el producto
-                $product->update($requestData);
-
-                return new ProductResource($product);
+                try {
+                    // Actualizar el producto
+                    $product->update($requestData);
+                    return new ProductResource($product);
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
+                }
             }
         } else {
             return response()->json(['code' => 403, 'unauthenticated']);

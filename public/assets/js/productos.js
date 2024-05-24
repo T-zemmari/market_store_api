@@ -564,7 +564,15 @@ function fn_guardar_nuevo_producto() {
             },
             error: function (xhr, status, error) {
                 console.error("Error al crear el producto:", error);
-                // Aquí puedes manejar el error según tu lógica de frontend
+                let errors = xhr.responseJSON.errors;
+                let errorMessages = '';
+                for (let field in errors) {
+                    errorMessages += `${errors[field].join('<br>')}<br>`;
+                }
+                Swal.fire({
+                    html: `<h4><b>Error al crear el producto</b></h4><p>${errorMessages}</p>`,
+                    icon: `error`,
+                });
             },
         });
     }
@@ -823,6 +831,15 @@ function fn_mostrar_form_editar_producto(id) {
                 },
                 error: function (xhr, status, error) {
                     console.error("Error al obtener el producto:", error);
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessages = '';
+                    for (let field in errors) {
+                        errorMessages += `${errors[field].join('<br>')}<br>`;
+                    }
+                    Swal.fire({
+                        html: `<h4><b>Error al obtener el producto</b></h4><p>${errorMessages}</p>`,
+                        icon: `error`,
+                    });
                 },
             });
         }
@@ -948,7 +965,15 @@ function fn_editar_producto(id) {
             },
             error: function (xhr, status, error) {
                 console.error("Error al editar el producto:", error);
-                // Aquí puedes manejar el error según tu lógica de frontend
+                let errors = xhr.responseJSON.errors;
+                let errorMessages = '';
+                for (let field in errors) {
+                    errorMessages += `${errors[field].join('<br>')}<br>`;
+                }
+                Swal.fire({
+                    html: `<h4><b>Error al obtener el producto</b></h4><p>${errorMessages}</p>`,
+                    icon: `error`,
+                });
             },
         });
     } catch (error) {

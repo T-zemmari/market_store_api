@@ -11,6 +11,7 @@ use App\Http\Resources\OrderResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
@@ -135,12 +136,18 @@ class OrderController extends Controller
                 $newOrderData['line_items'] = json_encode($request->line_items);
                 $newOrderData['coupon_lines'] = json_encode($request->coupon_lines);
 
-                $newOrder = Order::create($newOrderData);
-
-                return response()->json([
-                    'message' => 'Order created successfully',
-                    'order' => new OrderResource($newOrder)
-                ], 201);
+                try {
+                    $newOrder = Order::create($newOrderData);
+                    return response()->json([
+                        'message' => 'Order created successfully',
+                        'order' => new OrderResource($newOrder)
+                    ], 201);
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
+                }
             }
         } else {
             return response()->json(['code' => 403, 'unauthenticated']);

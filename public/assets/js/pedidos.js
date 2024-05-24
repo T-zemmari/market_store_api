@@ -751,7 +751,15 @@ function fn_generar_pedido() {
             },
             error: function (xhr, status, error) {
                 console.error("Error al crear el pedido:", error);
-                mostrar_error('Error al crear el pedido intentalo mas tarde')
+                let errors = xhr.responseJSON.errors;
+                let errorMessages = '';
+                for (let field in errors) {
+                    errorMessages += `${errors[field].join('<br>')}<br>`;
+                }
+                Swal.fire({
+                    html: `<h4><b>Error al generar el pedido/b></h4><p>${errorMessages}</p>`,
+                    icon: `error`,
+                });
             },
         });
 

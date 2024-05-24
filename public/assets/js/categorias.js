@@ -244,8 +244,13 @@ function fn_guardar_nueva_categoria() {
         },
         error: function (xhr, status, error) {
             console.error("Error al crear la categoría:", error);
+            let errors = xhr.responseJSON.errors;
+            let errorMessages = '';
+            for (let field in errors) {
+                errorMessages += `${errors[field].join('<br>')}<br>`;
+            }
             Swal.fire({
-                html: `<h4><b>Error al crear la categoría</b></h4>`,
+                html: `<h4><b>Error al crear la categoria</b></h4><p>${errorMessages}</p>`,
                 icon: `error`,
             });
         },
@@ -492,7 +497,15 @@ function fn_editar_categoria(id) {
         },
         error: function (xhr, status, error) {
             console.error("Error al editar la categoria:", error);
-            // Aquí puedes manejar el error según tu lógica de frontend
+            let errors = xhr.responseJSON.errors;
+            let errorMessages = '';
+            for (let field in errors) {
+                errorMessages += `${errors[field].join('<br>')}<br>`;
+            }
+            Swal.fire({
+                html: `<h4><b>Error al actualizar la categoria</b></h4><p>${errorMessages}</p>`,
+                icon: `error`,
+            });
         },
     });
 }
