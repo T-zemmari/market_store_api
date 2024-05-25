@@ -29,14 +29,17 @@ Esta API proporciona funcionalidades para gestionar productos, clientes, categor
 6. Ejecuta `php artisan migrate --seed` para crear y poblar las tablas de la base de datos.
 7. Instala Breeze utilizando el siguiente comando:
 
-````bash
-php artisan breeze:install
-npm install && npm run dev
 
-````
 8. Configura Tailwind CSS y Vite según las necesidades de tu proyecto.
 
 ## Uso
+
+````bash
+
+npm run dev
+php artisan serve
+
+````
 
 Una vez instalada y configurada la API, puedes empezar a usarla a través de las rutas y endpoints proporcionados. Aquí tienes algunos ejemplos de cómo interactuar con la API:
 
@@ -64,5 +67,5 @@ Este proyecto fue desarrollado por Tarek Zemmari.
 
 ## Licencia
 
-Este proyecto está licenciado bajo [MIT]. Para más información, consulta el archivo LICENSE.md.
+Este proyecto solo es para uso educativo no es para uso comercial.
 
