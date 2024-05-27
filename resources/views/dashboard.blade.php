@@ -154,7 +154,8 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
+    <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0"
+        style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="hidden w-full h-[85vh]  justify-center items-center" id="contenedor_spinner">
             <div role="status" class="p-4 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin fill-blue-600"
@@ -169,11 +170,11 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="contenedor_formularios contenedor_crear_nuevo_cliente  w-full  p-4 mb-10"
-            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente" style="display:none ">
-            <div class="w-full mt-5 flex flex-row gap-2 ">
+        <div class="contenedor_formularios contenedor_crear_nuevo_cliente w-[70%] p-4 mb-10"
+            data-info="contenedor_crear_nuevo_cliente" id="contenedor_crear_nuevo_cliente"
+            style="display:none;margin:0 auto">
+            <div class="w-full mt-5 flex flex-row gap-2 bg-[white] rounded-lg">
                 <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_cliente">
-
                     <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
                         <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
                             <h2 class="text-2xl font-semibold">Rellena el formulario del nuevo cliente</h2>
@@ -296,10 +297,73 @@
                 </form>
             </div>
         </div>
-        <div class="contenedor_formularios contenedor_crear_nuevo_producto w-full  p-4 mb-10"
-            data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto" style="display: none">
-            <div class="w-full mt-5 flex flex-row gap-2 ">
-                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_producto">
+        <div class="contenedor_formularios contenedor_crear_nueva_categoria w-[70%] p-4 mb-10"
+            data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none;margin:0 auto">
+            <div class="w-full mt-5 flex flex-row gap-2 bg-[white] rounded-lg">
+                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_categoria">
+                    <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
+                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                            <h2 class="text-2xl font-semibold">Rellena el formulario nueva categoria</h2>
+                        </div>
+                        <div class="w-full p-6">
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Nombre de la categoria
+                                    </label>
+                                    <input type="text" id="name"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escribe el nombre" />
+                                </div>
+                                <div>
+                                    <label for="parent" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Nivel (PARENT)
+                                    </label>
+                                    <input type="number" id="parent"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Escibe el nivel de la categoria" />
+                                </div>
+
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div>
+                                    <label for="category_short_description"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
+                                        Descripción corta
+                                    </label>
+                                    <textarea id="category_short_description" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Escribe una descripción corta"></textarea>
+
+                                </div>
+                                <div>
+                                    <label for="category_description"
+                                        class="block mb-2 text-sm font-medium text-gray-900">
+                                        Descripción
+                                    </label>
+                                    <textarea id="category_description" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Escribe la descripcion de la categoria"></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                <button type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                    onclick="fn_guardar_nueva_categoria()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="contenedor_formularios contenedor_crear_nuevo_producto p-4 mb-10"
+            data-info="contenedor_crear_nuevo_producto" id="contenedor_crear_nuevo_producto" style="display: none;margin:0 auto">
+            <div class="w-full mt-5 flex flex-row gap-2 bg-white">
+                <form class="w-full flex flex-row gap-2 md:p-2" enctype="multipart/form-data" id="formulario_producto">
                     <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
                         <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center"
                             id="conenedor_producto_img_prev"></div>
@@ -485,72 +549,6 @@
                 </form>
             </div>
         </div>
-
-        <div class="contenedor_formularios contenedor_crear_nueva_categoria w-full  p-4 mb-10"
-            data-info="contenedor_crear_nueva_categoria" id="contenedor_crear_nueva_categoria" style="display: none">
-            <div class="w-full mt-5 flex flex-row gap-2 ">
-                <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_categoria">
-
-                    <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
-                            <h2 class="text-2xl font-semibold">Rellena el formulario nueva categoria</h2>
-                        </div>
-                        <div class="w-full p-6">
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                <div>
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Nombre de la categoria
-                                    </label>
-                                    <input type="text" id="name"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escribe el nombre" />
-                                </div>
-                                <div>
-                                    <label for="parent" class="block mb-2 text-sm font-medium text-gray-900">
-                                        Nivel (PARENT)
-                                    </label>
-                                    <input type="number" id="parent"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Escibe el nivel de la categoria" />
-                                </div>
-
-                            </div>
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                <div>
-                                    <label for="category_short_description"
-                                        class="block mb-2 text-sm font-medium text-gray-900">
-                                        Descripción corta
-                                    </label>
-                                    <textarea id="category_short_description" rows="4"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="Escribe una descripción corta"></textarea>
-
-                                </div>
-                                <div>
-                                    <label for="category_description"
-                                        class="block mb-2 text-sm font-medium text-gray-900">
-                                        Descripción
-                                    </label>
-                                    <textarea id="category_description" rows="4"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="Escribe la descripcion de la categoria"></textarea>
-
-                                </div>
-                            </div>
-
-                            <div class="grid gap-6 mb-6 md:grid-cols-1">
-                                <button type="button"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                                    onclick="fn_guardar_nueva_categoria()">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="contenedor_formularios contenedor_generar_un_pedido w-full p-4 mb-10"
             data-info="contenedor_generar_un_pedido" id="contenedor_generar_un_pedido" style="display: none;">
             <?php $productos = [
@@ -591,7 +589,7 @@
                 ],
             ]; ?>
 
-            <div class="w-full flex justify-start items-start">
+            <div class="w-full flex justify-center items-center">
                 <?php foreach($productos as $producto): ?>
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow m-2 flex flex-col items-center"
                     style="width: 18rem;">
@@ -611,7 +609,7 @@
                 <?php endforeach ?>
             </div>
 
-            <div class="w-full">
+            <div class="w-full border border-gray-600 m-2 bg-white">
 
                 <input type="hidden" id="input_hidden_user_email" value="<?= Auth::user()->email ?? '' ?>">
                 <input type="hidden" id="input_hidden_customer_id" value="">
@@ -637,26 +635,26 @@
 
                         <div id="summary" class="w-1/4 px-8 py-10">
                             <!-- Aquí se mostrará el resumen del pedido -->
-                            <h1 class="font-semibold text-2xl border-b pb-8">Pedido:</h1>
+                            <h1 class="font-semibold text-2xl border-b pb-8 text-gray-600">Pedido:</h1>
                             <div class="flex justify-between mt-10 mb-5">
-                                <span class="font-semibold text-sm uppercase">Subtotal</span>
-                                <span class="font-semibold text-sm"><span id="summary_subtotal">0</span>€</span>
+                                <span class="font-semibold text-sm uppercase text-gray-600">Subtotal</span>
+                                <span class="font-semibold text-sm text-gray-600"><span id="summary_subtotal">0</span>€</span>
                             </div>
                             <div class="flex justify-between mt-5 mb-5">
-                                <span class="font-semibold text-sm uppercase">Iva 21%</span>
-                                <span class="font-semibold text-sm"><span id="summary_iva">0</span>€</span>
+                                <span class="font-semibold text-sm uppercase text-gray-600">Iva 21%</span>
+                                <span class="font-semibold text-sm text-gray-600"><span id="summary_iva">0</span>€</span>
                             </div>
                             <div class="py-5">
                                 <label for="summary_discount"
-                                    class="font-semibold inline-block mb-3 text-sm uppercase">Descuento</label>
+                                    class="font-semibold inline-block mb-3 text-sm uppercase text-gray-600">Descuento</label>
                                 <input type="number" id="summary_discount" placeholder="Descuento"
-                                    class="p-2 text-sm w-full" readonly>
+                                    class="p-2 text-sm w-full text-gray-600" readonly>
                                 <small class="color:red">El descuento no es necesario en esta demo</small>
                             </div>
                             <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar
                                 descuento</button>
                             <div class="border-t mt-8">
-                                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                                <div class="flex font-semibold justify-between py-6 text-sm uppercase text-gray-600">
                                     <span>Total Carrito</span>
                                     <span><span id="summary_total">0</span>€</span>
                                 </div>

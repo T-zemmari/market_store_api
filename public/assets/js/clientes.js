@@ -304,7 +304,6 @@ function validar_inputs_cliente() {
     return true;
 }
 
-
 function fn_guardar_nuevo_cliente() {
 
     // Obtener los valores de los campos del formulario
@@ -487,7 +486,6 @@ function fn_guardar_nuevo_cliente() {
         },
     });
 }
-
 
 function fn_mostrar_form_editar_cliente(id) {
 
