@@ -211,9 +211,9 @@ class ProductController extends Controller
                 }
 
                 // Verificar si el SKU es único, excluyendo el producto actual
-                // if ($request->sku && !$this->skuUnique($request->sku, $productId)) {
-                //     return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
-                // }
+                if ($request->sku && !$this->skuUnique($request->sku, $productId)) {
+                    return response()->json(['message' => 'The SKU is already in use by another product.'], 422);
+                }
 
                 // Excluir el campo SKU del array de datos para asegurar que no se modifique
                 $requestData = $request->except('sku');

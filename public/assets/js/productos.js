@@ -919,6 +919,7 @@ function fn_editar_producto(id) {
     formData.append("featured", 0);
     formData.append("discontinued", 0);
 
+
     let principal_img = document.getElementById("principal_image").files;
 
     let images = document.getElementById("images").files;
