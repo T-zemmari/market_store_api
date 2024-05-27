@@ -3,6 +3,8 @@
 Market Store API es una API desarrollada utilizando Laravel 10, un potente framework de PHP para construir aplicaciones web y APIs de manera rápida y eficiente. 
 Esta API proporciona funcionalidades para gestionar productos, clientes, categorías y pedidos para una tienda en línea.
 
+![API de Market Store](/assets/imgs/mrk_1.png)
+
 ## Características Principales
 
 - Gestión de Productos: Permite operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en productos.
@@ -50,6 +52,10 @@ Una vez instalada y configurada la API, puedes empezar a usarla a través de las
 
 Para obtener una lista completa de todas las rutas y endpoints disponibles, consulta la documentación de la API.
 
+### Documentación
+
+![API de Market Store](/assets/imgs/mrk_2.png)
+
 
 ## Contribuciones
 
@@ -65,7 +71,16 @@ Para obtener una lista completa de todas las rutas y endpoints disponibles, cons
 
 Este proyecto fue desarrollado por Tarek Zemmari.
 
+
+## DEMO
+
+![API de Market Store](/assets/imgs/mrk_3.png)
+
 ## Licencia
 
 Este proyecto solo es para uso educativo no es para uso comercial.
+
+
+
+
 
