@@ -40,7 +40,7 @@ function fn_obtener_pedidos(page = null, crear = false) {
             let pedidos = response.data;
             let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151;color:white">
+            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                 PEDIDOS
             </span>
         </h4>
@@ -308,15 +308,15 @@ function fn_mostrar_form_editar_pedido(id) {
                         <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_pedido_${data.id}">
 
                         <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                            <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                            <div class="w-full h-[50px] text-gray-300 border-b-2 border-gray-200 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                                 <h2 class="text-2xl font-semibold">Pedido ${data.id} </h2>
                             </div>
                             <div class="w-full p-6">
     
-                                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div class="grid gap-6 mb-6 md:grid-cols-3">
 
                                  <div>
-                                    <label for="status_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                    <label for="status_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                         Modificar el estado del pedido
                                     </label>
                                     <select id="status_${data.id}"
@@ -335,7 +335,7 @@ function fn_mostrar_form_editar_pedido(id) {
 
                                 </div>
     
-                                <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                <div class="grid gap-6 mb-6 md:grid-cols-3">
                                     <button type="button"
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                                         onclick="fn_modificar_pedido(${data.id})">Guardar</button>

@@ -5,9 +5,7 @@
     <div class="w-full flex justify-center items-center md:h-[92.6vh]" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="w-[95%] mt-[90px] md:w-[700px] mx-auto p-1 md:mt-[70px]">
             <div class="text-center mb-2">
-                <p class="mt-4 text-sm leading-7 text-white font-regular uppercase">
-                    Contáctanos
-                </p>
+
                 <h3 class="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-300">
                     Rellena <span class="text-indigo-600">el Formulario</span>
                 </h3>
@@ -19,7 +17,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('contact.send') }}" method="POST" class="w-full md:border-2 border-[#706e6e] p-4 md:p-12">
+            <form action="{{ route('contact.send') }}" method="POST" class="w-full md:border-2 border-[#706e6e] p-4 md:p-12 rounded-lg mt-4">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -48,7 +46,7 @@
                         <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2" for="message">
                             Mensaje
                         </label>
-                        <textarea rows="10" class="appearance-none block w-full bg-gray-200 text-gray-300 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="message" name="message" required></textarea>
+                        <textarea rows="6" class="appearance-none block w-full bg-gray-200 text-gray-300 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="message" name="message" required></textarea>
                     </div>
                 </div>
                 <div class="flex justify-between w-full px-3">

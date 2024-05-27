@@ -176,8 +176,8 @@
             <div class="w-full mt-5 flex flex-row gap-2 bg-[white] rounded-lg">
                 <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_cliente">
                     <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
-                            <h2 class="text-2xl font-semibold">Rellena el formulario del nuevo cliente</h2>
+                        <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+                            <h2 class="text-2xl font-semibold text-gray-200" >Rellena el formulario del nuevo cliente</h2>
                         </div>
                         <div class="w-full p-6">
 

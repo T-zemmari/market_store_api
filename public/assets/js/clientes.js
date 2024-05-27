@@ -36,7 +36,7 @@ function fn_obtener_clientes(page = null, crear = false) {
             let customers = response.data;
             let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4 bg-[#374151]">
-            <span class="w-full p-4 flex justify-center items-center rounded-lg text-white" style="background-color:#374151">
+            <span class="w-full p-4 flex justify-center items-center rounded-lg text-white" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                 CLIENTES
             </span>
         </h4>
@@ -510,17 +510,17 @@ function fn_mostrar_form_editar_cliente(id) {
                     if (cliente.id != undefined && cliente.id === id) {
 
                         let HTML_FORM_EDIT = `
-                            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
+                            <form class="w-full lg:w-[70%] flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
             
-                                <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                                    <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
-                                        <h2 class="text-2xl font-semibold">Formulario editar cliente : ${cliente.first_name}</h2>
+                                <div class="w-[100%] h-[100%] border-2 border-gray-700 flex flex-col">
+                                    <div class="w-full h-[50px] border-b-2 border-gray-700 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+                                        <h2 class="text-2xl font-semibold text-gray-300">Formulario editar cliente : ${cliente.first_name}</h2>
                                     </div>
                                     <div class="w-full p-6">
             
                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
                                             <div>
-                                                <label for="firstName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="firstName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Nombre
                                                 </label>
                                                 <input type="text" id="firstName_${cliente.id}"
@@ -528,7 +528,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                                     placeholder="Escribe el nombre" value="${cliente.first_name ?? ''}"/>
                                             </div>
                                             <div>
-                                                <label for="lastName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="lastName_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Apellidos
                                                 </label>
                                                 <input type="text" id="lastName_${cliente.id}"
@@ -536,7 +536,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                                     placeholder="Escribe los apellidos" value="${cliente.last_name ?? ''}" />
                                             </div>
                                             <div>
-                                                <label for="phone_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="phone_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Teléfono
                                                 </label>
                                                 <input type="text" id="phone_${cliente.id}"
@@ -547,7 +547,7 @@ function fn_mostrar_form_editar_cliente(id) {
             
                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
                                             <div>
-                                                <label for="customerType_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="customerType_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Seleccionar tipo
                                                 </label>
                                                 <select id="customerType_${cliente.id}"
@@ -558,7 +558,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label for="email_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="email_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Email
                                                 </label>
                                                 <input type="email" id="email"_${cliente.id}
@@ -569,7 +569,7 @@ function fn_mostrar_form_editar_cliente(id) {
             
                                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                                             <div>
-                                                <label for="adress_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="adress_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Dirección
                                                 </label>
                                                 <input type="text" id="adress_${cliente.id}"
@@ -578,7 +578,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                             </div>
             
                                             <div>
-                                                <label for="postalCode_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="postalCode_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Código postal
                                                 </label>
                                                 <input type="text" id="postalCode_${cliente.id}"
@@ -589,7 +589,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                         </div>
                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
                                             <div>
-                                                <label for="city_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="city_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Ciudad
                                                 </label>
                                                 <input type="text" id="city_${cliente.id}"
@@ -598,7 +598,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                             </div>
             
                                             <div>
-                                                <label for="state_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="state_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Municipio
                                                 </label>
                                                 <input type="text" id="state_${cliente.id}"
@@ -607,7 +607,7 @@ function fn_mostrar_form_editar_cliente(id) {
                                             </div>
             
                                             <div>
-                                                <label for="country_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="country_${cliente.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     País
                                                 </label>
                                                 <input type="text" id="country_${cliente.id}"

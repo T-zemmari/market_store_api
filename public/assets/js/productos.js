@@ -81,7 +81,7 @@ function fn_obtener_productos(page = null, crear = false) {
             let productos = response.data;
             let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151;color:white">
+            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                 PRODUCTOS
             </span>
         </h4>
@@ -643,7 +643,7 @@ function fn_mostrar_form_editar_producto(id) {
                                     </div>
                                     <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
                                         <div class="w-full">
-                                            <label class="block mb-2 text-sm font-medium text-gray-900"
+                                            <label class="block mb-2 text-sm font-medium text-gray-300"
                                                 for="principal_image">Añadir imagen principal</label>
                                             <input
                                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
@@ -651,7 +651,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 accept=".png, .jpg, .jpeg, .webp">
                                         </div>
                                         <div class="w-full">
-                                            <label class="block mb-2 text-sm font-medium text-gray-900" for="images">Añadir
+                                            <label class="block mb-2 text-sm font-medium text-gray-300" for="images">Añadir
                                                 resto de imagenes</label>
                                             <input
                                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
@@ -662,7 +662,7 @@ function fn_mostrar_form_editar_producto(id) {
             
                                 </div>
                                 <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
-                                    <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                                    <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                                         <h2 class="text-2xl font-semibold">Rellena el formulario del producto (SKU:${data.sku})</h2>
                                     </div>
                                     <div class="w-full p-6">
@@ -670,7 +670,7 @@ function fn_mostrar_form_editar_producto(id) {
                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
                                             <div>
                                                 <label for="select_categories_${data.id}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">
+                                                    class="block mb-2 text-sm font-medium text-gray-300">
                                                     Seleccionar Categoria
                                                 </label>
                                                 <select id="select_categories_${data.id}"
@@ -680,7 +680,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label for="select_type_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="select_type_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Seleccionar tipo
                                                 </label>
                                                 <select id="select_type_${data.id}"
@@ -693,7 +693,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label for="select_status_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="select_status_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Seleccionar estado
                                                 </label>
                                                 <select id="select_status_${data.id}"
@@ -706,7 +706,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     SKU (No se modifica)
                                                 </label>
                                                 <input type="text" id="sku_${data.id}"
@@ -714,7 +714,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                     placeholder="Sku" readonly value="${data.sku}"/>
                                             </div>
                                             <div>
-                                                <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     EAN
                                                 </label>
                                                 <input type="text" id="product_ean_${data.id}"
@@ -722,7 +722,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                     placeholder="Ean" value="${data.ean ?? ''}"/>
                                             </div>
                                             <div>
-                                                <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     EAN-13
                                                 </label>
                                                 <input type="text" id="product_ean_13_${data.id}"
@@ -734,7 +734,7 @@ function fn_mostrar_form_editar_producto(id) {
                                         </div>
                                         <div class="grid gap-6 mb-6 md:grid-cols-1">
                                             <div>
-                                                <label for="product_name_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="product_name_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Nombre del producto
                                                 </label>
                                                 <input type="text" id="product_name_${data.id}"
@@ -754,7 +754,7 @@ function fn_mostrar_form_editar_producto(id) {
             
                                             </div>
                                             <div>
-                                                <label for="description_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="description_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Descripción
                                                 </label>
                                                 <textarea id="description_${data.id}" rows="4"
@@ -766,7 +766,7 @@ function fn_mostrar_form_editar_producto(id) {
             
                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
                                             <div>
-                                                <label for="regular_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="regular_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     PVR
                                                 </label>
                                                 <input type="number" id="regular_price_${data.id}"
@@ -774,7 +774,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                     placeholder="PVR" value="${data.regular_price ?? ''}"/>
                                             </div>
                                             <div>
-                                                <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Precio de venta
                                                 </label>
                                                 <input type="number" id="sale_price_${data.id}"
@@ -782,7 +782,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                     placeholder="Precio sin confirmar" value="${data.sale_price ?? ''}"/>
                                             </div>
                                             <div>
-                                                <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Precio que se va a mostrar
                                                 </label>
                                                 <input type="number" id="price_${data.id}"
@@ -791,7 +791,7 @@ function fn_mostrar_form_editar_producto(id) {
                                             </div>
                                             <div>
                                                 <label for="select_stock_status_${data.id}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">
+                                                    class="block mb-2 text-sm font-medium text-gray-300">
                                                     Seleccionar estado del stock
                                                 </label>
                                                 <select id="select_stock_status_${data.id}"
@@ -802,7 +802,7 @@ function fn_mostrar_form_editar_producto(id) {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label for="stock_quantity_${data.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                                <label for="stock_quantity_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                                     Stock actual
                                                 </label>
                                                 <input type="number" id="stock_quantity_${data.id}"

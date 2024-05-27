@@ -34,7 +34,7 @@ function fn_obtener_categorias(page = null, crear = false) {
             let categorias = response.data;
             let HTML_TABLE = `
             <h4 class="w-full text-4xl font-bold flex justify-center items-center mb-4">
-            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background-color:#374151">
+            <span class="w-full p-4 bg-[#374151] flex justify-center items-center rounded-lg text-white" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                 CATEGORIAS
             </span>
         </h4>
@@ -380,17 +380,17 @@ function fn_mostrar_form_editar_categoria(id) {
                     if (categoria.id != undefined && categoria.id === id) {
 
                         let HTML_FORM_EDIT = `
-                        <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_categoria_${categoria.id}">
+                        <form class="w-full md:w-[50%] flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_categoria_${categoria.id}">
 
                         <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                            <div class="w-full h-[50px] border-b-2 border-gray-200 flex justify-center items-center">
+                            <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                                 <h2 class="text-2xl font-semibold">Editar categoria ${categoria.name}</h2>
                             </div>
                             <div class="w-full p-6">
     
                                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                                     <div>
-                                        <label for="name_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                        <label for="name_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                             Nombre de la categoria
                                         </label>
                                         <input type="text" id="name_${categoria.id}"
@@ -398,7 +398,7 @@ function fn_mostrar_form_editar_categoria(id) {
                                             placeholder="Escribe el nombre" value="${categoria.name ?? ''}" />
                                     </div>
                                     <div>
-                                        <label for="parent_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-900">
+                                        <label for="parent_${categoria.id}" class="block mb-2 text-sm font-medium text-gray-300">
                                             Nivel (PARENT)
                                         </label>
                                         <input type="number" id="parent_${categoria.id}"
@@ -411,7 +411,7 @@ function fn_mostrar_form_editar_categoria(id) {
                                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                                     <div>
                                         <label for="category_short_description_${categoria.id}"
-                                            class="block mb-2 text-sm font-medium text-gray-900">
+                                            class="block mb-2 text-sm font-medium text-gray-300">
                                             Descripción corta
                                         </label>
                                         <textarea id="category_short_description_${categoria.id}" rows="4"
@@ -421,7 +421,7 @@ function fn_mostrar_form_editar_categoria(id) {
                                     </div>
                                     <div>
                                         <label for="category_description_${categoria.id}"
-                                            class="block mb-2 text-sm font-medium text-gray-900">
+                                            class="block mb-2 text-sm font-medium text-gray-300">
                                             Descripción
                                         </label>
                                         <textarea id="category_description_${categoria.id}" rows="4"

@@ -64,24 +64,23 @@
                             </button>
                             <!-- Dropdown menu -->
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
-                                id="user-dropdown"
-                                style="z-index: 100000000 !important"
-                                >
+                                id="user-dropdown" style="z-index: 100000000 !important">
                                 <div class="px-4 py-3">
                                     <span class="block text-sm text-gray-900">{{ Auth::user()->name ?? '' }}</span>
-                                    <span class="block text-sm  text-gray-500 truncate">{{ Auth::user()->email ?? '' }}</span>
+                                    <span
+                                        class="block text-sm  text-gray-500 truncate">{{ Auth::user()->email ?? '' }}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
-                                    <li>
-                                        <a href="{{ route('dashboard') }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Panel de administración
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="{{ route('profile.edit') }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             Mi perfil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('dashboard') }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Demo api
                                         </a>
                                     </li>
                                     <li>
