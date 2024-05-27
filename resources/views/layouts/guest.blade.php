@@ -16,8 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-gray-900 antialiased">
-    <div class="w-full min-h-screen flex flex-col justify-start items-start  bg-gray-100">
+<body class="font-sans text-gray-900 antialiased" >
+    <div class="w-full min-h-screen flex flex-col justify-start items-start  bg-gray-100" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="w-full">
             {{ $slot }}
         </div>

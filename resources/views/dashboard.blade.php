@@ -154,7 +154,7 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0">
+    <div class="p-4 sm:ml-64 sm:mt-[64px] md:p-0 md:px-0" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="hidden w-full h-[85vh]  justify-center items-center" id="contenedor_spinner">
             <div role="status" class="p-4 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-16 h-16 text-gray-200 animate-spin fill-blue-600"

@@ -24,6 +24,12 @@
             background: #555;
             /* Color del "pulgar" al pasar el mouse sobre él */
         }
+        th{
+            color:#555 !important
+        }
+        td{
+            color: white !important
+        }
     </style>
 
 
@@ -312,11 +318,11 @@
         </div>
     </aside>
 
-    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10">
+    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="p-4 w-[60%] min-h-[89vh]" id="documentacion_contenido_principal">
             <div class="w-full" id="contenedor_introduccion">
-                <h2 id="h2_introduccion" class="text-2xl font-semibold mt-8 mb-4">Introducción</h2>
-                <p class="p-2" id="p_introduccion">
+                <h2 id="h2_introduccion" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Introducción</h2>
+                <p class="p-2 text-gray-300" id="p_introduccion">
                     Bienvenido a la documentación de la API de nuestro sistema de comercio electrónico.
                     <br>Esta API está diseñada para proporcionar acceso a recursos relacionados con la gestión de
                     clientes, categorías, productos, imágenes y pedidos. </br>
@@ -325,13 +331,13 @@
                 </p>
             </div>
 
-            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-300">
 
             <div id="contenedor_requisitos">
-                <h2 id="h2_requisitos" class="text-2xl font-semibold mt-8 mb-4">Requisitos</h2>
-                <p class="p-2" id="p_requisitos">
+                <h2 id="h2_requisitos" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Requisitos</h2>
+                <p class="p-2 text-gray-300" id="p_requisitos">
                     Para utilizar nuestra API, asegúrate de cumplir con los siguientes requisitos:
-                <ul class="list-disc pl-8">
+                <ul class="list-disc pl-8 text-gray-300">
                     <li>Conocimientos básicos sobre el protocolo HTTP/HTTPS y el formato JSON.</li>
                     <li>Una cuenta de usuario para autenticarte y obtener un token de acceso.</li>
                     <li>Capacidad para manejar los métodos HTTP estándar (GET, POST, PUT, DELETE) para interactuar con
@@ -347,18 +353,18 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_token">
-                <h2 id="h2_obtener_token" class="text-2xl font-semibold mt-8 mb-4">Obtener Token de Acceso</h2>
-                <p class="p-2" id="p_obtener_token">
+                <h2 id="h2_obtener_token" class="text-gray-300 text-2xl font-semibold mt-8 mb-4">Obtener Token de Acceso</h2>
+                <p class="p-2 text-gray-300" id="p_obtener_token">
                     Para acceder a los recursos protegidos por la API, necesitas autenticarte y obtener un token de
                     acceso.
                     Sigue los siguientes pasos para obtener un token:
                     </br></br>
-                <ol class="list-decimal pl-8">
+                <ol class="text-gray-300 list-decimal pl-8">
                     <li>
                         Envía una solicitud HTTP POST al endpoint
                         <code>/api/v1/get_token</code>.
                         <div
-                            class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
+                            class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-gray-300 flex flex-row justify-start items-center gap-2">
                             <div
                                 class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
                                 GET</div>
@@ -370,7 +376,7 @@
                         Incluye las credenciales de autenticación (correo electrónico y contraseña) en el cuerpo de la
                         solicitud.
                         <div
-                            class="w-full h-[200px] m-6 mx-auto bg-[#1f2937] text-white rounded-[5px] flex flex-col justify-start items-start">
+                            class="w-full h-[200px] m-6 mx-auto bg-[#1f2937] text-gray-300 rounded-[5px] flex flex-col justify-start items-start">
                             <div class="w-full flex flex-row justify-between">
                                 <div
                                     class="ml-4 mt-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
@@ -426,15 +432,15 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_errores">
-                <h2 id="h2_errores" class="text-2xl font-semibold mt-8 mb-4">Errores</h2>
-                <p class="p-2" id="p_errores">
+                <h2 id="h2_errores" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Errores</h2>
+                <p class="p-2 text-gray-300" id="p_errores">
                     Ocasionalmente puedes encontrarte con errores al acceder a la API . Hay varios tipos posibles:
                 </p>
-                <table class="w-full mt-4 border-collapse border border-gray-300">
+                <table class="w-full mt-4 border-collapse border border-gray-300 text-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="px-4 py-2">Código de Error</th>
-                            <th class="px-4 py-2">Tipo de Error</th>
+                            <th class="px-4 py-2 text-black">Código de Error</th>
+                            <th class="px-4 py-2 text-black">Tipo de Error</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -467,13 +473,13 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_paginacion">
-                <h2 id="h2_paginacion" class="text-2xl font-semibold mt-8 mb-4">Paginación</h2>
-                <p class="p-2" id="p_paginacion">
+                <h2 id="h2_paginacion" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Paginación</h2>
+                <p class="p-2 text-gray-300" id="p_paginacion">
                     Para optimizar el rendimiento del servidor y mejorar la experiencia del usuario, nuestra API utiliza
                     la paginación para limitar la cantidad de registros devueltos en cada solicitud. </br>Asegúrate de
                     cumplir con los siguientes requisitos para trabajar con nuestra API de manera efectiva:
                 </p>
-                <p class="p-2">
+                <p class="p-2 text-gray-300">
                     Ten en cuenta que nuestra API implementa una paginación que limita el número máximo de registros
                     devueltos por página a 50.</br> Esto ayuda a reducir la carga en el servidor y a mejorar la
                     eficiencia de
@@ -485,22 +491,22 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_filtrado">
-                <h2 id="h2_filtrado" class="text-2xl font-semibold mt-8 mb-4">Filtrado</h2>
-                <p class="p-2">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza
+                <h2 id="h2_filtrado" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Filtrado</h2>
+                <p class="p-2 text-gray-300">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza
                     los siguientes parámetros:</p>
-                <p class="px-2 mb-8" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo,
+                <p class="px-2 mb-8 text-gray-300" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo,
                     firstName.</p>
 
                 <div class="mb-8 p-4" id="contenedor_tabla_filtrado_cliente">
-                    <h3 class="text-lg font-semibold mb-4">Clientes</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-300">Clientes</h3>
                     <table class="w-full border-collapse border border-gray-300">
-                        <thead class="bg-gray-200">
+                        <thead class="bg-gray-200 ">
                             <tr>
-                                <th class="px-4 py-2">Parámetro</th>
-                                <th class="px-4 py-2">Operador</th>
-                                <th class="px-4 py-2">Valor</th>
-                                <th class="px-4 py-2">Valores permitidos</th>
-                                <th class="px-4 py-2">Ejemplo</th>
+                                <th class="px-4 py-2 text-gray-300">Parámetro</th>
+                                <th class="px-4 py-2 text-gray-300">Operador</th>
+                                <th class="px-4 py-2 text-gray-300">Valor</th>
+                                <th class="px-4 py-2 text-gray-300">Valores permitidos</th>
+                                <th class="px-4 py-2 text-gray-300">Ejemplo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -803,8 +809,8 @@
 
 
             <div id="contenedor_cliente_propiedades">
-                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del Cliente</h2>
-                <p class="p-2" id="p_cliente_propiedades">
+                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades del Cliente</h2>
+                <p class="p-2 text-gray-300" id="p_cliente_propiedades">
                     Aquí encontrarás información sobre las propiedades de un cliente, como su nombre, dirección, correo
                     electrónico, etc.
                 </p>
@@ -1001,8 +1007,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_cliente">
-                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4">Crear un Nuevo Cliente</h2>
-                <p class="p-2" id="p_crear_cliente">
+                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear un Nuevo Cliente</h2>
+                <p class="p-2 text-gray-300" id="p_crear_cliente">
                     Para ello, debe enviar una solicitud HTTP POST al endpoint correspondiente junto con los datos del
                     cliente.
                 </p>
@@ -1067,10 +1073,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_editar_cliente">
-                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_editar_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Actualizar Datos de un Cliente
                 </h2>
-                <p class="p-2" id="p_editar_cliente_put">
+                <p class="p-2 text-gray-300" id="p_editar_cliente_put">
                     Para modificar los datos de un cliente, debe enviar una solicitud HTTP <b>PUT</b> al endpoint
                     correspondiente con los datos actualizados del cliente, incluyendo el ID del cliente.</br>
                     Utilice el método <b>PUT</b>.</br>
@@ -1129,7 +1135,7 @@
                         </pre>
                     </div>
 
-                    <p class="p-2" id="p_editar_cliente_patch">
+                    <p class="p-2 text-gray-300" id="p_editar_cliente_patch">
                         Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
                     </p>
                     <div
@@ -1165,8 +1171,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_cliente">
-                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de un cliente</h2>
-                <p class="p-2" id="p_obtener_cliente">
+                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de un cliente</h2>
+                <p class="p-2 text-gray-300" id="p_obtener_cliente">
                     Obtén detalles de un cliente existente en la base de datos.
                     </br> Esto generalmente se hace
                     enviando una solicitud HTTP GET al endpoint correspondiente con el <b>ID</b> del cliente.
@@ -1186,8 +1192,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_listado_clientes">
-                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4">Listado de Clientes</h2>
-                <p class="p-2" id="p_listado_clientes">
+                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Listado de Clientes</h2>
+                <p class="p-2 text-gray-300" id="p_listado_clientes">
                     Accede a una lista de todos los clientes almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -1205,8 +1211,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_cliente">
-                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4">Eliminar Cliente</h2>
-                <p class="p-2" id="p_eliminar_cliente">
+                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar Cliente</h2>
+                <p class="p-2 text-gray-300" id="p_eliminar_cliente">
                     Elimina un cliente existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     del cliente a eliminar.
@@ -1215,7 +1221,7 @@
                     <div
                         class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
                         <div
-                            class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            class="ml-4 w-16 h-8 bg-red-700 flex justify-center items-center font-semibold rounded-sm text-sm text-gray-300">
                             DELETE</div>
                         <code class="text-sm">/api/v1/customers/{id}</code>
                     </div>
@@ -1226,10 +1232,10 @@
 
 
             <div id="contenedor_propiedades_categoria">
-                <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_categoria_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Propiedades de la categoria
                 </h2>
-                <p class="p-2" id="p_categoria_propiedades">
+                <p class="p-2 text-gray-300" id="p_categoria_propiedades">
                     Información sobre las propiedades de la categoria, como su nombre...etc.
                 </p>
                 <div class="contenedor-tabla-category w-full m-6 mx-auto flex justify-center items-center">
@@ -1371,8 +1377,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_categoria">
-                <h2 id="h2_crear_categoria" class="text-2xl font-semibold mt-8 mb-4">Crear Categoria</h2>
-                <p class="p-2" id="p_crear_categoria">
+                <h2 id="h2_crear_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear Categoria</h2>
+                <p class="p-2 text-gray-300" id="p_crear_categoria">
                     Para crear una nueva categoria en la base de datos debes enviar una solicitud HTTP POST al endpoint
                     correspondiente con los datos de la categoria.
                 </p>
@@ -1380,7 +1386,7 @@
                     <div
                         class="w-full h-[60px] m-6 mx-auto  bg-[#1f2937] rounded-[5px] text-white flex flex-row justify-start items-center gap-2">
                         <div
-                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm">
+                            class="ml-4 w-16 h-8 bg-green-700 flex justify-center items-center font-semibold rounded-sm text-sm text-gray-300">
                             POST</div>
                         <code class="text-sm">/api/v1/categories</code>
                     </div>
@@ -1423,9 +1429,9 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_editar_categoria">
-                <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4">Editar una categoria
+                <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Editar una categoria
                 </h2>
-                <p class="p-2" id="p_editar_categoria_put">
+                <p class="p-2 text-gray-300" id="p_editar_categoria_put">
                     Modifica los datos de una categoria enviando una solicitud HTTP PUT al endpoint </br>
                     Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
                 </p>
@@ -1472,7 +1478,7 @@
                         </pre>
                     </div>
 
-                    <p class="p-2" id="p_editar_categoria_patch">
+                    <p class="p-2 text-gray-300" id="p_editar_categoria_patch">
                         Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
                     </p>
                     <div
@@ -1508,9 +1514,9 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_categoria">
-                <h2 id="h2_obtener_categoria" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de una categoria
+                <h2 id="h2_obtener_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de una categoria
                 </h2>
-                <p class="p-2" id="p_obtener_categoria">
+                <p class="p-2 text-gray-300" id="p_obtener_categoria">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
                     <b>ID</b> de la categoria.
                 </p>
@@ -1530,10 +1536,10 @@
 
 
             <div id="contenedor_listado_categorias">
-                <h2 id="h2_listado_categorias" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_listado_categorias" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Obtener todas las categorias
                 </h2>
-                <p class="p-2" id="p_listado_categorias">
+                <p class="p-2 text-gray-300" id="p_listado_categorias">
                     Accede a una lista de todas las categorias almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -1551,8 +1557,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_categoria">
-                <h2 id="h2_eliminar_categoria" class="text-2xl font-semibold mt-8 mb-4">Eliminar categoria</h2>
-                <p class="p-2" id="p_eliminar_categoria">
+                <h2 id="h2_eliminar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar categoria</h2>
+                <p class="p-2 text-gray-300" id="p_eliminar_categoria">
                     Elimina una categoria existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     de la categoria a eliminar.
@@ -1571,9 +1577,9 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_propiedades_producto">
-                <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4">Propiedades del producto
+                <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades del producto
                 </h2>
-                <p class="p-2" id="p_producto_propiedades">
+                <p class="p-2 text-gray-300" id="p_producto_propiedades">
                     Información sobre las propiedades del producto, como su nombre...etc.
                 </p>
 
@@ -1852,8 +1858,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_producto">
-                <h2 id="h2_crear_producto" class="text-2xl font-semibold mt-8 mb-4">Nuevo producto</h2>
-                <p class="p-2" id="p_crear_producto">
+                <h2 id="h2_crear_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Nuevo producto</h2>
+                <p class="p-2 text-gray-300" id="p_crear_producto">
                     Para crear un nuevo producto en la base de datos debes enviar una solicitud HTTP POST al endpoint
                     correspondiente con los datos del producto.
                 </p>
@@ -1940,10 +1946,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_editar_producto">
-                <h2 id="h2_editar_producto" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_editar_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Editar un producto
                 </h2>
-                <p class="p-2" id="p_editar_producto_put">
+                <p class="p-2 text-gray-300" id="p_editar_producto_put">
                     Modifica los datos del producto enviando una solicitud HTTP PUT al endpoint correspondiente
                     Con el metodo <b>PUT , DEBES ENVIAR TODOS LOS CAMPOS REQUERIDOS</b>
                 </p>
@@ -2026,7 +2032,7 @@
                         </pre>
                     </div>
 
-                    <p class="p-2" id="p_editar_producto_patch">
+                    <p class="p-2 text-gray-300" id="p_editar_producto_patch">
                         Si solo quieres modificar un campo en concreto utiliza el metodo <b>PATCH</b>.
                     </p>
                     <div
@@ -2062,9 +2068,9 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_producto">
-                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4">Obtener datos de un producto
+                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de un producto
                 </h2>
-                <p class="p-2" id="p_obtener_producto">
+                <p class="p-2 text-gray-300" id="p_obtener_producto">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
                     <b>ID</b> del producto.
                 </p>
@@ -2084,10 +2090,10 @@
 
 
             <div id="contenedor_listado_productos">
-                <h2 id="h2_listado_productos" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_listado_productos" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Obtener todos los productos
                 </h2>
-                <p class="p-2" id="p_listado_productos">
+                <p class="p-2 text-gray-300" id="p_listado_productos">
                     Accede a una lista de todos los productos almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -2105,8 +2111,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_producto">
-                <h2 id="h2_eliminar_producto" class="text-2xl font-semibold mt-8 mb-4">Eliminar producto</h2>
-                <p class="p-2" id="p_eliminar_producto">
+                <h2 id="h2_eliminar_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar producto</h2>
+                <p class="p-2 text-gray-300" id="p_eliminar_producto">
                     Elimina un producto existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     del producto a eliminar.
@@ -2126,10 +2132,10 @@
 
 
             <div id="contenedor_pedido_propiedades">
-                <h2 id="h2_pedido_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_pedido_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Propiedades del pedido
                 </h2>
-                <p class="p-2" id="p_pedido_propiedades">
+                <p class="p-2 text-gray-300" id="p_pedido_propiedades">
                     Información sobre las propiedades del pedido.
                 </p>
 
@@ -2363,8 +2369,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_pedido">
-                <h2 id="h2_crear_pedido" class="text-2xl font-semibold mt-8 mb-4">Generar un pedido</h2>
-                <p class="p-2" id="p_crear_pedido">
+                <h2 id="h2_crear_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Generar un pedido</h2>
+                <p class="p-2 text-gray-300" id="p_crear_pedido">
                     Para generar un pedido debes enviar una solicitud HTTP POST al endpoint
                     correspondiente con los datos necesarios.
                 </p>
@@ -2460,11 +2466,11 @@
                         </div>
                         </pre>
                     </div>
-                    <p class="p-2" id="p_crear_pedido_info_productos">
+                    <p class="p-2 text-gray-300" id="p_crear_pedido_info_productos">
                         El cuerpo del pedido debe llevar informacion de los productos que es un array de objetos llamado
                         lineItems.</b>
                         Debe llevar al menos un producto con la informacion:
-                    <ol class="list-decimal pl-8">
+                    <ol class="list-decimal pl-8 text-gray-300">
                         <li><b>id</b> : Id del producto .</li>
                         <li><b>name</b> : Nombre del producto.</li>
                         <li><b>price</b> : Precio del producto.</li>
@@ -2491,13 +2497,13 @@
                 </div>
             </div>
 
-            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+            <hr class="h-px my-8 bg-gray-200 border-0 text-gray-300">
 
             <div id="contenedor_editar_pedido">
-                <h2 id="h2_editar_pedido" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_editar_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Editar un pedido
                 </h2>
-                <p class="p-2" id="p_editar_pedido_put">
+                <p class="p-2 text-gray-300" id="p_editar_pedido_put">
                     Una vez generado, el pedido no puede ser modificado en su totalidad. Sin embargo, es posible
                     realizar ajustes en determinados campos mediante el uso del método PATCH.
                 </p>
@@ -2552,10 +2558,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_pedido">
-                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Obtener información de un pedido
                 </h2>
-                <p class="p-2" id="p_obtener_producto">
+                <p class="p-2 text-gray-300" id="p_obtener_producto">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
                     <b>ID</b> del pedido.
                 </p>
@@ -2575,10 +2581,10 @@
 
 
             <div id="contenedor_listado_pedidos">
-                <h2 id="h2_listado_pedidos" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_listado_pedidos" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Obtener una lista de todos los pedidos
                 </h2>
-                <p class="p-2" id="p_listado_pedidos">
+                <p class="p-2 text-gray-300" id="p_listado_pedidos">
                     Accede a una lista exhaustiva de todos los pedidos almacenados en la base de datos. Esto requiere
                     enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -2597,8 +2603,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_cancelar_pedido">
-                <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4">Eliminar pedido</h2>
-                <p class="p-2" id="p_eliminar_pedido">
+                <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar pedido</h2>
+                <p class="p-2 text-gray-300" id="p_eliminar_pedido">
                     Elimina un pedido existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     del pedido a eliminar.
@@ -2617,10 +2623,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_imagen_propiedades">
-                <h2 id="h2_imagen_propiedades" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_imagen_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Propiedades de una imagen
                 </h2>
-                <p class="p-2" id="p_imagen_propiedades">
+                <p class="p-2 text-gray-300" id="p_imagen_propiedades">
                     Información sobre las propiedades de una imagen, como su url...etc.
                 </p>
 
@@ -2711,10 +2717,10 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_listado_imagenes">
-                <h2 id="h2_listado_imagenes" class="text-2xl font-semibold mt-8 mb-4">
+                <h2 id="h2_listado_imagenes" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">
                     Obtener todas las imagenes
                 </h2>
-                <p class="p-2" id="p_listado_categorias">
+                <p class="p-2 text-gray-300" id="p_listado_categorias">
                     Accede a una lista de todas las imagenes almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
                 </p>
@@ -2732,8 +2738,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_imagen">
-                <h2 id="h2_eliminar_imagen" class="text-2xl font-semibold mt-8 mb-4">Eliminar imagen</h2>
-                <p class="p-2" id="p_eliminar_imagen">
+                <h2 id="h2_eliminar_imagen" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar imagen</h2>
+                <p class="p-2 text-gray-300" id="p_eliminar_imagen">
                     Elimina una imagen existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
                     de la imagen a eliminar.

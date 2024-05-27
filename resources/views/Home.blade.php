@@ -2,12 +2,12 @@
     @section('title', 'Market Store API - Página de inicio')
     @include('layouts.partials.navbar')
 
-    <section class=" bg-white h-[92vh]">
+    <section class="h-[92.6vh]" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12  ">
-            <div class="mr-auto place-self-center lg:col-span-5 mt-[150px]">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl">
+            <div class="mr-auto place-self-center lg:col-span-5 mt-[145px]">
+                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-white">
                     API de Market Store</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">Bienvenido a la demo de la API de Market Store. Esta página te permite realizar peticiones a la API para obtener información sobre productos, clientes, categorías y pedidos.</p>
+                <p class="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl">Bienvenido a la demo de la API de Market Store. Esta página te permite realizar peticiones a la API para obtener información sobre productos, clientes, categorías y pedidos.</p>
                 <a href="{{route('documentacion')}}"
                     class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
                     Documentación
