@@ -390,8 +390,7 @@
         </div>
     </aside>
 
-    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10"
-        style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
+    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10">
         <div class="p-4 w-[60%] min-h-[89vh]" id="documentacion_contenido_principal">
             <div class="w-full" id="contenedor_introduccion">
                 <h2 id="h2_introduccion" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Introducción</h2>
