@@ -69,7 +69,7 @@ class CustomerController extends Controller
                 // Devolvemos la colección de clientes
                 return new CustomerCollection($customers);
             } else {
-                return response()->json(['error' => 'You are not authorized to view this information'], 403);
+                return response()->json(['error' => 'You are not authorized'], 403);
             }
         } else {
             return Response()->json(['code' => 403, 'unauthenticated']);
@@ -95,7 +95,7 @@ class CustomerController extends Controller
                 return isset($token->abilities['customers']) && in_array('create', $token->abilities['customers']);
             });
             if (!$hasAccess) {
-                return response()->json(['error' => 'You are not authorized to view this information'], 403);
+                return response()->json(['error' => 'You are not authorized'], 403);
             } else {
                 try {
                     $customer = Customer::create($request->all());
@@ -125,7 +125,7 @@ class CustomerController extends Controller
                 return isset($token->abilities['customers']) && in_array('read', $token->abilities['customers']);
             });
             if (!$hasAccess) {
-                return response()->json(['error' => 'You are not authorized to view this information'], 403);
+                return response()->json(['error' => 'You are not authorized'], 403);
             } else {
                 $customer = Customer::find($customer_id);
                 if (!isset($customer->id) || trim($customer->status) === 'deleted') {
@@ -162,7 +162,7 @@ class CustomerController extends Controller
                 return isset($token->abilities['customers']) && in_array('delete', $token->abilities['customers']);
             });
             if (!$hasAccess) {
-                return response()->json(['error' => 'You are not authorized to update data'], 403);
+                return response()->json(['error' => 'You are not authorized'], 403);
             } else {
                 $response = [
                     'code' => 500,
@@ -244,7 +244,7 @@ class CustomerController extends Controller
                 return isset($token->abilities['customers']) && in_array('delete', $token->abilities['customers']);
             });
             if (!$hasAccess) {
-                return response()->json(['error' => 'You are not authorized to view this information'], 403);
+                return response()->json(['error' => 'You are not authorized'], 403);
             } else {
                 $customer = Customer::find($customer_id);
                 if (!isset($customer->id) || trim($customer->status) === 'deleted') {
