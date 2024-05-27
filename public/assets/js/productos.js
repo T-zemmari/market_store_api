@@ -456,27 +456,27 @@ function fn_guardar_nuevo_producto() {
         let formData = new FormData();
 
         // Agregar los valores de los campos al FormData
-        formData.append("category_id", category_id);
+        formData.append("categoryId", category_id);
         formData.append("name", name);
         formData.append("sku", sku);
         formData.append("ean", ean);
-        formData.append("ean_13", ean_13);
+        formData.append("ean13", ean_13);
         formData.append("type", type);
         formData.append("status", status);
-        formData.append("catalog_visibility", "visible");
+        formData.append("catalogVisibility", "visible");
 
-        formData.append("short_description", short_description);
+        formData.append("shortDescription", short_description);
         formData.append("description", description);
 
-        formData.append("regular_price", regular_price);
-        formData.append("sale_price", sale_price);
+        formData.append("regularPrice", regular_price);
+        formData.append("salePrice", sale_price);
         formData.append("price", price);
 
         formData.append("valid", 1);
-        formData.append("on_sale", 0);
+        formData.append("onSale", 0);
 
-        formData.append("stock_status", stock_status);
-        formData.append("stock_quantity", stock_quantity);
+        formData.append("stockStatus", stock_status);
+        formData.append("stockQuantity", stock_quantity);
 
         formData.append("weight", "");
         formData.append("dimensions", "");
@@ -484,7 +484,7 @@ function fn_guardar_nuevo_producto() {
         formData.append("featured", 0);
         formData.append("discontinued", 0);
 
-        formData.append("principal_image", principal_img[0]);
+        formData.append("principalImage", principal_img[0]);
 
         // Agregar las imágenes al FormData
         for (let i = 0; i < images.length; i++) {
@@ -560,8 +560,10 @@ function fn_guardar_nuevo_producto() {
                     $(`#tr_info_productos_lista_vacia`).hide();
 
                 } else {
+                    let messaje = response.messaje;
+
                     Swal.fire({
-                        html: `<h4><b>Error al crear el producto</b></h4>`,
+                        html: `<h4><b>Error al crear el producto</b></h4><p>${messaje ?? 'Revisa el sku'}</p>`,
                         icon: `error`,
                     });
                 }
@@ -574,7 +576,7 @@ function fn_guardar_nuevo_producto() {
                     errorMessages += `${errors[field].join('<br>')}<br>`;
                 }
                 Swal.fire({
-                    html: `<h4><b>Error al crear el producto</b></h4><p>${errorMessages}</p>`,
+                    html: `<h4><b>Error al crear el producto</b></h4><p>${errorMessages??'Revisa el SKU <br> Recuerda que es debe ser unico'}</p>`,
                     icon: `error`,
                 });
             },
@@ -605,9 +607,6 @@ function fn_mostrar_form_editar_producto(id) {
                 },
                 success: function (response) {
                     console.log("Informacion del producto :", response);
-
-
-
                     let data = response.data;
                     if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
 
@@ -889,29 +888,30 @@ function fn_editar_producto(id) {
     };
 
     console.log('productoData', productoData);
+    //return;
 
     let formData = new FormData();
 
-    formData.append("category_id", select_categories);
+    formData.append("categoryId", select_categories);
     formData.append("name", product_name);
     formData.append("ean", product_ean);
-    formData.append("ean_13", product_ean_13);
+    formData.append("ean13", product_ean_13);
     formData.append("type", select_type);
     formData.append("status", select_status);
-    formData.append("catalog_visibility", "visible");
+    formData.append("catalogVisibility", "visible");
 
-    formData.append("short_description", short_description);
+    formData.append("shortDescription", short_description);
     formData.append("description", description);
 
-    formData.append("regular_price", regular_price);
-    formData.append("sale_price", sale_price);
+    formData.append("regularPrice", regular_price);
+    formData.append("salePrice", sale_price);
     formData.append("price", price);
 
     formData.append("valid", 1);
-    formData.append("on_sale", 0);
+    formData.append("onSale", 0);
 
-    formData.append("stock_status", select_stock_status);
-    formData.append("stock_quantity", stock_quantity);
+    formData.append("stockStatus", select_stock_status);
+    formData.append("stockQuantity", stock_quantity);
 
     formData.append("weight", "");
     formData.append("dimensions", "");
@@ -943,7 +943,7 @@ function fn_editar_producto(id) {
 
     try {
         $.ajax({
-            url: `http://localhost:8000/api/v1/products/${id}`,
+            url: `http://localhost:8000/api/v1/products/${id}/`,
             method: "PUT",
             data: formData,
             processData: false,

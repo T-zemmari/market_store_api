@@ -1974,23 +1974,23 @@
                         <pre class="text-sm" style="text-align: left">
                         <code class="w-[50%] px-6 flex flex-col justify-start items-start">
                             <span class="text-yellow-400">{</span>
-                            <span class="ml-4"><span class="text-green-400">"category_id"</span> : "",</span>
+                            <span class="ml-4"><span class="text-green-400">"categoryId"</span> : "",</span>
                             <span class="ml-4"><span class="text-green-400">"name"</span> : "",</span>
                             <span class="ml-4"><span class="text-green-400">"sku"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"ean"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"ean13"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"type"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"status"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"catalog_visibility"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"catalogVisibility"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"description"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"short_description"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"regular_price"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"sale_price"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"shortDescription"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"regularPrice"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"salePrice"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"price"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"on_sale"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"onSale"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"valid"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"stock_quantity"</span> : ""</span>
-                            <span class="ml-4"><span class="text-green-400">"stock_status"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"stockQuantity"</span> : ""</span>
+                            <span class="ml-4"><span class="text-green-400">"stockStatus"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"weight"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"dimensions"</span> : ""</span>
                             <span class="ml-4"><span class="text-green-400">"variation"</span> : ""</span>
@@ -2001,23 +2001,23 @@
                         <div class="hidden">
                             <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="new_product_body">
                                 {
-                                    "category_id": 3,
+                                    "categoryId": 3,
                                     "name": "nihihhl",
                                     "sku": "9473111",
                                     "ean": null,
                                     "ean13": null,
                                     "type": "simple",
                                     "status": "publish", 
-                                    "catalog_visibility": "visible",
+                                    "catalogVisibility": "visible",
                                     "description": "Soluta facere nihil eni.",
-                                    "short_description": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
-                                    "regular_price": "217.12",
-                                    "sale_price": "373.40",
+                                    "shortDescription": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
+                                    "regularPrice": "217.12",
+                                    "salePrice": "373.40",
                                     "price": "373.40",
-                                    "on_sale": false,
+                                    "onSale": false,
                                     "valid": "1",
-                                    "stock_quantity": 77,
-                                    "stock_status": "outofstock",
+                                    "stockQuantity": 77,
+                                    "stockStatus": "outofstock",
                                     "weight": "7kg",
                                     "dimensions": "92x90x16cm",
                                     "variation": 0,
@@ -2065,23 +2065,23 @@
                         <pre class="text-sm" style="text-align: left">
                         <code class="w-[50%] px-6 flex flex-col justify-start items-start">
                             <span class="text-yellow-400">{</span>
-                                <span class="ml-4"><span class="text-green-400">"category_id"</span> : "",</span>
+                                <span class="ml-4"><span class="text-green-400">"categoryId"</span> : "",</span>
                                 <span class="ml-4"><span class="text-green-400">"name"</span> : "",</span>
                                 <span class="ml-4"><span class="text-green-400">"sku"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"ean"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"ean13"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"type"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"status"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"catalog_visibility"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"catalogVisibility"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"description"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"short_description"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"regular_price"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"sale_price"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"shortDescription"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"regularPrice"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"salePrice"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"price"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"on_sale"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"onSale"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"valid"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"stock_quantity"</span> : ""</span>
-                                <span class="ml-4"><span class="text-green-400">"stock_status"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"stockQuantity"</span> : ""</span>
+                                <span class="ml-4"><span class="text-green-400">"stockStatus"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"weight"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"dimensions"</span> : ""</span>
                                 <span class="ml-4"><span class="text-green-400">"variation"</span> : ""</span>
@@ -2092,23 +2092,23 @@
                         <div class="hidden">
                             <code class="w-[50%] px-6 flex flex-col justify-start items-start" id="edit_product_body_put">
                                 {
-                                    "category_id": 3,
+                                    "categoryId": 3,
                                     "name": "nihihhl",
                                     "sku": "9473111",
                                     "ean": null,
                                     "ean13": null,
                                     "type": "simple",
                                     "status": "publish", 
-                                    "catalog_visibility": "visible",
+                                    "catalogVisibility": "visible",
                                     "description": "Soluta facere nihil eni.",
-                                    "short_description": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
-                                    "regular_price": "217.12",
-                                    "sale_price": "373.40",
+                                    "shortDescription": "Perspiciatis impedit eum cumque excepturi magnam aspernatur non inventore.",
+                                    "regularPrice": "217.12",
+                                    "salePrice": "373.40",
                                     "price": "373.40",
-                                    "on_sale": false,
+                                    "onSale": false,
                                     "valid": "1",
-                                    "stock_quantity": 77,
-                                    "stock_status": "outofstock",
+                                    "stockQuantity": 77,
+                                    "stockStatus": "outofstock",
                                     "weight": "7kg",
                                     "dimensions": "92x90x16cm",
                                     "variation": 0,

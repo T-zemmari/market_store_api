@@ -26,58 +26,59 @@ class UpdateProductRequest extends FormRequest
     {
 
         $method = $this->method();
+
         if ($method == 'PUT') {
             return [
                 "name" => ['required', 'string'],
-                "category_id" => ['required', 'numeric'],
+                "categoryId" => ['required', 'numeric'],
                 "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
                 "ean" => ['sometimes','numeric'],
                 "ean13" => ['sometimes','numeric','min:13','max:13'],
                 "type" => ['required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['required', Rule::in(['draft', 'pending', 'private', 'publish'])],
                 "featured" => ['required', Rule::in([true, false, 0, 1])],
-                "catalog_visibility" => ['required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
+                "catalogVisibility" => ['required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
                 "description" => ['string'],
-                "short_description" => ['string'],
+                "shortDescription" => ['string'],
                 "price" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "regular_price" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "sale_price" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "on_sale" => ['required', Rule::in([true, false, 0, 1])],
-                "stock_quantity" => ['required', 'numeric'],
-                "stock_status" => ['required', Rule::in(['instock', 'outofstock'])],
+                "regularPrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
+                "salePrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
+                "onSale" => ['required', Rule::in([true, false, 0, 1])],
+                "stockQuantity" => ['required', 'numeric'],
+                "stockStatus" => ['required', Rule::in(['instock', 'outofstock'])],
                 "dimensions" => ['nullable', 'regex:/^\d{1,3}x\d{1,3}x\d{1,3}cm$/'],
                 "weight" => ['nullable', 'string', 'regex:/^\d+(\.\d+)?kg$/'],
                 "image" => ['nullable', 'string'],
                 "discontinued" => ['required', Rule::in([true, false, 0, 1])],
                 "valid" => ['required', Rule::in([true, false, 0, 1])],
-                "principal_image" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
+                "principalImage" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
                 "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
         } else {
             return [
                 "name" => ['sometimes', 'required', 'string'],
-                "category_id" => ['sometimes', 'required', 'numeric'],
+                "categoryId" => ['sometimes', 'required', 'numeric'],
                 "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
                 "ean" => ['sometimes','numeric'],
                 "ean13" => ['sometimes','numeric','min:13','max:13'],
                 "type" => ['sometimes', 'required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['sometimes', 'required', Rule::in(['draft', 'pending', 'private', 'publish'])],
                 "featured" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
-                "catalog_visibility" => ['sometimes', 'required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
+                "catalogVisibility" => ['sometimes', 'required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
                 "description" => ['sometimes', 'string'],
-                "short_description" => ['sometimes', 'string'],
+                "shortDescription" => ['sometimes', 'string'],
                 "price" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "regular_price" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "sale_price" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "on_sale" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
-                "stock_quantity" => ['sometimes', 'required', 'numeric'],
-                "stock_status" => ['sometimes', 'required', Rule::in(['instock', 'outofstock'])],
+                "regularPrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
+                "salePrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
+                "onSale" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
+                "stockQuantity" => ['sometimes', 'required', 'numeric'],
+                "stockStatus" => ['sometimes', 'required', Rule::in(['instock', 'outofstock'])],
                 "dimensions" => ['sometimes', 'nullable', 'regex:/^\d{1,3}x\d{1,3}x\d{1,3}cm$/'],
                 "weight" => ['sometimes', 'nullable', 'string', 'regex:/^\d+(\.\d+)?kg$/'],
                 "image" => ['sometimes', 'nullable', 'string'],
                 "discontinued" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
                 "valid" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
-                "principal_image" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
+                "principalImage" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
                 "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
         }
@@ -86,6 +87,9 @@ class UpdateProductRequest extends FormRequest
     protected function prepareForValidation()
     {
 
+        if ($this->principalImage) {
+            $this->merge(['principal_image' => $this->principalImage]);
+        }
         if ($this->categoryId) {
             $this->merge(['category_id' => $this->categoryId]);
         }

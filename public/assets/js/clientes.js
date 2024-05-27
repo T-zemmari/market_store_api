@@ -453,6 +453,9 @@ function fn_guardar_nuevo_cliente() {
                     </tr>
                     <tr>
                         <td colspan="12" style="display:none" id="td_colspan_form_edit_client_${item.id}">
+                            <div class="contenedor_editar_cliente w-full  p-4 mb-10" data-info="contenedor_editar_cliente_${item.id}" id="contenedor_editar_cliente_${item.id}">
+                                
+                            </div>
                         </td>
                     </tr>
                 `;
@@ -465,6 +468,8 @@ function fn_guardar_nuevo_cliente() {
                 });
                 $('#formulario_cliente')[0].reset();
                 $(`#tr_info_clientes_lista_vacia`).hide();
+
+
             } else {
                 Swal.fire({
                     html: `<h4><b>Error al crear el cliente</b></h4>`,
@@ -507,7 +512,7 @@ function fn_mostrar_form_editar_cliente(id) {
                     //console.log("Informacion del cliente:", response);
                     let cliente = response.data;
                     console.log('cliente:', cliente);
-                    if (cliente.id != undefined && cliente.id === id) {
+                    if (cliente.id != undefined && cliente.id == id) {
 
                         let HTML_FORM_EDIT = `
                             <form class="w-full lg:w-[70%] flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
@@ -694,7 +699,7 @@ function fn_editar_cliente(id) {
         return;
     }
 
-  
+
     if (!address) {
         Swal.fire({
             html: `<h4><b>Por favor, ingrese una dirección.</b></h4>`,

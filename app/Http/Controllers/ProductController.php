@@ -95,8 +95,8 @@ class ProductController extends Controller
 
                 $path = 'upload/imgs/';
                 $url_image_p = null;
-                if ($request->hasFile('principal_image')) {
-                    $file_image = $request->file('principal_image');
+                if ($request->hasFile('principalImage')) {
+                    $file_image = $request->file('principalImage');
                     $extention_img = $file_image->getClientOriginalExtension();
                     $filename_img = 'img_p_' . time() . '.' . $extention_img;
                     $file_image->move($path, $filename_img);
@@ -217,12 +217,13 @@ class ProductController extends Controller
 
                 // Excluir el campo SKU del array de datos para asegurar que no se modifique
                 $requestData = $request->except('sku');
+                dump($requestData);die;
 
 
                 $path = 'upload/imgs/';
                 $url_image_p = null;
-                if ($request->hasFile('principal_image')) {
-                    $file_image = $request->file('principal_image');
+                if ($request->hasFile('principalImage')) {
+                    $file_image = $request->file('principalImage');
                     $extention_img = $file_image->getClientOriginalExtension();
                     $filename_img = 'img_p_' . time() . '.' . $extention_img;
                     $file_image->move($path, $filename_img);
