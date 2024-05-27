@@ -568,7 +568,7 @@
                 <p class="p-2 text-gray-300">Puedes utilizar el filtrado en las URLs para obtener resultados
                     específicos. Utiliza
                     los siguientes parámetros:</p>
-                <p class="px-2 mb-8 text-gray-300" style="color:red">Nota: Los parámetros deben estar en camelcase,
+                <p class="px-2 mb-8 text-gray-300" style="color:rgb(233, 65, 65)">Nota: Los parámetros deben estar en camelcase,
                     por ejemplo,
                     firstName.</p>
 
@@ -1158,7 +1158,7 @@
                     Para modificar los datos de un cliente, debe enviar una solicitud HTTP <b>PUT</b> al endpoint
                     correspondiente con los datos actualizados del cliente, incluyendo el ID del cliente.</br>
                     Utilice el método <b>PUT</b>.</br>
-                    <small style="color: red">DEBE PROPORCIONAR TODOS LOS CAMPOS REQUERIDOS.</small>
+                    <small style="color:rgb(233, 65, 65)">DEBE PROPORCIONAR TODOS LOS CAMPOS REQUERIDOS.</small>
                 </p>
 
                 <div class="w-full">
