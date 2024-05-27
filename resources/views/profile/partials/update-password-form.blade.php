@@ -1,15 +1,15 @@
 <section class="w-full">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-gray-200">
             {{ __('Actualizar mi contraseña') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-200">
             {{ __('Usa una contraseña larga y aleatoria para mantener tu cuenta segura.') }}
         </p>
     </header>
 
-    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6 text-gray-200">
         @csrf
         @method('put')
 
@@ -42,7 +42,7 @@
 
             @if (session('status') === 'password-updated')
                 <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600">{{ __('Contraseña cambiada.') }}</p>
+                    class="text-sm text-gray-200">{{ __('Contraseña cambiada.') }}</p>
             @endif
         </div>
     </form>
