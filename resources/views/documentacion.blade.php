@@ -24,10 +24,83 @@
             background: #555;
             /* Color del "pulgar" al pasar el mouse sobre él */
         }
-        th{
-            color:#555 !important
+
+        th {
+            color: #555 !important
         }
-        td{
+
+        td {
+            color: white !important
+        }
+
+        #tabla_filtrado_clientes>tbody td {
+            background-color: #1f2937 !important;
+
+        }
+
+        #tabla_filtrado_categorias>tbody td {
+            background-color: #1f2937 !important;
+        }
+
+        #tabla_filtrado_productos>tbody td {
+            background-color: #1f2937 !important;
+        }
+
+        #tabla_filtrado_pedidos>tbody td {
+            background-color: #1f2937 !important;
+        }
+
+        #tabla_errores>tbody td {
+            background-color: #1f2937 !important;
+        }
+
+        #tabla_propiedades_clientes tbody th {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_clientes tbody td {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_categorias tbody th {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_categorias tbody td {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_productos tbody th {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_productos tbody td {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_pedidos tbody th {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_pedidos tbody td {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_imagenes tbody th {
+            background-color: #1f2937 !important;
+            color: white !important
+        }
+
+        #tabla_propiedades_imagenes tbody td {
+            background-color: #1f2937 !important;
             color: white !important
         }
     </style>
@@ -50,8 +123,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#1f2937] rounded-lg ">
             <ul class="space-y-2 font-medium">
                 <li class="cursor-pointer sticky" onclick="fn_cerrar_menu()">
-                    <a
-                        class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
+                    <a class="flex items-center p-2 text-white  rounded-sm  hover:bg-[#374151]">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 21">
@@ -156,7 +228,7 @@
                         data-dropdownname="dropdown-categories">
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Categorias</span>
                     </button>
-                    <ul id="dropdown-categories" class="hidden hidden mt-2 mb-2 py-4 space-y-2  rounded-[5px]">
+                    <ul id="dropdown-categories" class="hidden  mt-2 mb-2 py-4 space-y-2  rounded-[5px]">
                         <li class="cursor-pointer" onclick="fn_scroll_to('contenedor_propiedades_categoria')">
                             <a
                                 class="text-[14px] flex items-center w-full p-1 text-[#bac0d2] transition duration-75 rounded-sm pl-11 group hover:bg-[#374151]">
@@ -318,7 +390,8 @@
         </div>
     </aside>
 
-    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10" style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
+    <div class="sm:ml-64 sm:mt-[64px] flex flex-col justify-center items-center p-10"
+        style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
         <div class="p-4 w-[60%] min-h-[89vh]" id="documentacion_contenido_principal">
             <div class="w-full" id="contenedor_introduccion">
                 <h2 id="h2_introduccion" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Introducción</h2>
@@ -353,7 +426,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_token">
-                <h2 id="h2_obtener_token" class="text-gray-300 text-2xl font-semibold mt-8 mb-4">Obtener Token de Acceso</h2>
+                <h2 id="h2_obtener_token" class="text-gray-300 text-2xl font-semibold mt-8 mb-4">Obtener Token de
+                    Acceso</h2>
                 <p class="p-2 text-gray-300" id="p_obtener_token">
                     Para acceder a los recursos protegidos por la API, necesitas autenticarte y obtener un token de
                     acceso.
@@ -436,7 +510,7 @@
                 <p class="p-2 text-gray-300" id="p_errores">
                     Ocasionalmente puedes encontrarte con errores al acceder a la API . Hay varios tipos posibles:
                 </p>
-                <table class="w-full mt-4 border-collapse border border-gray-300 text-gray-300">
+                <table class="w-full mt-4 border-collapse border border-gray-300 text-gray-300" id="tabla_errores">
                     <thead class="bg-gray-200">
                         <tr>
                             <th class="px-4 py-2 text-black">Código de Error</th>
@@ -492,14 +566,16 @@
 
             <div id="contenedor_filtrado">
                 <h2 id="h2_filtrado" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Filtrado</h2>
-                <p class="p-2 text-gray-300">Puedes utilizar el filtrado en las URLs para obtener resultados específicos. Utiliza
+                <p class="p-2 text-gray-300">Puedes utilizar el filtrado en las URLs para obtener resultados
+                    específicos. Utiliza
                     los siguientes parámetros:</p>
-                <p class="px-2 mb-8 text-gray-300" style="color:red">Nota: Los parámetros deben estar en camelcase, por ejemplo,
+                <p class="px-2 mb-8 text-gray-300" style="color:red">Nota: Los parámetros deben estar en camelcase,
+                    por ejemplo,
                     firstName.</p>
 
                 <div class="mb-8 p-4" id="contenedor_tabla_filtrado_cliente">
                     <h3 class="text-lg font-semibold mb-4 text-gray-300">Clientes</h3>
-                    <table class="w-full border-collapse border border-gray-300">
+                    <table class="w-full border-collapse border border-gray-300" id="tabla_filtrado_clientes">
                         <thead class="bg-gray-200 ">
                             <tr>
                                 <th class="px-4 py-2 text-gray-300">Parámetro</th>
@@ -594,8 +670,8 @@
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
                 <div class="mb-8 p-4" id="contenedor_tabla_filtrado_categorias">
-                    <h3 class="text-lg font-semibold mb-4">Categorías</h3>
-                    <table class="w-full border-collapse border border-gray-300">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-300">Categorías</h3>
+                    <table class="w-full border-collapse border border-gray-300" id="tabla_filtrado_categorias">
                         <thead class="bg-gray-200">
                             <tr>
                                 <th class="px-4 py-2">Parámetro</th>
@@ -628,7 +704,7 @@
 
                 <div class="mb-8 p-4" id="contenedor_tabla_filtrado_productos">
                     <h3 class="text-lg font-semibold mb-4">Productos</h3>
-                    <table class="w-full border-collapse border border-gray-300">
+                    <table class="w-full border-collapse border border-gray-300" id="tabla_filtrado_productos">
                         <thead class="bg-gray-200">
                             <tr>
                                 <th class="px-4 py-2">Parámetro</th>
@@ -717,7 +793,7 @@
 
                 <div class="mb-8 p-4" id="contenedor_tabla_filtrado_pedidos">
                     <h3 class="text-lg font-semibold mb-4">Pedidos</h3>
-                    <table class="w-full border-collapse border border-gray-300">
+                    <table class="w-full border-collapse border border-gray-300" id="tabla_filtrado_pedidos">
                         <thead class="bg-gray-200">
                             <tr>
                                 <th class="px-4 py-2">Parámetro</th>
@@ -809,14 +885,16 @@
 
 
             <div id="contenedor_cliente_propiedades">
-                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades del Cliente</h2>
+                <h2 id="h2_cliente_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades del
+                    Cliente</h2>
                 <p class="p-2 text-gray-300" id="p_cliente_propiedades">
                     Aquí encontrarás información sobre las propiedades de un cliente, como su nombre, dirección, correo
                     electrónico, etc.
                 </p>
                 <div class="contenedor-tabla-cliente w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            id="tabla_propiedades_clientes">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                                 Propiedades
@@ -1007,7 +1085,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_cliente">
-                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear un Nuevo Cliente</h2>
+                <h2 id="h2_crear_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear un Nuevo
+                    Cliente</h2>
                 <p class="p-2 text-gray-300" id="p_crear_cliente">
                     Para ello, debe enviar una solicitud HTTP POST al endpoint correspondiente junto con los datos del
                     cliente.
@@ -1171,7 +1250,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_cliente">
-                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de un cliente</h2>
+                <h2 id="h2_obtener_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de un
+                    cliente</h2>
                 <p class="p-2 text-gray-300" id="p_obtener_cliente">
                     Obtén detalles de un cliente existente en la base de datos.
                     </br> Esto generalmente se hace
@@ -1192,7 +1272,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_listado_clientes">
-                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Listado de Clientes</h2>
+                <h2 id="h2_listado_clientes" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Listado de
+                    Clientes</h2>
                 <p class="p-2 text-gray-300" id="p_listado_clientes">
                     Accede a una lista de todos los clientes almacenados en la base de datos.</br>
                     Esto implica enviar una solicitud HTTP GET al endpoint correspondiente.
@@ -1211,7 +1292,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_cliente">
-                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar Cliente</h2>
+                <h2 id="h2_eliminar_cliente" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar Cliente
+                </h2>
                 <p class="p-2 text-gray-300" id="p_eliminar_cliente">
                     Elimina un cliente existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
@@ -1240,7 +1322,8 @@
                 </p>
                 <div class="contenedor-tabla-category w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            id="tabla_propiedades_categorias">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                                 Propiedades
@@ -1377,7 +1460,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_categoria">
-                <h2 id="h2_crear_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear Categoria</h2>
+                <h2 id="h2_crear_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Crear Categoria
+                </h2>
                 <p class="p-2 text-gray-300" id="p_crear_categoria">
                     Para crear una nueva categoria en la base de datos debes enviar una solicitud HTTP POST al endpoint
                     correspondiente con los datos de la categoria.
@@ -1429,7 +1513,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_editar_categoria">
-                <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Editar una categoria
+                <h2 id="h2_editar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Editar una
+                    categoria
                 </h2>
                 <p class="p-2 text-gray-300" id="p_editar_categoria_put">
                     Modifica los datos de una categoria enviando una solicitud HTTP PUT al endpoint </br>
@@ -1514,7 +1599,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_categoria">
-                <h2 id="h2_obtener_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de una categoria
+                <h2 id="h2_obtener_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de
+                    una categoria
                 </h2>
                 <p class="p-2 text-gray-300" id="p_obtener_categoria">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
@@ -1557,7 +1643,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_categoria">
-                <h2 id="h2_eliminar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar categoria</h2>
+                <h2 id="h2_eliminar_categoria" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar
+                    categoria</h2>
                 <p class="p-2 text-gray-300" id="p_eliminar_categoria">
                     Elimina una categoria existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
@@ -1577,7 +1664,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_propiedades_producto">
-                <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades del producto
+                <h2 id="h2_producto_propiedades" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Propiedades
+                    del producto
                 </h2>
                 <p class="p-2 text-gray-300" id="p_producto_propiedades">
                     Información sobre las propiedades del producto, como su nombre...etc.
@@ -1585,7 +1673,8 @@
 
                 <div class="contenedor-tabla-producto w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            id="tabla_propiedades_productos">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                                 Propiedades
@@ -2068,7 +2157,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_obtener_producto">
-                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de un producto
+                <h2 id="h2_obtener_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Obtener datos de
+                    un producto
                 </h2>
                 <p class="p-2 text-gray-300" id="p_obtener_producto">
                     Esto generalmente se hace enviando una solicitud HTTP GET al endpoint correspondiente con el
@@ -2111,7 +2201,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_producto">
-                <h2 id="h2_eliminar_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar producto</h2>
+                <h2 id="h2_eliminar_producto" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar
+                    producto</h2>
                 <p class="p-2 text-gray-300" id="p_eliminar_producto">
                     Elimina un producto existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
@@ -2141,7 +2232,8 @@
 
                 <div class="contenedor-tabla-order w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            id="tabla_propiedades_pedidos">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                                 Propiedades
@@ -2369,7 +2461,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_crear_pedido">
-                <h2 id="h2_crear_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Generar un pedido</h2>
+                <h2 id="h2_crear_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Generar un pedido
+                </h2>
                 <p class="p-2 text-gray-300" id="p_crear_pedido">
                     Para generar un pedido debes enviar una solicitud HTTP POST al endpoint
                     correspondiente con los datos necesarios.
@@ -2603,7 +2696,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_cancelar_pedido">
-                <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar pedido</h2>
+                <h2 id="h2_eliminar_pedido" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar pedido
+                </h2>
                 <p class="p-2 text-gray-300" id="p_eliminar_pedido">
                     Elimina un pedido existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>
@@ -2632,7 +2726,8 @@
 
                 <div class="contenedor-tabla-image w-full m-6 mx-auto flex justify-center items-center">
                     <div class="w-[90%] overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            id="tabla_propiedades_imagenes">
                             <caption
                                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                                 Propiedades
@@ -2738,7 +2833,8 @@
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
             <div id="contenedor_eliminar_imagen">
-                <h2 id="h2_eliminar_imagen" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar imagen</h2>
+                <h2 id="h2_eliminar_imagen" class="text-2xl font-semibold mt-8 mb-4 text-gray-300">Eliminar imagen
+                </h2>
                 <p class="p-2 text-gray-300" id="p_eliminar_imagen">
                     Elimina una imagen existente de la base de datos.<br>
                     Esto se hace enviando una solicitud HTTP <b>DELETE</b> al endpoint correspondiente con el <b>ID</b>

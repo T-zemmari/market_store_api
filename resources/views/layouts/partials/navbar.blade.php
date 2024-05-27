@@ -1,8 +1,8 @@
-<nav class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 border-gray-200 fixed">
+<nav class="w-full h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500 fixed">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('/assets/logos/logo_1.png') }}" class="h-8" alt="marketstore Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">MarketStore</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">MarketStoreApi</span>
         </a>
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
