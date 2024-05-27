@@ -512,8 +512,8 @@ function fn_mostrar_form_editar_cliente(id) {
                         let HTML_FORM_EDIT = `
                             <form class="w-full lg:w-[70%] flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_cliente_${cliente.id}">
             
-                                <div class="w-[100%] h-[100%] border-2 border-gray-700 flex flex-col">
-                                    <div class="w-full h-[50px] border-b-2 border-gray-700 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+                                <div class="w-[100%] h-[100%] border border-gray-900 flex flex-col">
+                                    <div class="w-full h-[50px]  border-gray-900 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                                         <h2 class="text-2xl font-semibold text-gray-300">Formulario editar cliente : ${cliente.first_name}</h2>
                                     </div>
                                     <div class="w-full p-6">

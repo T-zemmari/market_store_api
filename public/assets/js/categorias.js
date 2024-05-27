@@ -382,8 +382,8 @@ function fn_mostrar_form_editar_categoria(id) {
                         let HTML_FORM_EDIT = `
                         <form class="w-full md:w-[50%] flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_categoria_${categoria.id}">
 
-                        <div class="w-[100%] h-[100%] border-2 border-gray-200 flex flex-col">
-                            <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+                        <div class="w-[100%] h-[100%] border border-gray-900 flex flex-col">
+                            <div class="w-full h-[50px]   text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
                                 <h2 class="text-2xl font-semibold">Editar categoria ${categoria.name}</h2>
                             </div>
                             <div class="w-full p-6">

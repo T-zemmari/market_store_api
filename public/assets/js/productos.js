@@ -632,16 +632,16 @@ function fn_mostrar_form_editar_producto(id) {
                         let HTML_FORM_EDIT = `
                 <div class="w-full mt-5 flex flex-row gap-2 ">
                             <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
-                                <div class="w-[40%]  border-2 border-gray-200 flex flex-col  items-center">
-                                    <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-2 border-gray-200 mt-5 flex justify-center items-center"
+                                <div class="w-[40%]  border border-gray-900 flex flex-col  items-center">
+                                    <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-1 border-gray-900 mt-5 flex justify-center items-center"
                                         id="conenedor_producto_img_prev_${data.id}">
                                             ${HTML_IMG_PRINCIPAL}
                                         </div>
-                                    <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] border-t-2 border-gray-200 mt-5 flex flex-row justify-center items-center gap-2"
+                                    <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] p-2 border-t border-gray-900 mt-5 flex flex-row justify-center items-center gap-2"
                                         id="conenedor_producto_resto_img_prev_${data.id}">
                                         ${HTML_RESTO_IMG}
                                     </div>
-                                    <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t-2 border-gray-200">
+                                    <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t border-gray-900">
                                         <div class="w-full">
                                             <label class="block mb-2 text-sm font-medium text-gray-300"
                                                 for="principal_image">Añadir imagen principal</label>
