@@ -58,7 +58,7 @@ Para obtener una lista completa de todas las rutas y endpoints disponibles, cons
 
 ### Postman 
 
-<a href="https://documenter.getpostman.com/view/18820606/2sA3Bt19WM">Colección</a>
+<a href="https://documenter.getpostman.com/view/18820606/2sA3Bt19WM">Colección de postman</a>
 
 
 ## Contribuciones
