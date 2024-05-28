@@ -26,14 +26,15 @@ class UpdateProductRequest extends FormRequest
     {
 
         $method = $this->method();
+        //dd($this->request->all());die;
 
         if ($method == 'PUT') {
             return [
                 "name" => ['required', 'string'],
                 "categoryId" => ['required', 'numeric'],
-                "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
-                "ean" => ['sometimes','numeric'],
-                "ean13" => ['sometimes','numeric','min:13','max:13'],
+                "sku" => ['nullable', 'string'],
+                "ean" => ['nullable','string'],
+                "ean13" => ['nullable','string'],
                 "type" => ['required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['required', Rule::in(['draft', 'pending', 'private', 'publish'])],
                 "featured" => ['required', Rule::in([true, false, 0, 1])],
@@ -51,6 +52,7 @@ class UpdateProductRequest extends FormRequest
                 "image" => ['nullable', 'string'],
                 "discontinued" => ['required', Rule::in([true, false, 0, 1])],
                 "valid" => ['required', Rule::in([true, false, 0, 1])],
+                "variation" => ['nullable', Rule::in([true, false, 0, 1])],
                 "principalImage" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
                 "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
@@ -58,9 +60,9 @@ class UpdateProductRequest extends FormRequest
             return [
                 "name" => ['sometimes', 'required', 'string'],
                 "categoryId" => ['sometimes', 'required', 'numeric'],
-                "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
-                "ean" => ['sometimes','numeric'],
-                "ean13" => ['sometimes','numeric','min:13','max:13'],
+                "sku" => ['sometimes','string'],
+                "ean" => ['sometimes','string'],
+                "ean13" => ['sometimes','string'],
                 "type" => ['sometimes', 'required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['sometimes', 'required', Rule::in(['draft', 'pending', 'private', 'publish'])],
                 "featured" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],

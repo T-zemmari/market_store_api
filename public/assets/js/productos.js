@@ -871,20 +871,28 @@ function fn_editar_producto(id) {
 
 
     let productoData = {
-        select_categories: select_categories,
-        select_type: select_type,
-        select_status: select_status,
-        sku: sku,
-        product_ean: product_ean,
-        product_ean_13: product_ean_13,
-        product_name: product_name,
-        short_description: short_description,
+        categoryId: select_categories,
+        name: product_name,
+        ean: product_ean,
+        ean13: product_ean_13,
+        type: select_type,
+        status: select_status,
+        catalogVisibility: 'visible',
+        shortDescription: short_description,
         description: description,
-        regular_price: regular_price,
+        regularPrice: regular_price,
+        salePrice: sale_price,
         price: price,
-        sale_price: sale_price,
-        select_stock_status: select_stock_status,
-        stock_quantity: stock_quantity,
+        valid: 1,
+        onSale: 0,
+        stockStatus: select_stock_status,
+        stockQuantity: stock_quantity,
+        weight: '',
+        dimensions: '',
+        variation: 0,
+        featured: 0,
+        discontinued: 0,
+        meta_data: null,
     };
 
     console.log('productoData', productoData);
@@ -918,6 +926,8 @@ function fn_editar_producto(id) {
     formData.append("variation", 0);
     formData.append("featured", 0);
     formData.append("discontinued", 0);
+    formData.append("meta_data", null);
+
 
 
     let principal_img = document.getElementById("principal_image").files;
@@ -946,7 +956,7 @@ function fn_editar_producto(id) {
         $.ajax({
             url: `http://localhost:8000/api/v1/products/${id}/`,
             method: "PUT",
-            data: formData,
+            data: productoData,
             processData: false,
             contentType: false,
             headers: {
