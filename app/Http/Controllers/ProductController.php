@@ -217,6 +217,7 @@ class ProductController extends Controller
 
                 // Excluir el campo SKU del array de datos para asegurar que no se modifique
                 $requestData = $request->except('sku');
+
                 //dump($requestData);die;
 
 
