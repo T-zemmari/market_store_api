@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +15,6 @@ class UpdateProductRequest extends FormRequest
         return true;
     }
 
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +22,6 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
-
         $method = $this->method();
 
         if ($method == 'PUT') {
@@ -33,24 +30,24 @@ class UpdateProductRequest extends FormRequest
                 "categoryId" => ['required', 'numeric'],
                 "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
                 "ean" => ['sometimes','numeric'],
-                "ean13" => ['sometimes','numeric','min:13','max:13'],
+                "ean13" => ['sometimes','numeric','digits:13'],
                 "type" => ['required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['required', Rule::in(['draft', 'pending', 'private', 'publish'])],
-                "featured" => ['required', Rule::in([true, false, 0, 1])],
+                "featured" => ['required', 'boolean'],
                 "catalogVisibility" => ['required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
                 "description" => ['string'],
                 "shortDescription" => ['string'],
-                "price" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "regularPrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "salePrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "onSale" => ['required', Rule::in([true, false, 0, 1])],
+                "price" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "regularPrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "salePrice" => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "onSale" => ['required', 'boolean'],
                 "stockQuantity" => ['required', 'numeric'],
                 "stockStatus" => ['required', Rule::in(['instock', 'outofstock'])],
                 "dimensions" => ['nullable', 'regex:/^\d{1,3}x\d{1,3}x\d{1,3}cm$/'],
                 "weight" => ['nullable', 'string', 'regex:/^\d+(\.\d+)?kg$/'],
                 "image" => ['nullable', 'string'],
-                "discontinued" => ['required', Rule::in([true, false, 0, 1])],
-                "valid" => ['required', Rule::in([true, false, 0, 1])],
+                "discontinued" => ['required', 'boolean'],
+                "valid" => ['required', 'boolean'],
                 "principalImage" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
                 "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
@@ -60,24 +57,24 @@ class UpdateProductRequest extends FormRequest
                 "categoryId" => ['sometimes', 'required', 'numeric'],
                 "sku" => ['sometimes', 'required', 'numeric', 'min:1000', 'max:9999999'],
                 "ean" => ['sometimes','numeric'],
-                "ean13" => ['sometimes','numeric','min:13','max:13'],
+                "ean13" => ['sometimes','numeric','digits:13'],
                 "type" => ['sometimes', 'required', Rule::in(['simple', 'grouped', 'external', 'variable'])],
                 "status" => ['sometimes', 'required', Rule::in(['draft', 'pending', 'private', 'publish'])],
-                "featured" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
+                "featured" => ['sometimes', 'required', 'boolean'],
                 "catalogVisibility" => ['sometimes', 'required', Rule::in(['visible', 'catalog', 'search', 'hidden'])],
                 "description" => ['sometimes', 'string'],
                 "shortDescription" => ['sometimes', 'string'],
-                "price" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "regularPrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "salePrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], // Numeric con máximo dos decimales
-                "onSale" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
+                "price" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "regularPrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "salePrice" => ['sometimes', 'required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                "onSale" => ['sometimes', 'required', 'boolean'],
                 "stockQuantity" => ['sometimes', 'required', 'numeric'],
                 "stockStatus" => ['sometimes', 'required', Rule::in(['instock', 'outofstock'])],
                 "dimensions" => ['sometimes', 'nullable', 'regex:/^\d{1,3}x\d{1,3}x\d{1,3}cm$/'],
                 "weight" => ['sometimes', 'nullable', 'string', 'regex:/^\d+(\.\d+)?kg$/'],
                 "image" => ['sometimes', 'nullable', 'string'],
-                "discontinued" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
-                "valid" => ['sometimes', 'required', Rule::in([true, false, 0, 1])],
+                "discontinued" => ['sometimes', 'required', 'boolean'],
+                "valid" => ['sometimes', 'required', 'boolean'],
                 "principalImage" => ['nullable', 'mimes:png,jpg,jpeg,webp'],
                 "images.*" => ['nullable', 'mimes:png,jpg,jpeg,webp']
             ];
@@ -86,7 +83,6 @@ class UpdateProductRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-
         if ($this->principalImage) {
             $this->merge(['principal_image' => $this->principalImage]);
         }
