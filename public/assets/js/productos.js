@@ -593,261 +593,261 @@ function fn_mostrar_formulario_crear_producto(elemento_id) {
     fn_obtener_categorias_para_el_formulario_producto();
 }
 
-function fn_mostrar_form_editar_producto(id) {
+// function fn_mostrar_form_editar_producto(id) {
 
-    $(`#td_colspan_form_edit_producto_${id}`).toggle(function () {
-        if ($(this).is(':visible')) {
-            $.ajax({
-                url: `http://localhost:8000/api/v1/products/${id}`,
-                method: "GET",
-                dataType: "json",
-                headers: {
-                    Authorization: "Bearer " + $("#tkn").val(),
-                    Accept: "application/json",
-                },
-                success: function (response) {
-                    console.log("Informacion del producto :", response);
-                    let data = response.data;
-                    if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
+//     $(`#td_colspan_form_edit_producto_${id}`).toggle(function () {
+//         if ($(this).is(':visible')) {
+//             $.ajax({
+//                 url: `http://localhost:8000/api/v1/products/${id}`,
+//                 method: "GET",
+//                 dataType: "json",
+//                 headers: {
+//                     Authorization: "Bearer " + $("#tkn").val(),
+//                     Accept: "application/json",
+//                 },
+//                 success: function (response) {
+//                     console.log("Informacion del producto :", response);
+//                     let data = response.data;
+//                     if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
 
-                        fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+//                         fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
 
-                        let HTML_IMG_PRINCIPAL = ``;
+//                         let HTML_IMG_PRINCIPAL = ``;
 
-                        if (data.image != '') {
-                            HTML_IMG_PRINCIPAL = `
-                            <img style="max-height:100%" src="${data.image}"/>
-                            `;
-                        }
-                        let HTML_RESTO_IMG = ``;
-                        if (data.images.length > 0) {
-                            data.images.forEach(image => {
-                                HTML_RESTO_IMG += `
-                                <img style="width:80px;height:80px" src="${image.url_image}"/>
-                                `;
-                            })
-                        }
+//                         if (data.image != '') {
+//                             HTML_IMG_PRINCIPAL = `
+//                             <img style="max-height:100%" src="${data.image}"/>
+//                             `;
+//                         }
+//                         let HTML_RESTO_IMG = ``;
+//                         if (data.images.length > 0) {
+//                             data.images.forEach(image => {
+//                                 HTML_RESTO_IMG += `
+//                                 <img style="width:80px;height:80px" src="${image.url_image}"/>
+//                                 `;
+//                             })
+//                         }
 
-                        let HTML_FORM_EDIT = `
-                <div class="w-full mt-5 flex flex-row gap-2 ">
-                            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
-                                <div class="w-[40%]  border border-gray-900 flex flex-col  items-center">
-                                    <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-1 border-gray-900 mt-5 flex justify-center items-center"
-                                        id="conenedor_producto_img_prev_${data.id}">
-                                            ${HTML_IMG_PRINCIPAL}
-                                        </div>
-                                    <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] p-2 border-t border-gray-900 mt-5 flex flex-row justify-center items-center gap-2"
-                                        id="conenedor_producto_resto_img_prev_${data.id}">
-                                        ${HTML_RESTO_IMG}
-                                    </div>
-                                    <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t border-gray-900">
-                                        <div class="w-full">
-                                            <label class="block mb-2 text-sm font-medium text-gray-300"
-                                                for="principal_image_${data.id}">Añadir imagen principal</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-                                                id="principal_image_${data.id}" name="principal_image" type="file"
-                                                accept=".png, .jpg, .jpeg, .webp">
-                                        </div>
-                                        <div class="w-full">
-                                            <label class="block mb-2 text-sm font-medium text-gray-300" for="images_${data.id}">Añadir
-                                                resto de imagenes</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-                                                id="images_${data.id}" name="images[]" type="file" multiple
-                                                accept=".png, .jpg, .jpeg, .webp">
-                                        </div>
-                                    </div>
-            
-                                </div>
-                                <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
-                                    <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
-                                        <h2 class="text-2xl font-semibold">Rellena el formulario del producto (SKU:${data.sku})</h2>
-                                    </div>
-                                    <div class="w-full p-6">
-            
-                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
-                                            <div>
-                                                <label for="select_categories_${data.id}"
-                                                    class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Seleccionar Categoria
-                                                </label>
-                                                <select id="select_categories_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option selected>Seleccionar</option>
-            
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="select_type_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Seleccionar tipo
-                                                </label>
-                                                <select id="select_type_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option>Seleccionar</option>
-                                                    <option value="simple" ${data.type == 'simple' ? 'selected' : ''}>Simple</option>
-                                                    <option value="grouped" ${data.type == 'grouped' ? 'selected' : ''}>Grouped</option>
-                                                    <option value="external" ${data.type == 'external' ? 'selected' : ''}>External</option>
-                                                    <option value="variable" ${data.type == 'variable' ? 'selected' : ''}>Variable</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="select_status_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Seleccionar estado
-                                                </label>
-                                                <select id="select_status_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option>Seleccionar</option>
-                                                    <option value="publish" ${data.status == 'publish' ? 'selected' : ''}>Publish</option>
-                                                    <option value="draft" ${data.status == 'draft' ? 'selected' : ''}>Draft</option>
-                                                    <option value="pending" ${data.status == 'pending' ? 'selected' : ''}>Pending</option>
-                                                    <option value="private" ${data.status == 'private' ? 'selected' : ''}>Private</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    SKU (No se modifica)
-                                                </label>
-                                                <input type="text" id="sku_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Sku" readonly value="${data.sku}"/>
-                                            </div>
-                                            <div>
-                                                <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    EAN
-                                                </label>
-                                                <input type="text" id="product_ean_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Ean" value="${data.ean ?? ''}"/>
-                                            </div>
-                                            <div>
-                                                <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    EAN-13
-                                                </label>
-                                                <input type="text" id="product_ean_13_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Ean13" value="${data.ean13 ?? ''}"/>
-                                            </div>
-            
-            
-                                        </div>
-                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
-                                            <div>
-                                                <label for="product_name_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Nombre del producto
-                                                </label>
-                                                <input type="text" id="product_name_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Escribe el nombre del producto" value="${data.name ?? ''}"/>
-                                            </div>
-                                        </div>
-                                        <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                            <div>
-                                                <label for="short_description_${data.id}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900">
-                                                    Descripción corta
-                                                </label>
-                                                <textarea id="short_description_${data.id}" rows="4"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder="Escribe una descripción corta">${data.short_description ?? ''}</textarea>
-            
-                                            </div>
-                                            <div>
-                                                <label for="description_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Descripción
-                                                </label>
-                                                <textarea id="description_${data.id}" rows="4"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder="Escribe la descripcion del producto">${data.description ?? ''}</textarea>
-            
-                                            </div>
-                                        </div>
-            
-                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
-                                            <div>
-                                                <label for="regular_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    PVR
-                                                </label>
-                                                <input type="number" id="regular_price_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="PVR" value="${data.regular_price ?? ''}"/>
-                                            </div>
-                                            <div>
-                                                <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Precio de venta
-                                                </label>
-                                                <input type="number" id="sale_price_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Precio sin confirmar" value="${data.sale_price ?? ''}"/>
-                                            </div>
-                                            <div>
-                                                <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Precio que se va a mostrar
-                                                </label>
-                                                <input type="number" id="price_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Precio Confirmado" value="${data.price ?? ''}"/>
-                                            </div>
-                                            <div>
-                                                <label for="select_stock_status_${data.id}"
-                                                    class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Seleccionar estado del stock
-                                                </label>
-                                                <select id="select_stock_status_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                    <option selected>Seleccionar</option>
-                                                    <option value="instock" ${data.stock_status == 'instock' ? 'selected' : ''}>Instock</option>
-                                                    <option value="outofstock" ${data.stock_status == 'outofstock' ? 'selected' : ''}>Outofstock</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="stock_quantity_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
-                                                    Stock actual
-                                                </label>
-                                                <input type="number" id="stock_quantity_${data.id}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    placeholder="Stock" value="${data.stock_quantity ?? ''}"/>
-                                            </div>
-                                        </div>
-                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
-                                            <button type="button"
-                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                                                onclick="fn_editar_producto(${data.id})">Guardar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                `;
+//                         let HTML_FORM_EDIT = `
+//                 <div class="w-full mt-5 flex flex-row gap-2 ">
+//                             <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
+//                                 <div class="w-[40%]  border border-gray-900 flex flex-col  items-center">
+//                                     <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-1 border-gray-900 mt-5 flex justify-center items-center"
+//                                         id="conenedor_producto_img_prev_${data.id}">
+//                                             ${HTML_IMG_PRINCIPAL}
+//                                         </div>
+//                                     <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] p-2 border-t border-gray-900 mt-5 flex flex-row justify-center items-center gap-2"
+//                                         id="conenedor_producto_resto_img_prev_${data.id}">
+//                                         ${HTML_RESTO_IMG}
+//                                     </div>
+//                                     <div class="w-full p-8 grid gap-6 mb-6 md:grid-cols-1 border-t border-gray-900">
+//                                         <div class="w-full">
+//                                             <label class="block mb-2 text-sm font-medium text-gray-300"
+//                                                 for="principal_image_${data.id}">Añadir imagen principal</label>
+//                                             <input
+//                                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+//                                                 id="principal_image_${data.id}" name="principal_image" type="file"
+//                                                 accept=".png, .jpg, .jpeg, .webp">
+//                                         </div>
+//                                         <div class="w-full">
+//                                             <label class="block mb-2 text-sm font-medium text-gray-300" for="images_${data.id}">Añadir
+//                                                 resto de imagenes</label>
+//                                             <input
+//                                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+//                                                 id="images_${data.id}" name="images[]" type="file" multiple
+//                                                 accept=".png, .jpg, .jpeg, .webp">
+//                                         </div>
+//                                     </div>
 
-                        $(`#contenedor_editar_producto_${data.id}`).html(HTML_FORM_EDIT);
+//                                 </div>
+//                                 <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
+//                                     <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+//                                         <h2 class="text-2xl font-semibold">Rellena el formulario del producto (SKU:${data.sku})</h2>
+//                                     </div>
+//                                     <div class="w-full p-6">
 
-                        setTimeout(() => {
-                            fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
-                        }, 500);
+//                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
+//                                             <div>
+//                                                 <label for="select_categories_${data.id}"
+//                                                     class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Seleccionar Categoria
+//                                                 </label>
+//                                                 <select id="select_categories_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+//                                                     <option selected>Seleccionar</option>
+
+//                                                 </select>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="select_type_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Seleccionar tipo
+//                                                 </label>
+//                                                 <select id="select_type_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+//                                                     <option>Seleccionar</option>
+//                                                     <option value="simple" ${data.type == 'simple' ? 'selected' : ''}>Simple</option>
+//                                                     <option value="grouped" ${data.type == 'grouped' ? 'selected' : ''}>Grouped</option>
+//                                                     <option value="external" ${data.type == 'external' ? 'selected' : ''}>External</option>
+//                                                     <option value="variable" ${data.type == 'variable' ? 'selected' : ''}>Variable</option>
+//                                                 </select>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="select_status_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Seleccionar estado
+//                                                 </label>
+//                                                 <select id="select_status_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+//                                                     <option>Seleccionar</option>
+//                                                     <option value="publish" ${data.status == 'publish' ? 'selected' : ''}>Publish</option>
+//                                                     <option value="draft" ${data.status == 'draft' ? 'selected' : ''}>Draft</option>
+//                                                     <option value="pending" ${data.status == 'pending' ? 'selected' : ''}>Pending</option>
+//                                                     <option value="private" ${data.status == 'private' ? 'selected' : ''}>Private</option>
+//                                                 </select>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     SKU (No se modifica)
+//                                                 </label>
+//                                                 <input type="text" id="sku_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Sku" readonly value="${data.sku}"/>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     EAN
+//                                                 </label>
+//                                                 <input type="text" id="product_ean_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Ean" value="${data.ean ?? ''}"/>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     EAN-13
+//                                                 </label>
+//                                                 <input type="text" id="product_ean_13_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Ean13" value="${data.ean13 ?? ''}"/>
+//                                             </div>
 
 
-                    } else {
-                        mostrar_error("Error al generar el formulario editar producto");
-                        return;
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error al obtener el producto:", error);
-                    let errors = xhr.responseJSON.errors;
-                    let errorMessages = '';
-                    for (let field in errors) {
-                        errorMessages += `${errors[field].join('<br>')}<br>`;
-                    }
-                    Swal.fire({
-                        html: `<h4><b>Error al obtener el producto</b></h4><p>${errorMessages}</p>`,
-                        icon: `error`,
-                    });
-                },
-            });
-        }
-    });
-}
+//                                         </div>
+//                                         <div class="grid gap-6 mb-6 md:grid-cols-1">
+//                                             <div>
+//                                                 <label for="product_name_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Nombre del producto
+//                                                 </label>
+//                                                 <input type="text" id="product_name_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Escribe el nombre del producto" value="${data.name ?? ''}"/>
+//                                             </div>
+//                                         </div>
+//                                         <div class="grid gap-6 mb-6 md:grid-cols-2">
+//                                             <div>
+//                                                 <label for="short_description_${data.id}"
+//                                                     class="block mb-2 text-sm font-medium text-gray-900">
+//                                                     Descripción corta
+//                                                 </label>
+//                                                 <textarea id="short_description_${data.id}" rows="4"
+//                                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+//                                                     placeholder="Escribe una descripción corta">${data.short_description ?? ''}</textarea>
+
+//                                             </div>
+//                                             <div>
+//                                                 <label for="description_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Descripción
+//                                                 </label>
+//                                                 <textarea id="description_${data.id}" rows="4"
+//                                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+//                                                     placeholder="Escribe la descripcion del producto">${data.description ?? ''}</textarea>
+
+//                                             </div>
+//                                         </div>
+
+//                                         <div class="grid gap-6 mb-6 md:grid-cols-3">
+//                                             <div>
+//                                                 <label for="regular_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     PVR
+//                                                 </label>
+//                                                 <input type="number" id="regular_price_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="PVR" value="${data.regular_price ?? ''}"/>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Precio de venta
+//                                                 </label>
+//                                                 <input type="number" id="sale_price_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Precio sin confirmar" value="${data.sale_price ?? ''}"/>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Precio que se va a mostrar
+//                                                 </label>
+//                                                 <input type="number" id="price_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Precio Confirmado" value="${data.price ?? ''}"/>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="select_stock_status_${data.id}"
+//                                                     class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Seleccionar estado del stock
+//                                                 </label>
+//                                                 <select id="select_stock_status_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+//                                                     <option selected>Seleccionar</option>
+//                                                     <option value="instock" ${data.stock_status == 'instock' ? 'selected' : ''}>Instock</option>
+//                                                     <option value="outofstock" ${data.stock_status == 'outofstock' ? 'selected' : ''}>Outofstock</option>
+//                                                 </select>
+//                                             </div>
+//                                             <div>
+//                                                 <label for="stock_quantity_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+//                                                     Stock actual
+//                                                 </label>
+//                                                 <input type="number" id="stock_quantity_${data.id}"
+//                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+//                                                     placeholder="Stock" value="${data.stock_quantity ?? ''}"/>
+//                                             </div>
+//                                         </div>
+//                                         <div class="grid gap-6 mb-6 md:grid-cols-1">
+//                                             <button type="button"
+//                                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+//                                                 onclick="fn_editar_producto(${data.id})">Guardar</button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                             </form>
+//                         </div>
+//                 `;
+
+//                         $(`#contenedor_editar_producto_${data.id}`).html(HTML_FORM_EDIT);
+
+//                         setTimeout(() => {
+//                             fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+//                         }, 500);
+
+
+//                     } else {
+//                         mostrar_error("Error al generar el formulario editar producto");
+//                         return;
+//                     }
+//                 },
+//                 error: function (xhr, status, error) {
+//                     console.error("Error al obtener el producto:", error);
+//                     let errors = xhr.responseJSON.errors;
+//                     let errorMessages = '';
+//                     for (let field in errors) {
+//                         errorMessages += `${errors[field].join('<br>')}<br>`;
+//                     }
+//                     Swal.fire({
+//                         html: `<h4><b>Error al obtener el producto</b></h4><p>${errorMessages}</p>`,
+//                         icon: `error`,
+//                     });
+//                 },
+//             });
+//         }
+//     });
+// }
 
 
 // function fn_editar_producto(id) {
@@ -987,6 +987,274 @@ function fn_mostrar_form_editar_producto(id) {
 //     }
 
 // }
+
+
+function fn_mostrar_form_editar_producto(id) {
+
+    $(`#td_colspan_form_edit_producto_${id}`).toggle(function () {
+        if ($(this).is(':visible')) {
+            $.ajax({
+                url: `http://localhost:8000/api/v1/products/${id}`,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    Authorization: "Bearer " + $("#tkn").val(),
+                    Accept: "application/json",
+                },
+                success: function (response) {
+                    console.log("Informacion del producto :", response);
+                    let data = response.data;
+                    if (data.id != undefined && data.id != null && data.id != '' && !isNaN(data.id)) {
+
+                        fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+
+                        let HTML_IMG_PRINCIPAL = ``;
+
+                        if (data.image != '') {
+                            HTML_IMG_PRINCIPAL = `
+                            <img style="max-height:100%" src="${data.image}" onclick="fn_cargar_nueva_imagen_principal(${data.id})"/>
+                            `;
+                        }
+                        let HTML_RESTO_IMG = ``;
+                        if (data.images.length > 0) {
+                            data.images.forEach(image => {
+                                HTML_RESTO_IMG += `
+                                <div id="contenedor_imagen_secundaria_${image.id}">
+                                    <img style="width:80px;height:80px" src="${image.url_image}"/>
+                                    <button class="w-[80px] bg-[red] text-white" type="button" onclick="fn_eliminar_imagen_del_producto(${image.id})">Eliminar</button>
+                                </div>
+                                `;
+                            })
+                        }
+
+                        let HTML_FORM_EDIT = `
+                        <div class="w-full mt-5 flex flex-row gap-2 ">
+                            <form class="w-full flex flex-row gap-2" enctype="multipart/form-data" id="formulario_editar_producto_${data.id}">
+                                <div class="w-[40%]  border border-gray-900 flex flex-col  items-center">
+                                    <div class="conenedor_producto_img_prev w-[60%] h-[60%] border-1 border-gray-900 mt-5 flex justify-center items-center" id="conenedor_producto_img_prev_${data.id}" onclick="fn_cargar_nueva_imagen_principal(${data.id})">
+                                        ${HTML_IMG_PRINCIPAL}
+                                    </div>
+                                    <input type="file" id="principal_image_${data.id}" name="principal_image" accept=".png, .jpg, .jpeg, .webp" style="display: none;">
+                                    <div class="conenedor_producto_resto_img_prev w-[100%] min-h-[1%] p-2 border-t border-gray-900 mt-5 flex flex-row justify-center items-center gap-2" id="conenedor_producto_resto_img_prev_${data.id}">
+                                        ${HTML_RESTO_IMG}
+                                    </div>
+                                    <input type="file" id="images_${data.id}" name="images[]" multiple accept=".png, .jpg, .jpeg, .webp" style="display: none;">
+                                </div>
+                                <div class="w-[60%] h-[100%] border-2 border-gray-200 flex flex-col">
+                                    <div class="w-full h-[50px] border-b-2 border-gray-200 text-gray-300 flex justify-center items-center" style="background: radial-gradient(263px at 100.2% 3%, rgb(12, 85, 141) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(12, 73, 116) 72.6%);">
+                                        <h2 class="text-2xl font-semibold">Rellena el formulario del producto (SKU:${data.sku})</h2>
+                                    </div>
+                                    <div class="w-full p-6">
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="select_categories_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Seleccionar Categoria
+                                                </label>
+                                                <select id="select_categories_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option selected>Seleccionar</option>
+            
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="select_type_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Seleccionar tipo
+                                                </label>
+                                                <select id="select_type_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option>Seleccionar</option>
+                                                    <option value="simple" ${data.type == 'simple' ? 'selected' : ''}>Simple</option>
+                                                    <option value="grouped" ${data.type == 'grouped' ? 'selected' : ''}>Grouped</option>
+                                                    <option value="external" ${data.type == 'external' ? 'selected' : ''}>External</option>
+                                                    <option value="variable" ${data.type == 'variable' ? 'selected' : ''}>Variable</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="select_status_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Seleccionar estado
+                                                </label>
+                                                <select id="select_status_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option>Seleccionar</option>
+                                                    <option value="publish" ${data.status == 'publish' ? 'selected' : ''}>Publish</option>
+                                                    <option value="draft" ${data.status == 'draft' ? 'selected' : ''}>Draft</option>
+                                                    <option value="pending" ${data.status == 'pending' ? 'selected' : ''}>Pending</option>
+                                                    <option value="private" ${data.status == 'private' ? 'selected' : ''}>Private</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="sku_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    SKU (No se modifica)
+                                                </label>
+                                                <input type="text" id="sku_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Sku" readonly value="${data.sku}"/>
+                                            </div>
+                                            <div>
+                                                <label for="product_ean_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                EAN
+                                                </label>
+                                                <input type="text" id="product_ean_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Ean" value="${data.ean ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="product_ean_13_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    EAN-13
+                                                </label>
+                                                <input type="text" id="product_ean_13_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Ean13" value="${data.ean13 ?? ''}"/>
+                                            </div>
+            
+            
+                                        </div>
+                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                            <div>
+                                                <label for="product_name_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Nombre del producto
+                                                </label>
+                                                <input type="text" id="product_name_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Escribe el nombre del producto" value="${data.name ?? ''}"/>
+                                            </div>
+                                        </div>
+                                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                            <div>
+                                                <label for="short_description_${data.id}"
+                                                    class="block mb-2 text-sm font-medium text-gray-900">
+                                                    Descripción corta
+                                                </label>
+                                                <textarea id="short_description_${data.id}" rows="4"
+                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    placeholder="Escribe una descripción corta">${data.short_description ?? ''}</textarea>
+            
+                                            </div>
+                                            <div>
+                                                <label for="description_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Descripción
+                                                </label>
+                                                <textarea id="description_${data.id}" rows="4"
+                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    placeholder="Escribe la descripcion del producto">${data.description ?? ''}</textarea>
+            
+                                            </div>
+                                        </div>
+            
+                                        <div class="grid gap-6 mb-6 md:grid-cols-3">
+                                            <div>
+                                                <label for="regular_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    PVR
+                                                </label>
+                                                <input type="number" id="regular_price_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="PVR" value="${data.regular_price ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="sale_price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Precio de venta
+                                                </label>
+                                                <input type="number" id="sale_price_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Precio sin confirmar" value="${data.sale_price ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="price_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Precio que se va a mostrar
+                                                </label>
+                                                <input type="number" id="price_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Precio Confirmado" value="${data.price ?? ''}"/>
+                                            </div>
+                                            <div>
+                                                <label for="select_stock_status_${data.id}"
+                                                    class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Seleccionar estado del stock
+                                                </label>
+                                                <select id="select_stock_status_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                    <option selected>Seleccionar</option>
+                                                    <option value="instock" ${data.stock_status == 'instock' ? 'selected' : ''}>Instock</option>
+                                                    <option value="outofstock" ${data.stock_status == 'outofstock' ? 'selected' : ''}>Outofstock</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="stock_quantity_${data.id}" class="block mb-2 text-sm font-medium text-gray-300">
+                                                    Stock actual
+                                                </label>
+                                                <input type="number" id="stock_quantity_${data.id}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    placeholder="Stock" value="${data.stock_quantity ?? ''}"/>
+                                            </div>
+                                        </div>
+                                        <div class="grid gap-6 mb-6 md:grid-cols-1">
+                                            <button type="button"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                                                onclick="fn_editar_producto(${data.id})">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                `;
+
+                        $(`#contenedor_editar_producto_${data.id}`).html(HTML_FORM_EDIT);
+
+                        setTimeout(() => {
+                            fn_obtener_categorias_para_el_formulario_producto(data.id, data.category_id);
+                        }, 500);
+
+
+                    } else {
+                        mostrar_error("Error al generar el formulario editar producto");
+                        return;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener el producto:", error);
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessages = '';
+                    for (let field in errors) {
+                        errorMessages += `${errors[field].join('<br>')}<br>`;
+                    }
+                    Swal.fire({
+                        html: `<h4><b>Error al obtener el producto</b></h4><p>${errorMessages}</p>`,
+                        icon: `error`,
+                    });
+                },
+            });
+        }
+    });
+}
+
+function fn_cargar_nueva_imagen_principal(id) {
+    $(`#principal_image_${id}`).click();
+}
+
+function fn_eliminar_imagen_del_producto(id) {
+    // Realizar la petición para eliminar la imagen con el ID proporcionado
+    $.ajax({
+        url: `http://localhost:8000/api/v1/images/${id}`,
+        method: "DELETE",
+        headers: {
+            Authorization: "Bearer " + $("#tkn").val(),
+            Accept: "application/json",
+        },
+        success: function (response) {
+            console.log("Imagen eliminada con éxito", response);
+            Swal.fire({
+                html: `<h4><b>Imagen eliminada con éxito</b></h4>`,
+                icon: `success`,
+            });
+            $(`#contenedor_imagen_secundaria_${id}`).remove();
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al eliminar la imagen:", error);
+        },
+    });
+}
+
+
 
 
 function fn_editar_producto(id) {

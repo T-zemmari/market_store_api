@@ -11,6 +11,7 @@ use App\Http\Resources\ImageResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class ImageController extends Controller
 {
@@ -199,12 +200,19 @@ class ImageController extends Controller
             if (!$hasAccess) {
                 return response()->json(['error' => 'You are not authorized for this operation'], 403);
             } else {
-                $image = Image::find($image_id);
-                if ($image) {
-                    $image->delete();
-                    return response()->json(['message' => 'Image deleted successfully'], 200);
-                } else {
-                    return response()->json(['message' => 'Image not found'], 404);
+                try {
+                    $image = Image::find($image_id);
+                    if ($image) {
+                        $image->delete();
+                        return response()->json(['message' => 'Image deleted successfully'], 200);
+                    } else {
+                        return response()->json(['message' => 'Image not found'], 404);
+                    }
+                } catch (ValidationException $e) {
+                    return response()->json([
+                        'code' => 422,
+                        'errors' => $e->errors()
+                    ], 422);
                 }
             }
         } else {
