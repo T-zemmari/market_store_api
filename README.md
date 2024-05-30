@@ -5,6 +5,8 @@ Esta API proporciona funcionalidades para gestionar productos, clientes, categor
 
 ![API de Market Store](./public/assets/imgs/mrk_1.png)
 
+![API de Market Store](./public/assets/imgs/mrk_3.png)
+
 ## Características Principales
 
 - Gestión de Productos: Permite operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en productos.
@@ -77,9 +79,7 @@ Para obtener una lista completa de todas las rutas y endpoints disponibles, cons
 Este proyecto fue desarrollado por Tarek Zemmari.
 
 
-## DEMO
 
-![API de Market Store](./public/assets/imgs/mrk_3.png)
 
 ## Licencia
 
