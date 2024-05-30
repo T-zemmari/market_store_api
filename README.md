@@ -56,9 +56,6 @@ Para obtener una lista completa de todas las rutas y endpoints disponibles, cons
 
 ![API de Market Store](./public/assets/imgs/mrk_2.png)
 
-### Demo en Video
-
-[Ver Video de Demostración](./public/assets/vids/mst_1.mp4)
 
 ### Postman 
 
