@@ -31,7 +31,6 @@ Esta API proporciona funcionalidades para gestionar productos, clientes, categor
 4. Configura las variables de entorno en el archivo `.env`, incluyendo la configuración de la base de datos.
 5. Ejecuta `php artisan key:generate` para generar la clave de la aplicación.
 6. Ejecuta `php artisan migrate --seed` para crear y poblar las tablas de la base de datos.
-7. Instala Breeze utilizando el siguiente comando:
 
 
 8. Configura Tailwind CSS y Vite según las necesidades de tu proyecto.
